@@ -48,22 +48,22 @@
 #ifdef _DEBUG
 	#include <crtdbg.h>			// C runtime debug functions
 #endif
-	#include <stdio.h>			// Standard Input/Output functions
-	#include <stdlib.h>
+    #include <stdio.h>			// Standard Input/Output functions
+    #include <stdlib.h>
 	#include <float.h>
 	#include <malloc.h>			// For _alloca
-	#include <math.h>
+#include <math.h>
 
 	#include <IceMaths/IceMathsAFX.h>
 	using namespace IceMaths;
 
 	#define Interval	IceMaths::Interval
 
-	#include "Meshmerizer\MeshmerizerAFX.h"
-	#include "IceImageWork\IceImageWorkAFX.h"
-	#include "IceGUI\IceGUIAFX.h"
-	#include "IceRenderer\IceRendererAFX.h"
-	#include "IceTerrain\IceTerrainAFX.h"
+	#include "Meshmerizer/MeshmerizerAFX.h"
+	#include "IceImageWork/IceImageWorkAFX.h"
+	#include "IceGUI/IceGUIAFX.h"
+	#include "IceRenderer/IceRendererAFX.h"
+	#include "IceTerrain/IceTerrainAFX.h"
 	using namespace Meshmerizer;
 	using namespace IceImageWork;
 	using namespace IceGUI;

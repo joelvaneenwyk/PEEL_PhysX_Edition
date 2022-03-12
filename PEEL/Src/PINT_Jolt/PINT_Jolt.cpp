@@ -113,7 +113,7 @@ inline_ JQuat	ToJQuat(const IQuat& q)	{ return JQuat(q.p.x, q.p.y, q.p.z, q.w);	
 
 // Callback for traces, connect this to your own trace function if you have one
 static void TraceImpl(const char *inFMT, ...)
-{ 
+{
 	// Format the message
 	va_list list;
 	va_start(list, inFMT);
@@ -135,12 +135,12 @@ static void TraceImpl(const char *inFMT, ...)
 	#pragma comment(lib, "../../Ice/Lib64/IceGUI64.lib")
 //	#pragma comment(lib, "../../Ice/Lib64/IML64.lib")
 	#ifdef _DEBUG
-		#pragma comment(lib, "../../../../PEEL_Externals/Jolt/Lib/x64/Debug/Jolt.lib")
+		#pragma comment(lib, "../../../../PEEL_Externals/JoltPhysics/Build/VS2022_CL/Debug/Jolt.lib")
 	#else
 		#ifdef USE_AVX
-			#pragma comment(lib, "../../../../PEEL_Externals/Jolt/Lib/x64/Release/JoltAVX.lib")
+			#pragma comment(lib, "../../../../PEEL_Externals/JoltPhysics/Build/VS2022_CL/Release/JoltAVX.lib")
 		#else
-			#pragma comment(lib, "../../../../PEEL_Externals/Jolt/Lib/x64/Release/Jolt.lib")
+			#pragma comment(lib, "../../../../PEEL_Externals/JoltPhysics/Build/VS2022_CL/Release/Jolt.lib")
 		#endif
 	#endif
 #else
@@ -191,7 +191,7 @@ static float	gDefaultRestitution			= 0.0f;		// Default value in Jolt
 
 // Callback for asserts, connect this to your own assert handler if you have one
 static bool AssertFailedImpl(const char *inExpression, const char *inMessage, const char *inFile, uint inLine)
-{ 
+{
 	// Print to the TTY
 	cout << inFile << ":" << inLine << ": (" << inExpression << ") " << (inMessage != nullptr? inMessage : "") << endl;
 
@@ -397,7 +397,7 @@ public:
 	}
 
 	virtual void			OnContactRemoved(const SubShapeIDPair &inSubShapePair) override
-	{ 
+	{
 		cout << "A contact was removed" << endl;
 	}
 };
@@ -483,7 +483,7 @@ public:
 	}
 
 	virtual bool			CanCollide(const CollisionGroup &inGroup1, const CollisionGroup &inGroup2) const override
-	{	
+	{
 		// Filter bodies connected by a joint
 		if(mPM && mPM->FindPair(inGroup1.GetGroupID(), inGroup2.GetGroupID()))
 			return false;
@@ -855,7 +855,7 @@ void JoltPint::Init(const PINT_WORLD_CREATE& desc)
 	RegisterTypes();
 
 	// We need a temp allocator for temporary allocations during the physics update. We're
-	// pre-allocating 10 MB to avoid having to do allocations during the physics update. 
+	// pre-allocating 10 MB to avoid having to do allocations during the physics update.
 	// B.t.w. 10 MB is way too much for this example but it is a typical value you can use.
 	// If you don't want to pre-allocate you can also use TempAllocatorMalloc to fall back to
 	// malloc / free.
@@ -1255,7 +1255,7 @@ static void SetupDynamicActorSettings(BodyCreationSettings& settings, const PINT
 
 	settings.mMaxLinearVelocity = MAX_FLOAT;	// Some PEEL tests require more than Jolt's refault
 	settings.mMaxAngularVelocity = 100.0f;
-	//BodyCreate.mGravityFactor = 
+	//BodyCreate.mGravityFactor =
 
 /*
 ///@name Mass properties of the body (by default calculated by the shape)

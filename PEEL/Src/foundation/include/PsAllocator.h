@@ -36,11 +36,14 @@
 #include "Ps.h"
 
 #if(PX_WINDOWS_FAMILY || PX_XBOXONE)
-	#include <exception>
-	#include <typeinfo.h>
-#endif
-#if(PX_APPLE_FAMILY)
-	#include <typeinfo>
+#	include <exception>
+#	if PX_VC >= 16
+#		include <typeinfo>
+#	else
+#		include <typeinfo.h>
+#	endif
+#elif(PX_APPLE_FAMILY)
+#	include <typeinfo>
 #endif
 
 #include <new>
@@ -94,7 +97,11 @@
 
 // Don't use inline for alloca !!!
 #if PX_WINDOWS_FAMILY
-	#include <malloc.h>
+	#if PX_VC >= 16
+		#include <memory>
+	#else
+		#include <malloc.h>
+	#endif
 	#define PxAlloca(x) _alloca(x)
 #elif PX_LINUX || PX_ANDROID
 	#include <malloc.h>

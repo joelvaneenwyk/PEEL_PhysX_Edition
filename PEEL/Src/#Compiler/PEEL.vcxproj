@@ -137,12 +137,12 @@
       <BrowseInformation>true</BrowseInformation>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <LanguageStandard_C>stdc11</LanguageStandard_C>
+      <LanguageStandard_C>Default</LanguageStandard_C>
       <AdditionalOptions>/showIncludes %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\GL\glew64.lib;opengl32.lib;glu32.lib;..\GlutX\Lib\GlutX64_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\..\Build64\PEEL64_DEBUG_vs2017.exe</OutputFile>
+      <OutputFile>..\..\Build64\PEEL64_DEBUG.exe</OutputFile>
       <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
@@ -223,7 +223,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\GL\glew64.lib;opengl32.lib;glu32.lib;..\GlutX\Lib\GlutX64.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\..\Build64\PEEL64_vs2017.exe</OutputFile>
+      <OutputFile>..\..\Build64\PEEL64.exe</OutputFile>
       <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
