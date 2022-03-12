@@ -1,0 +1,3 @@
+[submodule "PEEL_Externals/JoltPhysics"]
+	path = PEEL_Externals/JoltPhysics
+	url = git@github.com:joelvaneenwyk/JoltPhysics.git
