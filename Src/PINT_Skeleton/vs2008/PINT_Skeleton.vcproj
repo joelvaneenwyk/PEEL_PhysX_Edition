@@ -177,7 +177,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying DLL to Build folder..."
-				CommandLine="copy .\Debug\PINT_Skeleton_D.dll ..\..\..\Build64"
+				CommandLine="copy .\Debug\PINT_Skeleton_D.dll ..\..\..\Build\x64"
 			/>
 		</Configuration>
 		<Configuration
@@ -357,7 +357,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying DLL to Build folder..."
-				CommandLine="copy .\Release\PINT_Skeleton.dll ..\..\..\Build64"
+				CommandLine="copy .\Release\PINT_Skeleton.dll ..\..\..\Build\x64"
 			/>
 		</Configuration>
 	</Configurations>
