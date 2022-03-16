@@ -73,10 +73,12 @@
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)..\..\Build64\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
+    <TargetName>$(ProjectName)_D</TargetName>
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
@@ -85,10 +87,11 @@
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)..\..\Build64\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
+    <PostBuildEventUseInBuild>false</PostBuildEventUseInBuild>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -122,7 +125,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\..\Ice\APIs\Ice;..\;..\..\..\..\PEEL_Externals\Jolt</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\..\Ice\APIs\Ice;..\;..\..\..\..\PEEL_Externals\JoltPhysics\Jolt\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;PINT_PHYSX_EXPORTS;_JPH_PROFILE_ENABLED;JPH_DEBUG_RENDERER;JPH_FLOATING_POINT_EXCEPTIONS_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <ExceptionHandling />
@@ -136,14 +139,16 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\..\Ice\Lib\IceCore.lib;..\..\Ice\Lib\IceMaths.lib;..\..\Ice\Lib\Contact.lib;..\..\Ice\Lib\Meshmerizer.lib;..\..\Ice\Lib\IceImageWork.lib;..\..\Ice\Lib\IceGUI.lib;..\..\Ice\Lib\IML.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>.\Debug\PINT_Jolt_D.dll</OutputFile>
+      <OutputFile>$(TargetPath)</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Message>Copying DLL to Build folder...</Message>
-      <Command>copy .\Debug\PINT_Jolt_D.dll ..\..\..\Build64</Command>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -194,7 +199,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>..\..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\..\Ice\APIs\Ice;..\;..\..\..\..\PEEL_Externals\Jolt</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\..\Ice\APIs\Ice;..\;..\..\..\..\PEEL_Externals\JoltPhysics\Jolt\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PINT_PHYSX_EXPORTS;_JPH_PROFILE_ENABLED;JPH_DEBUG_RENDERER;JPH_FLOATING_POINT_EXCEPTIONS_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling />
@@ -212,7 +217,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\..\Ice\Lib\IceCore.lib;..\..\Ice\Lib\IceMaths.lib;..\..\Ice\Lib\Contact.lib;..\..\Ice\Lib\Meshmerizer.lib;..\..\Ice\Lib\IceImageWork.lib;..\..\Ice\Lib\IceGUI.lib;..\..\Ice\Lib\IML.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>.\Release\PINT_Jolt.dll</OutputFile>
+      <OutputFile>$(TargetPath)</OutputFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -221,8 +226,10 @@
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Message>Copying DLL to Build folder...</Message>
-      <Command>copy .\Release\PINT_Jolt.dll ..\..\..\Build64</Command>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -250,6 +257,11 @@
     <ClInclude Include="..\..\PINT_Common\PINT_IceAllocatorSwitch.h" />
     <ClInclude Include="..\PINT_Jolt.h" />
     <ClInclude Include="..\stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\PEEL_Externals\JoltPhysics\Build\VS2022_CL\Jolt.vcxproj">
+      <Project>{fea1923c-3a41-3404-a4d4-2f1d4412e92c}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

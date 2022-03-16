@@ -134,15 +134,8 @@ static void TraceImpl(const char *inFMT, ...)
 	#pragma comment(lib, "../../Ice/Lib64/IceImageWork64.lib")
 	#pragma comment(lib, "../../Ice/Lib64/IceGUI64.lib")
 //	#pragma comment(lib, "../../Ice/Lib64/IML64.lib")
-	#ifdef _DEBUG
-		#pragma comment(lib, "../../../../PEEL_Externals/JoltPhysics/Build/VS2022_CL/Debug/Jolt.lib")
-	#else
-		#ifdef USE_AVX
-			#pragma comment(lib, "../../../../PEEL_Externals/JoltPhysics/Build/VS2022_CL/Release/JoltAVX.lib")
-		#else
-			#pragma comment(lib, "../../../../PEEL_Externals/JoltPhysics/Build/VS2022_CL/Release/Jolt.lib")
-		#endif
-	#endif
+
+//  Migrated Jolt library to project reference instead.
 #else
 	#pragma comment(lib, "../../Ice/Lib/IceCore.lib")
 	#pragma comment(lib, "../../Ice/Lib/IceMaths.lib")

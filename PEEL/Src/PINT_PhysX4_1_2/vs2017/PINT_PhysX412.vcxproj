@@ -30,40 +30,41 @@
     <ProjectGuid>{24A77E02-4737-4466-818C-2975F363AFA2}</ProjectGuid>
     <RootNamespace>PINT_PhysX412</RootNamespace>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -98,10 +99,12 @@
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)..\..\Build64\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
+    <TargetName>$(ProjectName)_D</TargetName>
+    <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
@@ -110,7 +113,7 @@
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)..\..\Build64\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
@@ -169,7 +172,7 @@ copy ..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\debug\PhysXFou
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\..\Ice\APIs\Ice;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\extensions;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\geometry;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\foundation;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Source\foundation\unported;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Source\foundation\include;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Source\Common\src;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\common;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\pxtask;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\physxprofilesdk;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\cooking;..\..\..\..\PEEL_Externals\4_1_2\PxShared\trunk\include;..\..\..\..\PEEL_Externals\CL_19759212\GameWorks\Shared\NvFoundation\1.0\trunk\include\stdint;..\..\..\..\PEEL_Externals\4_1_2\PxShared\trunk\src\foundation\include;..\..\..\..\PEEL_Externals\4_1_2\PxShared\trunk\src\pvd\include;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\vehicle;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Source\PhysXGpu\include;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\source\physxextensions\src\serialization\File;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\source\pvd\include\;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\characterkinematic;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\source\geomutils\include;..\PINT_PhysX4_1_2;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\..\Ice\APIs\Ice;..\..\..\..\PEEL_Externals\PhysX4\physx\Include;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\extensions;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\geometry;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\foundation;..\..\..\..\PEEL_Externals\PhysX4\physx\Source\foundation;..\..\..\..\PEEL_Externals\PhysX4\physx\Source\foundation\include;..\..\..\..\PEEL_Externals\PhysX4\physx\Source\Common\src;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\common;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\pxtask;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\physxprofilesdk;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\cooking;..\..\..\..\PEEL_Externals\PhysX4\pxshared\trunk\include;..\..\..\..\PEEL_Externals\PhysX4\pxshared\include\trunk\include\stdint;..\..\..\..\PEEL_Externals\PhysX4\pxshared\include;..\..\..\..\PEEL_Externals\PhysX4\pxshared\trunk\src\pvd\include;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\vehicle;..\..\..\..\PEEL_Externals\PhysX4\physx\Source\PhysXGpu\include;..\..\..\..\PEEL_Externals\PhysX4\physx\source\physxextensions\src\serialization\File;..\..\..\..\PEEL_Externals\PhysX4\physx\source\pvd\include\;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\characterkinematic;..\..\..\..\PEEL_Externals\PhysX4\physx\source\geomutils\include;..\PINT_PhysX4_1_2;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;PINT_PHYSX_EXPORTS;WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <ExceptionHandling />
@@ -181,25 +184,17 @@ copy ..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\debug\PhysXFou
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>..\..\Ice\Lib64\IceCore64.lib;..\..\Ice\Lib64\IceMaths64.lib;..\..\Ice\Lib64\Contact64.lib;..\..\Ice\Lib64\Meshmerizer64.lib;..\..\Ice\Lib64\IceImageWork64.lib;..\..\Ice\Lib64\IceGUI64.lib;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\debug\PhysX_64.lib;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\debug\PhysXCommon_64.lib;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\debug\PhysXCooking_64.lib;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\debug\PhysXVehicle_static_64.lib;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\debug\PhysXFoundation_64.lib;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\debug\PhysXGpu_64.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>.\Debug\$(ProjectName)_D.dll</OutputFile>
-      <DelayLoadDLLs>PhysX_64.dll;PhysXCommon_64.dll;PhysXCooking_64.dll;PhysXFoundation_64.dll;PhysXGpu_64.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+      <AdditionalDependencies>..\..\Ice\Lib64\IceCore64.lib;..\..\Ice\Lib64\IceMaths64.lib;..\..\Ice\Lib64\Contact64.lib;..\..\Ice\Lib64\Meshmerizer64.lib;..\..\Ice\Lib64\IceImageWork64.lib;..\..\Ice\Lib64\IceGUI64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(TargetPath)</OutputFile>
+      <DelayLoadDLLs>PhysX_64.dll;PhysXCommon_64.dll;PhysXCooking_64.dll;PhysXFoundation_64.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Message>Copying DLL to Build folder...</Message>
-      <Command>copy .\Debug\PINT_PhysX412_D.dll ..\..\..\Build64
-
-copy ..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\debug\PhysX_64.dll ..\..\..\Build64\PhysXDEBUG_64_4_1_2.dll
-copy ..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\debug\PhysXCommon_64.dll ..\..\..\Build64\PhysXCommonDEBUG_64_4_1_2.dll
-copy ..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\debug\PhysXCooking_64.dll ..\..\..\Build64\PhysXCookingDEBUG_64_4_1_2.dll
-copy ..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\debug\PhysXGpu_64.dll ..\..\..\Build64\PhysXGpuDEBUG_64_4_1_2.dll
-copy ..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\debug\PhysXFoundation_64.dll ..\..\..\Build64\PhysXFoundationDEBUG_64_4_1_2.dll
-
-
-</Command>
+      <Message>
+      </Message>
+      <Command>xcopy "$(ProjectDir)..\..\..\..\PEEL_Externals\PhysX4\physx\bin\win.x86_64.vc143.mt\debug\*.dll" "$(TargetDir)" /i /d /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -258,7 +253,7 @@ copy ..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\release\PhysXF
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>..\..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\..\Ice\APIs\Ice;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\extensions;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\geometry;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\foundation;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Source\foundation\unported;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Source\foundation\include;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Source\Common\src;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\common;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\pxtask;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\physxprofilesdk;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\cooking;..\..\..\..\PEEL_Externals\4_1_2\PxShared\trunk\include;..\..\..\..\PEEL_Externals\CL_19759212\GameWorks\Shared\NvFoundation\1.0\trunk\include\stdint;..\..\..\..\PEEL_Externals\4_1_2\PxShared\trunk\src\foundation\include;..\..\..\..\PEEL_Externals\4_1_2\PxShared\trunk\src\pvd\include;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\vehicle;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Source\PhysXGpu\include;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\source\physxextensions\src\serialization\File;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\source\pvd\include\;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Include\characterkinematic;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\source\geomutils\include;..\PINT_PhysX4_1_2;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\..\Ice\APIs\Ice;..\..\..\..\PEEL_Externals\PhysX4\physx\Include;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\extensions;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\geometry;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\foundation;..\..\..\..\PEEL_Externals\PhysX4\physx\Source\foundation;..\..\..\..\PEEL_Externals\PhysX4\physx\Source\foundation\include;..\..\..\..\PEEL_Externals\PhysX4\physx\Source\Common\src;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\common;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\pxtask;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\physxprofilesdk;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\cooking;..\..\..\..\PEEL_Externals\PhysX4\pxshared\trunk\include;..\..\..\..\PEEL_Externals\PhysX4\pxshared\include\trunk\include\stdint;..\..\..\..\PEEL_Externals\PhysX4\pxshared\include;..\..\..\..\PEEL_Externals\PhysX4\pxshared\trunk\src\pvd\include;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\vehicle;..\..\..\..\PEEL_Externals\PhysX4\physx\Source\PhysXGpu\include;..\..\..\..\PEEL_Externals\PhysX4\physx\source\physxextensions\src\serialization\File;..\..\..\..\PEEL_Externals\PhysX4\physx\source\pvd\include\;..\..\..\..\PEEL_Externals\PhysX4\physx\Include\characterkinematic;..\..\..\..\PEEL_Externals\PhysX4\physx\source\geomutils\include;..\PINT_PhysX4_1_2;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PINT_PHYSX_EXPORTS;WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling />
@@ -272,9 +267,9 @@ copy ..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\release\PhysXF
       <DebugInformationFormat />
     </ClCompile>
     <Link>
-      <AdditionalDependencies>..\..\Ice\Lib64\IceCore64.lib;..\..\Ice\Lib64\IceMaths64.lib;..\..\Ice\Lib64\Contact64.lib;..\..\Ice\Lib64\Meshmerizer64.lib;..\..\Ice\Lib64\IceImageWork64.lib;..\..\Ice\Lib64\IceGUI64.lib;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\release\PhysX_64.lib;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\release\PhysXCommon_64.lib;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\release\PhysXCooking_64.lib;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\release\PhysXVehicle_static_64.lib;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\release\PhysXFoundation_64.lib;..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\release\PhysXGpu_64.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>.\Release\$(ProjectName).dll</OutputFile>
-      <DelayLoadDLLs>PhysX_64.dll;PhysXCommon_64.dll;PhysXCooking_64.dll;PhysXFoundation_64.dll;PhysXGpu_64.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
+      <AdditionalDependencies>..\..\Ice\Lib64\IceCore64.lib;..\..\Ice\Lib64\IceMaths64.lib;..\..\Ice\Lib64\Contact64.lib;..\..\Ice\Lib64\Meshmerizer64.lib;..\..\Ice\Lib64\IceImageWork64.lib;..\..\Ice\Lib64\IceGUI64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(TargetPath)</OutputFile>
+      <DelayLoadDLLs>PhysX_64.dll;PhysXCommon_64.dll;PhysXCooking_64.dll;PhysXFoundation_64.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -283,17 +278,10 @@ copy ..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\release\PhysXF
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Message>Copying DLL to Build folder...</Message>
-      <Command>copy .\Release\PINT_PhysX412.dll ..\..\..\Build64
-
-copy ..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\release\PhysX_64.dll ..\..\..\Build64\PhysX_64_4_1_2.dll
-copy ..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\release\PhysXCommon_64.dll ..\..\..\Build64\PhysXCommon_64_4_1_2.dll
-copy ..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\release\PhysXCooking_64.dll ..\..\..\Build64\PhysXCooking_64_4_1_2.dll
-copy ..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\release\PhysXGpu_64.dll ..\..\..\Build64\PhysXGpu_64_4_1_2.dll
-copy ..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\vc15win64\release\PhysXFoundation_64.dll ..\..\..\Build64\PhysXFoundation_64_4_1_2.dll
-
-
-</Command>
+      <Message>
+      </Message>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
@@ -863,6 +851,48 @@ copy ..\..\..\..\PEEL_Externals\4_1_2\PhysX-4.1.2_Trunk\Bin\vc12win32\PhysXFound
     <ClInclude Include="..\PhysX5\PhysX5_ExtDefaultCpuDispatcher.h" />
     <ClInclude Include="..\PINT_PhysX412.h" />
     <ClInclude Include="..\stdafx.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\FastXml.vcxproj">
+      <Project>{0103e00b-e87f-314e-99dd-8f632b462f68}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\LowLevel.vcxproj">
+      <Project>{f111a1f1-4808-3ee1-9fc1-77b61f7218f4}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\LowLevelAABB.vcxproj">
+      <Project>{c6f3be94-4c51-39a7-97f0-841c7b8efbaa}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\LowLevelDynamics.vcxproj">
+      <Project>{9503abbe-1aac-3435-ac83-d30fad156d85}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysX.vcxproj">
+      <Project>{873afe68-1feb-32d1-8736-7477cf4f3fe6}</Project>
+      <CopyLocalSatelliteAssemblies>true</CopyLocalSatelliteAssemblies>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXCharacterKinematic.vcxproj">
+      <Project>{4ad3c6b6-526a-31be-aa49-7107c0125a43}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXCommon.vcxproj">
+      <Project>{9f7866c5-3e63-31bd-99ff-6ac65ad09003}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXCooking.vcxproj">
+      <Project>{5a2c4a13-51fc-38d0-b58a-dd01da0b7f71}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXExtensions.vcxproj">
+      <Project>{080a05bd-a2d0-3b8d-a7ed-04e53f2e3abb}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXFoundation.vcxproj">
+      <Project>{397d4c40-e1bb-3697-9f65-c7efdad4fb9e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXPvdSDK.vcxproj">
+      <Project>{7dcc5336-a53e-3944-a54f-a20b7ff89d3f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXTask.vcxproj">
+      <Project>{d132f90d-a625-3f0c-8f5f-18a97a31fd86}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXVehicle.vcxproj">
+      <Project>{c35a4d67-a7ef-3aff-b1fd-a99aa8c70020}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

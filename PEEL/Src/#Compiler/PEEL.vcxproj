@@ -73,10 +73,11 @@
     <GenerateManifest>true</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)..\..\Build64\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
+    <TargetName>$(ProjectName)_DEBUG</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
@@ -85,7 +86,7 @@
     <GenerateManifest>true</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)..\..\Build64\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
@@ -94,7 +95,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\Ice\APIs\Ice;..\HACD;..\Glut\include;..\..\..\PEEL_Externals;..\DevIL\include;..\foundation;..\foundation\include;..\;..\..\Private\NVD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\Ice\APIs\Ice;..\HACD;..\Glut\include;..\..\..\PEEL_Externals;..\DevIL\include;..\PxFoundation;..\PxFoundation\include;..\;..\..\Private\NVD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;GLUT_NO_LIB_PRAGMA;PX_PHYSX_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <ExceptionHandling>false</ExceptionHandling>
@@ -125,7 +126,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\Ice\APIs\Ice;..\HACD;..\Glut\include;..\..\..\PEEL_Externals;..\DevIL\include;..\foundation;..\foundation\include;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\Ice\APIs\Ice;..\HACD;..\Glut\include;..\..\..\PEEL_Externals;..\DevIL\include;..\PxFoundation;..\PxFoundation\include;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;GLUT_NO_LIB_PRAGMA;PX_PHYSX_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <ExceptionHandling>false</ExceptionHandling>
@@ -142,7 +143,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\GL\glew64.lib;opengl32.lib;glu32.lib;..\GlutX\Lib\GlutX64_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\..\Build64\PEEL64_DEBUG.exe</OutputFile>
+      <OutputFile>$(TargetPath)</OutputFile>
       <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
@@ -161,7 +162,7 @@
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\Ice\APIs\Ice;..\HACD;..\Spy;..\Glut\include;..\..\..\PEEL_Externals;..\DevIL\include;..\foundation;..\foundation\include;..\;..\..\Private\NVD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\Ice\APIs\Ice;..\HACD;..\Spy;..\Glut\include;..\..\..\PEEL_Externals;..\DevIL\include;..\PxFoundation;..\PxFoundation\include;..\;..\..\Private\NVD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;GLUT_NO_LIB_PRAGMA;PX_PHYSX_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>false</ExceptionHandling>
@@ -203,7 +204,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\Ice\APIs\Ice;..\HACD;..\Spy;..\Glut\include;..\..\..\PEEL_Externals;..\DevIL\include;..\foundation;..\foundation\include;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\Ice\APIs\Ice;..\HACD;..\Glut\include;..\..\..\PEEL_Externals;..\DevIL\include;..\PxFoundation;..\PxFoundation\include;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;GLUT_NO_LIB_PRAGMA;PX_PHYSX_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>false</ExceptionHandling>
@@ -223,7 +224,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\GL\glew64.lib;opengl32.lib;glu32.lib;..\GlutX\Lib\GlutX64.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\..\Build64\PEEL64.exe</OutputFile>
+      <OutputFile>$(TargetPath)</OutputFile>
       <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
@@ -252,7 +253,7 @@
     <ClCompile Include="..\DisplayTexture.cpp" />
     <ClCompile Include="..\FlatShader.cpp" />
     <ClCompile Include="..\Foundation.cpp" />
-    <ClCompile Include="..\foundation\src\PsAllocator.cpp">
+    <ClCompile Include="..\PxFoundation\src\PsAllocator.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -262,7 +263,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\foundation\src\PsAssert.cpp">
+    <ClCompile Include="..\PxFoundation\src\PsAssert.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -272,7 +273,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\foundation\src\PsFoundation.cpp">
+    <ClCompile Include="..\PxFoundation\src\PsFoundation.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -282,7 +283,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\foundation\src\PsMathUtils.cpp">
+    <ClCompile Include="..\PxFoundation\src\PsMathUtils.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -292,7 +293,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\foundation\src\PsString.cpp">
+    <ClCompile Include="..\PxFoundation\src\PsString.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -302,7 +303,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\foundation\src\PsTempAllocator.cpp">
+    <ClCompile Include="..\PxFoundation\src\PsTempAllocator.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -312,7 +313,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\foundation\src\PsUtilities.cpp">
+    <ClCompile Include="..\PxFoundation\src\PsUtilities.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -322,7 +323,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\foundation\src\windows\PsWindowsAtomic.cpp">
+    <ClCompile Include="..\PxFoundation\src\windows\PsWindowsAtomic.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -332,7 +333,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\foundation\src\windows\PsWindowsCpu.cpp">
+    <ClCompile Include="..\PxFoundation\src\windows\PsWindowsCpu.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -342,7 +343,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\foundation\src\windows\PsWindowsFPU.cpp">
+    <ClCompile Include="..\PxFoundation\src\windows\PsWindowsFPU.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -352,7 +353,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\foundation\src\windows\PsWindowsMutex.cpp">
+    <ClCompile Include="..\PxFoundation\src\windows\PsWindowsMutex.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -362,7 +363,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\foundation\src\windows\PsWindowsPrintString.cpp">
+    <ClCompile Include="..\PxFoundation\src\windows\PsWindowsPrintString.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -372,7 +373,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\foundation\src\windows\PsWindowsSList.cpp">
+    <ClCompile Include="..\PxFoundation\src\windows\PsWindowsSList.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -382,7 +383,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\foundation\src\windows\PsWindowsSocket.cpp">
+    <ClCompile Include="..\PxFoundation\src\windows\PsWindowsSocket.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -392,7 +393,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\foundation\src\windows\PsWindowsSync.cpp">
+    <ClCompile Include="..\PxFoundation\src\windows\PsWindowsSync.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -402,7 +403,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\foundation\src\windows\PsWindowsThread.cpp">
+    <ClCompile Include="..\PxFoundation\src\windows\PsWindowsThread.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -412,7 +413,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="..\foundation\src\windows\PsWindowsTime.cpp">
+    <ClCompile Include="..\PxFoundation\src\windows\PsWindowsTime.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -703,86 +704,86 @@
     <ClInclude Include="..\Devil.h" />
     <ClInclude Include="..\DisplayTexture.h" />
     <ClInclude Include="..\FlatShader.h" />
-    <CustomBuild Include="..\Foundation.h" />
-    <ClInclude Include="..\foundation\include\Ps.h" />
-    <ClInclude Include="..\foundation\include\PsAlignedMalloc.h" />
-    <ClInclude Include="..\foundation\include\PsAlloca.h" />
-    <ClInclude Include="..\foundation\include\PsAllocator.h" />
-    <ClInclude Include="..\foundation\include\PsAoS.h" />
-    <ClInclude Include="..\foundation\include\PsArray.h" />
-    <ClInclude Include="..\foundation\include\PsAtomic.h" />
-    <ClInclude Include="..\foundation\include\PsBasicTemplates.h" />
-    <ClInclude Include="..\foundation\include\PsBitUtils.h" />
-    <ClInclude Include="..\foundation\include\PsBroadcast.h" />
-    <ClInclude Include="..\foundation\include\PsCpu.h" />
-    <ClInclude Include="..\foundation\include\PsFoundation.h" />
-    <ClInclude Include="..\foundation\include\PsFPU.h" />
-    <ClInclude Include="..\foundation\include\PsHash.h" />
-    <ClInclude Include="..\foundation\include\PsHashInternals.h" />
-    <ClInclude Include="..\foundation\include\PsHashMap.h" />
-    <ClInclude Include="..\foundation\include\PsHashSet.h" />
-    <ClInclude Include="..\foundation\include\PsInlineAllocator.h" />
-    <ClInclude Include="..\foundation\include\PsInlineAoS.h" />
-    <ClInclude Include="..\foundation\include\PsInlineArray.h" />
-    <ClInclude Include="..\foundation\include\PsIntrinsics.h" />
-    <ClInclude Include="..\foundation\include\PsMathUtils.h" />
-    <ClInclude Include="..\foundation\include\PsMutex.h" />
-    <ClInclude Include="..\foundation\include\PsPool.h" />
-    <ClInclude Include="..\foundation\include\PsSList.h" />
-    <ClInclude Include="..\foundation\include\PsSocket.h" />
-    <ClInclude Include="..\foundation\include\PsSort.h" />
-    <ClInclude Include="..\foundation\include\PsSortInternals.h" />
-    <ClInclude Include="..\foundation\include\PsString.h" />
-    <ClInclude Include="..\foundation\include\PsSync.h" />
-    <ClInclude Include="..\foundation\include\PsTempAllocator.h" />
-    <ClInclude Include="..\foundation\include\PsThread.h" />
-    <ClInclude Include="..\foundation\include\PsTime.h" />
-    <ClInclude Include="..\foundation\include\PsUserAllocated.h" />
-    <ClInclude Include="..\foundation\include\PsUtilities.h" />
-    <ClInclude Include="..\foundation\include\PsVecMath.h" />
-    <ClInclude Include="..\foundation\include\PsVecMathAoSScalar.h" />
-    <ClInclude Include="..\foundation\include\PsVecMathAoSScalarInline.h" />
-    <ClInclude Include="..\foundation\include\PsVecMathSSE.h" />
-    <ClInclude Include="..\foundation\include\PsVecMathUtilities.h" />
-    <ClInclude Include="..\foundation\include\PsVecQuat.h" />
-    <ClInclude Include="..\foundation\include\PsVecTransform.h" />
-    <ClInclude Include="..\foundation\include\windows\PsWindowsAoS.h" />
-    <ClInclude Include="..\foundation\include\windows\PsWindowsFPU.h" />
-    <ClInclude Include="..\foundation\include\windows\PsWindowsInclude.h" />
-    <ClInclude Include="..\foundation\include\windows\PsWindowsInlineAoS.h" />
-    <ClInclude Include="..\foundation\include\windows\PsWindowsIntrinsics.h" />
-    <ClInclude Include="..\foundation\include\windows\PsWindowsTrigConstants.h" />
-    <ClInclude Include="..\foundation\Px.h" />
-    <ClInclude Include="..\foundation\PxAllocatorCallback.h" />
-    <ClInclude Include="..\foundation\PxAssert.h" />
-    <ClInclude Include="..\foundation\PxBitAndData.h" />
-    <ClInclude Include="..\foundation\PxBounds3.h" />
-    <ClInclude Include="..\foundation\PxErrorCallback.h" />
-    <ClInclude Include="..\foundation\PxErrors.h" />
-    <ClInclude Include="..\foundation\PxFlags.h" />
-    <ClInclude Include="..\foundation\PxFoundation.h" />
-    <ClInclude Include="..\foundation\PxFoundationConfig.h" />
-    <ClInclude Include="..\foundation\PxIntrinsics.h" />
-    <ClInclude Include="..\foundation\PxIO.h" />
-    <ClInclude Include="..\foundation\PxMat33.h" />
-    <ClInclude Include="..\foundation\PxMat44.h" />
-    <ClInclude Include="..\foundation\PxMath.h" />
-    <ClInclude Include="..\foundation\PxMathUtils.h" />
-    <ClInclude Include="..\foundation\PxMemory.h" />
-    <ClInclude Include="..\foundation\PxPhysicsVersion.h" />
-    <ClInclude Include="..\foundation\PxPlane.h" />
-    <ClInclude Include="..\foundation\PxPreprocessor.h" />
-    <ClInclude Include="..\foundation\PxProfiler.h" />
-    <ClInclude Include="..\foundation\PxQuat.h" />
-    <ClInclude Include="..\foundation\PxSharedAssert.h" />
-    <ClInclude Include="..\foundation\PxSimpleTypes.h" />
-    <ClInclude Include="..\foundation\PxStrideIterator.h" />
-    <ClInclude Include="..\foundation\PxTransform.h" />
-    <ClInclude Include="..\foundation\PxUnionCast.h" />
-    <ClInclude Include="..\foundation\PxVec2.h" />
-    <ClInclude Include="..\foundation\PxVec3.h" />
-    <ClInclude Include="..\foundation\PxVec4.h" />
-    <ClInclude Include="..\foundation\windows\PxWindowsIntrinsics.h" />
+    <CustomBuild Include="..\PxFoundation.h" />
+    <ClInclude Include="..\PxFoundation\include\Ps.h" />
+    <ClInclude Include="..\PxFoundation\include\PsAlignedMalloc.h" />
+    <ClInclude Include="..\PxFoundation\include\PsAlloca.h" />
+    <ClInclude Include="..\PxFoundation\include\PsAllocator.h" />
+    <ClInclude Include="..\PxFoundation\include\PsAoS.h" />
+    <ClInclude Include="..\PxFoundation\include\PsArray.h" />
+    <ClInclude Include="..\PxFoundation\include\PsAtomic.h" />
+    <ClInclude Include="..\PxFoundation\include\PsBasicTemplates.h" />
+    <ClInclude Include="..\PxFoundation\include\PsBitUtils.h" />
+    <ClInclude Include="..\PxFoundation\include\PsBroadcast.h" />
+    <ClInclude Include="..\PxFoundation\include\PsCpu.h" />
+    <ClInclude Include="..\PxFoundation\include\PsFoundation.h" />
+    <ClInclude Include="..\PxFoundation\include\PsFPU.h" />
+    <ClInclude Include="..\PxFoundation\include\PsHash.h" />
+    <ClInclude Include="..\PxFoundation\include\PsHashInternals.h" />
+    <ClInclude Include="..\PxFoundation\include\PsHashMap.h" />
+    <ClInclude Include="..\PxFoundation\include\PsHashSet.h" />
+    <ClInclude Include="..\PxFoundation\include\PsInlineAllocator.h" />
+    <ClInclude Include="..\PxFoundation\include\PsInlineAoS.h" />
+    <ClInclude Include="..\PxFoundation\include\PsInlineArray.h" />
+    <ClInclude Include="..\PxFoundation\include\PsIntrinsics.h" />
+    <ClInclude Include="..\PxFoundation\include\PsMathUtils.h" />
+    <ClInclude Include="..\PxFoundation\include\PsMutex.h" />
+    <ClInclude Include="..\PxFoundation\include\PsPool.h" />
+    <ClInclude Include="..\PxFoundation\include\PsSList.h" />
+    <ClInclude Include="..\PxFoundation\include\PsSocket.h" />
+    <ClInclude Include="..\PxFoundation\include\PsSort.h" />
+    <ClInclude Include="..\PxFoundation\include\PsSortInternals.h" />
+    <ClInclude Include="..\PxFoundation\include\PsString.h" />
+    <ClInclude Include="..\PxFoundation\include\PsSync.h" />
+    <ClInclude Include="..\PxFoundation\include\PsTempAllocator.h" />
+    <ClInclude Include="..\PxFoundation\include\PsThread.h" />
+    <ClInclude Include="..\PxFoundation\include\PsTime.h" />
+    <ClInclude Include="..\PxFoundation\include\PsUserAllocated.h" />
+    <ClInclude Include="..\PxFoundation\include\PsUtilities.h" />
+    <ClInclude Include="..\PxFoundation\include\PsVecMath.h" />
+    <ClInclude Include="..\PxFoundation\include\PsVecMathAoSScalar.h" />
+    <ClInclude Include="..\PxFoundation\include\PsVecMathAoSScalarInline.h" />
+    <ClInclude Include="..\PxFoundation\include\PsVecMathSSE.h" />
+    <ClInclude Include="..\PxFoundation\include\PsVecMathUtilities.h" />
+    <ClInclude Include="..\PxFoundation\include\PsVecQuat.h" />
+    <ClInclude Include="..\PxFoundation\include\PsVecTransform.h" />
+    <ClInclude Include="..\PxFoundation\include\windows\PsWindowsAoS.h" />
+    <ClInclude Include="..\PxFoundation\include\windows\PsWindowsFPU.h" />
+    <ClInclude Include="..\PxFoundation\include\windows\PsWindowsInclude.h" />
+    <ClInclude Include="..\PxFoundation\include\windows\PsWindowsInlineAoS.h" />
+    <ClInclude Include="..\PxFoundation\include\windows\PsWindowsIntrinsics.h" />
+    <ClInclude Include="..\PxFoundation\include\windows\PsWindowsTrigConstants.h" />
+    <ClInclude Include="..\PxFoundation\Px.h" />
+    <ClInclude Include="..\PxFoundation\PxAllocatorCallback.h" />
+    <ClInclude Include="..\PxFoundation\PxAssert.h" />
+    <ClInclude Include="..\PxFoundation\PxBitAndData.h" />
+    <ClInclude Include="..\PxFoundation\PxBounds3.h" />
+    <ClInclude Include="..\PxFoundation\PxErrorCallback.h" />
+    <ClInclude Include="..\PxFoundation\PxErrors.h" />
+    <ClInclude Include="..\PxFoundation\PxFlags.h" />
+    <ClInclude Include="..\PxFoundation\PxFoundation.h" />
+    <ClInclude Include="..\PxFoundation\PxFoundationConfig.h" />
+    <ClInclude Include="..\PxFoundation\PxIntrinsics.h" />
+    <ClInclude Include="..\PxFoundation\PxIO.h" />
+    <ClInclude Include="..\PxFoundation\PxMat33.h" />
+    <ClInclude Include="..\PxFoundation\PxMat44.h" />
+    <ClInclude Include="..\PxFoundation\PxMath.h" />
+    <ClInclude Include="..\PxFoundation\PxMathUtils.h" />
+    <ClInclude Include="..\PxFoundation\PxMemory.h" />
+    <ClInclude Include="..\PxFoundation\PxPhysicsVersion.h" />
+    <ClInclude Include="..\PxFoundation\PxPlane.h" />
+    <ClInclude Include="..\PxFoundation\PxPreprocessor.h" />
+    <ClInclude Include="..\PxFoundation\PxProfiler.h" />
+    <ClInclude Include="..\PxFoundation\PxQuat.h" />
+    <ClInclude Include="..\PxFoundation\PxSharedAssert.h" />
+    <ClInclude Include="..\PxFoundation\PxSimpleTypes.h" />
+    <ClInclude Include="..\PxFoundation\PxStrideIterator.h" />
+    <ClInclude Include="..\PxFoundation\PxTransform.h" />
+    <ClInclude Include="..\PxFoundation\PxUnionCast.h" />
+    <ClInclude Include="..\PxFoundation\PxVec2.h" />
+    <ClInclude Include="..\PxFoundation\PxVec3.h" />
+    <ClInclude Include="..\PxFoundation\PxVec4.h" />
+    <ClInclude Include="..\PxFoundation\windows\PxWindowsIntrinsics.h" />
     <CustomBuild Include="..\Fracture\Convex.h" />
     <CustomBuild Include="..\Fracture\Delaunay3d.h" />
     <ClInclude Include="..\Fracture\Fracture.h" />

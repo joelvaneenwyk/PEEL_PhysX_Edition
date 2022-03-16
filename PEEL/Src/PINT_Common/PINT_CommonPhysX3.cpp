@@ -13,7 +13,7 @@
 #include "..\PintShapeRenderer.h"
 #include "PINT_Common.h"
 #include "PINT_CommonPhysX3.h"
-#include "PINT_CommonPhysX5_Fluid.h"
+//#include "PINT_CommonPhysX5_Fluid.h"
 
 #if PHYSX_SUPPORT_CUSTOM_GEOMETRY
 //	#include "PINT_CommonPhysX5_CustomGeom.h"

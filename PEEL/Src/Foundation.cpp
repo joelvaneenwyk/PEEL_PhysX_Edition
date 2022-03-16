@@ -11,8 +11,8 @@
 
 #include "PxFoundation.h"
 #include "PxPhysicsVersion.h"
-#include "foundation/PxErrorCallback.h"
-#include "foundation/PxAllocatorCallback.h"
+#include "PxFoundation/PxErrorCallback.h"
+#include "PxFoundation/PxAllocatorCallback.h"
 using namespace physx;
 
 static PxFoundation* gFoundation = null;
