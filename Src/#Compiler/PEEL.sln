@@ -23,43 +23,43 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Global", "Global", "{28595B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{0631BFCD-07A9-4F71-8A6A-91C88DAA6544}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jolt", "..\..\..\PEEL_Externals\JoltPhysics\Build\Win32\VS2022_CL\Jolt.vcxproj", "{09EB3EE3-71F8-37B5-AB62-7323E5EC632E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Jolt", "..\..\Externals\JoltPhysics\Build\VS2022_CL\Jolt.vcxproj", "{09EB3EE3-71F8-37B5-AB62-7323E5EC632E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{1B307BF3-A316-4EE9-A43C-2E20CFD84666}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FastXml", "..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\FastXml.vcxproj", "{2FC39519-C2EA-3654-A0FD-0BF2B754F7D6}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FastXml", "..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\FastXml.vcxproj", "{2FC39519-C2EA-3654-A0FD-0BF2B754F7D6}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LowLevel", "..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\LowLevel.vcxproj", "{2B2D5D6B-04CC-3CBC-81E5-8A6C4AFEE6F2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LowLevel", "..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\LowLevel.vcxproj", "{2B2D5D6B-04CC-3CBC-81E5-8A6C4AFEE6F2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LowLevelAABB", "..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\LowLevelAABB.vcxproj", "{1CDD1D11-611D-3541-86AC-EF8425A948A0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LowLevelAABB", "..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\LowLevelAABB.vcxproj", "{1CDD1D11-611D-3541-86AC-EF8425A948A0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LowLevelDynamics", "..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\LowLevelDynamics.vcxproj", "{AB11E7DE-2C39-3C45-A446-45BAAF1AE305}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LowLevelDynamics", "..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\LowLevelDynamics.vcxproj", "{AB11E7DE-2C39-3C45-A446-45BAAF1AE305}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysX", "..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysX.vcxproj", "{8FE37F14-4D60-3009-8083-9871107A4EDF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysX", "..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysX.vcxproj", "{8FE37F14-4D60-3009-8083-9871107A4EDF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysXCharacterKinematic", "..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXCharacterKinematic.vcxproj", "{FC2B9505-CDC1-3A71-955C-3B4E391FDCD7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysXCharacterKinematic", "..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXCharacterKinematic.vcxproj", "{FC2B9505-CDC1-3A71-955C-3B4E391FDCD7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysXCommon", "..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXCommon.vcxproj", "{CF03E7B6-A344-3E7C-8664-5EA249D894CF}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysXCommon", "..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXCommon.vcxproj", "{CF03E7B6-A344-3E7C-8664-5EA249D894CF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysXCooking", "..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXCooking.vcxproj", "{C03F0F3A-9D07-30F7-98F1-7E98392980FD}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysXCooking", "..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXCooking.vcxproj", "{C03F0F3A-9D07-30F7-98F1-7E98392980FD}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysXExtensions", "..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXExtensions.vcxproj", "{243589CF-F1AA-32E9-A408-F9A0B1E0ABA0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysXExtensions", "..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXExtensions.vcxproj", "{243589CF-F1AA-32E9-A408-F9A0B1E0ABA0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysXFoundation", "..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXFoundation.vcxproj", "{8AE731D7-FC11-30FF-BBA5-1EDFF4AD6A48}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysXFoundation", "..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXFoundation.vcxproj", "{8AE731D7-FC11-30FF-BBA5-1EDFF4AD6A48}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysXPvdSDK", "..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXPvdSDK.vcxproj", "{1328B062-17EF-38B7-BB28-096A4B316E38}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysXPvdSDK", "..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXPvdSDK.vcxproj", "{1328B062-17EF-38B7-BB28-096A4B316E38}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysXTask", "..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXTask.vcxproj", "{DC13EBB5-0806-39E7-8226-4FCE33585336}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysXTask", "..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXTask.vcxproj", "{DC13EBB5-0806-39E7-8226-4FCE33585336}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysXVehicle", "..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXVehicle.vcxproj", "{980F7501-E9E2-37F3-8620-6C6756C04EC2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhysXVehicle", "..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXVehicle.vcxproj", "{980F7501-E9E2-37F3-8620-6C6756C04EC2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhysX4", "PhysX4", "{8653D7E3-C37C-4BBF-8C72-65A47F70123D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Jolt", "Jolt", "{9FC8F420-3CD9-4183-8516-AEC39C582965}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SceneQuery", "..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\SceneQuery.vcxproj", "{A2838565-83B4-37BA-87F4-F6D748F55C47}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SceneQuery", "..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\SceneQuery.vcxproj", "{A2838565-83B4-37BA-87F4-F6D748F55C47}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimulationController", "..\..\..\PEEL_Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\SimulationController.vcxproj", "{2B7528E9-F7D6-368C-94BD-86A7EFB4A02B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimulationController", "..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\SimulationController.vcxproj", "{2B7528E9-F7D6-368C-94BD-86A7EFB4A02B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

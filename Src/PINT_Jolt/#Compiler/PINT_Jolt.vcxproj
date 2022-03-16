@@ -125,7 +125,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\..\Ice\APIs\Ice;..\;..\..\..\..\Externals\JoltPhysics\Jolt\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\..\Ice\APIs\Ice;..\;..\..\..\Externals\JoltPhysics\Jolt\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;PINT_PHYSX_EXPORTS;_JPH_PROFILE_ENABLED;JPH_DEBUG_RENDERER;JPH_FLOATING_POINT_EXCEPTIONS_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <ExceptionHandling />
@@ -199,7 +199,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>..\..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\..\Ice\APIs\Ice;..\;..\..\..\..\Externals\JoltPhysics\Jolt\</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\..\Ice\APIs\Ice;..\;..\..\..\Externals\JoltPhysics\Jolt\</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;PINT_PHYSX_EXPORTS;_JPH_PROFILE_ENABLED;JPH_DEBUG_RENDERER;JPH_FLOATING_POINT_EXCEPTIONS_ENABLED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling />
@@ -259,7 +259,7 @@
     <ClInclude Include="..\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Externals\JoltPhysics\Build\Win32\VS2022_CL\Jolt.vcxproj">
+    <ProjectReference Include="..\..\..\Externals\JoltPhysics\Build\Win32\VS2022_CL\Jolt.vcxproj">
       <Project>{09eb3ee3-71f8-37b5-ab62-7323e5ec632e}</Project>
     </ProjectReference>
   </ItemGroup>

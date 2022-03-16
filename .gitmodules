@@ -1,6 +1,6 @@
-[submodule "PEEL_Externals/JoltPhysics"]
-	path = PEEL_Externals/JoltPhysics
+[submodule "Externals/JoltPhysics"]
+	path = Externals/JoltPhysics
 	url = git@github.com:joelvaneenwyk/JoltPhysics.git
-[submodule "PEEL_Externals/PhysX4"]
-	path = PEEL_Externals/PhysX4
+[submodule "Externals/PhysX4"]
+	path = Externals/PhysX4
 	url = git@github.com:joelvaneenwyk/PhysX.git

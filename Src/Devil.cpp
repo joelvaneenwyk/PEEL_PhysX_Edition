@@ -11,8 +11,8 @@
 
 #ifdef DOES_NOT_WORK
 
-..\..\..\Externals\DevIL_1.8.0\include
-..\..\..\Externals\DevIL_1.8.0\lib\x86\Release
+..\..\Externals\DevIL_1.8.0\include
+..\..\Externals\DevIL_1.8.0\lib\x86\Release
 
 #ifndef _WIN64
 	#define COMPILE_DEVIL

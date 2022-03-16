@@ -95,7 +95,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\Ice\APIs\Ice;..\HACD;..\Glut\include;..\..\..\PEEL_Externals;..\DevIL\include;..\PxFoundation;..\PxFoundation\include;..\;..\..\Private\NVD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\Ice\APIs\Ice;..\HACD;..\Glut\include;..\..\Externals;..\DevIL\include;..\PxFoundation;..\PxFoundation\include;..\;..\..\Private\NVD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;GLUT_NO_LIB_PRAGMA;PX_PHYSX_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <ExceptionHandling>false</ExceptionHandling>
@@ -126,7 +126,7 @@
     </Midl>
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\Ice\APIs\Ice;..\HACD;..\Glut\include;..\..\..\PEEL_Externals;..\DevIL\include;..\PxFoundation;..\PxFoundation\include;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\Ice\APIs\Ice;..\HACD;..\Glut\include;..\..\Externals;..\DevIL\include;..\PxFoundation;..\PxFoundation\include;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;GLUT_NO_LIB_PRAGMA;PX_PHYSX_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <ExceptionHandling>false</ExceptionHandling>
@@ -162,7 +162,7 @@
       <OmitFramePointers>true</OmitFramePointers>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\Ice\APIs\Ice;..\HACD;..\Spy;..\Glut\include;..\..\..\PEEL_Externals;..\DevIL\include;..\PxFoundation;..\PxFoundation\include;..\;..\..\Private\NVD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\Ice\APIs\Ice;..\HACD;..\Spy;..\Glut\include;..\..\Externals;..\DevIL\include;..\PxFoundation;..\PxFoundation\include;..\;..\..\Private\NVD;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;GLUT_NO_LIB_PRAGMA;PX_PHYSX_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>false</ExceptionHandling>
@@ -204,7 +204,7 @@
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
       <WholeProgramOptimization>false</WholeProgramOptimization>
-      <AdditionalIncludeDirectories>..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\Ice\APIs\Ice;..\HACD;..\Glut\include;..\..\..\PEEL_Externals;..\DevIL\include;..\PxFoundation;..\PxFoundation\include;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Ice\APIs\Ice\#Plugins\FlexineSDK;..\Ice\APIs\Ice;..\HACD;..\Glut\include;..\..\Externals;..\DevIL\include;..\PxFoundation;..\PxFoundation\include;..\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;GLUT_NO_LIB_PRAGMA;PX_PHYSX_STATIC_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <ExceptionHandling>false</ExceptionHandling>

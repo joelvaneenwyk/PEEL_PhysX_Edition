@@ -23,7 +23,7 @@
 
 //#define MODIFY_CONTACTS
 
-//..\..\..\Externals\PhysX-3.4_Trunk\Lib\vc11win32\PhysX3Extensions.lib
+//..\..\Externals\PhysX-3.4_Trunk\Lib\vc11win32\PhysX3Extensions.lib
 
 //#define USE_LOAD_LIBRARY
 
