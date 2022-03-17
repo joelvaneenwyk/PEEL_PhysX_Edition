@@ -5,12 +5,7 @@
 **/x64/Release/
 **/Win32/Debug/
 **/Win32/Release/
-/Build/**/*.dll
-/Build/**/*.exe
-/Build/**/*.pdb
-/Build/**/*.lib
-/Build/**/*.exp
-/Build/**/*.bsc
+/Build/
 Src/**/Debug/**
 Src/**/Release/**
 PEEL/Excel/

@@ -1981,7 +1981,7 @@ udword JoltPint::BatchRaycasts(PintSQThreadContext context, udword nb, PintRayca
 	udword NbHits = 0;
 	while(nb--)
 	{
-		RayCast R;
+		RayCast R{};
 		R.mOrigin = ToVec3(raycasts->mOrigin);
 		R.mDirection = ToVec3(raycasts->mDir) * raycasts->mMaxDist;
 
@@ -2030,7 +2030,7 @@ udword JoltPint::BatchRaycastAny(PintSQThreadContext context, udword nb, PintBoo
 	udword NbHits = 0;
 	while(nb--)
 	{
-		RayCast R;
+		RayCast R{};
 		R.mOrigin = ToVec3(raycasts->mOrigin);
 		R.mDirection = ToVec3(raycasts->mDir) * raycasts->mMaxDist;
 

@@ -112,7 +112,7 @@ void ToolPicking::RightDownCallback(Pint& pint, udword pint_index)
 	PintRaycastHit Hit;
 	if(Raycast(pint, Hit, mOrigin, mDir) && !IsDefaultEnv(pint, Hit.mTouchedActor))
 	{
-		printf("Picked object: 0x%x (%s)\n", size_t(Hit.mTouchedActor), pint.GetName());
+		printf("Picked object: 0x%zx (%s)\n", size_t(Hit.mTouchedActor), pint.GetName());
 
 		Pint_Actor* API = pint.GetActorAPI();
 		if(API)
@@ -226,7 +226,7 @@ void ToolPicking::RightDblClkCallback(Pint& pint, udword pint_index)
 	PintRaycastHit Hit;
 	if(Raycast(pint, Hit, mOrigin, mDir) && !IsDefaultEnv(pint, Hit.mTouchedActor))
 	{
-		printf("Picked object: %d\n", size_t(Hit.mTouchedActor));
+		printf("Picked object: %zd\n", size_t(Hit.mTouchedActor));
 		if(Hit.mTouchedActor==TD.mTrackedObject)
 			TD.mTrackedObject = null;
 		else

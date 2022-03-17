@@ -153,7 +153,8 @@
       <OutputFile>$(IntDir)$(ProjectName).bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command>robocopy "$(ProjectDir)..\..\Externals\Binaries\$(PlatformName)" "$(ProjectDir)..\..\Build\$(PlatformName)" /S</Command>
+      <Command>robocopy "$(ProjectDir)..\..\Externals\Binaries\$(PlatformName)" "$(ProjectDir)..\..\Build\$(PlatformName)" /S
+if errorLevel 8 (exit /b 1) else (exit /b 0)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -213,7 +214,7 @@
       <ExceptionHandling>false</ExceptionHandling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
       <FloatingPointModel>Fast</FloatingPointModel>
       <RuntimeTypeInfo>false</RuntimeTypeInfo>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -240,7 +241,8 @@
       <OutputFile>$(IntDir)$(ProjectName).bsc</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command>robocopy "$(ProjectDir)..\..\Externals\Binaries\$(PlatformName)" "$(ProjectDir)..\..\Build\$(PlatformName)" /S</Command>
+      <Command>robocopy "$(ProjectDir)..\..\Externals\Binaries\$(PlatformName)" "$(ProjectDir)..\..\Build\$(PlatformName)" /S
+if errorLevel 8 (exit /b 1) else (exit /b 0)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
