@@ -152,6 +152,9 @@
     <Bscmake>
       <OutputFile>$(IntDir)$(ProjectName).bsc</OutputFile>
     </Bscmake>
+    <PostBuildEvent>
+      <Command>robocopy "$(ProjectDir)..\..\Externals\Binaries\$(PlatformName)" "$(ProjectDir)..\..\Build\$(PlatformName)" /S</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -236,6 +239,9 @@
     <Bscmake>
       <OutputFile>$(IntDir)$(ProjectName).bsc</OutputFile>
     </Bscmake>
+    <PostBuildEvent>
+      <Command>robocopy "$(ProjectDir)..\..\Externals\Binaries\$(PlatformName)" "$(ProjectDir)..\..\Build\$(PlatformName)" /S</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Camera.cpp" />
