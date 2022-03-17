@@ -259,8 +259,8 @@
     <ClInclude Include="..\stdafx.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Externals\JoltPhysics\Build\Win32\VS2022_CL\Jolt.vcxproj">
-      <Project>{09eb3ee3-71f8-37b5-ab62-7323e5ec632e}</Project>
+    <ProjectReference Include="..\..\..\Externals\JoltPhysics\Build\VS2022_CL\Jolt.vcxproj">
+      <Project>{87d05115-d50f-39e0-901c-992b1c5e6139}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

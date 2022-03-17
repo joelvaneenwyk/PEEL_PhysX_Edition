@@ -854,49 +854,49 @@ copy ..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\Bin\vc12win32\PhysXFoundationPRO
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\FastXml.vcxproj">
-      <Project>{2fc39519-c2ea-3654-a0fd-0bf2b754f7d6}</Project>
+      <Project>{5462aaf6-16e0-3b93-bc6b-b0dedf974337}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\LowLevel.vcxproj">
-      <Project>{2b2d5d6b-04cc-3cbc-81e5-8a6c4afee6f2}</Project>
+      <Project>{3970447c-5796-3a66-a7e3-24e1d5038cbb}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\LowLevelAABB.vcxproj">
-      <Project>{1cdd1d11-611d-3541-86ac-ef8425a948a0}</Project>
+      <Project>{20b21683-26da-3176-9639-2fcb13fa4b99}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\LowLevelDynamics.vcxproj">
-      <Project>{ab11e7de-2c39-3c45-a446-45baaf1ae305}</Project>
+      <Project>{8e7e08c0-5ded-3aed-a4ec-7bfc6a0812a9}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysX.vcxproj">
-      <Project>{8fe37f14-4d60-3009-8083-9871107a4edf}</Project>
+      <Project>{18bfda73-7d34-3e0d-8450-45f003ffa226}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXCharacterKinematic.vcxproj">
-      <Project>{fc2b9505-cdc1-3a71-955c-3b4e391fdcd7}</Project>
+      <Project>{342be9c0-b748-30cc-bf24-513519630ca7}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXCommon.vcxproj">
-      <Project>{cf03e7b6-a344-3e7c-8664-5ea249d894cf}</Project>
+      <Project>{76b5eb47-3b54-3f90-a652-b9891efef659}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXCooking.vcxproj">
-      <Project>{c03f0f3a-9d07-30f7-98f1-7e98392980fd}</Project>
+      <Project>{f22f1cd6-e2b8-3b67-92c6-f0d417bd2f27}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXExtensions.vcxproj">
-      <Project>{243589cf-f1aa-32e9-a408-f9a0b1e0aba0}</Project>
+      <Project>{a3264161-ef4a-3186-99ca-9cfff9f2015a}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXFoundation.vcxproj">
-      <Project>{8ae731d7-fc11-30ff-bba5-1edff4ad6a48}</Project>
+      <Project>{6447da22-6522-3ec6-bca8-2ec8d32bdeba}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXPvdSDK.vcxproj">
-      <Project>{1328b062-17ef-38b7-bb28-096a4b316e38}</Project>
+      <Project>{3912f647-fbf7-33f8-a456-7ad6ddf87819}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXTask.vcxproj">
-      <Project>{dc13ebb5-0806-39e7-8226-4fce33585336}</Project>
+      <Project>{2b0e23fa-d7b4-33ac-b4f8-410c15d5cb8f}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\PhysXVehicle.vcxproj">
-      <Project>{980f7501-e9e2-37f3-8620-6c6756c04ec2}</Project>
+      <Project>{89fa9c03-d89b-3907-9ade-e3acb5864d35}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\SceneQuery.vcxproj">
-      <Project>{a2838565-83b4-37ba-87f4-f6d748f55c47}</Project>
+      <Project>{1fabd673-03e1-33ff-9827-b83b2b3577bb}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Externals\PhysX4\physx\compiler\vc17win64\sdk_source_bin\SimulationController.vcxproj">
-      <Project>{2b7528e9-f7d6-368c-94bd-86a7efb4a02b}</Project>
+      <Project>{dbc48680-f62f-37cd-ac6d-b44f710ef0cd}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
