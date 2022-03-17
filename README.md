@@ -1,7 +1,8 @@
-# PEEL (PhysX Edition)
+# PEEL
+
 Physics Engine Evaluation Lab
 
-![alt text](PEEL/Media/peel.jpg?raw=true)
+![PEEL Logo](PEEL/Media/peel.jpg?raw=true)
 
 PEEL was a tool designed to evaluate, compare and benchmark physics engines. See PEEL 1.1 Github repo here: https://github.com/Pierre-Terdiman/PEEL
 
@@ -22,4 +23,3 @@ Screenshots:
 ![alt text](PEEL/Media/Screenshots/Screenshot12.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot13.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot14.jpg?raw=true)
 ![alt text](PEEL/Media/Screenshots/Screenshot15.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot16.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot17.jpg?raw=true)
 ![alt text](PEEL/Media/Screenshots/Screenshot18.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot19.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot20.jpg?raw=true)
-
