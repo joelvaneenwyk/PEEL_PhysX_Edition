@@ -13,34 +13,6 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 
-#ifdef _WIN64
-	#pragma comment(lib, "../Ice/Lib64/IceCore64.lib")
-	#pragma comment(lib, "../Ice/Lib64/IceMaths64.lib")
-	#pragma comment(lib, "../Ice/Lib64/Contact64.lib")
-	#pragma comment(lib, "../Ice/Lib64/Meshmerizer64.lib")
-	#pragma comment(lib, "../Ice/Lib64/IceImageWork64.lib")
-	#pragma comment(lib, "../Ice/Lib64/IceCharacter64.lib")
-	#pragma comment(lib, "../Ice/Lib64/IceRenderer64.lib")
-	#pragma comment(lib, "../Ice/Lib64/IceTerrain64.lib")
-	#pragma comment(lib, "../Ice/Lib64/IceGUI64.lib")
-	#pragma comment(lib, "../Ice/Lib64/ZCB264.lib")
-//	#pragma comment(lib, "../../Ice/Lib64/IML64.lib")
-#else
-	#pragma comment(lib, "../Ice/Lib/IceCore.lib")
-	#pragma comment(lib, "../Ice/Lib/IceMaths.lib")
-	#pragma comment(lib, "../Ice/Lib/Contact.lib")
-	#pragma comment(lib, "../Ice/Lib/Meshmerizer.lib")
-	#pragma comment(lib, "../Ice/Lib/IceImageWork.lib")
-	#pragma comment(lib, "../Ice/Lib/IceCharacter.lib")
-	#pragma comment(lib, "../Ice/Lib/IceRenderer.lib")
-	#pragma comment(lib, "../Ice/Lib/IceTerrain.lib")
-	#pragma comment(lib, "../Ice/Lib/IceGUI.lib")
-	#pragma comment(lib, "../Ice/Lib/ZCB2.lib")
-	//#pragma comment(lib, "../Ice/Lib/IML.lib")
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-
 void ThreadSetup()
 {
 	_clearfp();

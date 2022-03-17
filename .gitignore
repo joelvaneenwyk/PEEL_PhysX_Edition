@@ -11,7 +11,9 @@
 /Build/**/*.lib
 /Build/**/*.exp
 /Build/**/*.bsc
-**/vs2019/Debug/**
-**/vs2019/Release/**
+Src/**/Debug/**
+Src/**/Release/**
 PEEL/Excel/
 PEEL/Src/#Compiler/*.exe
+
+UpgradeLog.htm

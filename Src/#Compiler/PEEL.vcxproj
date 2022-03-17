@@ -142,7 +142,7 @@
       <AdditionalOptions>%(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>..\GL\glew64.lib;opengl32.lib;glu32.lib;..\GlutX\Lib\GlutX64_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\Ice\Lib64\IceCore64.lib;..\Ice\Lib64\IceMaths64.lib;..\Ice\Lib64\Contact64.lib;..\Ice\Lib64\Meshmerizer64.lib;..\Ice\Lib64\IceImageWork64.lib;..\Ice\Lib64\IceCharacter64.lib;..\Ice\Lib64\IceGUI64.lib;..\Ice\Lib64\IceRenderer64.lib;..\Ice\Lib64\IceTerrain64.lib;..\Ice\Lib64\ZCB264.lib;..\GL\glew64.lib;..\GlutX\Lib\GlutX64_D.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -223,7 +223,7 @@
       <FloatingPointExceptions>false</FloatingPointExceptions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>..\GL\glew64.lib;opengl32.lib;glu32.lib;..\GlutX\Lib\GlutX64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\Ice\Lib64\IceCore64.lib;..\Ice\Lib64\IceMaths64.lib;..\Ice\Lib64\Contact64.lib;..\Ice\Lib64\Meshmerizer64.lib;..\Ice\Lib64\IceImageWork64.lib;..\Ice\Lib64\IceCharacter64.lib;..\Ice\Lib64\IceGUI64.lib;..\Ice\Lib64\IceRenderer64.lib;..\Ice\Lib64\IceTerrain64.lib;..\Ice\Lib64\ZCB264.lib;..\GL\glew64.lib;..\GlutX\Lib\GlutX64_D.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>$(TargetPath)</OutputFile>
       <IgnoreSpecificDefaultLibraries>libcmt.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateDebugInformation>true</GenerateDebugInformation>

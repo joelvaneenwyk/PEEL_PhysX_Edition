@@ -2185,26 +2185,20 @@ static char gBuildFolder[MAX_PATH];
 static char gCurrentFile[MAX_PATH];
 
 static char* gFolders[] = {
-	"../Media/%s",
-	"../Media/#Private/Customers/%s",
-	"../Media/#Private/Debug/%s",
-	"../Media/#Scripts/%s",
-	"../Media/#Shaders/%s",
-	"../Media/#Sounds/%s",
-	"../Media/#VehicleData/%s",
-	"../Media/#Vehicles/%s",
-	"../Media/NutsAndBolts/%s",
-	"../Media/Zcb/%s",
-	"../Excel/%s",
-//	"../build/%s",
-//	"../build/Customers/%s",
-//	"../build/Data/%s",
+	"../../Media/%s",
+	"../../Media/#Private/Customers/%s",
+	"../../Media/#Private/Debug/%s",
+	"../../Media/#Scripts/%s",
+	"../../Media/#Shaders/%s",
+	"../../Media/#Sounds/%s",
+	"../../Media/#VehicleData/%s",
+	"../../Media/#Vehicles/%s",
+	"../../Media/NutsAndBolts/%s",
+	"../../Media/Zcb/%s",
+	"../../Excel/%s",
+	"../../Private/Bruneton/%s",
 	"./%s",
-//	"./Customers/%s",
-//	"./Data/%s",
-//	"../Data/%s",
 	"%s",
-	"../Private/Bruneton/%s",
 	null
 };
 

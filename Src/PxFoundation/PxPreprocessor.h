@@ -54,6 +54,8 @@ Compiler defines, see http://sourceforge.net/p/predef/wiki/Compilers/
 */
 #if defined(_MSC_VER)
 #if _MSC_VER >= 1930
+#define PX_VC 17
+#elif _MSC_VER >= 1920
 #define PX_VC 16
 #elif _MSC_VER >= 1910
 #define PX_VC 15

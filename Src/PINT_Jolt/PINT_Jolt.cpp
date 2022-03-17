@@ -126,28 +126,6 @@ static void TraceImpl(const char *inFMT, ...)
 
 ///////////////////////////////////////////////////////////////////////////////
 
-#ifdef _WIN64
-	#pragma comment(lib, "../../Ice/Lib64/IceCore64.lib")
-	#pragma comment(lib, "../../Ice/Lib64/IceMaths64.lib")
-	#pragma comment(lib, "../../Ice/Lib64/Contact64.lib")
-	#pragma comment(lib, "../../Ice/Lib64/Meshmerizer64.lib")
-	#pragma comment(lib, "../../Ice/Lib64/IceImageWork64.lib")
-	#pragma comment(lib, "../../Ice/Lib64/IceGUI64.lib")
-//	#pragma comment(lib, "../../Ice/Lib64/IML64.lib")
-
-//  Migrated Jolt library to project reference instead.
-#else
-	#pragma comment(lib, "../../Ice/Lib/IceCore.lib")
-	#pragma comment(lib, "../../Ice/Lib/IceMaths.lib")
-	#pragma comment(lib, "../../Ice/Lib/Contact.lib")
-	#pragma comment(lib, "../../Ice/Lib/Meshmerizer.lib")
-	#pragma comment(lib, "../../Ice/Lib/IceImageWork.lib")
-	#pragma comment(lib, "../../Ice/Lib/IceGUI.lib")
-	#pragma comment(lib, "../../Ice/Lib/IML.lib")
-#endif
-
-///////////////////////////////////////////////////////////////////////////////
-
 #include <stdio.h>
 #include <math.h>
 #include <limits>
