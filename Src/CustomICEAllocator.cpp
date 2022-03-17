@@ -195,7 +195,7 @@ void DefaultAllocator::Release()
 
 	if(mNbAllocatedBytes)
 	{
-		sprintf(Buffer, "Memory leak detected: %d bytes non released\n", mNbAllocatedBytes);
+		sprintf(Buffer, "Memory leak detected: %zd bytes non released\n", mNbAllocatedBytes);
 		_IceTrace(Buffer);
 //		_IceTrace(_F("Memory leak detected: %d bytes non released\n", mNbAllocatedBytes));
 	}
@@ -214,7 +214,7 @@ void DefaultAllocator::Release()
 	_IceTrace(Buffer);
 
 //	_IceTrace(_F("High water mark: %d Kb\n", mHighWaterMark/1024));
-	sprintf(Buffer, "High water mark: %d Kb\n", mHighWaterMark/1024);
+	sprintf(Buffer, "High water mark: %zd Kb\n", mHighWaterMark/1024);
 	_IceTrace(Buffer);
 
 	// Scanning for memory leaks

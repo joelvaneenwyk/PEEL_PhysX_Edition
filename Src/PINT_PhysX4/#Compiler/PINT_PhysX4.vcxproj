@@ -93,40 +93,40 @@
     <_ProjectFileVersion>15.0.28307.799</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)..\..\Build\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\..\Build\Obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)..\..\Build\x64\</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)..\..\Build\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\..\Build\Obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
     <TargetName>$(ProjectName)_D</TargetName>
     <PostBuildEventUseInBuild>true</PostBuildEventUseInBuild>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)..\..\Build\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\..\Build\Obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)..\..\Build\x64\</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)..\..\Build\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\..\Build\Obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)..\..\Build\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\..\Build\Obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Profile|x64'">
     <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)..\..\Build\Obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
@@ -146,7 +146,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\..\Ice\Lib\IceCore.lib;..\..\Ice\Lib\IceMaths.lib;..\..\Ice\Lib\Contact.lib;..\..\Ice\Lib\Meshmerizer.lib;..\..\Ice\Lib\IceImageWork.lib;..\..\Ice\Lib\IceGUI.lib;..\..\Ice\Lib\IML.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\debug\PhysX_32.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\debug\PhysXCommon_32.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\debug\PhysXCooking_32.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\debug\PhysXVehicle_static_32.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\debug\PhysXFoundation_32.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\debug\PhysXGpu_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>.\Debug\$(ProjectName)_D.dll</OutputFile>
+      <OutputFile>$(TargetPath)</OutputFile>
       <DelayLoadDLLs>PhysX_32.dll;PhysXCommon_32.dll;PhysXCooking_32.dll;PhysXFoundation_32.dll;PhysXGpu_32.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -221,7 +221,7 @@ copy ..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\debug\PhysXFoundation_
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\..\Ice\Lib\IceCore.lib;..\..\Ice\Lib\IceMaths.lib;..\..\Ice\Lib\Contact.lib;..\..\Ice\Lib\Meshmerizer.lib;..\..\Ice\Lib\IceImageWork.lib;..\..\Ice\Lib\IceGUI.lib;..\..\Ice\Lib\IML.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\release\PhysX_32.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\release\PhysXCommon_32.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\release\PhysXCooking_32.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\release\PhysXVehicle_static_32.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\release\PhysXFoundation_32.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\release\PhysXGpu_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>.\Release\$(ProjectName).dll</OutputFile>
+      <OutputFile>$(TargetPath)</OutputFile>
       <DelayLoadDLLs>PhysX_32.dll;PhysXCommon_32.dll;PhysXCooking_32.dll;PhysXFoundation_32.dll;PhysXGpu_32.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -280,8 +280,7 @@ copy ..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\release\PhysXFoundatio
     <PostBuildEvent>
       <Message>
       </Message>
-      <Command>
-      </Command>
+      <Command>xcopy "$(ProjectDir)..\..\..\Externals\PhysX4\physx\bin\win.x86_64.vc143.mt\release\*.dll" "$(TargetDir)" /i /d /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Profile|Win32'">
@@ -305,7 +304,7 @@ copy ..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\vc12win32\release\PhysXFoundatio
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\..\Ice\Lib\IceCore.lib;..\..\Ice\Lib\IceMaths.lib;..\..\Ice\Lib\Contact.lib;..\..\Ice\Lib\Meshmerizer.lib;..\..\Ice\Lib\IceImageWork.lib;..\..\Ice\Lib\IceGUI.lib;..\..\Ice\Lib\IML.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\Lib\vc12win32\PhysXPROFILE_x86.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\Lib\vc12win32\PhysXCommonPROFILE_x86.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\Lib\vc12win32\PhysXCookingPROFILE_x86.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\Lib\vc12win32\PhysXVehiclePROFILE_x86.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\Lib\vc12win32\PhysXGpuPROFILE_x86.lib;..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\Lib\vc12win32\PhysXFoundationPROFILE_x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>.\Release\$(ProjectName)_PVD.dll</OutputFile>
+      <OutputFile>$(TargetPath)</OutputFile>
       <DelayLoadDLLs>PhysXPROFILE_x86.dll;PhysXCommonPROFILE_x86.dll;PhysXCookingPROFILE_x86.dll;PhysXFoundationPROFILE_x86.dll;PhysXGpuPROFILE_x86.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
@@ -352,7 +351,7 @@ copy ..\..\..\Externals\4_1_2\PhysX-4.1.2_Trunk\Bin\vc12win32\PhysXFoundationPRO
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\..\Ice\Lib\IceCore.lib;..\..\Ice\Lib\IceMaths.lib;..\..\Ice\Lib\Contact.lib;..\..\Ice\Lib\Meshmerizer.lib;..\..\Ice\Lib\IceImageWork.lib;..\..\Ice\Lib\IceGUI.lib;..\..\Ice\Lib\IML.lib;..\PhysX-3.3_Trunk\Lib\win32\PhysX3PROFILE_x86.lib;..\PhysX-3.3_Trunk\Lib\win32\PhysX3CharacterKinematicPROFILE_x86.lib;..\PhysX-3.3_Trunk\Lib\win32\PhysX3CommonPROFILE_x86.lib;..\PhysX-3.3_Trunk\Lib\win32\PhysX3CookingPROFILE_x86.lib;..\PhysX-3.3_Trunk\Lib\win32\PhysX3ExtensionsPROFILE.lib;..\PhysX-3.3_Trunk\Lib\win32\PhysX3VehiclePROFILE.lib;..\PhysX-3.3_Trunk\Lib\win32\PxTaskPROFILE.lib;..\PhysX-3.3_Trunk\Lib\win32\PhysXVisualDebuggerSDKPROFILE.lib;..\PhysX-3.3_Trunk\Lib\win32\PhysXProfileSDKPROFILE.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>.\Release\$(ProjectName)_PVD.dll</OutputFile>
+      <OutputFile>$(TargetPath)</OutputFile>
       <DelayLoadDLLs>PhysX3PROFILE_x86.dll;PhysX3CommonPROFILE_x86.dll;PhysX3CookingPROFILE_x86.dll;%(DelayLoadDLLs)</DelayLoadDLLs>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>

@@ -67,27 +67,27 @@
     <_ProjectFileVersion>15.0.28307.799</_ProjectFileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)..\..\Build\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\..\Build\Obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)..\..\Build\x64\</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)..\..\Build\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\..\Build\Obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
     <TargetName>$(ProjectName)_DEBUG</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)..\..\Build\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\..\Build\Obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)..\..\Build\x64\</OutDir>
-    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)..\..\Build\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)..\..\Build\Obj\$(ProjectName)\$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
     <TargetName>$(ProjectName)</TargetName>
@@ -110,14 +110,14 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\GL\glew32.lib;opengl32.lib;glu32.lib;..\GlutX\Lib\GlutX_D.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\..\Build\Win32\PEEL_DEBUG_vs2017.exe</OutputFile>
+      <OutputFile>$(TargetPath)</OutputFile>
       <AdditionalLibraryDirectories>..\DevIL\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
-      <OutputFile>$(IntDir)$(ProjectName).bsc</OutputFile>
+      <OutputFile>$(TargetPath)</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -150,11 +150,12 @@
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <Bscmake>
-      <OutputFile>$(IntDir)$(ProjectName).bsc</OutputFile>
+      <OutputFile>$(TargetPath)</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command>robocopy "$(ProjectDir)..\..\Externals\Binaries\$(PlatformName)" "$(ProjectDir)..\..\Build\$(PlatformName)" /S
+      <Command>robocopy "$(ProjectDir)..\..\Externals\Binaries\$(Platform)\." "$(TargetDir)." /S
 if errorLevel 8 (exit /b 1) else (exit /b 0)</Command>
+      <Message>Copy</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -185,7 +186,7 @@ if errorLevel 8 (exit /b 1) else (exit /b 0)</Command>
     </ClCompile>
     <Link>
       <AdditionalDependencies>..\GL\glew32.lib;opengl32.lib;glu32.lib;..\GlutX\Lib\GlutX.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>..\..\Build\Win32\PEEL_vs2017.exe</OutputFile>
+      <OutputFile>$(TargetPath)</OutputFile>
       <AdditionalLibraryDirectories>..\DevIL\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
@@ -195,7 +196,7 @@ if errorLevel 8 (exit /b 1) else (exit /b 0)</Command>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <Bscmake>
-      <OutputFile>$(IntDir)$(ProjectName).bsc</OutputFile>
+      <OutputFile>$(TargetPath)</OutputFile>
     </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -238,10 +239,10 @@ if errorLevel 8 (exit /b 1) else (exit /b 0)</Command>
       <TargetMachine>MachineX64</TargetMachine>
     </Link>
     <Bscmake>
-      <OutputFile>$(IntDir)$(ProjectName).bsc</OutputFile>
+      <OutputFile>$(TargetPath)</OutputFile>
     </Bscmake>
     <PostBuildEvent>
-      <Command>robocopy "$(ProjectDir)..\..\Externals\Binaries\$(PlatformName)" "$(ProjectDir)..\..\Build\$(PlatformName)" /S
+      <Command>robocopy "$(ProjectDir)..\..\Externals\Binaries\$(Platform)\." "$(TargetDir)." /S
 if errorLevel 8 (exit /b 1) else (exit /b 0)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
