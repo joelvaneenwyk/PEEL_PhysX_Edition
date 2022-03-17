@@ -1,6 +1,6 @@
 [submodule "Externals/JoltPhysics"]
 	path = Externals/JoltPhysics
-	url = git@github.com:joelvaneenwyk/JoltPhysics.git
+	url = https://github.com/joelvaneenwyk/JoltPhysics.git
 [submodule "Externals/PhysX4"]
 	path = Externals/PhysX4
-	url = git@github.com:joelvaneenwyk/PhysX.git
+	url = https://github.com/joelvaneenwyk/PhysX.git
