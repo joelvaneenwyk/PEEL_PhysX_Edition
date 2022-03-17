@@ -1048,7 +1048,9 @@ static PintShapeRenderer* RetrieveRenderer(const JoltPint& pint, const JPH::Shap
 #ifdef USE_JOLT_1
 static inline_ void BindRenderer(JPH::Shape* shape, udword, PintShapeRenderer* renderer)
 {
-	shape->SetUserData(uint64(renderer));
+	if (shape != nullptr) {
+		shape->SetUserData(uint64(renderer));
+	}
 }
 
 static inline_ PintShapeRenderer* RetrieveRenderer(const JoltPint&, const JPH::Shape*, uint64 user_data)
