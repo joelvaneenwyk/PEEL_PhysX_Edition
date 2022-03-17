@@ -2,7 +2,7 @@
 
 Physics Engine Evaluation Lab
 
-![PEEL Logo](PEEL/Media/peel.jpg?raw=true)
+![PEEL Logo](./Media/peel.jpg?raw=true)
 
 PEEL was a tool designed to evaluate, compare and benchmark physics engines. See PEEL 1.1 Github repo here: https://github.com/Pierre-Terdiman/PEEL
 
@@ -16,10 +16,10 @@ While this is the "PhysX edition", I only included a plugin for PhysX4 here so f
 
 Screenshots:
 
-![alt text](PEEL/Media/Screenshots/Screenshot00.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot01.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot02.jpg?raw=true)
-![alt text](PEEL/Media/Screenshots/Screenshot03.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot04.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot05.jpg?raw=true)
-![alt text](PEEL/Media/Screenshots/Screenshot06.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot07.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot08.jpg?raw=true)
-![alt text](PEEL/Media/Screenshots/Screenshot09.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot10.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot11.jpg?raw=true)
-![alt text](PEEL/Media/Screenshots/Screenshot12.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot13.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot14.jpg?raw=true)
-![alt text](PEEL/Media/Screenshots/Screenshot15.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot16.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot17.jpg?raw=true)
-![alt text](PEEL/Media/Screenshots/Screenshot18.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot19.jpg?raw=true) ![alt text](PEEL/Media/Screenshots/Screenshot20.jpg?raw=true)
+![alt text](./Media/Screenshots/Screenshot00.jpg?raw=true) ![alt text](./Media/Screenshots/Screenshot01.jpg?raw=true) ![alt text](./Media/Screenshots/Screenshot02.jpg?raw=true)
+![alt text](./Media/Screenshots/Screenshot03.jpg?raw=true) ![alt text](./Media/Screenshots/Screenshot04.jpg?raw=true) ![alt text](./Media/Screenshots/Screenshot05.jpg?raw=true)
+![alt text](./Media/Screenshots/Screenshot06.jpg?raw=true) ![alt text](./Media/Screenshots/Screenshot07.jpg?raw=true) ![alt text](./Media/Screenshots/Screenshot08.jpg?raw=true)
+![alt text](./Media/Screenshots/Screenshot09.jpg?raw=true) ![alt text](./Media/Screenshots/Screenshot10.jpg?raw=true) ![alt text](./Media/Screenshots/Screenshot11.jpg?raw=true)
+![alt text](./Media/Screenshots/Screenshot12.jpg?raw=true) ![alt text](./Media/Screenshots/Screenshot13.jpg?raw=true) ![alt text](./Media/Screenshots/Screenshot14.jpg?raw=true)
+![alt text](./Media/Screenshots/Screenshot15.jpg?raw=true) ![alt text](./Media/Screenshots/Screenshot16.jpg?raw=true) ![alt text](./Media/Screenshots/Screenshot17.jpg?raw=true)
+![alt text](./Media/Screenshots/Screenshot18.jpg?raw=true) ![alt text](./Media/Screenshots/Screenshot19.jpg?raw=true) ![alt text](./Media/Screenshots/Screenshot20.jpg?raw=true)
