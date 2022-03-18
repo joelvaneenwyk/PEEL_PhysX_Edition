@@ -533,5 +533,27 @@ target_include_directories(PEEL PUBLIC "${PEEL_ROOT}/")
 target_include_directories(PEEL PUBLIC "${PEEL_REPO_ROOT}/Externals")
 target_include_directories(PEEL PUBLIC "${PEEL_REPO_ROOT}/Private/NVD")
 
+target_link_directories(PEEL PUBLIC "${PEEL_ROOT}/Ice/Lib64")
+target_link_directories(PEEL PUBLIC "${PEEL_ROOT}/GL")
+target_link_directories(PEEL PUBLIC "${PEEL_ROOT}/GlutX/Lib")
+target_link_directories(PEEL PUBLIC "${PEEL_REPO_ROOT}/Externals")
+
+target_link_libraries(PEEL
+    IceCore64
+    IceMaths64
+    Contact64
+    Meshmerizer64
+    IceImageWork64
+    IceCharacter64
+    IceGUI64
+    IceRenderer64
+    IceTerrain64
+    ZCB264
+    glew64
+    GlutX64_D
+    opengl32.lib
+    glu32.lib
+)
+
 # Set the correct working directory
 set_property(TARGET PEEL PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${PEEL_ROOT}")

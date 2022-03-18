@@ -3,5 +3,7 @@
 setlocal EnableDelayedExtensions
 
 cd /d "%~dp0"
-cmake -S Src -B Build
+if exist "%~dp0Build" rmdir /q /s "%~dp0Build"
+
+cmake -S Src/#Compiler -B Build -G "Visual Studio 17 2022" -A x64
 cmake --build Build
