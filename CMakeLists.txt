@@ -1,10 +1,10 @@
-cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
 
-project(PEEL LANGUAGES C CXX)
+project(PEEL LANGUAGES CXX)
 
 # Set repository root
-set(PEEL_SOURCE_ROOT ${CMAKE_CURRENT_LIST_DIR}/../)
-set(PEEL_REPO_ROOT ${CMAKE_CURRENT_LIST_DIR}/../../)
+set(PEEL_SOURCE_ROOT ${PROJECT_SOURCE_DIR}/Src/)
+set(PEEL_REPO_ROOT ${PROJECT_SOURCE_DIR})
 
 # Select X86 processor features to use (if everything is off it will be SSE4.1 compatible)
 option(USE_SSE4_2 "Enable SSE4.2" ON)
@@ -15,7 +15,7 @@ option(USE_TZCNT "Enable TZCNT" ON)
 option(USE_F16C "Enable F16C" ON)
 option(USE_FMADD "Enable FMADD" ON)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
 	set(CMAKE_CONFIGURATION_TYPES "Debug;Release;Distribution")
@@ -34,7 +34,7 @@ if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
 	set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
 	# Set general compiler flags
-	set(CMAKE_CXX_FLAGS "/std:c++17 /Zc:__cplusplus /GR- /Gm- /nologo /diagnostics:classic /FC /fp:except- /Zc:inline /Zi /DWIN32 /D_WINDOWS /DUNICODE /D_UNICODE")
+	set(CMAKE_CXX_FLAGS "/Zc:__cplusplus /GR- /Gm- /nologo /diagnostics:classic /FC /fp:except- /Zc:inline /Zi /DWIN32 /D_WINDOWS /DUNICODE /D_UNICODE")
 
 	# Set compiler flags for various configurations
 	set(CMAKE_CXX_FLAGS_DEBUG "/D_DEBUG /GS /Od /Ob0 /RTC1 /DJPH_PROFILE_ENABLED /DJPH_DEBUG_RENDERER")
@@ -105,7 +105,7 @@ if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
 	endif()
 elseif ("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux" OR "${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin" OR "${CMAKE_SYSTEM_NAME}" STREQUAL "iOS")
 	# Set general compiler flags (do not use -ffast-math since it cannot be turned off in a single compilation unit)
-	set(CMAKE_CXX_FLAGS "-g -std=c++17 -I. -Wall -Werror")
+	set(CMAKE_CXX_FLAGS "-g -I. -Wall -Werror")
 
 	if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 		# Somehow -Wcomment doesn't want to be turned off from code and we need this because Doxygen MathJax uses it
@@ -158,5 +158,4 @@ endif()
 set(CMAKE_EXE_LINKER_FLAGS_DISTRIBUTION "${CMAKE_EXE_LINKER_FLAGS_RELEASE}")
 
 # Make PEEL executable
-include(${CMAKE_CURRENT_SOURCE_DIR}/PEEL.cmake)
-
+include("${PEEL_SOURCE_ROOT}/#Compiler/PEEL.cmake")

@@ -515,10 +515,13 @@ set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/PsUtilities.cp
 set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsAtomic.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
 set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsCpu.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
 
-set_source_files_properties("${PEEL_SOURCE_ROOT}/LZ4/lz4.c" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/LZ4/lz4frame.c" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/LZ4/lz4hc.c" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/LZ4/xxhash.c" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
+set_source_files_properties(
+		"${PEEL_SOURCE_ROOT}/LZ4/lz4.c"
+		"${PEEL_SOURCE_ROOT}/LZ4/lz4frame.c"
+		"${PEEL_SOURCE_ROOT}/LZ4/lz4hc.c"
+		"${PEEL_SOURCE_ROOT}/LZ4/xxhash.c"
+		PROPERTIES 	LANGUAGE CXX
+					SKIP_PRECOMPILE_HEADERS ON)
 
 # Group source files
 source_group(TREE ${PEEL_REPO_ROOT} FILES ${PEEL_SRC_FILES})
@@ -526,19 +529,19 @@ source_group(TREE ${PEEL_REPO_ROOT} FILES ${PEEL_SRC_FILES})
 # Create PEEL lib
 add_executable(PEEL ${PEEL_SRC_FILES})
 
+set(ice_plugins "one two three")
 target_include_directories(PEEL SYSTEM BEFORE
-		PUBLIC "Src/Ice/APIs/Ice"
-		PUBLIC "${PEEL_SOURCE_ROOT}"
-		PUBLIC "${PEEL_SOURCE_ROOT}/Ice/APIs/Ice/#Plugins/FlexineSDK"
-		PUBLIC "${PEEL_SOURCE_ROOT}/Ice/APIs/Ice"
-		PUBLIC "${PEEL_SOURCE_ROOT}/HACD"
-		PUBLIC "${PEEL_SOURCE_ROOT}/Glut/include"
-		PUBLIC "${PEEL_SOURCE_ROOT}/DevIL/include"
-		PUBLIC "${PEEL_SOURCE_ROOT}/PxFoundation"
-		PUBLIC "${PEEL_SOURCE_ROOT}/PxFoundation/include"
-		PUBLIC "${PEEL_SOURCE_ROOT}/"
-		PUBLIC "${PEEL_REPO_ROOT}/Externals"
-		PUBLIC "${PEEL_REPO_ROOT}/Private/NVD")
+		PUBLIC ${PEEL_SOURCE_ROOT}
+		PUBLIC ${PEEL_SOURCE_ROOT}/Ice/APIs/Ice/Plugins/FlexineSDK
+		PUBLIC ${PEEL_SOURCE_ROOT}/Ice/APIs/Ice
+		PUBLIC ${PEEL_SOURCE_ROOT}/HACD
+		PUBLIC ${PEEL_SOURCE_ROOT}/Glut/include
+		PUBLIC ${PEEL_SOURCE_ROOT}/DevIL/include
+		PUBLIC ${PEEL_SOURCE_ROOT}/PxFoundation
+		PUBLIC ${PEEL_SOURCE_ROOT}/PxFoundation/include
+		PUBLIC ${PEEL_SOURCE_ROOT}/
+		PUBLIC ${PEEL_REPO_ROOT}/Externals
+		PUBLIC ${PEEL_REPO_ROOT}/Private/NVD)
 
 target_link_directories(PEEL
 		PUBLIC "${PEEL_SOURCE_ROOT}/Ice/Lib64"
@@ -565,5 +568,6 @@ target_link_libraries(PEEL
 
 # Set the correct working directory
 set_property(TARGET PEEL PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${PEEL_SOURCE_ROOT}")
+set_property(TARGET PEEL PROPERTY CXX_STANDARD 17)
 
 set_target_properties(PEEL PROPERTIES LINK_FLAGS /SUBSYSTEM:CONSOLE)

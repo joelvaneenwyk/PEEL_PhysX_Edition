@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$/Src/#Compiler">
-    <contentRoot DIR="$PROJECT_DIR$" />
-  </component>
+  <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
   <component name="CidrRootsConfiguration">
     <sourceRoots>
       <file path="$PROJECT_DIR$/Externals/JoltPhysics" />
@@ -10,9 +8,7 @@
       <file path="$PROJECT_DIR$/Media/#Scripts" />
       <file path="$PROJECT_DIR$/Media/#Shaders" />
       <file path="$PROJECT_DIR$/Src" />
-    </sourceRoots>
-    <libraryRoots>
       <file path="$PROJECT_DIR$/Src/Ice/APIs/Ice" />
-    </libraryRoots>
+    </sourceRoots>
   </component>
 </project>
