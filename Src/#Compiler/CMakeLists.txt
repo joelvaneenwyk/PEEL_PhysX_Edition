@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.20 FATAL_ERROR)
 
-project(PEEL CXX)
+project(PEEL LANGUAGES C CXX)
+
+# Set repository root
+set(PEEL_SOURCE_ROOT ${CMAKE_CURRENT_LIST_DIR}/../)
+set(PEEL_REPO_ROOT ${CMAKE_CURRENT_LIST_DIR}/../../)
 
 # Select X86 processor features to use (if everything is off it will be SSE4.1 compatible)
 option(USE_SSE4_2 "Enable SSE4.2" ON)
@@ -10,6 +14,8 @@ option(USE_LZCNT "Enable LZCNT" ON)
 option(USE_TZCNT "Enable TZCNT" ON)
 option(USE_F16C "Enable F16C" ON)
 option(USE_FMADD "Enable FMADD" ON)
+
+set(CMAKE_CXX_STANDARD 14)
 
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
 	set(CMAKE_CONFIGURATION_TYPES "Debug;Release;Distribution")
@@ -151,8 +157,6 @@ endif()
 # Set linker flags
 set(CMAKE_EXE_LINKER_FLAGS_DISTRIBUTION "${CMAKE_EXE_LINKER_FLAGS_RELEASE}")
 
-# Set repository root
-set(PEEL_SOURCE_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/../)
-
 # Make PEEL executable
 include(${CMAKE_CURRENT_SOURCE_DIR}/PEEL.cmake)
+

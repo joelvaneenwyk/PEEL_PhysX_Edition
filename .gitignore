@@ -8,6 +8,7 @@
 /Build/
 Src/**/Debug/**
 Src/**/Release/**
+Src/**/#Compiler/cmake-*/**
 PEEL/Excel/
 PEEL/Src/#Compiler/*.exe
 
