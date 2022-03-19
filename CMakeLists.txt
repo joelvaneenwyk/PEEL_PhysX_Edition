@@ -156,6 +156,13 @@ endif()
 
 # Set linker flags
 set(CMAKE_EXE_LINKER_FLAGS_DISTRIBUTION "${CMAKE_EXE_LINKER_FLAGS_RELEASE}")
+set(CMAKE_SHARED_LINKER_FLAGS_DISTRIBUTION "${CMAKE_EXE_LINKER_FLAGS_RELEASE}")
 
 # Make PEEL executable
 include("${PEEL_SOURCE_ROOT}/#Compiler/PEEL.cmake")
+
+#
+# Plugins
+#
+
+include("${PEEL_SOURCE_ROOT}/PINT_Skeleton/#Compiler/PINT_Skeleton.cmake")
