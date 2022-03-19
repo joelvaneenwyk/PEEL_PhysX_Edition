@@ -489,31 +489,33 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
 	set_source_files_properties(${PEEL_SOURCE_ROOT}/stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
 endif()
 
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsFPU.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsMutex.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsPrintString.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsSocket.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsSList.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsThread.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsSync.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsTime.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/HACD/hacdGraph.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/HACD/hacdICHull.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/HACD/hacdHACD.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/HACD/hacdManifoldMesh.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/PsFoundation.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/PsAllocator.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/PsAssert.cp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/PsString.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/PsMathUtils.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/PsUtilities.cp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsAtomic.cp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsCpu.cp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/PsTempAllocator.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/PsAssert.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/PsUtilities.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsAtomic.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-set_source_files_properties("${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsCpu.cpp" PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
+set_source_files_properties(
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsFPU.cpp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsMutex.cpp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsPrintString.cpp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsSocket.cpp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsSList.cpp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsThread.cpp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsSync.cpp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsTime.cpp"
+		"${PEEL_SOURCE_ROOT}/HACD/hacdGraph.cpp"
+		"${PEEL_SOURCE_ROOT}/HACD/hacdICHull.cpp"
+		"${PEEL_SOURCE_ROOT}/HACD/hacdHACD.cpp"
+		"${PEEL_SOURCE_ROOT}/HACD/hacdManifoldMesh.cpp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/PsFoundation.cpp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/PsAllocator.cpp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/PsAssert.cp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/PsString.cpp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/PsMathUtils.cpp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/PsUtilities.cp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsAtomic.cp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsCpu.cp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/PsTempAllocator.cpp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/PsAssert.cpp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/PsUtilities.cpp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsAtomic.cpp"
+		"${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsCpu.cpp"
+		PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
 
 set_source_files_properties(
 		"${PEEL_SOURCE_ROOT}/LZ4/lz4.c"

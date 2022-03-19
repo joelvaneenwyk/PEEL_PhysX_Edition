@@ -166,3 +166,5 @@ include("${PEEL_SOURCE_ROOT}/#Compiler/PEEL.cmake")
 #
 
 include("${PEEL_SOURCE_ROOT}/PINT_Skeleton/#Compiler/PINT_Skeleton.cmake")
+include("${PEEL_SOURCE_ROOT}/PINT_Jolt/#Compiler/PINT_Jolt.cmake")
+include("${PEEL_SOURCE_ROOT}/PINT_PhysX4/#Compiler/PINT_PhysX4.cmake")
