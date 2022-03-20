@@ -622,7 +622,8 @@ copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcr90.dll)
 copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcr90d.dll)
 
 copy_dependency(Src/GL glut32.dll)
-copy_dependency(Src/GL glew${PEEL_BIN_ARCH}.dll)
+copy_dependency(Src/GL glew32.dll)
+copy_dependency(Src/GL glew64.dll)
 
 copy_config_dependency(Src/GlutX/Bin GlutX)
 
