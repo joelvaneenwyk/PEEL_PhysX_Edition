@@ -5,17 +5,17 @@
 set(PEEL_PHYSX4_ROOT_DIR ${PEEL_REPO_ROOT}/Externals/PhysX4)
 set(PHYSX_ROOT_DIR ${PEEL_PHYSX4_ROOT_DIR}/physx)
 set(CMAKEMODULES_PATH ${PEEL_PHYSX4_ROOT_DIR}/externals/cmakemodules)
-set(PX_OUTPUT_LIB_DIR ${PHYSX_ROOT_DIR}/bin/win.x86_64.vc143.mt)
-set(PX_OUTPUT_BIN_DIR ${PHYSX_ROOT_DIR}/bin/win.x86_64.vc143.mt)
+set(PX_OUTPUT_LIB_DIR ${PHYSX_ROOT_DIR})
+set(PX_OUTPUT_BIN_DIR ${PHYSX_ROOT_DIR})
 set(PXSHARED_PATH ${PEEL_PHYSX4_ROOT_DIR}/pxshared)
 set(TARGET_BUILD_PLATFORM windows)
 
-set(PX_BUILDSNIPPETS False)
-set(PX_BUILDPUBLICSAMPLES False)
-set(PX_GENERATE_STATIC_LIBRARIES True)
-set(NV_USE_STATIC_WINCRT True)
-set(NV_USE_DEBUG_WINCRT True)
-set(PX_FLOAT_POINT_PRECISE_MATH True)
+set_option(PX_BUILDSNIPPETS OFF)
+set_option(PX_BUILDPUBLICSAMPLES OFF)
+set_option(PX_GENERATE_STATIC_LIBRARIES OFF)
+set_option(NV_USE_STATIC_WINCRT ON)
+set_option(NV_USE_DEBUG_WINCRT ON)
+set_option(PX_FLOAT_POINT_PRECISE_MATH ON)
 
 add_subdirectory(${PHYSX_ROOT_DIR}/compiler/public)
 
@@ -205,6 +205,9 @@ source_group(TREE ${PEEL_REPO_ROOT} FILES ${PINT_PHYSX4_SRC_FILES})
 # Create PEEL lib
 add_library(PINT_PhysX4 SHARED ${PINT_PHYSX4_SRC_FILES})
 
+set_target_properties(PINT_PhysX4 PROPERTIES
+		DEBUG_POSTFIX _D)
+
 target_include_directories(PINT_PhysX4 SYSTEM BEFORE
 		PUBLIC ${PEEL_SOURCE_ROOT}
 		PUBLIC ${PEEL_SOURCE_ROOT}/PINT_PhysX4
@@ -242,11 +245,14 @@ target_include_directories(PINT_PhysX4 SYSTEM BEFORE
 		PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/source/geomutils/include)
 
 target_link_directories(PINT_PhysX4
-		PUBLIC "${PEEL_SOURCE_ROOT}/Ice/Lib64"
+		PUBLIC "${PEEL_SOURCE_ROOT}/Ice/Lib${PEEL_BIN_ARCH}"
 		PUBLIC "${PEEL_SOURCE_ROOT}/GL"
 		PUBLIC "${PEEL_SOURCE_ROOT}/GlutX/Lib"
 		PUBLIC "${PEEL_REPO_ROOT}/Externals"
 		PUBLIC "${PEEL_REPO_ROOT}/PhysX4/physx/compiler/vc17win64/sdk_source_bin")
+
+set(PEEL_BIN_POSTFIX_DEBUG ${PEEL_BIN_ARCH}_D)
+set(PEEL_BIN_POSTFIX_RELEASE ${PEEL_BIN_ARCH})
 
 target_link_libraries(PINT_PhysX4
 		FastXml
@@ -264,18 +270,26 @@ target_link_libraries(PINT_PhysX4
 		PhysXVehicle
 		SceneQuery
 		SimulationController
-		IceCore64
-		IceMaths64
-		Contact64
-		Meshmerizer64
-		IceImageWork64
-		IceCharacter64
-		IceGUI64
-		IceRenderer64
-		IceTerrain64
-		ZCB264
-		glew64
-		GlutX64_D
 		opengl32.lib
 		glu32.lib
-)
+		glew${PEEL_BIN_ARCH}
+		ZCB2${PEEL_BIN_ARCH})
+
+set(PEEL_BIN_POSTFIX_DEBUG ${PEEL_BIN_ARCH}_D)
+set(PEEL_BIN_POSTFIX_RELEASE ${PEEL_BIN_ARCH})
+macro(target_link_library_config library)
+	target_link_libraries(PINT_PhysX4
+			debug ${library}${PEEL_BIN_POSTFIX_DEBUG}
+			optimized ${library}${PEEL_BIN_POSTFIX_RELEASE})
+endmacro()
+
+target_link_library_config(IceCore)
+target_link_library_config(IceMaths)
+target_link_library_config(Contact)
+target_link_library_config(Meshmerizer)
+target_link_library_config(IceImageWork)
+target_link_library_config(IceCharacter)
+target_link_library_config(IceGUI)
+target_link_library_config(IceRenderer)
+target_link_library_config(IceTerrain)
+target_link_library_config(GlutX)

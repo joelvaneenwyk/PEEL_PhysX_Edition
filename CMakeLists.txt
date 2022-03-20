@@ -3,17 +3,21 @@ cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
 project(PEEL LANGUAGES CXX)
 
 # Set repository root
-set(PEEL_SOURCE_ROOT ${PROJECT_SOURCE_DIR}/Src/)
+set(PEEL_SOURCE_ROOT ${PROJECT_SOURCE_DIR}/Src)
 set(PEEL_REPO_ROOT ${PROJECT_SOURCE_DIR})
 
+macro(set_option option value)
+	set(${option} ${value} CACHE BOOL "" FORCE)
+endmacro()
+
 # Select X86 processor features to use (if everything is off it will be SSE4.1 compatible)
-option(USE_SSE4_2 "Enable SSE4.2" ON)
-option(USE_AVX "Enable AVX" ON)
-option(USE_AVX2 "Enable AVX2" ON)
-option(USE_LZCNT "Enable LZCNT" ON)
-option(USE_TZCNT "Enable TZCNT" ON)
-option(USE_F16C "Enable F16C" ON)
-option(USE_FMADD "Enable FMADD" ON)
+set_option(USE_SSE4_2 ON)
+set_option(USE_AVX ON)
+set_option(USE_AVX2 ON)
+set_option(USE_LZCNT ON)
+set_option(USE_TZCNT ON)
+set_option(USE_F16C ON)
+set_option(USE_FMADD ON)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -157,6 +161,14 @@ endif()
 # Set linker flags
 set(CMAKE_EXE_LINKER_FLAGS_DISTRIBUTION "${CMAKE_EXE_LINKER_FLAGS_RELEASE}")
 set(CMAKE_SHARED_LINKER_FLAGS_DISTRIBUTION "${CMAKE_EXE_LINKER_FLAGS_RELEASE}")
+
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+	set(PEEL_BIN_DIR_NAME x64)
+	set(PEEL_BIN_ARCH 64)
+else()
+	set(PEEL_BIN_DIR_NAME Win32)
+	set(PEEL_BIN_ARCH 32)
+endif()
 
 # Make PEEL executable
 include("${PEEL_SOURCE_ROOT}/#Compiler/PEEL.cmake")

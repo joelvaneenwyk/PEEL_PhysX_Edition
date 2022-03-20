@@ -531,7 +531,6 @@ source_group(TREE ${PEEL_REPO_ROOT} FILES ${PEEL_SRC_FILES})
 # Create PEEL lib
 add_executable(PEEL ${PEEL_SRC_FILES})
 
-set(ice_plugins "one two three")
 target_include_directories(PEEL SYSTEM BEFORE
 		PUBLIC ${PEEL_SOURCE_ROOT}
 		PUBLIC ${PEEL_SOURCE_ROOT}/Ice/APIs/Ice/Plugins/FlexineSDK
@@ -546,30 +545,84 @@ target_include_directories(PEEL SYSTEM BEFORE
 		PUBLIC ${PEEL_REPO_ROOT}/Private/NVD)
 
 target_link_directories(PEEL
-		PUBLIC "${PEEL_SOURCE_ROOT}/Ice/Lib64"
+		PUBLIC "${PEEL_SOURCE_ROOT}/Ice/Lib${PEEL_BIN_ARCH}"
 		PUBLIC "${PEEL_SOURCE_ROOT}/GL"
 		PUBLIC "${PEEL_SOURCE_ROOT}/GlutX/Lib"
 		PUBLIC "${PEEL_REPO_ROOT}/Externals")
 
 target_link_libraries(PEEL
-    IceCore64
-    IceMaths64
-    Contact64
-    Meshmerizer64
-    IceImageWork64
-    IceCharacter64
-    IceGUI64
-    IceRenderer64
-    IceTerrain64
-    ZCB264
-    glew64
-    GlutX64_D
-    opengl32.lib
-    glu32.lib
-)
+		opengl32.lib
+		glu32.lib
+		glew${PEEL_BIN_ARCH}
+		ZCB2${PEEL_BIN_ARCH})
+
+macro(copy_dependency path filename)
+	add_custom_command(
+			TARGET PEEL POST_BUILD
+			COMMAND ${CMAKE_COMMAND} -E copy
+			${PEEL_REPO_ROOT}/${path}/${filename} ${CMAKE_CURRENT_BINARY_DIR}/Debug/${filename})
+	add_custom_command(
+			TARGET PEEL POST_BUILD
+			COMMAND ${CMAKE_COMMAND} -E copy
+			${PEEL_REPO_ROOT}/${path}/${filename} ${CMAKE_CURRENT_BINARY_DIR}/Release/${filename})
+endmacro()
+
+macro(copy_config_dependency path filename)
+	add_custom_command(
+			TARGET PEEL POST_BUILD
+			COMMAND ${CMAKE_COMMAND} -E copy
+			${PEEL_REPO_ROOT}/${path}/${filename}${PEEL_BIN_POSTFIX_DEBUG}.dll ${CMAKE_CURRENT_BINARY_DIR}/Debug/${filename}${PEEL_BIN_POSTFIX_DEBUG}.dll)
+	add_custom_command(
+			TARGET PEEL POST_BUILD
+			COMMAND ${CMAKE_COMMAND} -E copy
+			${PEEL_REPO_ROOT}/${path}/${filename}${PEEL_BIN_POSTFIX_RELEASE}.dll ${CMAKE_CURRENT_BINARY_DIR}/Release/${filename}${PEEL_BIN_POSTFIX_RELEASE}.dll)
+endmacro()
+
+set(PEEL_BIN_POSTFIX_DEBUG ${PEEL_BIN_ARCH}_D)
+set(PEEL_BIN_POSTFIX_RELEASE ${PEEL_BIN_ARCH})
+macro(target_link_library_config library)
+	target_link_libraries(PEEL
+			debug ${library}${PEEL_BIN_POSTFIX_DEBUG}
+			optimized ${library}${PEEL_BIN_POSTFIX_RELEASE})
+endmacro()
+
+target_link_library_config(IceCore)
+target_link_library_config(IceMaths)
+target_link_library_config(Contact)
+target_link_library_config(Meshmerizer)
+target_link_library_config(IceImageWork)
+target_link_library_config(IceCharacter)
+target_link_library_config(IceGUI)
+target_link_library_config(IceRenderer)
+target_link_library_config(IceTerrain)
+target_link_library_config(GlutX)
 
 # Set the correct working directory
 set_property(TARGET PEEL PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${PEEL_SOURCE_ROOT}")
 set_property(TARGET PEEL PROPERTY CXX_STANDARD 17)
 
-set_target_properties(PEEL PROPERTIES LINK_FLAGS /SUBSYSTEM:CONSOLE)
+set_target_properties(PEEL PROPERTIES
+		LINK_FLAGS /SUBSYSTEM:CONSOLE
+		DEBUG_POSTFIX _DEBUG)
+
+copy_dependency(Src/GL glew32.dll)
+copy_dependency(Src/GL glew64.dll)
+copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} DevIL.dll)
+copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} fmod${PEEL_BIN_ARCH}.dll)
+copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} Microsoft.VC90.DebugCRT.manifest)
+copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcm90d.dll)
+copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcp90.dll)
+copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcp90d.dll)
+copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcr90.dll)
+copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcr90d.dll)
+
+copy_config_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} Contact)
+copy_config_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} GlutX)
+copy_config_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} IceCharacter)
+copy_config_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} IceCore)
+copy_config_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} IceGUI)
+copy_config_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} IceImageWork)
+copy_config_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} IceMaths)
+copy_config_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} IceRenderer)
+copy_config_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} IceTerrain)
+copy_config_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} Meshmerizer)

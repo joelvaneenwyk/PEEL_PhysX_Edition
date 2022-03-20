@@ -21,6 +21,9 @@ source_group(TREE ${PEEL_REPO_ROOT} FILES ${PINT_SKELETON_SRC_FILES})
 # Create PEEL lib
 add_library(PINT_Skeleton SHARED ${PINT_SKELETON_SRC_FILES})
 
+set_target_properties(PINT_Skeleton PROPERTIES
+		DEBUG_POSTFIX _D)
+
 target_include_directories(PINT_Skeleton SYSTEM BEFORE
 		PUBLIC ${PEEL_SOURCE_ROOT}
 		PUBLIC ${PEEL_SOURCE_ROOT}/Ice/APIs/Ice/Plugins/FlexineSDK

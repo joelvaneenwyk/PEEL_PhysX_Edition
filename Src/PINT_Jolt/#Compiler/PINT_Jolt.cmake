@@ -35,6 +35,9 @@ source_group(TREE ${PEEL_REPO_ROOT} FILES ${PINT_JOLT_SRC_FILES})
 # Create PEEL lib
 add_library(PINT_Jolt SHARED ${PINT_JOLT_SRC_FILES})
 
+set_target_properties(PINT_Jolt PROPERTIES
+		DEBUG_POSTFIX _D)
+
 target_include_directories(PINT_Jolt SYSTEM BEFORE
 		PUBLIC ${PEEL_SOURCE_ROOT}
 		PUBLIC ${PEEL_SOURCE_ROOT}/Ice/APIs/Ice/Plugins/FlexineSDK
