@@ -224,9 +224,13 @@ target_link_options(PINT_PhysX4
 		PRIVATE /NODEFAULTLIB:LIBCMT)
 
 target_compile_definitions(PINT_PhysX4 PRIVATE
-		_CONSOLE
+		WIN32
+		_DEBUG
+		_WINDOWS
+		_USRDLL
 		GLUT_NO_LIB_PRAGMA
-		PX_PHYSX_STATIC_LIB)
+		PX_PHYSX_STATIC_LIB
+		PINT_PHYSX_EXPORTS)
 
 target_include_directories(PINT_PhysX4 SYSTEM BEFORE
 		PUBLIC ${PEEL_SOURCE_ROOT}
@@ -302,3 +306,25 @@ target_link_library_config(IceGUI)
 target_link_library_config(IceRenderer)
 target_link_library_config(IceTerrain)
 target_link_library_config(GlutX)
+
+macro(copy_physx_library filename)
+	add_custom_command(
+			TARGET PEEL POST_BUILD
+			COMMAND ${CMAKE_COMMAND} -E copy
+			${PX_EXE_OUTPUT_DIRECTORY_DEBUG}/${filename} ${CMAKE_CURRENT_BINARY_DIR}/Debug/${filename})
+	add_custom_command(
+			TARGET PEEL POST_BUILD
+			COMMAND ${CMAKE_COMMAND} -E copy
+			${PX_EXE_OUTPUT_DIRECTORY_RELEASE}/${filename} ${CMAKE_CURRENT_BINARY_DIR}/Release/${filename})
+endmacro()
+
+copy_physx_library(PhysX.dll)
+copy_physx_library(PhysXCommon.dll)
+copy_physx_library(PhysXCommon_64.dll)
+copy_physx_library(PhysXCooking.dll)
+copy_physx_library(PhysXCooking_64.dll)
+copy_physx_library(PhysXFoundation.dll)
+copy_physx_library(PhysXFoundation_64.dll)
+copy_physx_library(PhysXGpu_64.dll)
+copy_physx_library(PhysX_64.dll)
+

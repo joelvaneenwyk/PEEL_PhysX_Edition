@@ -33,8 +33,13 @@ set_target_properties(PINT_Jolt PROPERTIES
 		DEBUG_POSTFIX _D)
 
 target_compile_definitions(PINT_Jolt PRIVATE
+		WIN32
+		_DEBUG
+		_WINDOWS
+		_USRDLL
 		GLUT_NO_LIB_PRAGMA
-		PX_PHYSX_STATIC_LIB)
+		PX_PHYSX_STATIC_LIB
+		PINT_PHYSX_EXPORTS)
 
 target_include_directories(PINT_Jolt SYSTEM BEFORE
 		PUBLIC ${PEEL_SOURCE_ROOT}

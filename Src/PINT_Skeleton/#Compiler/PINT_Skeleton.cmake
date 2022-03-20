@@ -24,6 +24,15 @@ add_library(PINT_Skeleton SHARED ${PINT_SKELETON_SRC_FILES})
 set_target_properties(PINT_Skeleton PROPERTIES
 		DEBUG_POSTFIX _D)
 
+target_compile_definitions(PINT_Skeleton PRIVATE
+		WIN32
+		_DEBUG
+		_WINDOWS
+		_USRDLL
+		GLUT_NO_LIB_PRAGMA
+		PX_PHYSX_STATIC_LIB
+		PINT_PHYSX_EXPORTS)
+
 target_include_directories(PINT_Skeleton SYSTEM BEFORE
 		PUBLIC ${PEEL_SOURCE_ROOT}
 		PUBLIC ${PEEL_SOURCE_ROOT}/Ice/APIs/Ice/Plugins/FlexineSDK
