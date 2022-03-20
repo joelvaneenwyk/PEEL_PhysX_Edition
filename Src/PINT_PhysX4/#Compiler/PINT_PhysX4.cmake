@@ -2,20 +2,32 @@
 # Used to generate PEEL executable.
 #
 
-set(PEEL_PHYSX4_ROOT_DIR ${PEEL_REPO_ROOT}/Externals/PhysX4)
-set(PHYSX_ROOT_DIR ${PEEL_PHYSX4_ROOT_DIR}/physx)
-set(CMAKEMODULES_PATH ${PEEL_PHYSX4_ROOT_DIR}/externals/cmakemodules)
-set(PX_OUTPUT_LIB_DIR ${PHYSX_ROOT_DIR})
-set(PX_OUTPUT_BIN_DIR ${PHYSX_ROOT_DIR})
-set(PXSHARED_PATH ${PEEL_PHYSX4_ROOT_DIR}/pxshared)
-set(TARGET_BUILD_PLATFORM windows)
+macro(target_link_library_config library)
+	target_link_libraries(PINT_PhysX4
+			debug ${library}${PEEL_BIN_ARCH}_D
+			optimized ${library}${PEEL_BIN_ARCH})
+endmacro()
 
-set_option(PX_BUILDSNIPPETS OFF)
-set_option(PX_BUILDPUBLICSAMPLES OFF)
+set(PEEL_PHYSX4_ROOT_DIR 	${PEEL_REPO_ROOT}/Externals/PhysX4)
+set(PHYSX_ROOT_DIR 			${PEEL_PHYSX4_ROOT_DIR}/physx)
+set(PX_OUTPUT_LIB_DIR 		${PHYSX_ROOT_DIR})
+set(PX_OUTPUT_BIN_DIR 		${PHYSX_ROOT_DIR})
+set(PXSHARED_PATH 			${PEEL_PHYSX4_ROOT_DIR}/pxshared)
+
+set(TARGET_BUILD_PLATFORM 	windows)
+
+# Override this modules path otherwise we get errors during initial
+# setup e.g., "CMake Error at Externals/PhysX4/physx/source/compiler/cmake/CMakeLists.txt:61 (MESSAGE)"
+set(CMAKEMODULES_PATH 		${PEEL_PHYSX4_ROOT_DIR}/externals/cmakemodules)
+set(CMAKEMODULES_NAME 		CMakeModules)
+set(CMAKEMODULES_VERSION 	1.27)
+
+set_option(PX_BUILDSNIPPETS 			OFF)
+set_option(PX_BUILDPUBLICSAMPLES 		OFF)
 set_option(PX_GENERATE_STATIC_LIBRARIES OFF)
-set_option(NV_USE_STATIC_WINCRT ON)
-set_option(NV_USE_DEBUG_WINCRT ON)
-set_option(PX_FLOAT_POINT_PRECISE_MATH ON)
+set_option(NV_USE_STATIC_WINCRT 		ON)
+set_option(NV_USE_DEBUG_WINCRT 			ON)
+set_option(PX_FLOAT_POINT_PRECISE_MATH 	ON)
 
 add_subdirectory(${PHYSX_ROOT_DIR}/compiler/public)
 
@@ -208,6 +220,14 @@ add_library(PINT_PhysX4 SHARED ${PINT_PHYSX4_SRC_FILES})
 set_target_properties(PINT_PhysX4 PROPERTIES
 		DEBUG_POSTFIX _D)
 
+target_link_options(PINT_PhysX4
+		PRIVATE /NODEFAULTLIB:LIBCMT)
+
+target_compile_definitions(PINT_PhysX4 PRIVATE
+		_CONSOLE
+		GLUT_NO_LIB_PRAGMA
+		PX_PHYSX_STATIC_LIB)
+
 target_include_directories(PINT_PhysX4 SYSTEM BEFORE
 		PUBLIC ${PEEL_SOURCE_ROOT}
 		PUBLIC ${PEEL_SOURCE_ROOT}/PINT_PhysX4
@@ -251,9 +271,6 @@ target_link_directories(PINT_PhysX4
 		PUBLIC "${PEEL_REPO_ROOT}/Externals"
 		PUBLIC "${PEEL_REPO_ROOT}/PhysX4/physx/compiler/vc17win64/sdk_source_bin")
 
-set(PEEL_BIN_POSTFIX_DEBUG ${PEEL_BIN_ARCH}_D)
-set(PEEL_BIN_POSTFIX_RELEASE ${PEEL_BIN_ARCH})
-
 target_link_libraries(PINT_PhysX4
 		FastXml
 		LowLevel
@@ -274,14 +291,6 @@ target_link_libraries(PINT_PhysX4
 		glu32.lib
 		glew${PEEL_BIN_ARCH}
 		ZCB2${PEEL_BIN_ARCH})
-
-set(PEEL_BIN_POSTFIX_DEBUG ${PEEL_BIN_ARCH}_D)
-set(PEEL_BIN_POSTFIX_RELEASE ${PEEL_BIN_ARCH})
-macro(target_link_library_config library)
-	target_link_libraries(PINT_PhysX4
-			debug ${library}${PEEL_BIN_POSTFIX_DEBUG}
-			optimized ${library}${PEEL_BIN_POSTFIX_RELEASE})
-endmacro()
 
 target_link_library_config(IceCore)
 target_link_library_config(IceMaths)

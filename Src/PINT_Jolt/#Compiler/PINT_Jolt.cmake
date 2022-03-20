@@ -2,10 +2,11 @@
 # Used to generate PEEL executable.
 #
 
-set(TARGET_UNIT_TESTS OFF CACHE BOOL "Build Unit Tests" FORCE)
-set(TARGET_HELLO_WORLD OFF CACHE BOOL "Build Hello World" FORCE)
-set(TARGET_PERFORMANCE_TEST OFF CACHE BOOL "Build Performance Test" FORCE)
-set(TARGET_SAMPLES OFF CACHE BOOL "Build Samples" FORCE)
+set_option(TARGET_UNIT_TESTS 		OFF)
+set_option(TARGET_HELLO_WORLD 		OFF)
+set_option(TARGET_PERFORMANCE_TEST 	OFF)
+set_option(TARGET_SAMPLES 			OFF)
+set_option(TARGET_VIEWER 			OFF)
 
 add_subdirectory(${PEEL_REPO_ROOT}/Externals/JoltPhysics/Build)
 
@@ -23,20 +24,17 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
 	set_source_files_properties(${PEEL_SOURCE_ROOT}/PINT_Jolt/stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
 endif()
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /DPINT_JOLT_EXPORTS")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /DJPH_PROFILE_ENABLED")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /DJPH_DEBUG_RENDERER")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /DJPH_FLOATING_POINT_EXCEPTIONS_ENABLED")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /DPINT_JOLT_EXPORTS")
-
 # Group source files
 source_group(TREE ${PEEL_REPO_ROOT} FILES ${PINT_JOLT_SRC_FILES})
 
-# Create PEEL lib
 add_library(PINT_Jolt SHARED ${PINT_JOLT_SRC_FILES})
 
 set_target_properties(PINT_Jolt PROPERTIES
 		DEBUG_POSTFIX _D)
+
+target_compile_definitions(PINT_Jolt PRIVATE
+		GLUT_NO_LIB_PRAGMA
+		PX_PHYSX_STATIC_LIB)
 
 target_include_directories(PINT_Jolt SYSTEM BEFORE
 		PUBLIC ${PEEL_SOURCE_ROOT}
@@ -52,25 +50,30 @@ target_include_directories(PINT_Jolt SYSTEM BEFORE
 		PUBLIC ${PEEL_REPO_ROOT}/Private/NVD)
 
 target_link_directories(PINT_Jolt
-		PUBLIC "${PEEL_SOURCE_ROOT}/Ice/Lib64"
+		PUBLIC "${PEEL_SOURCE_ROOT}/Ice/Lib${PEEL_BIN_ARCH}"
 		PUBLIC "${PEEL_SOURCE_ROOT}/GL"
 		PUBLIC "${PEEL_SOURCE_ROOT}/GlutX/Lib"
 		PUBLIC "${PEEL_REPO_ROOT}/Externals")
 
+macro(target_link_library_config library)
+	target_link_libraries(PINT_Jolt
+			debug ${library}${PEEL_BIN_ARCH}_D
+			optimized ${library}${PEEL_BIN_ARCH})
+endmacro()
+
 target_link_libraries(PINT_Jolt
 		Jolt
-		IceCore64
-		IceMaths64
-		Contact64
-		Meshmerizer64
-		IceImageWork64
-		IceCharacter64
-		IceGUI64
-		IceRenderer64
-		IceTerrain64
-		ZCB264
-		glew64
-		GlutX64_D
 		opengl32.lib
 		glu32.lib
-)
+		glew${PEEL_BIN_ARCH})
+
+target_link_library_config(IceCore)
+target_link_library_config(IceMaths)
+target_link_library_config(Contact)
+target_link_library_config(Meshmerizer)
+target_link_library_config(IceImageWork)
+target_link_library_config(IceCharacter)
+target_link_library_config(IceGUI)
+target_link_library_config(IceRenderer)
+target_link_library_config(IceTerrain)
+target_link_library_config(GlutX)
