@@ -1,8 +1,13 @@
 {
+    "cmake.configureOnOpen": true,
+    "cmake.configureOnEdit": true,
+    "cmake.buildDirectory": "${workspaceFolder}/Build/vscode",
     "cSpell.words": [
+        "cmake",
         "joelvaneenwyk",
-        "Raycast",
-        "Terdiman",
-        "Voronoi"
+        "msbuild",
+        "raycast",
+        "terdiman",
+        "voronoi"
     ]
 }
