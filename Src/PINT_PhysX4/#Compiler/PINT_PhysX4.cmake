@@ -26,7 +26,7 @@ set_option(PX_BUILDSNIPPETS 			OFF)
 set_option(PX_BUILDPUBLICSAMPLES 		OFF)
 set_option(PX_GENERATE_STATIC_LIBRARIES OFF)
 set_option(NV_USE_STATIC_WINCRT 		ON)
-set_option(NV_USE_DEBUG_WINCRT 			ON)
+set_option(NV_USE_DEBUG_WINCRT 			$<IF:$<CONFIG:Debug>,ON,OFF>)
 set_option(PX_FLOAT_POINT_PRECISE_MATH 	ON)
 
 add_subdirectory(${PHYSX_ROOT_DIR}/compiler/public)
@@ -225,7 +225,7 @@ target_link_options(PINT_PhysX4
 
 target_compile_definitions(PINT_PhysX4 PRIVATE
 		WIN32
-		_DEBUG
+		$<IF:$<CONFIG:Debug>,_DEBUG,NDEBUG>
 		_WINDOWS
 		_USRDLL
 		GLUT_NO_LIB_PRAGMA
@@ -309,22 +309,16 @@ target_link_library_config(GlutX)
 
 macro(copy_physx_library filename)
 	add_custom_command(
-			TARGET PEEL POST_BUILD
-			COMMAND ${CMAKE_COMMAND} -E copy
+			TARGET PINT_PhysX4 POST_BUILD
+			COMMAND ${CMAKE_COMMAND} -E $<IF:$<CONFIG:Debug>,copy,true>
 			${PX_EXE_OUTPUT_DIRECTORY_DEBUG}/${filename} ${CMAKE_CURRENT_BINARY_DIR}/Debug/${filename})
 	add_custom_command(
-			TARGET PEEL POST_BUILD
-			COMMAND ${CMAKE_COMMAND} -E copy
+			TARGET PINT_PhysX4 POST_BUILD
+			COMMAND ${CMAKE_COMMAND} -E $<IF:$<CONFIG:Debug>,true,copy>
 			${PX_EXE_OUTPUT_DIRECTORY_RELEASE}/${filename} ${CMAKE_CURRENT_BINARY_DIR}/Release/${filename})
 endmacro()
 
 copy_physx_library(PhysX.dll)
 copy_physx_library(PhysXCommon.dll)
-copy_physx_library(PhysXCommon_64.dll)
 copy_physx_library(PhysXCooking.dll)
-copy_physx_library(PhysXCooking_64.dll)
 copy_physx_library(PhysXFoundation.dll)
-copy_physx_library(PhysXFoundation_64.dll)
-copy_physx_library(PhysXGpu_64.dll)
-copy_physx_library(PhysX_64.dll)
-

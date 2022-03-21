@@ -30,11 +30,12 @@ source_group(TREE ${PEEL_REPO_ROOT} FILES ${PINT_JOLT_SRC_FILES})
 add_library(PINT_Jolt SHARED ${PINT_JOLT_SRC_FILES})
 
 set_target_properties(PINT_Jolt PROPERTIES
+		MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
 		DEBUG_POSTFIX _D)
 
 target_compile_definitions(PINT_Jolt PRIVATE
 		WIN32
-		_DEBUG
+		$<IF:$<CONFIG:Debug>,_DEBUG,NDEBUG>
 		_WINDOWS
 		_USRDLL
 		GLUT_NO_LIB_PRAGMA

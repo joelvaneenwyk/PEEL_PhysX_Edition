@@ -2,32 +2,24 @@
 # Used to generate PEEL executable.
 #
 
-macro(copy_dependency path filename)
+macro(copy_peel_dependency path filename)
 	add_custom_command(
 			TARGET PEEL POST_BUILD
-			COMMAND ${CMAKE_COMMAND} -E copy
+			COMMAND ${CMAKE_COMMAND} -E $<IF:$<CONFIG:Debug>,copy,true>
 			${PEEL_REPO_ROOT}/${path}/${filename} ${CMAKE_CURRENT_BINARY_DIR}/Debug/${filename})
 	add_custom_command(
 			TARGET PEEL POST_BUILD
-			COMMAND ${CMAKE_COMMAND} -E copy
+			COMMAND ${CMAKE_COMMAND} -E $<IF:$<CONFIG:Debug>,true,copy>
 			${PEEL_REPO_ROOT}/${path}/${filename} ${CMAKE_CURRENT_BINARY_DIR}/Release/${filename})
 endmacro()
 
-macro(copy_config_dependency path filename)
-	add_custom_command(
-			TARGET PEEL POST_BUILD
-			COMMAND ${CMAKE_COMMAND} -E copy
-			${PEEL_REPO_ROOT}/${path}/${filename}${PEEL_BIN_ARCH}_D.dll ${CMAKE_CURRENT_BINARY_DIR}/Debug/${filename}${PEEL_BIN_ARCH}_D.dll)
-	add_custom_command(
-			TARGET PEEL POST_BUILD
-			COMMAND ${CMAKE_COMMAND} -E copy
-			${PEEL_REPO_ROOT}/${path}/${filename}${PEEL_BIN_ARCH}.dll ${CMAKE_CURRENT_BINARY_DIR}/Release/${filename}${PEEL_BIN_ARCH}}.dll)
+macro(copy_peel_dependency_variant path filename)
+	copy_peel_dependency(${path} ${filename}${PEEL_BIN_ARCH}$<$<CONFIG:Debug>:_D>.dll)
 endmacro()
 
 macro(target_link_library_config library)
 	target_link_libraries(PEEL
-			debug ${library}${PEEL_BIN_ARCH}_D
-			optimized ${library}${PEEL_BIN_ARCH})
+			${library}${PEEL_BIN_ARCH}$<$<CONFIG:Debug>:_D>)
 endmacro()
 
 # Source files
@@ -612,27 +604,27 @@ target_link_library_config(IceTerrain)
 target_link_library_config(ZCB2)
 target_link_library_config(GlutX)
 
-copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} DevIL.dll)
-copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} fmod${PEEL_BIN_ARCH}.dll)
-copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} Microsoft.VC90.DebugCRT.manifest)
-copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcm90d.dll)
-copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcp90.dll)
-copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcp90d.dll)
-copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcr90.dll)
-copy_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcr90d.dll)
+copy_peel_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} DevIL.dll)
+copy_peel_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} fmod${PEEL_BIN_ARCH}.dll)
+copy_peel_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} Microsoft.VC90.DebugCRT.manifest)
+copy_peel_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcm90d.dll)
+copy_peel_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcp90.dll)
+copy_peel_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcp90d.dll)
+copy_peel_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcr90.dll)
+copy_peel_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcr90d.dll)
 
-copy_dependency(Src/GL glut32.dll)
-copy_dependency(Src/GL glew32.dll)
-copy_dependency(Src/GL glew64.dll)
+copy_peel_dependency(Src/GL glut32.dll)
+copy_peel_dependency(Src/GL glew32.dll)
+copy_peel_dependency(Src/GL glew64.dll)
 
-copy_config_dependency(Src/GlutX/Bin GlutX)
+copy_peel_dependency_variant(Src/GlutX/Bin GlutX)
 
-copy_config_dependency(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} Contact)
-copy_config_dependency(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceCharacter)
-copy_config_dependency(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceCore)
-copy_config_dependency(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceGUI)
-copy_config_dependency(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceImageWork)
-copy_config_dependency(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceMaths)
-copy_config_dependency(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceRenderer)
-copy_config_dependency(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceTerrain)
-copy_config_dependency(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} Meshmerizer)
+copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} Contact)
+copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceCharacter)
+copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceCore)
+copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceGUI)
+copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceImageWork)
+copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceMaths)
+copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceRenderer)
+copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceTerrain)
+copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} Meshmerizer)

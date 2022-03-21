@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.22 FATAL_ERROR)
 
 project(PEEL LANGUAGES CXX)
 
@@ -32,7 +32,7 @@ if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
 	set(CLANG_LIB_PATH "\"$(VSInstallDir)\\VC\\Tools\\Llvm\\x64\\lib\\clang\\${CMAKE_CXX_COMPILER_VERSION}\\lib\\windows\"")
 
 	# Set runtime library
-	set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+	set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
 
 	# Set general compiler flags
 	set(CMAKE_CXX_FLAGS "/Zc:__cplusplus /GR- /Gm- /nologo /diagnostics:classic /FC /fp:except- /Zc:inline /Zi /DWIN32 /D_WINDOWS /DUNICODE /D_UNICODE")
@@ -78,16 +78,6 @@ if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
 		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "/INCREMENTAL:NO /LTCG:incremental /OPT:ICF /OPT:REF")
 		set(CMAKE_STATIC_LINKER_FLAGS_RELEASE "/LTCG")
 	endif()
-
-	# Set compiler flags for various configurations
-
-	# Clang reorders variables so that div by zero occurs if we enable exception checking
-	set(CMAKE_CXX_FLAGS_DEBUG "-D_DEBUG -DJPH_PROFILE_ENABLED -DJPH_DEBUG_RENDERER")
-	set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG -DJPH_PROFILE_ENABLED -DJPH_DEBUG_RENDERER")
-	set(CMAKE_CXX_FLAGS_DISTRIBUTION "-O3 -DNDEBUG")
-	set(CMAKE_CXX_FLAGS_RELEASEASAN "-DNDEBUG -DJPH_PROFILE_ENABLED -DJPH_DISABLE_TEMP_ALLOCATOR -DJPH_DEBUG_RENDERER -fsanitize=address")
-	set(CMAKE_CXX_FLAGS_RELEASEUBSAN "-DNDEBUG -DJPH_PROFILE_ENABLED -DJPH_DEBUG_RENDERER -fsanitize=undefined,implicit-conversion")
-	set(CMAKE_CXX_FLAGS_RELEASECOVERAGE "-DNDEBUG -fprofile-instr-generate -fcoverage-mapping")
 endif()
 
 # Set linker flags
