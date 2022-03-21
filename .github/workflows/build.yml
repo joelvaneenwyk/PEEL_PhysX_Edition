@@ -1,0 +1,42 @@
+name: Build
+
+on:
+  push:
+    branches: [ cmake ]
+    paths-ignore:
+      - 'Docs/**'
+      - '**.md'
+      - '**.txt'
+  pull_request:
+    branches: [ cmake ]
+    paths-ignore:
+      - 'Docs/**'
+      - '**.md'
+      - '**.txt'
+
+jobs:
+  visual_studio:
+    runs-on: windows-latest
+    name: Visual Studio CL
+    strategy:
+        fail-fast: false
+        matrix:
+            build_type: [Debug, Release]
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+      with:
+        submodules: true
+
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
+
+    - name: Get latest CMake and ninja
+      uses: lukka/get-cmake@latest
+
+    - name: Configure CMake
+      run: cmake -S ${{github.workspace}} -B ${{github.workspace}}/Build/x64_vs2022 -G "Visual Studio 17 2022" -A x64
+
+    - name: Build
+      run: msbuild Build\x64_vs2022\PEEL.sln /property:Configuration=${{matrix.build_type}}

@@ -54,7 +54,7 @@
 	#include <malloc.h>			// For _alloca
 #include <math.h>
 
-	#include <IceMaths/IceMathsAFX.h>
+	#include "IceMaths/IceMathsAFX.h"
 	using namespace IceMaths;
 
 	#define Interval	IceMaths::Interval
