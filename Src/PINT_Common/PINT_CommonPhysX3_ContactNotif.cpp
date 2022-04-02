@@ -7,9 +7,9 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "..\Pint.h"
+#include "../Pint.h"
 
-#include "..\PINT_Common\PINT_Common.h"
+#include "../PINT_Common/PINT_Common.h"
 
 #include "PINT_CommonPhysX3.h"
 #include "PINT_CommonPhysX3_ContactNotif.h"

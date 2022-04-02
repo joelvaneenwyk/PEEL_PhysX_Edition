@@ -25,7 +25,7 @@
 //#pragma warning( disable : 4242 )	// conversion from 'physx::PxU32' to 'physx::PxU8', possible loss of data
 */
 
-#include "./PINT_Common/PINT_Ice.h"
+#include "PINT_Common/PINT_Ice.h"
 
 #include "GL/glew.h"
 #include "GlutX/Include/GlutX.h"

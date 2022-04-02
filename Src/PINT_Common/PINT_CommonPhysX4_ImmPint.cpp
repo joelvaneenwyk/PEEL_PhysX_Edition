@@ -9,9 +9,9 @@
 #include "stdafx.h"
 
 //#include "PINT_PhysX50_Imm.h"
-#include "..\PINT_Common\PINT_CommonPhysX4_ImmPint.h"
+#include "../PINT_Common/PINT_CommonPhysX4_ImmPint.h"
 
-#include "..\PINT_Common\PINT_Common.h"
+#include "../PINT_Common/PINT_Common.h"
 
 #include "PxPhysicsAPI.h"
 #include "PxImmediateMode.h"
@@ -39,13 +39,13 @@
 	using namespace immediate;
 #endif
 
-//#include "Extensions\ExtConstraintHelper.h"
+//#include "Extensions/ExtConstraintHelper.h"
 
-#include "..\PintShapeRenderer.h"
+#include "../PintShapeRenderer.h"
 
-#include "..\PINT_Common\PINT_CommonPhysX3_Error.h"
-#include "..\PINT_Common\PINT_CommonPhysX3_Allocator.h"
-#include "..\PINT_Common\PINT_CommonPhysX3_Base.h"
+#include "../PINT_Common/PINT_CommonPhysX3_Error.h"
+#include "../PINT_Common/PINT_CommonPhysX3_Allocator.h"
+#include "../PINT_Common/PINT_CommonPhysX3_Base.h"
 
 /*
 PEEL Plugin TODO:
@@ -82,7 +82,7 @@ solveAndIntegrate: 4042
 
 
 
-#include "..\PINT_Common\PINT_CommonPhysX4_Imm.h"
+#include "../PINT_Common/PINT_CommonPhysX4_Imm.h"
 
 static PxVec3		gGravity(0.0f, -9.81f, 0.0f);
 static const float	gContactDistance			= 0.1f;
@@ -1050,11 +1050,11 @@ static void gCheckBoxCallback(const IceCheckBox& check_box, bool checked, void* 
 
 		case IMM_GUI_ENABLE_BATCHED_CONTACTS:
 			gBatchContacts = checked;
-			break;		
+			break;
 
 		case IMM_GUI_ENABLE_TGS:
 			gUseTGS = checked;
-			break;		
+			break;
 
 		case IMM_GUI_ENABLE_DEBUG_VIZ:
 		{

@@ -46,7 +46,7 @@ enum VehicleScene
 	SCENE_TERRAIN_STREAMING,
 };
 
-static const bool gCreateDefaultEnv[] = 
+static const bool gCreateDefaultEnv[] =
 {
 	false,	//SCENE_FACTORY
 	false,	//SCENE_FLAT
@@ -697,7 +697,7 @@ class VehicleSDK : public VehicleInput
 
 			helper.CreateLabel(TabWindow, 4, y+LabelOffsetY, LabelWidth, 20, "Ground clearance cut offset:", &UIElems);
 			mEditBox_GroundClearanceCutOffset= helper.CreateEditBox(TabWindow, 1, 4+OffsetX, y, EditBoxWidth, 20, "0.3", &UIElems, EDITBOX_FLOAT_POSITIVE, null, null);
-			y += YStep;			
+			y += YStep;
 		}
 
 		// TAB_WHEEL_TIRES
@@ -1187,12 +1187,12 @@ class VehicleSDK : public VehicleInput
 		{
 			const Point Scale(1.0f, 1.0f, 1.0f);
 			LoadMeshesFromFile_(*this, "Archipelago.bin", &Scale, false, 0);
-		}		
+		}
 		else if(Index==SCENE_KP)
 		{
 			const Point Scale(0.1f, 0.1f, 0.1f);
 			LoadMeshesFromFile_(*this, "KP.bin", &Scale, false, 0);
-		}		
+		}
 		else if(Index==SCENE_RACE_TRACK)
 		{
 			IndexedSurface* IS = ICE_NEW(TrackedIndexedSurface);
@@ -1374,7 +1374,7 @@ class VehicleSDK : public VehicleInput
 					ASSERT(Handle);
 					Handles[Index++] = Handle;
 				}
-			}		
+			}
 		}
 		else if(Index==SCENE_BOXES)
 		{
@@ -1769,7 +1769,7 @@ class VehicleSDK : public VehicleInput
 				}
 
 				if(UserData->mDeformManager)
-				{	 
+				{
 					const float OverlapRadius = mTerrainStreamingUI.GetWheelOverlapSphereRadius();
 					UserData->mDeformManager->Update(UserData->mData, *UserData->mStreamInterface, OverlapRadius, dt);
 				}
@@ -2897,7 +2897,7 @@ class VehicleSDKAndRope : public VehicleInput
 				pint.CreateJoint(PINT_SPHERICAL_JOINT_CREATE(Handles[0], VehicleData->mChassis0, Point(0.0f, 0.0f, Radius), Point(0.0f, 0.0f, -ChassisExtents.z)));
 				pint.CreateJoint(PINT_SPHERICAL_JOINT_CREATE(Handles[NbSpheres-1], VehicleData->mChassis1, Point(0.0f, 0.0f, -Radius), Point(0.0f, 0.0f, ChassisExtents.z)));
 			}
-	
+
 			DELETEARRAY(Positions);
 			DELETEARRAY(Handles);
 		}
@@ -2985,7 +2985,7 @@ class VehicleSDKAndRope : public VehicleInput
 
 ///////////////////////////////////////////////////////////////////////////////
 
-#include ".\ZCB\PINT_ZCB2.h"
+#include "ZCB/PINT_ZCB2.h"
 
 class LegoVehicle : public VehicleSDK
 {

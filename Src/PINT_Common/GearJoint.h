@@ -2,7 +2,7 @@
 #define EXT_GEAR_JOINT_H
 
 #include "PxGearJoint.h"
-#include "Extensions\ExtJoint.h"
+#include "Extensions/ExtJoint.h"
 #include "CmUtils.h"
 
 namespace physx
@@ -63,7 +63,7 @@ namespace Ext
 		//~PxGearJoint
 
 				PxConstraint*			attachConstraint(PxPhysics& physics, PxRigidActor* actor0, PxRigidActor* actor1);
-		
+
 		virtual PxConstraintSolverPrep	getPrep() const { return sShaders.solverPrep;  }
 
 	private:

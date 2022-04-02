@@ -1,5 +1,5 @@
 #include "PortalJoint34.h"
-#include "Extensions\ExtConstraintHelper.h"
+#include "Extensions/ExtConstraintHelper.h"
 #include "PxPhysics.h"
 #include "PxPortalJoint34.h"
 #include <stdio.h>
@@ -9,8 +9,8 @@ using namespace Ext;
 
 PxPortalJoint* physx::PxPortalJointCreate(PxPhysics& physics, PxRigidActor* actor0, const PxTransform& localFrame0, PxRigidActor* actor1, const PxTransform& localFrame1)
 {
-	PX_CHECK_AND_RETURN_NULL(localFrame0.isSane(), "PxPortalJointCreate: local frame 0 is not a valid transform"); 
-	PX_CHECK_AND_RETURN_NULL(localFrame1.isSane(), "PxPortalJointCreate: local frame 1 is not a valid transform"); 
+	PX_CHECK_AND_RETURN_NULL(localFrame0.isSane(), "PxPortalJointCreate: local frame 0 is not a valid transform");
+	PX_CHECK_AND_RETURN_NULL(localFrame1.isSane(), "PxPortalJointCreate: local frame 1 is not a valid transform");
 	PX_CHECK_AND_RETURN_NULL((actor0 && actor0->is<PxRigidBody>()) || (actor1 && actor1->is<PxRigidBody>()), "PxPortalJointCreate: at least one actor must be dynamic");
 	PX_CHECK_AND_RETURN_NULL(actor0 != actor1, "PxPortalJointCreate: actors must be different");
 
@@ -49,13 +49,13 @@ void PortalJoint::importExtraData(PxDeserializationContext& context)
 
 void PortalJoint::resolveReferences(PxDeserializationContext& context)
 {
-	setPxConstraint(resolveConstraintPtr(context, getPxConstraint(), getConnector(), sShaders));	
+	setPxConstraint(resolveConstraintPtr(context, getPxConstraint(), getConnector(), sShaders));
 }
 
 PortalJoint* PortalJoint::createObject(PxU8*& address, PxDeserializationContext& context)
 {
 	PortalJoint* obj = new (address) PortalJoint(PxBaseFlag::eIS_RELEASABLE);
-	address += sizeof(PortalJoint);	
+	address += sizeof(PortalJoint);
 	obj->importExtraData(context);
 	obj->resolveReferences(context);
 	return obj;

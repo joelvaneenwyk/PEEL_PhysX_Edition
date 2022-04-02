@@ -9,8 +9,8 @@
 #ifndef PINT_JOLT_H
 #define PINT_JOLT_H
 
-#include "..\Pint.h"
-#include "..\PINT_Common\PINT_CommonShapes.h"
+#include "../Pint.h"
+#include "../PINT_Common/PINT_CommonShapes.h"
 
 	class Jolt_SceneAPI : public Pint_Scene
 	{

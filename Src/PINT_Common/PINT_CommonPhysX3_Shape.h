@@ -9,7 +9,7 @@
 #ifndef PINT_COMMON_PHYSX3_SHAPE_H
 #define PINT_COMMON_PHYSX3_SHAPE_H
 
-#include "..\Pint.h"
+#include "../Pint.h"
 
 //#define SHARED_SHAPES_USE_HASH
 

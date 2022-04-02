@@ -9,7 +9,7 @@
 #ifndef PINT_ZCB2_H
 #define PINT_ZCB2_H
 
-#include "..\Pint.h"
+#include "../Pint.h"
 #include "PhysicsData.h"
 
 #define ZCB2_API
@@ -27,8 +27,8 @@
 #define ICESTATEMACHINECOMPILER_H
 #define ICESKIN_H
 
-#include "ZCB2\ZCB2AFX.h"
-//#include "ZCB2\ZCB2.h"
+#include "ZCB2/ZCB2AFX.h"
+//#include "ZCB2/ZCB2.h"
 using namespace ZCB2;
 
 	// We need FOURCC codes for each chunk. They don't have to be readable within the binary stream
@@ -501,7 +501,7 @@ using namespace ZCB2;
 		inline_	ActorCreate*				AddActor(const PINT_OBJECT_CREATE* create, udword flags)
 											{
 												ActorCreate* NewActor = ICE_RESERVE(ActorCreate, mActorsCreate);
-												NewActor->Init(create, flags);		
+												NewActor->Init(create, flags);
 												return NewActor;
 											}
 
@@ -519,14 +519,14 @@ using namespace ZCB2;
 				PtrContainer				mShapeCreate;	// PINT_SHAPE_CREATE pointers
 				Container					mActorsCreate;	// ActorCreate structures
 //				PtrContainer				mAggregates;
-				PtrContainer				mAggregateChunks;				
+				PtrContainer				mAggregateChunks;
 		public:
 				PtrContainer				mJoints;
 //				Container					mJointsActorIndices;
 				PtrContainer				mConvexChunks;
 				PtrContainer				mMeshChunks;
-				PtrContainer				mMeshObjects;				
-				PtrContainer				mMeshDataChunks;				
+				PtrContainer				mMeshObjects;
+				PtrContainer				mMeshDataChunks;
 				udword						mNbDisabledGroups;
 				PintDisabledGroups*			mDisabledGroups;
 				//PINT_WORLD_CREATE			mScene;

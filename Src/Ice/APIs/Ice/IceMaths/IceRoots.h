@@ -24,7 +24,7 @@
 														ICE_FLOAT		*u,			// Real component of each root
 														ICE_FLOAT		*v,			// Imaginary component of each root
 														ICE_FLOAT		*conv,		// Convergence constant associated with each root
-														register long	n,			// Degree of polynomial (order-1)
+														long			n,			// Degree of polynomial (order-1)
 														long			maxiter,	// Maximum number of iterations
 														long			fig			// The number of decimal figures to be computed
 													);

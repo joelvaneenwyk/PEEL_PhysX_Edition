@@ -9,7 +9,7 @@
 #include "stdafx.h"
 #include "Zcb2_RenderData.h"
 #include "PintShapeRenderer.h"
-#include "./LZ4/lz4.h"
+#include "LZ4/lz4.h"
 
 // We decouple the shape renderers from the exported render data because of the render models. A simple box
 // can be interpreted either as a unique OpenGL cube captured in a display list, or as a convex object part

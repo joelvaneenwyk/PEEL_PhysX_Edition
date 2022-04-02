@@ -9,7 +9,7 @@
 #ifndef PINT_COMMON_PHYSX4_IMM_PINT_H
 #define PINT_COMMON_PHYSX4_IMM_PINT_H
 
-#include "..\Pint.h"
+#include "../Pint.h"
 #include "PINT_CommonPhysX3_Mesh.h"
 
 	class ImmediateScene;

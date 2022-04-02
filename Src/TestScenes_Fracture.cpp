@@ -23,10 +23,10 @@
 
 static const bool gFractureLog = false;
 
-#include ".\Fracture\Fracture.h"
-#include ".\Fracture\Convex.h"
-#include ".\Fracture\MultiConvex.h"
-#include ".\Fracture\FracturePattern.h"
+#include "Fracture/Fracture.h"
+#include "Fracture/Convex.h"
+#include "Fracture/MultiConvex.h"
+#include "Fracture/FracturePattern.h"
 
 static const char* gDesc_VoronoiFracture = "Stress test for Voronoi-based fractures.";
 
@@ -73,7 +73,7 @@ START_TEST(VoronoiFracture, CATEGORY_FRACTURE, gDesc_VoronoiFracture)
 		TestBase::CommonRelease();
 	}
 
-	virtual	void	OnObjectReleased(Pint& pint, PintActorHandle removed_object)	
+	virtual	void	OnObjectReleased(Pint& pint, PintActorHandle removed_object)
 	{
 		if(mRelease)
 			return;
@@ -410,13 +410,13 @@ class VoronoiFracture2 : public TestBase, public PintContactNotifyCallback
 					tmp.Add(udword(mp.mIndices[j]));
 				}
 			}
-			
+
 			CreateInitialConvex(pint, C.mNbVerts, C.mVerts, C.mNbPolys, tmp, StartAsKinematic, 2.0f);
 		}
 		return true;
 	}
 
-	virtual	void	OnObjectReleased(Pint& pint, PintActorHandle removed_object)	
+	virtual	void	OnObjectReleased(Pint& pint, PintActorHandle removed_object)
 	{
 		udword Index;
 		FractureConvex* c = mFractureManager.FindConvex(removed_object, &Index);

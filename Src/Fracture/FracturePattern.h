@@ -9,11 +9,11 @@
 #ifndef FRACTURE_PATTERN
 #define FRACTURE_PATTERN
 
-#include "..\Common.h"
+#include "../Common.h"
 
 #ifdef PEEL_USE_ICE_FRACTURE
 
-	#include <meshmerizer\IceFracturePattern.h>
+	#include <meshmerizer/IceFracturePattern.h>
 	//typedef FractureConvex Convex;
 
 #endif

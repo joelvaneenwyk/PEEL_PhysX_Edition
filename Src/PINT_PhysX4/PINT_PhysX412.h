@@ -9,9 +9,9 @@
 #ifndef PINT_PHYSX411_H
 #define PINT_PHYSX411_H
 
-#include "..\Pint.h"
-#include "..\PINT_Common\PINT_CommonPhysX3.h"
-#include "..\PINT_Common\PINT_CommonPhysX3_Vehicles.h"
+#include "../Pint.h"
+#include "../PINT_Common/PINT_CommonPhysX3.h"
+#include "../PINT_Common/PINT_CommonPhysX3_Vehicles.h"
 
 	class PhysX : public SharedPhysX_Vehicles
 	{

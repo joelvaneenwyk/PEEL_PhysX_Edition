@@ -9,7 +9,7 @@
 #ifndef PINT_SKELETON_H
 #define PINT_SKELETON_H
 
-#include "..\Pint.h"
+#include "../Pint.h"
 
 	class SkeletonPint : public Pint
 	{

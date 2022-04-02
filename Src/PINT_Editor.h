@@ -9,9 +9,9 @@
 #ifndef PINT_EDITOR_H
 #define PINT_EDITOR_H
 
-#include ".\Pint.h"
-#include ".\ZCB\PINT_ZCB2.h"
-#include ".\PhysicsData.h"
+#include "Pint.h"
+#include "ZCB/PINT_ZCB2.h"
+#include "PhysicsData.h"
 
 	// A built-in "plugin" to provide basic editing features
 

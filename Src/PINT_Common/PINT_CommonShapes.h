@@ -9,7 +9,7 @@
 #ifndef PINT_COMMON_SHAPES_H
 #define PINT_COMMON_SHAPES_H
 
-#include "..\Pint.h"
+#include "../Pint.h"
 
 	class PintShapeRenderer;
 

@@ -9,7 +9,7 @@
 #ifndef PINT_COMMON_PHYSX3_CCT_H
 #define PINT_COMMON_PHYSX3_CCT_H
 
-#include "..\Pint.h"
+#include "../Pint.h"
 
 	class PhysX_CCT_API : public Pint_Character
 	{

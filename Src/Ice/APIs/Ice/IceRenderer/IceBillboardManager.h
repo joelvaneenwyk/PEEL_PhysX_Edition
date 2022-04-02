@@ -35,7 +35,7 @@
 	#define TEMPLATED_MANAGER		BillboardHandleManager
 	#define TEMPLATED_OBJECT		Billboard
 	#define	TEMPLATED_EXPORT		ICERENDERER_API
-	#include <IceCore\IceHandleManagerTemplateDef.h>
+	#include <IceCore/IceHandleManagerTemplateDef.h>
 
 	class ICERENDERER_API BillboardManager : public Allocateable
 	{
@@ -90,7 +90,7 @@
 				BOOL			mIdentity;
 				udword			mVertexOffset;
 				VertexBuffer*	mVB;
-		// 
+		//
 				BillboardHandleManager	mBHM;
 
 		// Internal methods
@@ -117,7 +117,7 @@
 	#define TEMPLATED_MANAGER		FXQuadHandleManager
 	#define TEMPLATED_OBJECT		FXQuad
 	#define	TEMPLATED_EXPORT		ICERENDERER_API
-	#include <IceCore\IceHandleManagerTemplateDef.h>
+	#include <IceCore/IceHandleManagerTemplateDef.h>
 
 	class ICERENDERER_API FXQuadManager : public Allocateable
 	{
@@ -169,7 +169,7 @@
 				AxisSortHelper	mAxisSortHelper;
 				udword			mVertexOffset;
 				VertexBuffer*	mVB;
-		// 
+		//
 				FXQuadHandleManager	mQHM;
 
 		// Internal methods

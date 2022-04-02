@@ -9,14 +9,14 @@
 #ifndef MULTI_CONVEX
 #define MULTI_CONVEX
 
-#include "..\Common.h"
-#include "..\PintDef.h"
+#include "../Common.h"
+#include "../PintDef.h"
 
 #include "PsArray.h"
 namespace ps = physx::shdfnd;
 
 #ifdef PEEL_USE_ICE_FRACTURE
-	#include <meshmerizer\IceFractureConvex.h>
+	#include <meshmerizer/IceFractureConvex.h>
 	typedef FractureConvex Convex;
 #endif
 

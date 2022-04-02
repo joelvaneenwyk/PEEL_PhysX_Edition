@@ -12,7 +12,7 @@
 // It is controlled by PHYSX_SUPPORT_RCA at the header level. At the cpp level, just add or don't add this file to the project.
 
 #include "stdafx.h"
-#include "..\Pint.h"
+#include "../Pint.h"
 #include "PINT_Common.h"
 #include "PINT_CommonPhysX3.h"
 

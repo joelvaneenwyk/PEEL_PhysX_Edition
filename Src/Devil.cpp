@@ -20,12 +20,12 @@
 
 #ifdef COMPILE_DEVIL
 	// DevIL wrapper copied from '\APPs\#Plugins\SystemPlugs\IceDevil.cpp' (ICE). Probably old and obsolete but it still works.
-//	#include ".\DevIL\include\il\il_wrap.h"
+//	#include "DevIL/include/il/il_wrap.h"
 
 	typedef void	ILvoid;
 	#undef _UNICODE
 //	#define IL_STATIC_LIB
-//	#include <IL\il_wrap.h>
+//	#include <IL/il_wrap.h>
 	#include <IL/ilut.h>
 	#pragma comment(lib, "ilu.lib")
 	#pragma comment(lib, "ilut.lib")
@@ -125,7 +125,7 @@ typedef void	ILvoid;
 #ifdef USE_DEVIL_1_8_0
 	#include "DevIL_1.8.0/include/IL/il.h"
 #else
-	#include ".\il\il.h"
+	#include "il/il.h"
 #endif
 
 static void			(ILAPIENTRY* gFunc_ilInit)			()								= null;

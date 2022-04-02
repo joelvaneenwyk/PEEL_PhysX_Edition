@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 
-#include "..\PINT_Common\PINT_Common.h"
+#include "../PINT_Common/PINT_Common.h"
 
 #ifdef PHYSX_NEW_PUBLIC_API
 	#include "foundation/PxArray.h"
@@ -34,7 +34,7 @@
 #endif
 
 
-#include "..\PINT_Common\PINT_CommonPhysX4_Imm.h"
+#include "../PINT_Common/PINT_CommonPhysX4_Imm.h"
 
 #include "solver/PxSolverDefs.h"
 
@@ -133,7 +133,7 @@ void ImmediateScene::reset()
 	mFilteredPairs.clear();
 
 	const PxU32 size = mArticulations.size();
-	for(PxU32 i=0;i<size;i++)	
+	for(PxU32 i=0;i<size;i++)
 		PxReleaseArticulation(mArticulations[i]);
 
 	mArticulations.reset();
@@ -153,7 +153,7 @@ ImmShapeHandle ImmediateScene::createShape(const PxGeometry& geometry, const PxT
 ImmActorHandle ImmediateScene::createActor(ImmShapeHandle shape, const PxTransform& pose, PxU32 group, const MassProps* massProps, Dy::ArticulationLinkHandle link)
 {
 	const PxU32 id = mActors.size();
-	// PT: we don't support compounds in this simple snippet. 1 actor = 1 shape/geom. 
+	// PT: we don't support compounds in this simple snippet. 1 actor = 1 shape/geom.
 	PX_ASSERT(mShapes.size()==id+1);
 	PX_ASSERT(mActorGlobalPoses.size()==id);
 #ifdef SHAPE_CENTRIC
@@ -195,7 +195,7 @@ ImmActorHandle ImmediateScene::createActor(ImmShapeHandle shape, const PxTransfo
 
 	if(massProps)
 		actor.mMassProps	= *massProps;
-	else	
+	else
 	{
 		actor.mMassProps.mInvMass = 0.0f;
 		actor.mMassProps.mInvInertia = PxVec3(0.0f);
@@ -236,7 +236,7 @@ ImmActorHandle ImmediateScene::createActor(ImmShapeHandle shape, const PxTransfo
 ImmActorHandle ImmediateScene::createActor(PxU32 nbShapes, const ImmShapeHandle* shapes, const PxTransform& pose, PxU32 group, const MassProps* massProps, Dy::ArticulationLinkHandle link)
 {
 	const PxU32 id = mActors.size();
-	// PT: we don't support compounds in this simple snippet. 1 actor = 1 shape/geom. 
+	// PT: we don't support compounds in this simple snippet. 1 actor = 1 shape/geom.
 //	PX_ASSERT(mShapes.size()==id+1);
 	PX_ASSERT(nbShapes<16);
 	PX_ASSERT(mActorGlobalPoses.size()==id);
@@ -285,7 +285,7 @@ ImmActorHandle ImmediateScene::createActor(PxU32 nbShapes, const ImmShapeHandle*
 
 	if(massProps)
 		actor.mMassProps	= *massProps;
-	else	
+	else
 	{
 		actor.mMassProps.mInvMass = 0.0f;
 		actor.mMassProps.mInvInertia = PxVec3(0.0f);
@@ -949,7 +949,7 @@ static PxU32 SphericalJointSolverPrep(Px1DConstraint* constraints,
 	PxVec3& body0WorldOffset,
 	PxU32 /*maxConstraints*/,
 	PxConstraintInvMassScale& invMassScale,
-	const void* constantBlock,							  
+	const void* constantBlock,
 	const PxTransform& bA2w,
 	const PxTransform& bB2w,
 	bool /*useExtendedLimits*/,
@@ -974,7 +974,7 @@ static PxU32 SphericalJointSolverPrep(Px1DConstraint* constraints,
 		PxReal error;
 		const PxReal pad = data.limit.isSoft() ? 0.0f : data.limit.contactDistance;
 		const Cm::ConeLimitHelperTanLess coneHelper(data.limit.yAngle, data.limit.zAngle, pad);
-		const bool active = coneHelper.getLimit(swing, axis, error);				
+		const bool active = coneHelper.getLimit(swing, axis, error);
 		if(active)
 			ch.angularLimit(cA2w.rotate(axis), error, data.limit);
 	}*/
@@ -988,7 +988,7 @@ static PxU32 SphericalJointSolverPrep(Px1DConstraint* constraints,
 }
 
 template<const bool aorb>
-static void setupDescTGS(PxTGSSolverContactDesc& contactDesc, const ImmediateActor* actors, const PxTGSSolverBodyTxInertia* txInertias, const PxTGSSolverBodyData* solverBodyData, 
+static void setupDescTGS(PxTGSSolverContactDesc& contactDesc, const ImmediateActor* actors, const PxTGSSolverBodyTxInertia* txInertias, const PxTGSSolverBodyData* solverBodyData,
 	const PxTransform* poses, const ImmActorHandle handle)
 {
 	PxTransform& bodyFrame = aorb ? contactDesc.bodyFrame1 : contactDesc.bodyFrame0;
@@ -1378,7 +1378,7 @@ float lengthScale, const PxU32 nbPosIterations)
 		nbJointHeaders = mJointData.size();	// TEST_IMMEDIATE_JOINTS
 		PX_ASSERT(nbContactHeaders+nbJointHeaders==mSolverConstraintDesc.size());
 		mHeaders.resize(nbContactHeaders+nbJointHeaders);
-		
+
 		// We are bypassing the constraint batching so we create dummy PxConstraintBatchHeaders
 		for(PxU32 i=0; i<nbContactHeaders; i++)
 		{

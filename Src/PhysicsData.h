@@ -9,7 +9,7 @@
 #ifndef PHYSICS_DATA_H
 #define PHYSICS_DATA_H
 
-#include "..\Pint.h"
+#include "../Pint.h"
 
 	// These classes are basically "editor classes" and only used in editor mode.
 	//

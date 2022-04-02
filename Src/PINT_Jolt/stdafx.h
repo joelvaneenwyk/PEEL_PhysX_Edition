@@ -20,7 +20,7 @@
 #define ICEINTERVAL_H
 #define ICEINCLUSION_H
 #define CTCCONTINUOUS_H
-#include "..\PINT_Common\PINT_Ice.h"
+#include "../PINT_Common/PINT_Ice.h"
 #undef Interval
 
 //#undef null

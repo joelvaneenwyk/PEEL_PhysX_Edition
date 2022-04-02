@@ -9,7 +9,7 @@
 #ifndef LEGOLIB_H
 #define LEGOLIB_H
 
-#include "..\TextureManager.h"
+#include "../TextureManager.h"
 
 	class LegoPartMesh : public Allocateable
 	{

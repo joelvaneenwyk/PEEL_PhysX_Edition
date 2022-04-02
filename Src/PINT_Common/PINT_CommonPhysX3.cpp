@@ -9,8 +9,8 @@
 // WARNING: this file is compiled by all PhysX3 plug-ins, so put only the code here that is "the same" for all versions.
 
 #include "stdafx.h"
-#include "..\Pint.h"
-#include "..\PintShapeRenderer.h"
+#include "../Pint.h"
+#include "../PintShapeRenderer.h"
 #include "PINT_Common.h"
 #include "PINT_CommonPhysX3.h"
 //#include "PINT_CommonPhysX5_Fluid.h"
@@ -364,7 +364,7 @@ gLocalVectors[gNbLocalVectors++] = localPose[1].p;
 		PxVec3 normalw, binormalw;
 		::normalToTangents(axisw, binormalw, normalw);
 		//because axis is supposed to be the Z axis of a frame with the other two being X and Y, we need to negate
-		//Y to make the frame right handed. Note that the above call makes a right handed frame if we pass X --> Y,Z, so 
+		//Y to make the frame right handed. Note that the above call makes a right handed frame if we pass X --> Y,Z, so
 		//it need not be changed.
 
 		for(PxU32 i=0; i<2; i++)
@@ -388,7 +388,7 @@ gLocalVectors[gNbLocalVectors++] = localNormal[i];
 //gLocalVectors[gNbLocalVectors++] = tmp;
 
 			PxMat33 rot(localAxis[i], localNormal[i], localAxis[i].cross(localNormal[i]));
-			
+
 			localPose[i].q = PxQuat(rot);
 			localPose[i].q.normalize();
 
@@ -480,7 +480,7 @@ PintJointHandle SharedPhysX::CreateJoint(PxPhysics& physics, const PINT_JOINT_CR
 				printf("mObject0: %d\n", jc.mObject0);
 				printf("mObject1: %d\n", jc.mObject1);
 				printf("mLocalPivot0: %f %f %f\n", jc.mLocalPivot0.mPos.x, jc.mLocalPivot0.mPos.y, jc.mLocalPivot0.mPos.z);
-				printf("mLocalPivot1: %f %f %f\n", jc.mLocalPivot1.mPos.x, jc.mLocalPivot1.mPos.y, jc.mLocalPivot1.mPos.z);		
+				printf("mLocalPivot1: %f %f %f\n", jc.mLocalPivot1.mPos.x, jc.mLocalPivot1.mPos.y, jc.mLocalPivot1.mPos.z);
 			}
 
 			const PxTransform LocalFrame0(ToPxTransform(jc.mLocalPivot0));
@@ -641,7 +641,7 @@ PintJointHandle SharedPhysX::CreateJoint(PxPhysics& physics, const PINT_JOINT_CR
 						{
 							PxVec3 wp0 = m0.rotate(ToPxVec3(jc.mLocalAxis0));
 							PxVec3 wp1 = m1.rotate(ToPxVec3(jc.mLocalAxis1));
-							wsAxis = (wp0+wp1)*0.5f; 
+							wsAxis = (wp0+wp1)*0.5f;
 							wsAxis.normalize();
 						}
 						PxSetJointGlobalFrame(*j, &wsAnchor, &wsAxis);
@@ -1473,11 +1473,11 @@ void SharedPhysX::CreateCooking(const PxTolerancesScale& scale, PxMeshPreprocess
 #if PHYSX_SUPPORT_PX_MESH_COOKING_HINT
 	#if PHYSX_SUPPORT_PX_MESH_MIDPHASE2
 		if(Params.midphaseDesc.getType() == PxMeshMidPhase::eBVH33)
-		{		
+		{
 			Params.midphaseDesc.mBVH33Desc.meshCookingHint = mParams.mMeshCookingHint;
 		}
 		else if(Params.midphaseDesc.getType() == PxMeshMidPhase::eBVH34)
-		{			
+		{
 			if(mParams.mMeshCookingHint==PxMeshCookingHint::eCOOKING_PERFORMANCE)
 				Params.midphaseDesc.mBVH34Desc.PHYSX_NUM_PRIMS_PER_LEAF = 15;
 			else
@@ -2898,7 +2898,7 @@ PxMaterial* SharedPhysX::CreateMaterial(const PINT_MATERIAL_CREATE& desc)
 	M->setFlag(PxMaterialFlag::eIMPROVED_PATCH_FRICTION, mParams.mImprovedPatchFriction);
 #endif
 
-	if(desc.mStaticFriction==0.0f && desc.mDynamicFriction==0.0f)		
+	if(desc.mStaticFriction==0.0f && desc.mDynamicFriction==0.0f)
 		M->setFrictionCombineMode(PxCombineMode::eMULTIPLY);
 
 //	M->setFrictionCombineMode(PxCombineMode::eMIN);
@@ -3351,7 +3351,7 @@ PintArticHandle SharedPhysX::CreateArticulation(const PINT_ARTICULATION_CREATE&)
 		printf("minVelocityIters: %d\n", minVelocityIters);
 	}
 	Articulation->setSolverIterationCounts(mParams.mSolverIterationCountPos, mParams.mSolverIterationCountVel);
-	
+
 	// Projection
 	Articulation->setMaxProjectionIterations(mParams.mMaxProjectionIterations);
 	Articulation->setSeparationTolerance(mParams.mSeparationTolerance);
@@ -5237,11 +5237,11 @@ static void gCheckBoxCallback(const IceCheckBox& check_box, bool checked, void* 
 		case PHYSX_GUI_USE_SUSPENSION_SWEEPS:
 			gParams.mUseSuspensionSweeps = checked;
 			if(gPhysXUI->mCheckBox_ForceSphereWheels)
-				gPhysXUI->mCheckBox_ForceSphereWheels->SetEnabled(checked);		
+				gPhysXUI->mCheckBox_ForceSphereWheels->SetEnabled(checked);
 			if(gPhysXUI->mCheckBox_UseBlockingSweeps)
-				gPhysXUI->mCheckBox_UseBlockingSweeps->SetEnabled(checked);		
+				gPhysXUI->mCheckBox_UseBlockingSweeps->SetEnabled(checked);
 			if(gPhysXUI->mCheckBox_DrawSweptWheels)
-				gPhysXUI->mCheckBox_DrawSweptWheels->SetEnabled(checked);		
+				gPhysXUI->mCheckBox_DrawSweptWheels->SetEnabled(checked);
 			break;
 
 		case PHYSX_GUI_FORCE_SPHERE_WHEELS:
@@ -5263,7 +5263,7 @@ static void gCheckBoxCallback(const IceCheckBox& check_box, bool checked, void* 
 		case PHYSX_GUI_DRAW_PHYSX_TELEMETRY:
 			gParams.mDrawPhysXTelemetry = checked;
 			break;
-			
+
 #ifdef PHYSX_SUPPORT_VEHICLE_FIX
 		case PHYSX_GUI_USE_FIX:
 			gParams.mUseFix = checked;
@@ -5300,7 +5300,7 @@ static udword GetNumberOfLogicalThreads()
 #if (_WIN32_WINNT >= 0x0601)
 	udword groups = GetActiveProcessorGroupCount();
 	udword totalProcessors = 0;
-	for(udword i=0; i<groups; i++) 
+	for(udword i=0; i<groups; i++)
 		totalProcessors += udword(GetActiveProcessorCount(i));
 	return totalProcessors;
 #else

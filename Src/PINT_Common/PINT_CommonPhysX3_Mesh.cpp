@@ -10,7 +10,7 @@
 
 #include "stdafx.h"
 #include "PINT_CommonPhysX3_Mesh.h"
-#include "..\PintShapeRenderer.h"
+#include "../PintShapeRenderer.h"
 
 MeshManager::MeshManager()
 {

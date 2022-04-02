@@ -88,12 +88,12 @@ A damping of 1 will barely overshoot the target and have almost no oscillation, 
 #include <Physics/Constraints/DistanceConstraint.h>
 #include <Physics/Constraints/SliderConstraint.h>
 
-#include "..\PINT_Common\PINT_Ice.h"
-//#include "..\PINT_Common\PINT_Common.cpp"
+#include "../PINT_Common/PINT_Ice.h"
+//#include "../PINT_Common/PINT_Common.cpp"
 
-#include "..\PINT_Common\PINT_Common.h"
-//#include "..\PINT_Common\PINT_IceAllocatorSwitch.h"
-#include "..\PintShapeRenderer.h"
+#include "../PINT_Common/PINT_Common.h"
+//#include "../PINT_Common/PINT_IceAllocatorSwitch.h"
+#include "../PintShapeRenderer.h"
 
 #include <iostream>
 #include <cstdarg>
@@ -219,7 +219,7 @@ static bool AssertFailedImpl(const char *inExpression, const char *inMessage, co
 		case Layers::NON_MOVING:
 			return inLayer2 == BroadPhaseLayers::MOVING;
 		case Layers::MOVING:
-			return true;	
+			return true;
 		default:
 			JPH_ASSERT(false);
 			return false;
@@ -334,7 +334,7 @@ static bool AssertFailedImpl(const char *inExpression, const char *inMessage, co
 		case Layers::UNUSED1:
 		case Layers::UNUSED2:
 		case Layers::UNUSED3:
-			return false;			
+			return false;
 		default:
 			JPH_ASSERT(false);
 			return false;

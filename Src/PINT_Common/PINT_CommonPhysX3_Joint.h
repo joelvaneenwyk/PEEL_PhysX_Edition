@@ -9,7 +9,7 @@
 #ifndef PINT_COMMON_PHYSX3_JOINT_H
 #define PINT_COMMON_PHYSX3_JOINT_H
 
-#include "..\Pint.h"
+#include "../Pint.h"
 
 	class PhysX_JointAPI : public Pint_Joint
 	{

@@ -9,13 +9,13 @@
 #ifndef FRACTURE_H
 #define FRACTURE_H
 
-#include "..\Common.h"
+#include "../Common.h"
 
 #include "PintDef.h"
 
 	class Pint;
 #ifdef PEEL_USE_ICE_FRACTURE
-	#include <meshmerizer\IceFractureConvex.h>
+	#include <meshmerizer/IceFractureConvex.h>
 	typedef FractureConvex Convex;
 #endif
 

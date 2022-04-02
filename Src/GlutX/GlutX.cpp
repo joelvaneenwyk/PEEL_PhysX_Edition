@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include <stdlib.h>
-#include "Include\GlutX.h"
+#include "Include/GlutX.h"
 #include "GL/glut.h"
 
 ///////////////////////////////////////////////////////////////////////////////

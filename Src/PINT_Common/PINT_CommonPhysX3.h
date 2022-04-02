@@ -12,7 +12,7 @@
 #include "PINT_CommonShapes.h"
 #include "PINT_CommonPhysX3_Defines.h"
 
-#include "..\Pint.h"
+#include "../Pint.h"
 #include "PINT_CommonPhysX3_Base.h"
 #include "PINT_CommonPhysX3_Error.h"
 #include "PINT_CommonPhysX3_Allocator.h"

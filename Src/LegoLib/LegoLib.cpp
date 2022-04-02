@@ -8,9 +8,9 @@
 
 #include "stdafx.h"
 #include "LegoLib.h"
-#include "..\GLTexture.h"	// ### hmmm
-#include "..\Common.h"
-#include "..\SupportFile.h"
+#include "../GLTexture.h"	// ### hmmm
+#include "../Common.h"
+#include "../SupportFile.h"
 
 //#pragma optimize( "", off )
 //#define RETIRED
@@ -25,9 +25,9 @@
 	#undef _UNICODE
 
 	// DevIL wrapper copied from '\APPs\#Plugins\SystemPlugs\IceDevil.cpp' (ICE). Probably old and obsolete but it still works.
-//	#include ".\DevIL\include\il\il_wrap.h"
-//	#include ".\il\il_wrap.h"
-	#include ".\il\il.h"
+//	#include "DevIL/include/il/il_wrap.h"
+//	#include "il/il_wrap.h"
+	#include "il/il.h"
 #endif
 
 #ifdef COMPILE_DEVIL
@@ -60,10 +60,10 @@ static bool LoadWithDevil(const char* filename, Picture& pic)
 //	ILubyte* Data = DevilImage.GetData();
 //	ILenum F = DevilImage.Format();
 		ILuint W = ilGetInteger(IL_IMAGE_WIDTH);
-		ILuint H = ilGetInteger(IL_IMAGE_HEIGHT); 
-		ILuint BPP = ilGetInteger(IL_IMAGE_BPP); 
-		ILenum F = ilGetInteger(IL_IMAGE_FORMAT); 
-		ILubyte* Data = ilGetData(); 
+		ILuint H = ilGetInteger(IL_IMAGE_HEIGHT);
+		ILuint BPP = ilGetInteger(IL_IMAGE_BPP);
+		ILenum F = ilGetInteger(IL_IMAGE_FORMAT);
+		ILubyte* Data = ilGetData();
 
 	if(F!=IL_RGB && F!=IL_RGBA && F!=IL_BGR && F!=IL_BGRA)
 	{
@@ -558,7 +558,7 @@ static void gCollada_ParseEffects(const char* command, udword nb_params, const P
 													*(char*)End = 0;
 													const udword MBColorID = atoi(Start);
 													*(char*)End = ' ';
-												
+
 													// https://www.mecabricks.com/docs/colour_chart.pdf
 													udword RGB = 0;
 													float Alpha = 1.0f;
@@ -1374,7 +1374,7 @@ bool InitLegoLib(const char* filename, float scale_factor)
 	gLegoDatabase = ICE_NEW(LegoPartDatabase);
 
 	if(1)
-	{	
+	{
 		LoadLegoFile(0, filename, scale_factor);
 
 		Time = TimeGetTime() - Time;

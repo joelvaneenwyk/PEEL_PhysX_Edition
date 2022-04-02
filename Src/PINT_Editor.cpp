@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "PINT_Editor.h"
-#include "..\PINT_Common\PINT_Common.h"
+#include "../PINT_Common/PINT_Common.h"
 #include "USDExport.h"
 #include "ZB2Export.h"
 #include "PintShapeRenderer.h"
@@ -1527,7 +1527,7 @@ class PEELRenderInterface : public NvdRenderInterface
 	virtual	void	renderHandle(const PxTransform& pose, RenderHandle handle, WeakHandle wh)
 	{
 		PintShapeRenderer* renderer = reinterpret_cast<PintShapeRenderer*>(handle);
-	
+
 		if(gNVDControlInterface.mSelected && gNVDControlInterface.mSelected->contains(wh))
 		{
 			SelectedRenderItem* SRI = (SelectedRenderItem*)mSelectedRenderData.Reserve(sizeof(SelectedRenderItem)/sizeof(udword));
@@ -2457,7 +2457,7 @@ void EditorPlugin::ReportShape(const PINT_SHAPE_CREATE& create, udword index, vo
 		NewShape = MSD;
 		mEditorMeshShapes2.AddPtr(NewShape);*/
 		NewShape = const_cast<MeshShapeData2*>(RegisterMeshShape2(*MeshCreate, NewMaterial, AddToDatabase));
-		
+
 		ASSERT(Data->mUserData);
 		EditorMesh* Object = (EditorMesh*)Data->mUserData;
 //		Object->mRefCount++;	//###TODO: this & decref on release
@@ -2568,7 +2568,7 @@ PintActorHandle EditorPlugin::CreateObject(const PINT_OBJECT_CREATE& desc)
 			{
 				for(udword i=0;i<NbNativeShapes;i++)
 				{
-					const ShapeData* SD = (const ShapeData*)NewActor->mShapes.GetEntry(i);			
+					const ShapeData* SD = (const ShapeData*)NewActor->mShapes.GetEntry(i);
 					EditorShape* ShapeObject = (EditorShape*)SD->mUserData;
 					if(ShapeObject)
 						ShapeObject->mNativeHandle = API->GetShape(EngineHandle, i);
@@ -4332,7 +4332,7 @@ IceWindow* Editor_InitGUI(IceWidget* parent, PintGUIHelper& helper)
 				y += YStep;
 				TreeViewDesc TVD;
 				TVD.mStyle		= TREEVIEW_NORMAL;
-//				TVD.mStyle		= TREEVIEW_CHECKBOXES;				
+//				TVD.mStyle		= TREEVIEW_CHECKBOXES;
 				TVD.mParent		= TabWindow;
 				TVD.mX			= 4;
 				TVD.mY			= y;
@@ -4698,7 +4698,7 @@ dst = NewShape;
 		{
 			IMPLEMENT_SHAPE_TYPE(ConvexShapeData)
 			AABB Bounds;
-			ComputeAABB(Bounds, Src->mVerts, Src->mNbVerts);	
+			ComputeAABB(Bounds, Src->mVerts, Src->mNbVerts);
 			Bounds.GetExtents(NewShape->mExtents);
 			//###TODO: deal with center
 		}break;
@@ -4707,7 +4707,7 @@ dst = NewShape;
 		{
 			IMPLEMENT_SHAPE_TYPE(MeshShapeData)
 			AABB Bounds;
-			ComputeAABB(Bounds, Src->mVerts, Src->mNbVerts);	
+			ComputeAABB(Bounds, Src->mVerts, Src->mNbVerts);
 			Bounds.GetExtents(NewShape->mExtents);
 			//###TODO: deal with center
 		}break;

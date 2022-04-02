@@ -9,7 +9,7 @@
 #ifndef PINT_COMMON_PHYSX3_SCENE_H
 #define PINT_COMMON_PHYSX3_SCENE_H
 
-#include "..\Pint.h"
+#include "../Pint.h"
 
 	class PhysX_SceneAPI : public Pint_Scene
 	{

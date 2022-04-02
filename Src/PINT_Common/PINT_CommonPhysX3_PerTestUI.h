@@ -9,7 +9,7 @@
 #ifndef PINT_COMMON_PHYSX3_PER_TEST_UI_H
 #define PINT_COMMON_PHYSX3_PER_TEST_UI_H
 
-#include "..\Pint.h"
+#include "../Pint.h"
 
 	class PhysXPlugIn : public PintPlugin
 	{

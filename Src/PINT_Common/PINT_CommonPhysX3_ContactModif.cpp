@@ -7,11 +7,11 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "..\Pint.h"
+#include "../Pint.h"
 
-#include "..\PINT_Common\PINT_Common.h"
+#include "../PINT_Common/PINT_Common.h"
 
-#include "extensions\PxExtensionsAPI.h"
+#include "extensions/PxExtensionsAPI.h"
 //#include "common/PxIO.h"
 #include "common/PxRenderBuffer.h"
 
@@ -91,8 +91,8 @@ void PEEL_ContactModifyCallback::SetContactData(PintContactModifyPairHandle hand
 		class MyPxContactSet : public PxContactSet
 		{
 			public:
-			PX_FORCE_INLINE		void setNormal2(PxU32 i, const PxVec3& n)		
-			{ 
+			PX_FORCE_INLINE		void setNormal2(PxU32 i, const PxVec3& n)
+			{
 				PxContactPatch* patch = getPatch();
 				//patch->internalFlags |= PxContactPatch::eREGENERATE_PATCHES;
 				mContacts[i].normal = n;

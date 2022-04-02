@@ -8,7 +8,7 @@
 
 #include "stdafx.h"
 #include "PINT_Skeleton.h"
-#include "..\PINT_Common\PINT_Common.h"
+#include "../PINT_Common/PINT_Common.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 

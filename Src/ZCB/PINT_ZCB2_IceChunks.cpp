@@ -8,8 +8,8 @@
 
 #include "stdafx.h"
 #include "PINT_ZCB2.h"
-#include "..\PintShapeRenderer.h"
-#include "..\Zcb2_RenderData.h"
+#include "../PintShapeRenderer.h"
+#include "../Zcb2_RenderData.h"
 
 bool ZCB2FactoryEx::NewScene(const SCENChunk* scene)
 {

@@ -7,14 +7,14 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
-#include "..\Common.h"
+#include "../Common.h"
 
 #include "MultiConvex.h"
 #include "Convex.h"
 #include "FracturePattern.h"
 
-#include "..\PintShapeRenderer.h"
-#include "..\PintObjectsManager.h"
+#include "../PintShapeRenderer.h"
+#include "../PintObjectsManager.h"
 
 static PintActorHandle createRenderable(FractureConvex& convex, Pint& pint, const Matrix4x4& pose, bool isStatic, const Point& vel)
 {
@@ -109,7 +109,7 @@ void MultiConvex::createFromConvex(Pint& pint, const FractureConvex* convex, con
 {
 	clear();
 	FractureConvex* c = ICE_NEW(FractureConvex)(convex);
-	
+
 	// TODO: store render data in mConvexes too
 	Matrix4x4 pose(Idt);
 	pose.SetTrans(offset + c->centerAtZero());
@@ -185,7 +185,7 @@ bool MultiConvex::randomFracture(Pint& pint, const int convexNr, const Ray &ray,
 			newConvexes[j] = c0;
 			newConvexes.push_back(c1);
 		}
-	}	
+	}
 	for (int i = 0; i < (int)newConvexes.size(); i++)
 	{
 		FractureConvex* c = newConvexes[i];

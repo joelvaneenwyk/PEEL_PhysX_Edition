@@ -2,7 +2,7 @@
 #define PORTAL_JOINT_H
 
 #include "PxPortalJoint.h"
-#include "Extensions\ExtJoint.h"
+#include "Extensions/ExtJoint.h"
 #include "CmUtils.h"
 
 namespace physx
@@ -40,7 +40,7 @@ namespace Ext
 		virtual	void	setRelativePose(const PxTransform& pose);
 
 		bool			attach(PxPhysics &physics, PxRigidActor* actor0, PxRigidActor* actor1);
-		
+
 		static const PxConstraintShaderTable& getConstraintShaderTable() { return sShaders; }
 
 		virtual PxConstraintSolverPrep getPrep() const { return sShaders.solverPrep;  }
@@ -49,8 +49,8 @@ namespace Ext
 
 		static PxConstraintShaderTable sShaders;
 
-		PX_FORCE_INLINE PortalJointData& data() const				
-		{	
+		PX_FORCE_INLINE PortalJointData& data() const
+		{
 			return *static_cast<PortalJointData*>(mData);
 		}
 	};

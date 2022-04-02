@@ -9,7 +9,7 @@
 #ifndef ZCB2_RENDER_DATA_H
 #define ZCB2_RENDER_DATA_H
 
-#include ".\ZCB\PINT_ZCB2.h"
+#include "ZCB/PINT_ZCB2.h"
 #include "TextureManager.h"
 
 	// "Render data chunks" or "render sources" are exported render-related information, used when

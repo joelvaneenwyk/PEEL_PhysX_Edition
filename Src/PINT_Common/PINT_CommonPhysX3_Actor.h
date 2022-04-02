@@ -9,7 +9,7 @@
 #ifndef PINT_COMMON_PHYSX3_ACTOR_H
 #define PINT_COMMON_PHYSX3_ACTOR_H
 
-#include "..\Pint.h"
+#include "../Pint.h"
 
 	class PhysX_ActorAPI : public Pint_Actor
 	{
