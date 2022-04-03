@@ -579,6 +579,7 @@ target_include_directories(PEEL SYSTEM BEFORE
 		PUBLIC ${PEEL_SOURCE_ROOT}/PxFoundation/include
 		PUBLIC ${PEEL_SOURCE_ROOT}/
 		PUBLIC ${PEEL_REPO_ROOT}/Externals
+		PUBLIC ${PEEL_REPO_ROOT}/Externals/DevIL/include
 		PUBLIC ${PEEL_REPO_ROOT}/Private/NVD)
 
 target_link_directories(PEEL

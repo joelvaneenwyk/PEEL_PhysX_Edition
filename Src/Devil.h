@@ -6,13 +6,10 @@
  */
 ///////////////////////////////////////////////////////////////////////////////
 
-#ifndef DEVIL_H
-#define DEVIL_H
+#pragma once
 
-	bool	InitDevil();
-	bool	CloseDevil();
+bool	InitDevil();
+bool	CloseDevil();
 
-	bool	LoadWithDevil(const char* filename, Picture& pic);
-	bool	SaveWithDevil(const char* filename, const Picture& pic);
-
-#endif
+bool	LoadWithDevil(const char* filename, Picture& pic);
+bool	SaveWithDevil(const char* filename, const Picture& pic);
