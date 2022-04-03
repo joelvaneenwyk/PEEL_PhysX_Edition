@@ -9,123 +9,123 @@
 #include "stdafx.h"
 #include "Devil.h"
 
-#ifdef DOES_NOT_WORK
+//#ifdef DOES_NOT_WORK
+//
+//..\..\Externals\DevIL_1.8.0\include
+//..\..\Externals\DevIL_1.8.0\lib\x86\Release
+//
+//#ifndef _WIN64
+//	#define COMPILE_DEVIL
+//#endif
+//
+//#ifdef COMPILE_DEVIL
+//	// DevIL wrapper copied from '\APPs\#Plugins\SystemPlugs\IceDevil.cpp' (ICE). Probably old and obsolete but it still works.
+////	#include "DevIL/include/il/il_wrap.h"
+//
+//	typedef void	ILvoid;
+//	#undef _UNICODE
+////	#define IL_STATIC_LIB
+////	#include <IL/il_wrap.h>
+//	#include <IL/ilut.h>
+//	#pragma comment(lib, "ilu.lib")
+//	#pragma comment(lib, "ilut.lib")
+//#endif
+//
+//#ifdef COMPILE_DEVIL
+//static bool InitDone = false;
+//#endif
+//bool LoadWithDevil(const char* filename, Picture& pic)
+//{
+//#ifdef COMPILE_DEVIL
+//	if(!InitDone)
+//	{
+//		InitDone = true;
+//		ilInit();
+//	}
+//
+////	ilImage DevilImage;
+////	ILboolean b = DevilImage.Load((char*)filename);
+////	if(!b)	return false;
+//
+//		ILuint ImageName;
+//		ilGenImages(1, &ImageName);
+//		ilBindImage(ImageName);
+//		if(!ilLoadImage((char*)filename))
+//		{
+//			return false;
+//		}
+//
+//
+////	ILuint W = DevilImage.Width();
+////	ILuint H = DevilImage.Height();
+////	ILuint BPP = DevilImage.Bitpp();
+////	ILubyte* Data = DevilImage.GetData();
+//
+//		ILuint W = ilGetInteger(IL_IMAGE_WIDTH);
+//		ILuint H = ilGetInteger(IL_IMAGE_HEIGHT);
+//		ILuint BPP = ilGetInteger(IL_IMAGE_BPP);
+//		ILenum F = ilGetInteger(IL_IMAGE_FORMAT);
+//		ILubyte* Data = ilGetData();
+//
+//	if(F!=IL_RGB && F!=IL_RGBA && F!=IL_BGR && F!=IL_BGRA)
+//	{
+//		IceCore::MessageBox(null, "Unsupported format!\nImage will not be loaded.", "Error", MB_OK);
+//		return false;
+//	}
+//
+//	pic.Init(ToWord(W), ToWord(H));
+//	RGBAPixel* Pixels = pic.GetPixels();
+//	for(udword y=0;y<H;y++)
+//	{
+//		for(udword x=0;x<W;x++)
+//		{
+//			if(F==IL_RGB)
+//			{
+//				Pixels->R = *Data++;
+//				Pixels->G = *Data++;
+//				Pixels->B = *Data++;
+//				Pixels->A = 0;
+//			}
+//			else if(F==IL_RGBA)
+//			{
+//				Pixels->R = *Data++;
+//				Pixels->G = *Data++;
+//				Pixels->B = *Data++;
+//				Pixels->A = *Data++;
+//			}
+//			else if(F==IL_BGR)
+//			{
+//				Pixels->B = *Data++;
+//				Pixels->G = *Data++;
+//				Pixels->R = *Data++;
+//				Pixels->A = 0;
+//			}
+//			else if(F==IL_BGRA)
+//			{
+//				Pixels->B = *Data++;
+//				Pixels->G = *Data++;
+//				Pixels->R = *Data++;
+//				Pixels->A = *Data++;
+//			}
+//			Pixels++;
+//		}
+//	}
+////	pic.FlipVertical();
+//
+//	ilDeleteImages(1, &ImageName);
+//#endif
+//	return true;
+//}
+//#endif
 
-..\..\Externals\DevIL_1.8.0\include
-..\..\Externals\DevIL_1.8.0\lib\x86\Release
-
-#ifndef _WIN64
-	#define COMPILE_DEVIL
-#endif
-
-#ifdef COMPILE_DEVIL
-	// DevIL wrapper copied from '\APPs\#Plugins\SystemPlugs\IceDevil.cpp' (ICE). Probably old and obsolete but it still works.
-//	#include "DevIL/include/il/il_wrap.h"
-
-	typedef void	ILvoid;
-	#undef _UNICODE
-//	#define IL_STATIC_LIB
-//	#include <IL/il_wrap.h>
-	#include <IL/ilut.h>
-	#pragma comment(lib, "ilu.lib")
-	#pragma comment(lib, "ilut.lib")
-#endif
-
-#ifdef COMPILE_DEVIL
-static bool InitDone = false;
-#endif
-bool LoadWithDevil(const char* filename, Picture& pic)
-{
-#ifdef COMPILE_DEVIL
-	if(!InitDone)
-	{
-		InitDone = true;
-		ilInit();
-	}
-
-//	ilImage DevilImage;
-//	ILboolean b = DevilImage.Load((char*)filename);
-//	if(!b)	return false;
-
-		ILuint ImageName;
-		ilGenImages(1, &ImageName);
-		ilBindImage(ImageName);
-		if(!ilLoadImage((char*)filename))
-		{
-			return false;
-		}
-
-
-//	ILuint W = DevilImage.Width();
-//	ILuint H = DevilImage.Height();
-//	ILuint BPP = DevilImage.Bitpp();
-//	ILubyte* Data = DevilImage.GetData();
-
-		ILuint W = ilGetInteger(IL_IMAGE_WIDTH);
-		ILuint H = ilGetInteger(IL_IMAGE_HEIGHT);
-		ILuint BPP = ilGetInteger(IL_IMAGE_BPP);
-		ILenum F = ilGetInteger(IL_IMAGE_FORMAT);
-		ILubyte* Data = ilGetData();
-
-	if(F!=IL_RGB && F!=IL_RGBA && F!=IL_BGR && F!=IL_BGRA)
-	{
-		IceCore::MessageBox(null, "Unsupported format!\nImage will not be loaded.", "Error", MB_OK);
-		return false;
-	}
-
-	pic.Init(ToWord(W), ToWord(H));
-	RGBAPixel* Pixels = pic.GetPixels();
-	for(udword y=0;y<H;y++)
-	{
-		for(udword x=0;x<W;x++)
-		{
-			if(F==IL_RGB)
-			{
-				Pixels->R = *Data++;
-				Pixels->G = *Data++;
-				Pixels->B = *Data++;
-				Pixels->A = 0;
-			}
-			else if(F==IL_RGBA)
-			{
-				Pixels->R = *Data++;
-				Pixels->G = *Data++;
-				Pixels->B = *Data++;
-				Pixels->A = *Data++;
-			}
-			else if(F==IL_BGR)
-			{
-				Pixels->B = *Data++;
-				Pixels->G = *Data++;
-				Pixels->R = *Data++;
-				Pixels->A = 0;
-			}
-			else if(F==IL_BGRA)
-			{
-				Pixels->B = *Data++;
-				Pixels->G = *Data++;
-				Pixels->R = *Data++;
-				Pixels->A = *Data++;
-			}
-			Pixels++;
-		}
-	}
-//	pic.FlipVertical();
-
-	ilDeleteImages(1, &ImageName);
-#endif
-	return true;
-}
-#endif
-
-#define USE_DEVIL_1_8_0
-
-typedef void	ILvoid;
+#define USE_DEVIL_1_8_0	1
 #undef _UNICODE
+typedef void	ILvoid;
+
 #ifdef USE_DEVIL_1_8_0
-	#include "DevIL_1.8.0/include/IL/il.h"
+#	include "DevIL_1.8.0/include/IL/il.h"
 #else
-	#include "il/il.h"
+#	include "il/il.h"
 #endif
 
 static void			(ILAPIENTRY* gFunc_ilInit)			()								= null;
@@ -146,14 +146,14 @@ static ILboolean	(ILAPIENTRY* gFunc_ilSetData)		(void* Data)					= null;
 static void			(ILAPIENTRY* gFunc_ilSetInteger)	(ILenum Mode, ILint Param)		= null;
 static ILboolean	(ILAPIENTRY* gFunc_ilSaveImage)		(ILconst_string FileName)		= null;
 static ILboolean	(ILAPIENTRY* gFunc_ilTexImage)		(
-  ILuint Width,
-  ILuint Height,
-  ILuint Depth,
-  ILubyte Bpp,
-  ILenum Format,
-  ILenum Type,
-  ILvoid *Data
-	)		= null;
+	ILuint Width,
+	ILuint Height,
+	ILuint Depth,
+	ILubyte Bpp,
+	ILenum Format,
+	ILenum Type,
+	ILvoid *Data
+)		= null;
 
 static bool			gOK = false;
 static bool			gFirstCall = true;
@@ -165,7 +165,6 @@ bool InitDevil()
 	gOK = false;
 
 	if(!IceCore::LoadLibrary_("DevIL.dll", gHandle, false))
-//	if(!IceCore::LoadLibrary_("C:/Projects/#PEEL/Externals/DevIL_1.8.0/lib/x86/Release/DevIL.dll", gHandle, false))
 		return false;
 
 	*(void**)&gFunc_ilInit = IceCore::BindSymbol(gHandle, "ilInit");
