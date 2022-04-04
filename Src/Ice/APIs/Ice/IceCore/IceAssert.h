@@ -29,19 +29,19 @@
 		//! ASSERT(condition)
 		//! ASSERT(!"Not implemented")
 		//! ASSERT(condition && "error text")
-		#define ASSERT(exp)																		\
-		{																						\
-			static bool IgnoreAlways = false;													\
-			if(!IgnoreAlways)																	\
-			{																					\
-				if(CustomAssertFunction((size_t)(exp), #exp, __LINE__, __FILE__, IgnoreAlways))	\
-				{																				\
-					ICE_DEBUG_BREAK																\
-				}																				\
-			}																					\
-		}
+		#define ASSERT(exp)																						\
+		do {																									\
+			static bool IgnoreAlways = false;																	\
+			if(!IgnoreAlways)																					\
+			{																									\
+				if(CustomAssertFunction((size_t)(exp), (char*)#exp, __LINE__, (char*)__FILE__, IgnoreAlways))	\
+				{																								\
+					ICE_DEBUG_BREAK																				\
+				}																								\
+			}																									\
+		} while (0)
 	#else
-		#define ASSERT(exp)	{}
+		#define ASSERT(exp)	do {} while (0)
 	#endif
 #endif
 

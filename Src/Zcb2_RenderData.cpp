@@ -677,7 +677,7 @@ void ZCB2FactoryEx::NewUnknownChunk(udword type, const char* name, const Virtual
 
 			for(udword i=0;i<Nb;i++)
 			{
-				const udword ID = udword(Chunk.mRenderDataChunks[i]);
+				const udword ID = udword((size_t)Chunk.mRenderDataChunks[i]);
 				PintShapeRenderer* r = GetShapeRenderer(ID);
 
 				RC->AddRenderer(r, LocalPoses[i]);

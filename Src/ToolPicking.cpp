@@ -45,7 +45,7 @@ void ToolPicking::Reset(udword pint_index)
 	}
 	else
 	{
-		ASSERT(pint_index<MAX_NB_ENGINES)
+		ASSERT(pint_index<MAX_NB_ENGINES);
 		mPickData[pint_index].Reset();
 		mTrackedData[pint_index].Reset();
 	}
@@ -77,7 +77,7 @@ void ToolPicking::KeyboardCallback(Pint& pint, udword pint_index, unsigned char 
 	{
 		if(key==127)
 		{
-			ASSERT(pint_index<MAX_NB_ENGINES)
+			ASSERT(pint_index<MAX_NB_ENGINES);
 			PickingData& PD = mPickData[pint_index];
 
 			if(PD.mPickedObject)
@@ -106,7 +106,7 @@ static bool FindTouchedTriangle(Triangle& touched_tri, Pint& pint, const PintRay
 
 void ToolPicking::RightDownCallback(Pint& pint, udword pint_index)
 {
-	ASSERT(pint_index<MAX_NB_ENGINES)
+	ASSERT(pint_index<MAX_NB_ENGINES);
 	PickingData& PD = mPickData[pint_index];
 
 	PintRaycastHit Hit;
@@ -193,7 +193,7 @@ void ToolPicking::RightDownCallback(Pint& pint, udword pint_index)
 
 void ToolPicking::RightDragCallback(Pint& pint, udword pint_index)
 {
-	ASSERT(pint_index<MAX_NB_ENGINES)
+	ASSERT(pint_index<MAX_NB_ENGINES);
 	PickingData& PD = mPickData[pint_index];
 	if(PD.mPickedObject)
 	{
@@ -204,7 +204,7 @@ void ToolPicking::RightDragCallback(Pint& pint, udword pint_index)
 
 void ToolPicking::RightUpCallback(Pint& pint, udword pint_index)
 {
-	ASSERT(pint_index<MAX_NB_ENGINES)
+	ASSERT(pint_index<MAX_NB_ENGINES);
 	PickingData& PD = mPickData[pint_index];
 	if(PD.mPickedObject)
 	{
@@ -220,7 +220,7 @@ void ToolPicking::RightUpCallback(Pint& pint, udword pint_index)
 
 void ToolPicking::RightDblClkCallback(Pint& pint, udword pint_index)
 {
-	ASSERT(pint_index<MAX_NB_ENGINES)
+	ASSERT(pint_index<MAX_NB_ENGINES);
 	TrackingData& TD = mTrackedData[pint_index];
 
 	PintRaycastHit Hit;
@@ -247,7 +247,7 @@ void ToolPicking::PreRenderCallback()
 
 void ToolPicking::RenderCallback(PintRender& render, Pint& pint, udword pint_index)
 {
-	ASSERT(pint_index<MAX_NB_ENGINES)
+	ASSERT(pint_index<MAX_NB_ENGINES);
 
 	TrackingData& TD = mTrackedData[pint_index];
 //	if(gTrackedObject/* && gTrackedEngine*/)

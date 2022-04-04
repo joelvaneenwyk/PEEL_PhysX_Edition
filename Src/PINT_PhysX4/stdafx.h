@@ -12,8 +12,13 @@
 
 #include <vector>
 
-#define UINT32_MAX MAX_UDWORD
-#define UINT8_MAX MAX_UBYTE
+#ifndef UINT32_MAX
+#   define UINT32_MAX MAX_UDWORD
+#endif
+
+#ifndef UINT8_MAX
+#   define UINT8_MAX MAX_UBYTE
+#endif
 
 #include "PxPhysicsAPI.h"
 #include "PsFoundation.h"

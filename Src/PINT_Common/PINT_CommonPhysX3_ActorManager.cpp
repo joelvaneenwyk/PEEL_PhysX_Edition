@@ -39,7 +39,7 @@ void ActorManager::Add(PxRigidActor* actor)
 	}
 	else
 	{
-		ASSERT(actor->getConcreteType()==PxConcreteType::eRIGID_DYNAMIC || actor->getConcreteType()==PxConcreteType::eARTICULATION_LINK);													
+		ASSERT(actor->getConcreteType()==PxConcreteType::eRIGID_DYNAMIC || actor->getConcreteType()==PxConcreteType::eARTICULATION_LINK);
 		Actors = &mDynamicActors;
 	}
 
@@ -61,7 +61,7 @@ void ActorManager::Add(PxRigidActor* actor)
 			}
 		}
 	}
-	actor->userData = reinterpret_cast<void*>(Index);
+	actor->userData = reinterpret_cast<void*>((size_t)Index);
 
 	mCachedTimestamp = INVALID_ID;
 }
@@ -76,7 +76,7 @@ bool ActorManager::Remove(PxRigidActor* actor)
 	}
 	else
 	{
-		ASSERT(actor->getConcreteType()==PxConcreteType::eRIGID_DYNAMIC || actor->getConcreteType()==PxConcreteType::eARTICULATION_LINK);													
+		ASSERT(actor->getConcreteType()==PxConcreteType::eRIGID_DYNAMIC || actor->getConcreteType()==PxConcreteType::eARTICULATION_LINK);
 		Actors = &mDynamicActors;
 	}
 
@@ -107,7 +107,7 @@ ActorData* ActorManager::GetActorData(PxRigidActor* actor) const
 	}
 	else
 	{
-		ASSERT(actor->getConcreteType()==PxConcreteType::eRIGID_DYNAMIC || actor->getConcreteType()==PxConcreteType::eARTICULATION_LINK);													
+		ASSERT(actor->getConcreteType()==PxConcreteType::eRIGID_DYNAMIC || actor->getConcreteType()==PxConcreteType::eARTICULATION_LINK);
 		Actors = &mDynamicActors;
 	}
 

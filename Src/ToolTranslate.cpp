@@ -58,7 +58,7 @@ void ToolTranslate::Reset(udword pint_index)
 	}
 	else
 	{
-		ASSERT(pint_index<MAX_NB_ENGINES)
+		ASSERT(pint_index<MAX_NB_ENGINES);
 		mData[pint_index].Reset();
 	}
 }
@@ -83,7 +83,7 @@ void ToolTranslate::KeyboardCallback(Pint& pint, udword pint_index, unsigned cha
 	{
 		if(key==127)
 		{
-			ASSERT(pint_index<MAX_NB_ENGINES)
+			ASSERT(pint_index<MAX_NB_ENGINES);
 			TranslateData& TD = mData[pint_index];
 
 			if(TD.mObject)
@@ -97,7 +97,7 @@ void ToolTranslate::KeyboardCallback(Pint& pint, udword pint_index, unsigned cha
 
 void ToolTranslate::RightDownCallback(Pint& pint, udword pint_index)
 {
-	ASSERT(pint_index<MAX_NB_ENGINES)
+	ASSERT(pint_index<MAX_NB_ENGINES);
 	TranslateData& TD = mData[pint_index];
 
 	PintRaycastHit Hit;
@@ -145,7 +145,7 @@ void ToolTranslate::RenderCallback(PintRender& render, Pint& pint, udword pint_i
 	mDir = ComputeWorldRay(mX, mY);
 	mOrigin = GetCameraPos();
 
-	ASSERT(pint_index<MAX_NB_ENGINES)
+	ASSERT(pint_index<MAX_NB_ENGINES);
 	TranslateData& TD = mData[pint_index];
 	if(TD.mObject)
 	{

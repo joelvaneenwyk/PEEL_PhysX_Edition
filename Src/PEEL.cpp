@@ -89,8 +89,7 @@
 extern bool gFreezeFrustum;
 extern String gVehicleFilename;
 
-//static const char* gAppTitle = "PEEL (Physics Engine Evaluation Lab)";
-static const char* gAppTitle = "PEEL (Physics Engine Evaluation Lab) - PhysX Edition";
+static const char* gAppTitle = "PEEL (Physics Engine Evaluation Lab)";
 static const char* gVersion = "2.0";
 
 static Point gDefaultGravity(0.0f, -9.81f, 0.0f);
@@ -2406,60 +2405,59 @@ static std::vector<char> m_RawInputMessageData; // Buffer
 
 static void OnRawInput(int inForeground, HRAWINPUT hRawInput)
 {
-    UINT dataSize;
-    GetRawInputData(
-      hRawInput, RID_INPUT, NULL, &dataSize, sizeof(RAWINPUTHEADER));
+	UINT dataSize;
+	GetRawInputData(
+		hRawInput, RID_INPUT, NULL, &dataSize, sizeof(RAWINPUTHEADER));
 
-    if(dataSize == 0)
-      return;
-    if(dataSize > m_RawInputMessageData.size())
-        m_RawInputMessageData.resize(dataSize);
+	if(dataSize == 0)
+		return;
+	if(dataSize > m_RawInputMessageData.size())
+		m_RawInputMessageData.resize(dataSize);
 
-    void* dataBuf = &m_RawInputMessageData[0];
-    GetRawInputData(
-      hRawInput, RID_INPUT, dataBuf, &dataSize, sizeof(RAWINPUTHEADER));
+	void* dataBuf = &m_RawInputMessageData[0];
+	GetRawInputData(
+		hRawInput, RID_INPUT, dataBuf, &dataSize, sizeof(RAWINPUTHEADER));
 
-    const RAWINPUT *raw = (const RAWINPUT*)dataBuf;
-    if (raw->header.dwType == RIM_TYPEMOUSE)
-    {
-        HANDLE deviceHandle = raw->header.hDevice;
+	const RAWINPUT *raw = (const RAWINPUT*)dataBuf;
+	if (raw->header.dwType == RIM_TYPEMOUSE)
+	{
+		HANDLE deviceHandle = raw->header.hDevice;
 
-        const RAWMOUSE& mouseData = raw->data.mouse;
+		const RAWMOUSE& mouseData = raw->data.mouse;
 
-        USHORT flags = mouseData.usButtonFlags;
-        short wheelDelta = (short)mouseData.usButtonData;
-        LONG x = mouseData.lLastX, y = mouseData.lLastY;
+		USHORT flags = mouseData.usButtonFlags;
+		short wheelDelta = (short)mouseData.usButtonData;
+		LONG x = mouseData.lLastX, y = mouseData.lLastY;
 
-        wprintf(
-            L"Mouse: Device=0x%08X, Flags=%04x, WheelDelta=%d, X=%d, Y=%d\n",
-            deviceHandle, flags, wheelDelta, x, y);
-    }
+		wprintf(
+			L"Mouse: Device=0x%08X, Flags=%04x, WheelDelta=%d, X=%d, Y=%d\n",
+			(void*)deviceHandle, (unsigned int)flags, wheelDelta, x, y);
+	}
 }
 
 /*
-
-    deviceHandle is a handle that lets you distinguish which mouse generated this event.
-    flags is the main type of event. It may be zero or more of following flags:
-    RI_MOUSE_LEFT_BUTTON_DOWN
-    RI_MOUSE_LEFT_BUTTON_UP
-    RI_MOUSE_MIDDLE_BUTTON_DOWN
-    RI_MOUSE_MIDDLE_BUTTON_UP
-    RI_MOUSE_RIGHT_BUTTON_DOWN
-    RI_MOUSE_RIGHT_BUTTON_UP
-    RI_MOUSE_BUTTON_1_DOWN
-    RI_MOUSE_BUTTON_1_UP
-    RI_MOUSE_BUTTON_2_DOWN
-    RI_MOUSE_BUTTON_2_UP
-    RI_MOUSE_BUTTON_3_DOWN
-    RI_MOUSE_BUTTON_3_UP
-    RI_MOUSE_BUTTON_4_DOWN
-    RI_MOUSE_BUTTON_4_UP
-    RI_MOUSE_BUTTON_5_DOWN
-    RI_MOUSE_BUTTON_5_UP
-    RI_MOUSE_WHEEL
-    wheelDelta, applicable when RI_MOUSE_WHEEL is set, gives positive or negative delta of mouse wheel. On my system it's always -120 or +120.
-    x, y is relative or absolute, depending on the (mouseData.usFlags & MOUSE_MOVE_ABSOLUTE). But in my tests it's always relative, like (-3, 0), on every USB mouse, as well as touchpad on my laptop.
-    There is also mouseData.ulRawButtons available with bits corresponding to current state of all mouse buttons, but works on my PC and not on my laptop (it is always 0).
+deviceHandle is a handle that lets you distinguish which mouse generated this event.
+flags is the main type of event. It may be zero or more of following flags:
+RI_MOUSE_LEFT_BUTTON_DOWN
+RI_MOUSE_LEFT_BUTTON_UP
+RI_MOUSE_MIDDLE_BUTTON_DOWN
+RI_MOUSE_MIDDLE_BUTTON_UP
+RI_MOUSE_RIGHT_BUTTON_DOWN
+RI_MOUSE_RIGHT_BUTTON_UP
+RI_MOUSE_BUTTON_1_DOWN
+RI_MOUSE_BUTTON_1_UP
+RI_MOUSE_BUTTON_2_DOWN
+RI_MOUSE_BUTTON_2_UP
+RI_MOUSE_BUTTON_3_DOWN
+RI_MOUSE_BUTTON_3_UP
+RI_MOUSE_BUTTON_4_DOWN
+RI_MOUSE_BUTTON_4_UP
+RI_MOUSE_BUTTON_5_DOWN
+RI_MOUSE_BUTTON_5_UP
+RI_MOUSE_WHEEL
+wheelDelta, applicable when RI_MOUSE_WHEEL is set, gives positive or negative delta of mouse wheel. On my system it's always -120 or +120.
+x, y is relative or absolute, depending on the (mouseData.usFlags & MOUSE_MOVE_ABSOLUTE). But in my tests it's always relative, like (-3, 0), on every USB mouse, as well as touchpad on my laptop.
+There is also mouseData.ulRawButtons available with bits corresponding to current state of all mouse buttons, but works on my PC and not on my laptop (it is always 0).
 
 Mouse: Device=0x0001003D, Flags=0001, WheelDelta=0, X=0, Y=0
 Mouse: Device=0x0001003D, Flags=0002, WheelDelta=0, X=0, Y=0
@@ -2477,7 +2475,7 @@ Mouse: Device=0x0001003D, Flags=0000, WheelDelta=0, X=1, Y=-1
 static void glutXRawInputFunc(udword wparam, udword lparam)
 {
 //	WPARAM wparam, LPARAM lparam
-	OnRawInput(GET_RAWINPUT_CODE_WPARAM(wparam) == RIM_INPUT, (HRAWINPUT)lparam);
+	OnRawInput(GET_RAWINPUT_CODE_WPARAM(wparam) == RIM_INPUT, (HRAWINPUT)(size_t)lparam);
 }
 
 void ImportFile(const char* filename)
@@ -2564,53 +2562,53 @@ int PEEL_main(int argc, char** argv)
 
 		UINT numDevices;
 		GetRawInputDeviceList(
-		  NULL, &numDevices, sizeof(RAWINPUTDEVICELIST));
+			NULL, &numDevices, sizeof(RAWINPUTDEVICELIST));
 		if(numDevices == 0) return 0;
 
 		std::vector<RAWINPUTDEVICELIST> deviceList(numDevices);
 		GetRawInputDeviceList(
-		  &deviceList[0], &numDevices, sizeof(RAWINPUTDEVICELIST));
+			&deviceList[0], &numDevices, sizeof(RAWINPUTDEVICELIST));
 
 		std::vector<wchar_t> deviceNameData;
 		//wstring deviceName;
 		for(UINT i = 0; i < numDevices; ++i)
 		{
-		  const RAWINPUTDEVICELIST& device = deviceList[i];
-		  if(device.dwType == RIM_TYPEMOUSE)
-		  {
-			wprintf(L"Mouse: Handle=0x%08X\n", device.hDevice);
+			const RAWINPUTDEVICELIST& device = deviceList[i];
+			if(device.dwType == RIM_TYPEMOUSE)
+			{
+			wprintf(L"Mouse: Handle=0x%08X\n", (void*)device.hDevice);
 
 			UINT dataSize;
 			GetRawInputDeviceInfo(
-			  device.hDevice, RIDI_DEVICENAME, null, &dataSize);
+				device.hDevice, RIDI_DEVICENAME, null, &dataSize);
 			if(dataSize)
 			{
-			  deviceNameData.resize(dataSize);
-			  UINT result = GetRawInputDeviceInfo(
-				device.hDevice, RIDI_DEVICENAME, &deviceNameData[0], &dataSize);
-			  if(result != UINT_MAX)
-			  {
-		//        deviceName.assign(deviceNameData.begin(), deviceNameData.end());
-		//        wprintf(L"  Name=%s\n", deviceName.c_str());
-			  }
+				deviceNameData.resize(dataSize);
+				UINT result = GetRawInputDeviceInfo(
+					device.hDevice, RIDI_DEVICENAME, &deviceNameData[0], &dataSize);
+				if(result != UINT_MAX)
+				{
+					//deviceName.assign(deviceNameData.begin(), deviceNameData.end());
+					//wprintf(L"	Name=%s\n", deviceName.c_str());
+				}
 			}
 
 			RID_DEVICE_INFO deviceInfo;
 			deviceInfo.cbSize = sizeof deviceInfo;
 			dataSize = sizeof deviceInfo;
 			UINT result = GetRawInputDeviceInfo(
-			  device.hDevice, RIDI_DEVICEINFO, &deviceInfo, &dataSize);
+				device.hDevice, RIDI_DEVICEINFO, &deviceInfo, &dataSize);
 			if(result != UINT_MAX)
 			{
-			  assert(deviceInfo.dwType == RIM_TYPEMOUSE);
-			  wprintf(
-				L"  Id=%u, Buttons=%u, SampleRate=%u, HorizontalWheel=%s\n",
+				assert(deviceInfo.dwType == RIM_TYPEMOUSE);
+				wprintf(
+				L"	Id=%u, Buttons=%u, SampleRate=%u, HorizontalWheel=%s\n",
 				deviceInfo.mouse.dwId,
 				deviceInfo.mouse.dwNumberOfButtons,
 				deviceInfo.mouse.dwSampleRate,
 				deviceInfo.mouse.fHasHorizontalWheel ? L"1" : L"0");
 			}
-		  }
+			}
 		}
 	}
 
@@ -3781,7 +3779,7 @@ static void CreateCameraTab(IceWindow* tab)
 	gGUIHelper.CreateButton(tab, 0, 4, y, 130, 20, "Select previous camera", gMainGUI, PreviousCamera::Lambda, null);
 	y += YStep;
 
-	struct CamPoseToClipboard{ static void Lambda(IceButton& button, void* user_data)	{ CopyCameraPoseToClipboard();  }};
+	struct CamPoseToClipboard{ static void Lambda(IceButton& button, void* user_data)	{ CopyCameraPoseToClipboard();	}};
 	gGUIHelper.CreateButton(tab, 0, 4, y, 130, 20, "Cam pose to clipboard", gMainGUI, CamPoseToClipboard::Lambda, null);
 	y += YStep;
 

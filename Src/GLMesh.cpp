@@ -937,10 +937,10 @@ void ModernTest()
 			// vertex Attributes
 			GLsizei vec4Size = 4*4;//sizeof(glm::vec4);
 			const udword baseLoc = 1;
-			glEnableVertexAttribArray(baseLoc+0);	glVertexAttribPointer(baseLoc+0, 4, GL_FLOAT, GL_FALSE, sizeof(Matrix4x4), (void*)0);
-			glEnableVertexAttribArray(baseLoc+1);	glVertexAttribPointer(baseLoc+1, 4, GL_FLOAT, GL_FALSE, sizeof(Matrix4x4), (void*)(vec4Size));
-			glEnableVertexAttribArray(baseLoc+2);	glVertexAttribPointer(baseLoc+2, 4, GL_FLOAT, GL_FALSE, sizeof(Matrix4x4), (void*)(2 * vec4Size));
-			glEnableVertexAttribArray(baseLoc+3);	glVertexAttribPointer(baseLoc+3, 4, GL_FLOAT, GL_FALSE, sizeof(Matrix4x4), (void*)(3 * vec4Size));
+			glEnableVertexAttribArray(baseLoc+0);	glVertexAttribPointer(baseLoc+0, 4, GL_FLOAT, GL_FALSE, sizeof(Matrix4x4), nullptr);
+			glEnableVertexAttribArray(baseLoc+1);	glVertexAttribPointer(baseLoc+1, 4, GL_FLOAT, GL_FALSE, sizeof(Matrix4x4), (void*)(size_t)(vec4Size));
+			glEnableVertexAttribArray(baseLoc+2);	glVertexAttribPointer(baseLoc+2, 4, GL_FLOAT, GL_FALSE, sizeof(Matrix4x4), (void*)(size_t)(2 * vec4Size));
+			glEnableVertexAttribArray(baseLoc+3);	glVertexAttribPointer(baseLoc+3, 4, GL_FLOAT, GL_FALSE, sizeof(Matrix4x4), (void*)(size_t)(3 * vec4Size));
 
 			glVertexAttribDivisor(baseLoc+0, 1);
 			glVertexAttribDivisor(baseLoc+1, 1);

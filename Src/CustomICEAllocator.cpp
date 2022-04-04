@@ -232,7 +232,10 @@ void DefaultAllocator::Release()
 			const DebugBlock* DB = (const DebugBlock*)mMemBlockList[i];
 //			_IceTrace(_F(" Address 0x%.8X, %d bytes (%s), allocated in: %s(%d):\n\n", cur+6, cur[1], (const char*)cur[5], (const char*)cur[2], cur[3]));
 //			_IceTrace(_F(" Address 0x%.8X, %d bytes (%s), allocated in: %s(%d):\n\n", DB+1, DB->mSize, DB->mClassName, DB->mFilename, DB->mLine));
-			sprintf(Buffer, " Address 0x%.8X, %d bytes (%s), allocated in: %s(%d):\n\n", DB+1, DB->mSize, DB->mClassName, DB->mFilename, DB->mLine);
+			sprintf(
+				Buffer,
+				" Address 0x%.8X, %d bytes (%s), allocated in: %s(%d):\n\n",
+				(unsigned int)(size_t)(DB+1), DB->mSize, DB->mClassName, DB->mFilename, DB->mLine);
 			_IceTrace(Buffer);
 
 			NbLeaks++;
@@ -410,7 +413,7 @@ void* DefaultAllocator::mallocDebug(size_t size, const char* filename, udword li
 		{
 			// Recycle old location
 
-			udword NextFree = udword(mMemBlockList[mFirstFree]);
+			udword NextFree = (udword)(size_t)mMemBlockList[mFirstFree];
 			if(NextFree!=INVALID_ID)	NextFree>>=1;
 
 			mMemBlockList[mFirstFree] = ptr;
@@ -542,7 +545,7 @@ void* DefaultAllocator::shrink(void* memory, size_t size)
 		return null;
 	}
 
-	//  Try to shrink the block
+	// Try to shrink the block
 	void* Reduced = _expand(SystemPointer, size+8);
 	if(!Reduced)	return null;
 
@@ -719,7 +722,7 @@ void DefaultAllocator::free(void* memory, bool from_new)
 			NextFree|=1;
 		}
 
-		mMemBlockList[FreeSlot] = (void*)NextFree;
+		mMemBlockList[FreeSlot] = reinterpret_cast<void*>((size_t)NextFree);
 		mFirstFree = FreeSlot;
 	}
 #else
@@ -926,7 +929,8 @@ void DefaultAllocator::DumpCurrentMemoryState() const
 				// Store previous class
 				if(CurrentClass)
 				{
-					Classes[NbClasses] = (udword)CurrentClass;	// We can store this pointer now because it's unique in our new array
+					// We can store this pointer now because it's unique in our new array
+					Classes[NbClasses] = (udword)(size_t)(CurrentClass);
 					Sizes[NbClasses++] = CurrentSize;
 				}
 
@@ -948,7 +952,7 @@ void DefaultAllocator::DumpCurrentMemoryState() const
 		{
 			udword Index = Sorted[i];
 			char Buffer[4096];
-			sprintf(Buffer, "%s : %d\n", (const char*)Classes[Index], Sizes[Index]);
+			sprintf(Buffer, "%s : %d\n", (const char*)(size_t)Classes[Index], Sizes[Index]);
 			_IceTrace(Buffer);
 		}
 		char Buffer[4096];
