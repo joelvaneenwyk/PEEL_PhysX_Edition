@@ -9,6 +9,7 @@
 #include "stdafx.h"
 #include "TitleWindow.h"
 #include "PintGUIHelper.h"
+#include "Resources.h"
 
 #define	BORDER_SIZE_X	4
 #define	BORDER_SIZE_Y	4
@@ -29,13 +30,12 @@ TitleWindow::~TitleWindow()
 {
 }
 
-extern udword gPictureData_Data[];
-
 void TitleWindow::CreatePic()
 {
 	mPic.Init(TITLE_WIDTH, TITLE_HEIGHT);
 	RGBAPixel* Pixels = mPic.GetPixels();
-	CopyMemory(Pixels, gPictureData_Data, mPic.GetDataSize());
+	ASSERT(mPic.GetDataSize() == gPictureData_Size);
+	CopyMemory(Pixels, gPictureData_Data, gPictureData_Size);
 }
 
 void TitleWindow::redraw()
