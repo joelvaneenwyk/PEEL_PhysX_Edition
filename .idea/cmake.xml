@@ -2,8 +2,8 @@
 <project version="4">
   <component name="CMakeSharedSettings">
     <configurations>
-      <configuration PROFILE_NAME="Debug" ENABLED="true" GENERATION_DIR="Build/cmake-build-debug" CONFIG_NAME="Debug" GENERATION_OPTIONS="-G &quot;Visual Studio 17 2022&quot; -S Src/#Compiler -A x64" />
-      <configuration PROFILE_NAME="Release" ENABLED="true" GENERATION_DIR="Build/cmake-build-release" CONFIG_NAME="Release" GENERATION_OPTIONS="-G &quot;Visual Studio 17 2022&quot; -S Src/#Compiler -A x64" />
+      <configuration PROFILE_NAME="VS2022 Debug" ENABLED="true" GENERATION_DIR="Build/x64-vs2022-debug" CONFIG_NAME="Debug" GENERATION_OPTIONS="-G &quot;Visual Studio 17 2022&quot; -S Src/#Compiler" BUILD_OPTIONS="--parallel 10" />
+      <configuration PROFILE_NAME="VS2022 Release" ENABLED="true" GENERATION_DIR="Build/x64-vs2022-release" CONFIG_NAME="Release" GENERATION_OPTIONS="-G &quot;Visual Studio 17 2022&quot; -S Src/#Compiler -A x64" BUILD_OPTIONS="--parallel 10" />
     </configurations>
   </component>
 </project>

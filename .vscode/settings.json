@@ -1,13 +1,34 @@
 {
+    "editor.formatOnPaste": false,
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
     "cmake.configureOnOpen": true,
     "cmake.configureOnEdit": true,
     "cmake.buildDirectory": "${workspaceFolder}/Build/vscode",
     "cSpell.words": [
+        "backface",
+        "behaviours",
         "cmake",
+        "codepaths",
+        "glew",
+        "Gregorius",
+        "Havok",
         "joelvaneenwyk",
         "msbuild",
+        "NovodeX",
+        "ragdolls",
         "raycast",
+        "raycasts",
+        "raytrace",
+        "Raytraced",
+        "raytracing",
+        "RDTSC",
+        "SIMD",
+        "Suppr",
         "terdiman",
-        "voronoi"
+        "voronoi",
+        "VSYNC",
+        "Winamp",
+        "wireframe"
     ]
 }

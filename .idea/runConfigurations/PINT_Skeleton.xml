@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="PINT_Skeleton" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="PEEL" TARGET_NAME="PINT_Skeleton" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="PEEL" RUN_TARGET_NAME="PEEL">
+  <configuration default="false" name="PINT_Skeleton" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="PEEL" TARGET_NAME="PINT_Skeleton" CONFIG_NAME="VS2022 Debug" RUN_TARGET_PROJECT_NAME="PEEL" RUN_TARGET_NAME="PEEL">
     <method v="2">
       <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
     </method>
