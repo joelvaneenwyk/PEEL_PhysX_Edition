@@ -13,7 +13,7 @@ call :Build %_config%
 if errorlevel 1 exit /b
 
 echo.
-echo Success. You now have permission to rejoice.
+echo Successfully built '%_config%' config. You have permission to rejoice.
 echo.
 exit /b 0
 
