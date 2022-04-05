@@ -561,7 +561,12 @@ set_target_properties(PEEL PROPERTIES
 		DEBUG_POSTFIX _DEBUG)
 
 target_link_options(PEEL
-		PRIVATE /SUBSYSTEM:CONSOLE /NODEFAULTLIB:LIBCMT)
+		PRIVATE /SUBSYSTEM:CONSOLE /NODEFAULTLIB:LIBCMT$<$<CONFIG:debug>:D>)
+
+target_compile_options(PEEL PRIVATE
+		$<$<CXX_COMPILER_ID:MSVC>:/WX>
+		$<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Werror>
+		)
 
 target_compile_definitions(PEEL PRIVATE
 		_CONSOLE
@@ -580,6 +585,7 @@ target_include_directories(PEEL SYSTEM BEFORE
 		PUBLIC ${PEEL_SOURCE_ROOT}/
 		PUBLIC ${PEEL_REPO_ROOT}/Externals
 		PUBLIC ${PEEL_REPO_ROOT}/Externals/DevIL/include
+		PUBLIC ${PEEL_REPO_ROOT}/Externals/fmod/3.75/inc
 		PUBLIC ${PEEL_REPO_ROOT}/Private/NVD)
 
 target_link_directories(PEEL
@@ -605,14 +611,20 @@ target_link_library_config(IceTerrain)
 target_link_library_config(ZCB2)
 target_link_library_config(GlutX)
 
-copy_peel_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} DevIL.dll)
-copy_peel_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} fmod${PEEL_BIN_ARCH}.dll)
-copy_peel_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} Microsoft.VC90.DebugCRT.manifest)
-copy_peel_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcm90d.dll)
-copy_peel_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcp90.dll)
-copy_peel_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcp90d.dll)
-copy_peel_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcr90.dll)
-copy_peel_dependency(Externals/Binaries/${PEEL_BIN_DIR_NAME} msvcr90d.dll)
+copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} Microsoft.VC90.DebugCRT.manifest)
+copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} msvcm90d.dll)
+copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} msvcp90.dll)
+copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} msvcp90d.dll)
+copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} msvcr90.dll)
+copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} msvcr90d.dll)
+
+copy_peel_dependency(Externals/fmod/3.75/bin fmod${PEEL_BIN_ARCH}.dll)
+
+if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+	copy_peel_dependency(Externals/DevIL/lib/x64/Release DevIL.dll)
+else()
+	copy_peel_dependency(Externals/DevIL/lib/x86/Release DevIL.dll)
+endif()
 
 copy_peel_dependency(Src/GL glut32.dll)
 copy_peel_dependency(Src/GL glew32.dll)

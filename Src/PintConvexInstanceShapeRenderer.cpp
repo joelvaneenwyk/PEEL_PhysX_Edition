@@ -177,12 +177,12 @@ static const char* testPixelShader = "#version 330 core\n" STRINGIFY(
 	//	float diffuse = max(dot(normal, -parallelLightDir), 0.0);
 //		diffuse = clamp(diffuse, 0.0, 1.0);
 
-		
+
 //		FragColor = vec4(0.8*diffuse, 0.75*diffuse, 0.9*diffuse, 1.0);
 //		FragColor = vec4(parallelLightDir, 1.0);
 //		FragColor = vec4(normal, 1.0f);
 //		FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
-	} 
+	}
 );
 
 	// TODO: revisit this
@@ -319,9 +319,9 @@ PintConvexInstanceRenderer::PintConvexInstanceRenderer(udword nb_verts, const Po
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Point), (void*)0);
 	glEnableVertexAttribArray(0);
 
-	glBindBuffer(GL_ARRAY_BUFFER, 0); 
-//	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0); 
-	glBindVertexArray(0); 
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+//	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+	glBindVertexArray(0);
 
 //	glDeleteVertexArrays(1, &VAO);
 //	glDeleteBuffers(1, &VBO);
@@ -342,11 +342,11 @@ PintConvexInstanceRenderer::PintConvexInstanceRenderer(udword nb_verts, const Po
 		const udword Stride = sizeof(Matrix4x4);
 #endif
 		const udword baseLoc = 1;
-		glEnableVertexAttribArray(baseLoc+0);	glVertexAttribPointer(baseLoc+0, 4, GL_FLOAT, GL_FALSE, Stride, (void*)0);
-		glEnableVertexAttribArray(baseLoc+1);	glVertexAttribPointer(baseLoc+1, 4, GL_FLOAT, GL_FALSE, Stride, (void*)(vec4Size));
+		glEnableVertexAttribArray(baseLoc+0);	glVertexAttribPointer(baseLoc+0, 4, GL_FLOAT, GL_FALSE, Stride, (void*)(size_t)0);
+		glEnableVertexAttribArray(baseLoc+1);	glVertexAttribPointer(baseLoc+1, 4, GL_FLOAT, GL_FALSE, Stride, (void*)(size_t)(vec4Size));
 #ifndef QUAT2MATRIXSHADER
-		glEnableVertexAttribArray(baseLoc+2);	glVertexAttribPointer(baseLoc+2, 4, GL_FLOAT, GL_FALSE, Stride, (void*)(2 * vec4Size));
-		glEnableVertexAttribArray(baseLoc+3);	glVertexAttribPointer(baseLoc+3, 4, GL_FLOAT, GL_FALSE, Stride, (void*)(3 * vec4Size));
+		glEnableVertexAttribArray(baseLoc+2);	glVertexAttribPointer(baseLoc+2, 4, GL_FLOAT, GL_FALSE, Stride, (void*)(size_t)(2 * vec4Size));
+		glEnableVertexAttribArray(baseLoc+3);	glVertexAttribPointer(baseLoc+3, 4, GL_FLOAT, GL_FALSE, Stride, (void*)(size_t)(3 * vec4Size));
 #endif
 		glVertexAttribDivisor(baseLoc+0, 1);
 		glVertexAttribDivisor(baseLoc+1, 1);
@@ -355,7 +355,7 @@ PintConvexInstanceRenderer::PintConvexInstanceRenderer(udword nb_verts, const Po
 		glVertexAttribDivisor(baseLoc+3, 1);
 #endif
 		glBindVertexArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0); 
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	mCurrentNbInstances = 0;
 }
@@ -423,7 +423,7 @@ void PintConvexInstanceRenderer::DrawBatch() const
 #else
 			glBufferData(GL_ARRAY_BUFFER, mCurrentNbInstances * sizeof(Matrix4x4), mMatrices, ACCESS);
 #endif
-			glBindBuffer(GL_ARRAY_BUFFER, 0); 
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
 		}
 
 		glBindVertexArray(mVAO);

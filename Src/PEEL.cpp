@@ -2430,7 +2430,7 @@ static void OnRawInput(int inForeground, HRAWINPUT hRawInput)
 		LONG x = mouseData.lLastX, y = mouseData.lLastY;
 
 		wprintf(
-			L"Mouse: Device=0x%08X, Flags=%04x, WheelDelta=%d, X=%d, Y=%d\n",
+			L"Mouse: Device=0x%p, Flags=%04x, WheelDelta=%d, X=%d, Y=%d\n",
 			(void*)deviceHandle, (unsigned int)flags, wheelDelta, x, y);
 	}
 }
@@ -2576,7 +2576,7 @@ int PEEL_main(int argc, char** argv)
 			const RAWINPUTDEVICELIST& device = deviceList[i];
 			if(device.dwType == RIM_TYPEMOUSE)
 			{
-			wprintf(L"Mouse: Handle=0x%08X\n", (void*)device.hDevice);
+			wprintf(L"Mouse: Handle=0x%p\n", (void*)device.hDevice);
 
 			UINT dataSize;
 			GetRawInputDeviceInfo(

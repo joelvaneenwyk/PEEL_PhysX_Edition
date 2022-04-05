@@ -477,8 +477,8 @@ PintJointHandle SharedPhysX::CreateJoint(PxPhysics& physics, const PINT_JOINT_CR
 
 			if(0)
 			{
-				printf("mObject0: %d\n", jc.mObject0);
-				printf("mObject1: %d\n", jc.mObject1);
+				printf("mObject0: %p\n", jc.mObject0);
+				printf("mObject1: %p\n", jc.mObject1);
 				printf("mLocalPivot0: %f %f %f\n", jc.mLocalPivot0.mPos.x, jc.mLocalPivot0.mPos.y, jc.mLocalPivot0.mPos.z);
 				printf("mLocalPivot1: %f %f %f\n", jc.mLocalPivot1.mPos.x, jc.mLocalPivot1.mPos.y, jc.mLocalPivot1.mPos.z);
 			}

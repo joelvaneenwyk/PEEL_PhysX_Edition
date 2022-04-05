@@ -99,7 +99,7 @@ def _get_source(src, dest, header, baseName=None, extraSpace=''):
 
     if os.path.exists(src):
         with PIL.Image.open(src) as sourceImage:
-            outputImage = sourceImage.resize((400, 195), resample=PIL.Image.Resampling.LANCZOS).convert('RGBA')
+            outputImage = sourceImage.resize((400, 195), resample=PIL.Image.LANCZOS).convert('RGBA')
             r, g, b, a = outputImage.split()
             outputImage = PIL.Image.merge("RGBA", (a, b, g, r))
             rawData = outputImage.tobytes()

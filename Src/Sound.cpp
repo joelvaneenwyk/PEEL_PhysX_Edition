@@ -15,7 +15,7 @@
 	#else
 	static char* FMOD_DLL_Name = "fmod.dll";
 	#endif
-	#include <fmodapi375win/api/inc/fmoddyn.h>
+	#include <fmoddyn.h>
 	static FMOD_INSTANCE* gFMOD = null;
 	static const int gFrequency	= 44100;
 	static udword gChannel		= INVALID_ID;

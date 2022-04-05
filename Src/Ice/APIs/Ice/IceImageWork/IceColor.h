@@ -195,16 +195,16 @@
 								{
 									udword Color=0;
 
-									if(SIR(A)>=IEEE_1_0)	Color = 0xFF<<24;
+									if(SIR(A)>=IEEE_1_0)	Color = 0xFFu<<24;
 									else if(SIR(A)>0)		Color = ((udword)(A*255.0f)) << 24;
 
-									if(SIR(R)>=IEEE_1_0)	Color |= 0xFF<<16;
+									if(SIR(R)>=IEEE_1_0)	Color |= 0xFFu<<16;
 									else if(SIR(R)>0)		Color |= ((udword)(R*255.0f)) << 16;
 
-									if(SIR(G)>=IEEE_1_0)	Color |= 0xFF<<8;
+									if(SIR(G)>=IEEE_1_0)	Color |= 0xFFu<<8;
 									else if(SIR(G)>0)		Color |= ((udword)(G*255.0f)) << 8;
 
-									if(SIR(B)>=IEEE_1_0)	Color |= 0xFF;
+									if(SIR(B)>=IEEE_1_0)	Color |= 0xFFu;
 									else if(SIR(B)>0)		Color |= (udword)(B*255.0f);
 
 									return	Color;

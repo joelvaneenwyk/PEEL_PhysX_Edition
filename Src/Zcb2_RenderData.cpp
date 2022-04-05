@@ -375,7 +375,7 @@ bool RenderDataChunkCollection::Import(const VirtualFile& file)
 	for(udword i=0;i<NbChunks;i++)
 	{
 		const udword ID = file.ReadDword();
-		mRenderDataChunks.AddPtr((void*)ID);
+		mRenderDataChunks.AddPtr((void*)(size_t)ID);
 	}
 
 	udword* dst = mLocalPoses.Reserve(NbChunks*7);

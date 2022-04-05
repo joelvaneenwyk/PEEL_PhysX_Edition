@@ -88,7 +88,7 @@ bool ActorManager::Remove(PxRigidActor* actor)
 	PxRigidActor* MovedActor = AD[Index].mActor;
 	if(MovedActor!=actor)
 	{
-		ASSERT(udword(MovedActor->userData)==LastIndex);
+		ASSERT(udword((size_t)MovedActor->userData)==LastIndex);
 		MovedActor->userData = reinterpret_cast<void*>(Index);
 	}
 	Actors->ForceSize(LastIndex*ACTOR_DATA_SIZE);
