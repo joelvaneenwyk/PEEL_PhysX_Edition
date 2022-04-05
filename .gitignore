@@ -1,13 +1,13 @@
-**/x64/Debug/
-**/x64/Release/
-**/Win32/Debug/
-**/Win32/Release/
+/Src/x64/Debug/
+/Src/x64/Release/
+/Src/Win32/Debug/
+/Src/Win32/Release/
 /Build/
-Src/**/Debug/**
-Src/**/Release/**
-Src/**/#Compiler/cmake-*/**
-PEEL/Excel/
-PEEL/Src/#Compiler/*.exe
+/Src/**/Debug/**
+/Src/**/Release/**
+/Src/**/#Compiler/cmake-*/**
+/Src/#Compiler/*.exe
+/Excel/
 
 #
 # Intermediate or temporary files
