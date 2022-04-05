@@ -52,6 +52,7 @@ target_include_directories(PINT_Jolt SYSTEM BEFORE
 		PUBLIC ${PEEL_SOURCE_ROOT}/PxFoundation
 		PUBLIC ${PEEL_SOURCE_ROOT}/PxFoundation/include
 		PUBLIC ${PEEL_SOURCE_ROOT}/
+		PUBLIC ${PEEL_REPO_ROOT}/Externals/JoltPhysics
 		PUBLIC ${PEEL_REPO_ROOT}/Externals
 		PUBLIC ${PEEL_REPO_ROOT}/Private/NVD)
 
