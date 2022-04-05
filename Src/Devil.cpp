@@ -11,15 +11,15 @@
 #include "Devil.h"
 #include <IL/il.h>
 
-static void(ILAPIENTRY* gFunc_ilInit)()                                            = null;
-static void(ILAPIENTRY* gFunc_ilGenImages)(ILsizei Num, ILuint* Images)            = null;
-static void(ILAPIENTRY* gFunc_ilBindImage)(ILuint Image)                           = null;
-static ILubyte*(ILAPIENTRY* gFunc_ilGetData)()                                     = null;
-static ILint(ILAPIENTRY* gFunc_ilGetInteger)(ILenum Mode)                          = null;
+static void(ILAPIENTRY* gFunc_ilInit)()                                          = null;
+static void(ILAPIENTRY* gFunc_ilGenImages)(ILsizei Num, ILuint* Images)          = null;
+static void(ILAPIENTRY* gFunc_ilBindImage)(ILuint Image)                         = null;
+static ILubyte*(ILAPIENTRY* gFunc_ilGetData)()                                   = null;
+static ILint(ILAPIENTRY* gFunc_ilGetInteger)(ILenum Mode)                        = null;
 static void(ILAPIENTRY* gFunc_ilDeleteImages)(ILsizei Num, const ILuint* Images) = null;
-static ILboolean(ILAPIENTRY* gFunc_ilSetData)(void* Data)                          = null;
-static void(ILAPIENTRY* gFunc_ilSetInteger)(ILenum Mode, ILint Param)              = null;
-static ILboolean(ILAPIENTRY* gFunc_ilSaveImage)(ILconst_string FileName)           = null;
+static ILboolean(ILAPIENTRY* gFunc_ilSetData)(void* Data)                        = null;
+static void(ILAPIENTRY* gFunc_ilSetInteger)(ILenum Mode, ILint Param)            = null;
+static ILboolean(ILAPIENTRY* gFunc_ilSaveImage)(ILconst_string FileName)         = null;
 static ILboolean(
 	ILAPIENTRY* gFunc_ilTexImage)(ILuint Width, ILuint Height, ILuint Depth, ILubyte Bpp, ILenum Format, ILenum Type, void* Data)
 	= null;
@@ -94,15 +94,13 @@ bool InitDevil()
 
 bool CloseDevil()
 {
-	gOK          = false;
-	gFunc_ilInit = null;
-	//	gFunc_ilGenImage		= null;
-	gFunc_ilGenImages  = null;
-	gFunc_ilBindImage  = null;
-	gFunc_ilLoadImage  = null;
-	gFunc_ilGetData    = null;
-	gFunc_ilGetInteger = null;
-	//	gFunc_ilDeleteImage		= null;
+	gOK                  = false;
+	gFunc_ilInit         = null;
+	gFunc_ilGenImages    = null;
+	gFunc_ilBindImage    = null;
+	gFunc_ilLoadImage    = null;
+	gFunc_ilGetData      = null;
+	gFunc_ilGetInteger   = null;
 	gFunc_ilDeleteImages = null;
 	gFunc_ilSetData      = null;
 	gFunc_ilSetInteger   = null;
