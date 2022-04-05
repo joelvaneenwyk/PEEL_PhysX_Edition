@@ -11,8 +11,7 @@ This is a branch of [PEEL v2.0 PhysX Edition](https://github.com/Pierre-Terdiman
 
 The modifications by [Joel Van Eenwyk](https://github.com/joelvaneenwyk) in this repository are focused on making it easier to compile and run. Summary of changes:
 
-1. [PhysX 4](https://github.com/NVIDIAGameWorks/PhysX)
-and [JoltPhysics](https://github.com/jrouwe/JoltPhysics) are both submodules that are compiled in as part of the main solution.
+1. [PhysX 4](https://github.com/NVIDIAGameWorks/PhysX) and [JoltPhysics](https://github.com/jrouwe/JoltPhysics) are both submodules that are compiled in as part of the main solution.
 2. CMake support to PEEL and plugins.
 3. Configuration settings for CLion (`.idea`) and VSCode (`.vscode`).
 4. Added [CMake build GitHub action](https://github.com/joelvaneenwyk/PEEL/actions/workflows/build.yml).
@@ -28,8 +27,8 @@ For information about how to use the tool itself see [PEEL User Manual](./Docs/P
 
 ### Requirements
 
-* Visual Studio 2022
-* CMake v3.22+
+- Visual Studio 2022
+- CMake v3.22+
 
 ### Steps
 

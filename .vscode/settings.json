@@ -4,6 +4,38 @@
     "editor.formatOnType": false,
     "cmake.configureOnOpen": true,
     "cmake.configureOnEdit": true,
+    "python.linting.lintOnSave": true,
+    "python.linting.pylintEnabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.flake8Enabled": true,
+    "python.formatting.provider": "black",
+    "[json]": {
+        "editor.formatOnSave": true,
+        "editor.quickSuggestions": {
+            "strings": true
+        },
+        "editor.suggest.insertMode": "replace",
+        "gitlens.codeLens.scopes": [
+            "document"
+        ]
+    },
+    "[yaml]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "keep",
+        "gitlens.codeLens.scopes": [
+            "document"
+        ],
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        },
+        "editor.formatOnSave": true
+    },
+    "[python]": {
+        "editor.formatOnSave": true
+    },
     "prettier.proseWrap": "never",
     "cmake.buildDirectory": "${workspaceFolder}/Build/vscode",
     "files.associations": {
@@ -22,8 +54,11 @@
         "GLUTX",
         "Gregorius",
         "Havok",
+        "hexlify",
         "HWND",
         "joelvaneenwyk",
+        "LANCZOS",
+        "lukka",
         "msaa",
         "msbuild",
         "NovodeX",
@@ -36,8 +71,11 @@
         "RDTSC",
         "sdword",
         "SIMD",
+        "stdafx",
         "Suppr",
         "terdiman",
+        "tobytes",
+        "udword",
         "verts",
         "voronoi",
         "VSYNC",

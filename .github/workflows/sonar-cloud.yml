@@ -4,20 +4,33 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - "Docs/**"
+      - "**.md"
+      - "**.txt"
+      - "**.json"
+      - "**.bat"
   pull_request:
     types: [opened, synchronize, reopened]
-  schedule:                # This trigger is here only to make sure
-    - cron: '17 0 * * SUN' # the example itself doesn't become stale
+    paths-ignore:
+      - "Docs/**"
+      - "**.md"
+      - "**.txt"
+      - "**.json"
+      - "**.bat"
+  schedule: # This trigger is here only to make sure
+    - cron: "17 0 * * SUN" # the example itself doesn't become stale
   workflow_dispatch:
-    branches: [ main, dev ]
+    branches: [main, dev]
 
 jobs:
   build:
     name: Build
     runs-on: windows-latest
     env:
-      SONAR_SCANNER_VERSION: 4.6.1.2450 # Find the latest version in the "Windows" link on this page:
-                                        # https://sonarcloud.io/documentation/analysis/scan/sonarscanner/
+      SONAR_SCANNER_VERSION:
+        4.6.1.2450 # Find the latest version in the "Windows" link on this page:
+        # https://sonarcloud.io/documentation/analysis/scan/sonarscanner/
       SONAR_SERVER_URL: "https://sonarcloud.io"
       BUILD_WRAPPER_OUT_DIR: build_wrapper_output_directory # Directory where build-wrapper output will be placed
 

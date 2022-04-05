@@ -124,7 +124,7 @@ bool LoadWithDevil(const char* filename, Picture& pic)
 	ILuint ImageName;
 	(gFunc_ilGenImages)(1, &ImageName);
 	(gFunc_ilBindImage)(ImageName);
-	if (!(gFunc_ilLoadImage)((ILchar*)filename)) return false;
+	if (!(gFunc_ilLoadImage)((ILconst_string)filename)) return false;
 
 	const ILuint W = (gFunc_ilGetInteger)(IL_IMAGE_WIDTH);
 	const ILuint H = (gFunc_ilGetInteger)(IL_IMAGE_HEIGHT);

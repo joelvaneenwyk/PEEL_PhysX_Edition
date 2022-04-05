@@ -17,10 +17,10 @@ indent_size = 1
 [*.yml]
 indent_size = 2
 
-[*.{cpp,h,c}]
+[*.{cpp,h,c,txt,cmake}]
 indent_style = tab
 indent_size = 4
 
-[*.{py,bat,cmd}]
+[*.{py,bat,cmd,json}]
 indent_style = space
 indent_size = 4
