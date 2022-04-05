@@ -1,10 +1,12 @@
 #!/usr/bin/env python
+# pylint: disable=invalid-name,line-too-long,consider-using-f-string
 """
 Manages the conversion of data assets (e.g. PNG images) into C++ source files
 that can then be included in libraries and executables so that they don't have to
 be loaded at runtime.
 """
 
+import binascii  # Converts bytes to hex e.g., '1f'
 import inspect
 import logging
 import os
@@ -33,65 +35,68 @@ def _header():
 """.lstrip()
 
 
-def _get_header(src, dest, baseName=None):
+def _get_header(src, dest, base_name=None):
     """
     Counterpart to getSource but only returns what is needed in a header file.
     """
-    baseName = baseName or os.path.splitext(os.path.basename(dest))[0]
-    outText = _header()
-    outText += "// Source filename: %s\n" % src.replace(PEEL_ROOT, '').replace('\\', '/').strip('/')
-    outText += "extern const unsigned int %s_Size;\n" % baseName
-    outText += "extern udword %s_Data[];" % baseName
-    return outText
+    base_name = base_name or os.path.splitext(os.path.basename(dest))[0]
+    out_text = _header()
+    out_text += "// Source filename: %s\n" % src.replace(PEEL_ROOT, "").replace(
+        "\\", "/"
+    ).strip("/")
+    out_text += "extern const unsigned int %s_Size;\n" % base_name
+    out_text += "extern udword %s_Data[];" % base_name
+    return out_text
 
 
-def _get_hex_data(rawData, extraSpace=''):
+def _get_hex_data(raw_data, extra_space=""):
     """
     Converts raw binary data into 2-byte hex strings that are separated by
     commas and newlines every n'th string.
     """
-    outText = "{\n"
+    out_text = "{\n"
 
-    # Converts bytes to hex (e.g. '1f')
-    import binascii
-    hexData = six.ensure_str(binascii.hexlify(rawData))
+    hex_data = six.ensure_str(binascii.hexlify(raw_data))
 
     n = 2
-    hexData = [hexData[i:i + n] for i in range(0, len(hexData), n)]
+    hex_data = [hex_data[i : i + n] for i in range(0, len(hex_data), n)]
 
     # This takes it from '1f' -> '0x1f'
-    hexStringData = [
+    hex_string_data = [
         "0x%s%s%s%s" % (a, b, c, d)
         for (a, b, c, d) in six.moves.zip(
-            islice(hexData, 0, None, 4),
-            islice(hexData, 1, None, 4),
-            islice(hexData, 2, None, 4),
-            islice(hexData, 3, None, 4)
+            islice(hex_data, 0, None, 4),
+            islice(hex_data, 1, None, 4),
+            islice(hex_data, 2, None, 4),
+            islice(hex_data, 3, None, 4),
         )
     ]
 
-    def chunks(sourceList, chunkSize):
+    def _chunks(source_list, chunk_size):
         """
         Yield successive n-sized chunks from ``sourceList``.
         """
-        for chunkIndex in range(0, len(sourceList), chunkSize):
-            yield sourceList[chunkIndex:chunkIndex + chunkSize]
+        for chunkIndex in range(0, len(source_list), chunk_size):
+            yield source_list[chunkIndex : chunkIndex + chunk_size]
 
     # This groups it into array chunks: [['0x0f', '0x1f'], ['0x2f', '0x1a'], ...]
-    hexChunks = list(chunks(hexStringData, 6))
+    _hex_chunks = list(_chunks(hex_string_data, 6))
 
     # This adds commas to each and combines into one string per line: ['0x0f, 0x1f'], ['0x2f, 0x1a'], ...
-    hexPerLine = [", ".join(x) for x in hexChunks]
+    hex_chunks_per_line = [", ".join(x) for x in _hex_chunks]
 
     # Combines each line with newlines and a trailing comma
-    outText += ",\n".join(["\t%s%s" % (extraSpace, x) for x in hexPerLine])
+    out_text += ",\n".join(["\t%s%s" % (extra_space, x) for x in hex_chunks_per_line])
 
-    return """%s
+    return (
+        """%s
 };
-""" % outText
+"""
+        % out_text
+    )
 
 
-def _get_source(src, dest, header, baseName=None, extraSpace=''):
+def _get_source(src, dest, header, base_name=None, extra_space=""):
     """
     Reads from the source file and generates a C++ source file that contains
     all the data.
@@ -99,22 +104,32 @@ def _get_source(src, dest, header, baseName=None, extraSpace=''):
 
     if os.path.exists(src):
         with PIL.Image.open(src) as sourceImage:
-            outputImage = sourceImage.resize((400, 195), resample=PIL.Image.LANCZOS).convert('RGBA')
-            r, g, b, a = outputImage.split()
-            outputImage = PIL.Image.merge("RGBA", (a, b, g, r))
-            rawData = outputImage.tobytes()
+            output_image = sourceImage.resize(
+                (400, 195), resample=PIL.Image.LANCZOS
+            ).convert("RGBA")
+            r, g, b, a = output_image.split()
+            output_image = PIL.Image.merge("RGBA", (a, b, g, r))
+            raw_data = output_image.tobytes()
 
-        baseName = baseName or os.path.splitext(os.path.basename(dest))[0]
+        base_name = base_name or os.path.splitext(os.path.basename(dest))[0]
 
-        outText = _header()
-        outText += "#include \"%s\"\n\n" % header
-        outText += "// Source filename: %s\n" % src.replace(PEEL_ROOT, '').replace('\\', '/').strip('/')
-        outText += "extern const unsigned int %s_Size = %s;\n" % (baseName, str(len(rawData)))
-        outText += "udword %s_Data[] = %s" % (baseName, _get_hex_data(rawData, extraSpace))
+        out_text = _header()
+        out_text += '#include "%s"\n\n' % header
+        out_text += "// Source filename: %s\n" % src.replace(PEEL_ROOT, "").replace(
+            "\\", "/"
+        ).strip("/")
+        out_text += "extern const unsigned int %s_Size = %s;\n" % (
+            base_name,
+            str(len(raw_data)),
+        )
+        out_text += "udword %s_Data[] = %s" % (
+            base_name,
+            _get_hex_data(raw_data, extra_space),
+        )
     else:
-        outText = None
+        out_text = None
 
-    return outText
+    return out_text
 
 
 def _add_file(filename, data):
@@ -123,65 +138,69 @@ def _add_file(filename, data):
     if the data is different from what is already on disk.
     """
 
-    outFiles = {}
+    output_files = {}
 
     if os.path.exists(filename):
-        srcData = open(filename, "r").read()
+        src_data = open(filename, "r", encoding="utf-8").read()
     else:
-        srcData = None
+        src_data = None
 
-    if data is not None and data != srcData:
-        outFiles[filename] = data
+    if data is not None and data != src_data:
+        output_files[filename] = data
 
-    return outFiles
+    return output_files
 
 
-def _save_files(outFiles):
+def _save_files(output_files):
     """
     Given a dictionary of output files where it maps destination filename to
     text data, it will make sure the needed files are opened on Perforce and
     then saves them out.
     """
 
-    for dest, value in six.iteritems(outFiles):
+    for dest, value in six.iteritems(output_files):
         directory = os.path.dirname(dest)
         if not os.path.exists(directory):
             os.makedirs(directory)
-        with open(dest, 'w') as outData:
-            outData.write(value)
-        LOGGER.info("Updated %s", dest.replace(PEEL_ROOT, ''))
+        with open(dest, "w", encoding="utf-8") as output_data:
+            output_data.write(value)
+        LOGGER.info("Updated %s", dest.replace(PEEL_ROOT, ""))
 
-    return outFiles
+    return output_files
 
 
 def _convert_graphics_resources():
     """
     Converts images needed by PEEL.
     """
-    mapping = {
-        "peel.png": "TitleData.cpp"
-    }
+    mapping = {"peel.png": "TitleData.cpp"}
 
     includes = ""
 
-    outFiles = {}
+    output_file_mapping = {}
 
     for src, dest in six.iteritems(mapping):
-        LOGGER.info("Processing %s", src.replace(PEEL_ROOT, ''))
+        LOGGER.info("Processing %s", src.replace(PEEL_ROOT, ""))
 
-        src = os.path.join(PEEL_ROOT, 'Media', src)
-        dest = os.path.join(PEEL_ROOT, 'Src', dest)
-        outFiles.update(_add_file(dest, _get_source(src, dest, "stdafx.h", baseName="gPictureData")))
+        src = os.path.join(PEEL_ROOT, "Media", src)
+        dest = os.path.join(PEEL_ROOT, "Src", dest)
+        output_file_mapping.update(
+            _add_file(
+                dest, _get_source(src, dest, "stdafx.h", base_name="gPictureData")
+            )
+        )
 
-        includes += "%s\n\n" % _get_header(src, dest, baseName="gPictureData")
+        includes += "%s\n\n" % _get_header(src, dest, base_name="gPictureData")
 
-    includes = includes.rstrip() + '\n'  # Normalize trailing whitespace
+    includes = includes.rstrip() + "\n"  # Normalize trailing whitespace
 
-    outFiles.update(_add_file(os.path.join(PEEL_ROOT, 'Src', 'Resources.h'), includes))
+    output_file_mapping.update(
+        _add_file(os.path.join(PEEL_ROOT, "Src", "Resources.h"), includes)
+    )
 
-    _save_files(outFiles)
+    _save_files(output_file_mapping)
 
-    return len(outFiles)
+    return len(output_file_mapping)
 
 
 def main():
@@ -189,13 +208,15 @@ def main():
     Main entry point for the script.
     """
 
-    logging.basicConfig(level=logging.DEBUG)
-    processedFiles = 0
-    processedFiles += _convert_graphics_resources()
+    logging.basicConfig(level=logging.INFO)
+    processed_files = 0
+    processed_files += _convert_graphics_resources()
 
     LOGGER.info(
         "'%s' Done. Processed '%d' files.",
-        sys.argv[0].replace(PEEL_ROOT, ""), processedFiles)
+        sys.argv[0].replace(PEEL_ROOT, ""),
+        processed_files,
+    )
 
     return 0
 

@@ -209,7 +209,7 @@ bool SaveWithDevil(const char* filename, const Picture& pic)
 
 	(gFunc_ilTexImage)(pic.GetWidth(), pic.GetHeight(), 1, 4, IL_RGBA, IL_UNSIGNED_BYTE, pic.GetPixels());
 
-	if (!(gFunc_ilSaveImage)((ILchar*)filename)) return false;
+	if (!(gFunc_ilSaveImage)((ILconst_string)filename)) return false;
 
 	(gFunc_ilDeleteImages)(1, &ImageName);
 	return true;
