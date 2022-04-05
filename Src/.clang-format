@@ -1,0 +1,33 @@
+#
+# Clang format attempting to match PEEL style
+#
+
+BasedOnStyle: Chromium
+
+AlignConsecutiveDeclarations: AcrossEmptyLinesAndComments
+
+Standard: c++17
+SortIncludes: Never
+IndentWidth: 4
+TabWidth: 4
+UseTab: Always
+ColumnLimit: 130
+BreakBeforeBraces: Allman
+SpacesInParentheses: false
+SpaceBeforeParens: ControlStatements
+AccessModifierOffset: -4
+FixNamespaceComments: false
+NamespaceIndentation: All
+BreakConstructorInitializers: BeforeComma
+SpaceAfterTemplateKeyword: true
+IndentPPDirectives: AfterHash
+AllowShortFunctionsOnASingleLine: Inline
+SpacesBeforeTrailingComments: 2
+AllowShortIfStatementsOnASingleLine: true
+AlignEscapedNewlines: DontAlign
+AlignAfterOpenBracket: Align
+BinPackArguments: true
+BinPackParameters: false
+AllowAllParametersOfDeclarationOnNextLine: false
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+BreakStringLiterals: false
