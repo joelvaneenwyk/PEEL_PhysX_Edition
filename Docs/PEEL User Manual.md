@@ -1,16 +1,16 @@
 # PEEL User Manual
 
-Pierre Terdiman -- v1.1 <pierre.terdiman@gmail.com>
+Author: [Pierre Terdiman](mailto:pierre.terdiman@gmail.com)
 
-Welcome to the Physics Engine Evaluation Lab - a.k.a. PEEL.
+Welcome to the Physics Engine Evaluation Lab a.k.a. PEEL.
 
 PEEL is a tool designed to evaluate, compare and benchmark physics
-engines. In a way, it is very similar to the old PAL project (Physics
-Abstraction Layer).
+engines. In a way, it is very similar to the old Physics
+Abstraction Layer (PAL) project.
 
 It was initially written to compare PhysX versions between each-other,
 and catch performance regressions. Support for entirely different
-engines was added later, giving the tool a much larger scope. To this
+engines was added later, giving the tool a much larger scope.s To this
 date it has been successfully used by various people to discover
 previously unknown issues in their engines, and actually improve them.
 
@@ -19,13 +19,18 @@ previously unknown issues in their engines, and actually improve them.
 When you run PEEL, the first thing you see is the plugin selection
 dialog:
 
-![Figure 1: plugin selection dialog](./Images/image1.png){width="4.063193350831146in" height="3.125in"}
+![Figure 1: plugin selection dialog](./Images/image1.png)
 
-Each plugin is a DLL whose name starts with \"PINT\" (for Physics
-INTerface). There is one plugin for each physics engine. To select a
-plugin, click on it so that it is highlighted in blue, then click on the
-\'Select\' button to validate your selection. You can choose as many
-plugins as you want here. Otherwise if you are only interested in a
+<!-- cspell:disable -->
+
+Each plugin is a DLL whose name starts with "PINT" for **P**hysics **INT**erface. There
+is one plugin for each physics engine.
+
+<!-- cspell:enable -->
+
+To select a plugin, click on it so that it is highlighted in blue, then click on the
+'Select' button to validate your selection. You can choose as many
+plugins as you want here. Otherwise, if you are only interested in a
 single plugin, you can simply double-click on its name directly.
 
 Note: there is an internal limit of 32 plugins, and the Fx function keys
@@ -34,8 +39,8 @@ are used to enable/disable an engine. So it is best to select less than
 
 ## Main window -- Menu Mode
 
-All selected plugins are loaded. If the loading is successful, PEEL\'s
-main window should appear next. This is called the *Menu Mode*:
+All selected plugins are loaded. If the loading is successful, PEEL's
+main window should appear next. This is called the _Menu Mode_:
 
 ![Figure 2: Main window, Menu Mode](./Images/image2.jpeg)
 
@@ -46,17 +51,14 @@ of them.
 
 ### Test selection
 
-At the very bottom of the screen there is a list of available tests.
-Each test has the following format:
+At the very bottom of the screen there is a list of available tests. Each test has the following format:
 
-Index: (category) -- name
+`Index: (category) -- name`
 
-*Index* is simply the test number. It has no purpose other than knowing
-the total number of available tests.
-
-*Category* is the group to which the test belongs.
-
-*Name* is the test's name.
+- **Index** is simply the test number. It has no purpose other than knowing
+  the total number of available tests.
+- **Category** is the group to which the test belongs.
+- **Name** is the test's name.
 
 Each test also has a description string, displayed in the brown window
 located above the test selection area.
@@ -67,8 +69,8 @@ Right arrow keys skip an entire category, which makes the navigation
 quicker when you know what category you are interested in.
 
 Once the desired test is selected (highlighted in orange), press the
-Return key to activate the test and switch the window to *Simulation
-Mode*.
+Return key to activate the test and switch the window to _Simulation
+Mode_.
 
 ### Categories
 
@@ -76,33 +78,33 @@ Tests are roughly sorted into the following categories:
 
 - Undefined: tests that do not fall into one of the other categories.
 - API: tests that check the API works as expected. Usually very simple
-    scenes doing only one specific thing (e.g. checking that collision
-    filtering works)
+  scenes doing only one specific thing (e.g. checking that collision
+  filtering works)
 - Behavior: tests that check the physics behavior is as it should be,
-    or at least plausible. Can be seen as correctness tests, as opposed
-    to performance tests.
+  or at least plausible. Can be seen as correctness tests, as opposed
+  to performance tests.
 - Contact generation: this category is dedicated to contact generation
-    problems and pitfalls.
+  problems and pitfalls.
 - Joints: this category contains scenes that use traditional joints
-    like spherical, hinge, prismatic, etc. These joints typically use
-    the same iterative solver as the contacts.
+  like spherical, hinge, prismatic, etc. These joints typically use
+  the same iterative solver as the contacts.
 - Articulations: some physics engines support more advanced or more
-    stable joints dedicated to articulated systems. They are usually
-    more expensive than the regular joints, and may use dedicated
-    solvers. This category is for them.
+  stable joints dedicated to articulated systems. They are usually
+  more expensive than the regular joints, and may use dedicated
+  solvers. This category is for them.
 - Performance: generic performance tests usually involving a lot of
-    rigid bodies or complicated scenes.
+  rigid bodies or complicated scenes.
 - Kinematics: tests that use kinematic objects.
 - Vehicles: tests that use dedicated, vehicle-specific modules.
 - Raycast: mainly performance tests for raycasts. Might include
-    correctness tests as well.
+  correctness tests as well.
 - Sweep: mainly performance tests for sweeps. Might include
-    correctness tests as well.
+  correctness tests as well.
 - Overlap: mainly performance tests for overlaps. Might include
-    correctness tests as well.
+  correctness tests as well.
 - CCD: tests dedicated to continuous collision detection problems.
 - Static scene: tests that only load a static scene, no rigid bodies.
-    Mainly used for raytracing benchmarks.
+  Mainly used for raytracing benchmarks.
 - WIP: work-in-progress tests.
 
 Note that these categories are actually overlapping quite a bit, and
@@ -131,17 +133,17 @@ the + and -- keys to change the camera position.
 
 For each physics engine there are 4 performance numbers updated each
 frame. The first number, just after the physics engine's name, is the
-simulation time for current frame. *(Avg: x)* is the average simulation
-time. *(Worst: x)* is the largest simulation time so far. The last
+simulation time for current frame. `(Avg: x)` is the average simulation
+time. `(Worst: x)` is the largest simulation time so far. The last
 number is the memory used by each engine, provided the allocations have
 all been properly re-routed to the engine's user-defined allocators.
 
-*Frame: x* is a simple frame counter. It starts counting when entering
+`Frame: x` is a simple frame counter. It starts counting when entering
 Simulation Mode, and stops counting when returning to Menu Mode. It is
 possible to pause/resume the simulation by pressing P, and do frame-
 by-frame simulation by pressing O (for "One frame").
 
-*FPS: x* is a simple framerate counter. This is not terribly interesting
+`FPS: x` is a simple framerate counter. This is not terribly interesting
 in itself, since it includes the accumulated simulation time of each
 engine, as well as the rendering time. It is possible to disable
 rendering entirely by pressing R. It is also possible to enable/disable
@@ -167,10 +169,12 @@ point of view by starting the same test again. An alternative is
 to pause the simulation in Menu Mode, start the simulation paused, move
 the camera to the desired spot, then unpause.
 
+<!-- markdownlint-disable MD033 -->
+
 In simulation mode, use the right mouse button to do an action. Select
-desired action in the Options panel's generic tab, under "Current tool".
+desired action from the `Generic` tab in the `Option` panel, under `Current tool`.
 Default action is picking/manipulating rigid bodies. It is possible to
-delete the currently picked/manipulated object by pressing the `DEL` / `Suppr`
+delete the currently picked/manipulated object by pressing the <kbd>⌫&nbsp;Delete</kbd> (`Suppr`)
 key while the object is captured by the mouse.
 
 ![Figure 3: Main window, Simulation Mode](./Images/image3.jpeg)
@@ -191,7 +195,7 @@ Sometimes the settings used in the PEEL 1.0 scenes have been captured in
 
 Using the presets will recreate the same scenes as in PEEL 1.0.
 
-Otherwise these dialogs are pretty much self-explanatory: tweak the
+Otherwise, these dialogs are pretty much self-explanatory: tweak the
 parameters as you wish, and press the "Reset test" button to restart the
 test with the new settings. Alternatively, go back to the Menu Mode and
 activate the same test again: the new settings will then be taken into
@@ -199,7 +203,7 @@ account. The settings are not reset until you start a different test.
 
 ## Options panel
 
-The options panel has one tab for shared/generic options, and one tab
+The `Option` panel has one tab for shared/generic options, and one tab
 for each loaded plugin.
 
 ![Figure 4: Options Panel -- shared (generic) options](./Images/image5.png)
@@ -208,7 +212,7 @@ The generic tab contains settings affecting all engines:
 
 ### Randomize physics engines order
 
-In Simulation Mode, all engines run sequentially. By default they run in
+In Simulation Mode, all engines run sequentially. By default, they run in
 the order in which they are listed at the top of the screen, which
 depends on the plugins' DLL names. There was a concern that the order
 may have an impact on performance results, so this feature randomizes
@@ -218,7 +222,7 @@ the order each frame to make sure that benchmarks are not biased.
 
 The state of the cache has a large impact on performance. Running a
 small scene in a single engine, in isolation from the actual game
-engine, possibly without rendering, is a best case scenario that is
+engine, possibly without rendering, is the best case scenario that is
 likely to produce unrealistic performance figures. The same scene in the
 actual game will probably have lower performance. Running PEEL with
 multiple physics engines at once and rendering enabled already takes
@@ -246,11 +250,11 @@ This feature defines the units of reported performance numbers.
 Available options are:
 
 - K-Cycles (RDTSC): 1 reported unit = 1024 cycles, as measured by the
-    RDTSC instruction.
+  RDTSC instruction.
 - ms (timeGetTime): 1 reported unit = 1 ms, as measured by the
-    timeGetTime function.
+  timeGetTime function.
 - us (QPC): 1 reported unit = 1 us, as measured by the
-    QueryPerformanceCounter function.
+  QueryPerformanceCounter function.
 
 ### SQ profiling mode
 
@@ -264,8 +268,8 @@ This feature defines which part of the physics engines should be
 profiled:
 
 - Simulation: profiles the structure's management
-    (creation/update/etc), which usually happens during the rigid body
-    simulation.
+  (creation/update/etc), which usually happens during the rigid body
+  simulation.
 - SQ queries: profiles the actual raycast, sweep and overlap queries.
 - Combined: profiles both and combines the results.
 
@@ -281,12 +285,12 @@ This feature defines what kind of raycast queries are used in the
 "Raycast" test category:
 
 - Raycast closest: these are the regular raycasts returning a single
-    hit (the closest one along the ray).
+  hit (the closest one along the ray).
 - Raycast any: these are boolean raycasts simply returning whether the
-    ray touched something or not. They should be faster than "raycast
-    closest" queries.
+  ray touched something or not. They should be faster than "raycast
+  closest" queries.
 - Raycast all: these are raycasts returning all objects touched by the
-    ray. They should be slower than "raycast closest" queries.
+  ray. They should be slower than "raycast closest" queries.
 
 It would have been possible to create dedicated raycast tests for each
 of these modes, but it would have potentially multiplied the total
@@ -301,13 +305,13 @@ This feature defines what happens when pressing the right mouse button
 
 - Picking: users can select and drag rigid bodies using the RMB.
 - Add impulse: pressing the RMB applies an impulse at the picked point
-    on the picked object.
+  on the picked object.
 - Shoot box: a new box is created, added to the scene, and shot in the
-    view direction.
+  view direction.
 - Camera tracking: selects the object that the camera will be
-    tracking. After selecting an object here, you can for example go
-    back to the picking tool and move that object around with the mouse.
-    The camera will follow it.
+  tracking. After selecting an object here, you can for example go
+  back to the picking tool and move that object around with the mouse.
+  The camera will follow it.
 
 Each tool can have additional settings in the "tool-specific settings"
 area of the UI. For example the picking force for the picking tool can
@@ -324,8 +328,8 @@ working as expected. The raytracing test has a few options of its own:
 
 - Disabled: disables the raytracing test.
 - Single threaded: runs the test with a single thread.
-- Multi threaded: runs the test with 4 threads (each thread is given a
-    quarter of the rendering window).
+- Multithreaded: runs the test with 4 threads (each thread is given a
+  quarter of the rendering window).
 - Max dist: ray length.
 - Number of rays: size of rendering window.
 
@@ -372,7 +376,7 @@ default number is used (e.g. "100" in the above script).
 NOTE: there is currently an issue with configurable tests and scripts.
 It is currently not possible to configure the tests from the script, so
 the scripted tests will run using each test's default parameters. This
-means that it is not possible anymore to run some of the PEEL 1.0 preset
+means that it is not possible anymore to run some PEEL v1.0 preset
 scenes from a script.
 
 ### Per-engine options
@@ -400,7 +404,7 @@ and display such stats, but this plugin does.
 
 ## Command line options
 
-PEEL supports the following command line options:
+PEEL supports the following command line (CLI) options:
 
 ```c
 -r Disable rendering
@@ -411,7 +415,7 @@ PEEL supports the following command line options:
 ```
 
 This last one is handy if you want to temporarily ignore command line
-arguments but still keep them around in Visual Studio\'s property page.
+arguments but still keep them around in Visual Studio's property page.
 You can then have something like the following command arguments:
 
 ```c
@@ -452,8 +456,8 @@ these things suddenly very obvious.
 PEEL can be used to benchmark different approaches while developing a
 new feature.
 
-For example you might have a define in your code that enables one
-implementation or another, say e.g. SIMD vs non-SIMD. With PEEL it is
+For example, you might have a `define` in your code that enables one
+implementation or another, say e.g. SIMD vs non-SIMD. With PEEL, it is
 easy to compile a PINT plugin using one implementation, change the PINT
 DLL's name, recompile with the other implementation, and run the two
 competing versions against each other. Since they run at the same time,
@@ -463,18 +467,18 @@ always above the other. The winner is usually clearer with PEEL than
 with more traditional benchmarks running competing implementations
 sequentially.
 
-![Figure 10: different codepaths in Opcode 2.0. Which one is best?](./Images/image11.jpeg){width="6.54765748031496in" height="1.485in"}
+![Figure 10: different codepaths in Opcode 2.0. Which one is best?](./Images/image11.jpeg)
 
 ### Raycast debugging
 
 PEEL can be used to debug raytracing functions.
 
 It is very easy to break a raytracing function without noticing. PEEL's
-raytracing test can make subtle bugs visually obvious (unexpected black
+raytracing test can make subtle bugs visually obvious e.g., unexpected black
 pixels appearing here and there in the raytracing window, backface
 culling or ray length not being properly respected, gaps appearing
-between objects that should touch, etc). It is then possible to trigger
-a breakpoint when e.g. a black pixel happens, and then just trace the
+between objects that should touch, etc. It is then possible to trigger
+a breakpoint when (e.g., a black pixel appears) so you can trace the
 code.
 
 ![Figure 11: unit tests pass, yet visually it's clearly broken.](./Images/image12.jpeg)
@@ -499,7 +503,7 @@ said, there are a lot of pitfalls here, explained in Appendix A.
 Note the spike in figure 12. It happened because an unrelated program
 started an expensive operation in the background. With PEEL, the
 unexpected event affects all 3 engines, and thus the recorded
-performance data remains fair and reliable. If we would run 3 tests
+performance data remains fair and reliable. If we run 3 tests
 sequentially, each one with a different physics engine, the spike would
 only happen during one of the tests, giving an unfair advantage to the
 other two. Incidentally, the amplitude of the spike reveals that some
@@ -523,22 +527,22 @@ replicate that thing in B.
 
 ## Keys summary
 
-|Key|Description|
-|-|-|
-|ESC             |Quit
-|Return          |Activate test (Menu Mode), End simulation (Simulation Mode)
-|C               |Reset camera
-|\+              |Next camera pose
-|\-              |Previous camera pose
-|P               |Enable/disable pause
-|O               |Simulate one frame then pause
-|R               |Enable/disable rendering
-|H               |Show/hide help text
-|S               |Save Excel file containing performance data
-|W               |Enable/disable wireframe
-|X               |Enable/disable wireframe overlay
-|DEL / Suppr     |Delete picked object
-|Arrow keys      |Test selection (Menu Mode), camera motion (Simulation Mode) or Vehicle control.
+| Key         | Description                                                                     |
+| ----------- | ------------------------------------------------------------------------------- |
+| ESC         | Quit                                                                            |
+| Return      | Activate test (Menu Mode), End simulation (Simulation Mode)                     |
+| C           | Reset camera                                                                    |
+| \+          | Next camera pose                                                                |
+| \-          | Previous camera pose                                                            |
+| P           | Enable/disable pause                                                            |
+| O           | Simulate one frame then pause                                                   |
+| R           | Enable/disable rendering                                                        |
+| H           | Show/hide help text                                                             |
+| S           | Save Excel file containing performance data                                     |
+| W           | Enable/disable wireframe                                                        |
+| X           | Enable/disable wireframe overlay                                                |
+| DEL / Suppr | Delete picked object                                                            |
+| Arrow keys  | Test selection (Menu Mode), camera motion (Simulation Mode) or Vehicle control. |
 
 ## Appendix A: physics benchmarks for dummies
 
@@ -547,8 +551,8 @@ harder. Use the following notes to avoid the most basic mistakes.
 
 ### Use the proper power options
 
-This is typically found in *Control Panel =\> System and security =\>
-Power Options*. Select the "High performance" power plan. Running
+This is typically found in _Control Panel =\> System and security =\>
+Power Options_. Select the "High performance" power plan. Running
 benchmarks with the "Balanced" or "Power saver" plans produces
 unreliable results.
 
@@ -556,7 +560,7 @@ unreliable results.
 
 ### Close all programs except PEEL. Unplug the internet
 
-Do not let programs like Outlook, Winamp, antivirus software, etc, run
+Do not let programs like Outlook, Winamp, antivirus software, and such run
 in the background. They can start random tasks at random times that will
 interfere with your benchmarks.
 
@@ -583,7 +587,7 @@ Figure 12.
 ### Be aware of each engine's "empty" operating overhead
 
 In theory, when you run a physics update on an empty scene, all engines
-should take the same amount of time, i.e no time at all since there is
+should take the same amount of time i.e., no time at all since there is
 nothing to do.
 
 In practice, of course, this is not the case. PEEL's first test scene
@@ -686,7 +690,7 @@ not mean that using engine A will make your game 2X faster overall. If
 your physics budget is 5% of the frame, even if you switch to an
 incredible physics engine that takes absolutely no time, you still only
 save 5% of the game's frame. Thus, it might actually be reasonable and
-acceptable to switch to a *slower* engine if it offers other benefits
+acceptable to switch to a _slower_ engine if it offers other benefits
 otherwise (better support, open source, etc).
 
 ### Benchmarks are never "done"
@@ -715,12 +719,12 @@ At time of writing, PEEL has plugins for:
 - Newton 3.13
 - Newton 3.14
 - Havok 6.6.0
-- Havok 2011_3\_0
-- Havok 2011_3\_1
-- Havok 2012_1\_0
-- Havok 2012_2\_0
-- Havok 2013_1\_0
-- Havok 2014_1\_0
+- Havok 2011_3_0
+- Havok 2011_3_1
+- Havok 2012_1_0
+- Havok 2012_2_0
+- Havok 2013_1_0
+- Havok 2014_1_0
 - ICE Physics
 - NovodeX 2.1.1
 - Opcode 1.3
@@ -732,7 +736,7 @@ At time of writing, PEEL has plugins for:
 - PhysX 3.3.1
 - PhysX 3.3.2
 - PhysX 3.3.4
-- PhysX 3.4 (*many* versions)
+- PhysX 3.4 (_many_ versions)
 - GRB (GPU rigid bodies)
 
 Writing and maintaining the PEEL plugins for each of these engines takes
@@ -743,7 +747,7 @@ author does not necessarily have. Thus, these implementations are a
 incomplete. A list of current known issues is maintained in a separate
 text file in the PEEL distribution. The author strongly encourages
 people familiar with the above APIs to look up the code, double-check
-it, *and submit improvements or bugfixes*.
+it, _and submit improvements or bugfixes_.
 
 Note that PEEL can also be used to evaluate collision libraries like
 Opcode, which are not "physics engines" per se, but they offer similar
