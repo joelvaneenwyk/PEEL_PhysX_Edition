@@ -2,17 +2,17 @@
 # Clang format attempting to match PEEL style
 #
 
-BasedOnStyle: Chromium
+BasedOnStyle: WebKit
 
 AlignConsecutiveDeclarations: AcrossEmptyLines
 
 Standard: c++17
 
-TabWidth: 4
-UseTab: Always
-IndentWidth: 4
+UseTab: ForContinuationAndIndentation
+IndentWidth: 3
+TabWidth: 3
 ColumnLimit: 130
-ContinuationIndentWidth: 4
+ContinuationIndentWidth: 3
 
 AccessModifierOffset: -4
 AlignConsecutiveAssignments: AcrossEmptyLines
