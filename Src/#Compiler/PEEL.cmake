@@ -3,23 +3,23 @@
 #
 
 macro(copy_peel_dependency path filename)
-	add_custom_command(
-			TARGET PEEL POST_BUILD
-			COMMAND ${CMAKE_COMMAND} -E $<IF:$<CONFIG:Debug>,copy,true>
-			${PEEL_REPO_ROOT}/${path}/${filename} ${CMAKE_CURRENT_BINARY_DIR}/Debug/${filename})
-	add_custom_command(
-			TARGET PEEL POST_BUILD
-			COMMAND ${CMAKE_COMMAND} -E $<IF:$<CONFIG:Debug>,true,copy>
-			${PEEL_REPO_ROOT}/${path}/${filename} ${CMAKE_CURRENT_BINARY_DIR}/Release/${filename})
+    add_custom_command(
+            TARGET PEEL POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E $<IF:$<CONFIG:Debug>,copy_if_different,true>
+            ${PEEL_REPO_ROOT}/${path}/${filename} ${CMAKE_CURRENT_BINARY_DIR}/Debug/${filename})
+    add_custom_command(
+            TARGET PEEL POST_BUILD
+            COMMAND ${CMAKE_COMMAND} -E $<IF:$<CONFIG:Debug>,true,copy_if_different>
+            ${PEEL_REPO_ROOT}/${path}/${filename} ${CMAKE_CURRENT_BINARY_DIR}/Release/${filename})
 endmacro()
 
 macro(copy_peel_dependency_variant path filename)
-	copy_peel_dependency(${path} ${filename}${PEEL_BIN_ARCH}$<$<CONFIG:Debug>:_D>.dll)
+    copy_peel_dependency(${path} ${filename}${PEEL_BIN_ARCH}$<$<CONFIG:Debug>:_D>.dll)
 endmacro()
 
 macro(target_link_library_config library)
-	target_link_libraries(PEEL
-			${library}${PEEL_BIN_ARCH}$<$<CONFIG:Debug>:_D>)
+    target_link_libraries(PEEL
+            ${library}${PEEL_BIN_ARCH}$<$<CONFIG:Debug>:_D>)
 endmacro()
 
 # Source files
@@ -502,13 +502,6 @@ set(PEEL_SRC_FILES
 
 set(APP_ICON_RESOURCE_WINDOWS "${PEEL_SOURCE_ROOT}/PEEL.rc")
 
-if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
-	# Enable Precompiled Headers for PEEL
-	set_source_files_properties(${PEEL_SRC_FILES} PROPERTIES COMPILE_FLAGS "/Yustdafx.h")
-	set(PEEL_SRC_FILES ${PEEL_SRC_FILES} ${PEEL_SOURCE_ROOT}/stdafx.cpp)
-	set_source_files_properties(${PEEL_SOURCE_ROOT}/stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
-endif()
-
 set_source_files_properties(
 		"${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsFPU.cpp"
 		"${PEEL_SOURCE_ROOT}/PxFoundation/src/windows/PsWindowsMutex.cpp"
@@ -556,6 +549,8 @@ add_executable(PEEL
 # Set the correct working directory
 set_property(TARGET PEEL PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${PEEL_SOURCE_ROOT}")
 set_property(TARGET PEEL PROPERTY CXX_STANDARD 17)
+
+target_precompile_headers(PEEL PRIVATE ${PEEL_SOURCE_ROOT}/stdafx.h)
 
 set_target_properties(PEEL PROPERTIES
 		DEBUG_POSTFIX _DEBUG)

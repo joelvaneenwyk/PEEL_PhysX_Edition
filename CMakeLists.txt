@@ -20,17 +20,15 @@ set_option(USE_F16C 	ON)
 set_option(USE_FMADD 	ON)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_INSTALL_PREFIX ${PEEL_REPO_ROOT}/Build/Install)
 
-if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
-	set(CMAKE_CONFIGURATION_TYPES "Debug;Release;Distribution")
-elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang")
+if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang")
 	set(CMAKE_CONFIGURATION_TYPES "Debug;Release;ReleaseASAN;ReleaseUBSAN;ReleaseCoverage;Distribution")
+else()
+	set(CMAKE_CONFIGURATION_TYPES "Debug;Release;Distribution")
 endif()
 
 if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
-	# Fill in the path to the asan libraries
-	set(CLANG_LIB_PATH "\"$(VSInstallDir)\\VC\\Tools\\Llvm\\x64\\lib\\clang\\${CMAKE_CXX_COMPILER_VERSION}\\lib\\windows\"")
-
 	# Set runtime library
 	set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
 
@@ -38,11 +36,11 @@ if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
 	set(CMAKE_CXX_FLAGS "/Zc:__cplusplus /GR- /Gm- /nologo /diagnostics:classic /FC /fp:except- /Zc:inline /Zi /DWIN32 /D_WINDOWS /DUNICODE /D_UNICODE")
 
 	# Set compiler flags for various configurations
-	set(CMAKE_CXX_FLAGS_DEBUG "/D_DEBUG /GS /Od /Ob0 /RTC1 /DJPH_PROFILE_ENABLED /DJPH_DEBUG_RENDERER")
-	set(CMAKE_CXX_FLAGS_RELEASE "/DNDEBUG /GS- /GL /Gy /O2 /Oi /Ot /DJPH_PROFILE_ENABLED /DJPH_DEBUG_RENDERER")
+	set(CMAKE_CXX_FLAGS_DEBUG "/D_DEBUG /GS /Od /Ob0 /RTC1")
+	set(CMAKE_CXX_FLAGS_RELEASE "/DNDEBUG /GS- /GL /Gy /O2 /Oi /OtR")
 	set(CMAKE_CXX_FLAGS_DISTRIBUTION "/DNDEBUG /GS- /GL /Gy /O2 /Oi /Ot")
-	set(CMAKE_CXX_FLAGS_RELEASEASAN "/DNDEBUG /DJPH_PROFILE_ENABLED /DJPH_DISABLE_TEMP_ALLOCATOR /DJPH_DEBUG_RENDERER -fsanitize=address /Od")
-	set(CMAKE_CXX_FLAGS_RELEASEUBSAN "/DNDEBUG /DJPH_PROFILE_ENABLED /DJPH_DEBUG_RENDERER -fsanitize=undefined,implicit-conversion")
+	set(CMAKE_CXX_FLAGS_RELEASEASAN "/DNDEBUG -fsanitize=address /Od")
+	set(CMAKE_CXX_FLAGS_RELEASEUBSAN "/DNDEBUG -fsanitize=undefined,implicit-conversion")
 	set(CMAKE_CXX_FLAGS_RELEASECOVERAGE "/DNDEBUG -fprofile-instr-generate -fcoverage-mapping")
 
 	# Set linker flags
@@ -56,25 +54,7 @@ if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
 			set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /arch:AVX")
 		endif()
 
-		if (USE_SSE4_2)
-			add_compile_definitions(JPH_USE_SSE4_2)
-		endif()
-		if (USE_LZCNT)
-			add_compile_definitions(JPH_USE_LZCNT)
-		endif()
-		if (USE_TZCNT)
-			add_compile_definitions(JPH_USE_TZCNT)
-		endif()
-		if (USE_F16C)
-			add_compile_definitions(JPH_USE_F16C)
-		endif()
-		if (USE_FMADD)
-			add_compile_definitions(JPH_USE_FMADD)
-		endif()
-
 		# Clang turns Float2 into a vector sometimes causing floating point exceptions
-		set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /DJPH_FLOATING_POINT_EXCEPTIONS_ENABLED")
-		set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /DJPH_FLOATING_POINT_EXCEPTIONS_ENABLED")
 		set(CMAKE_EXE_LINKER_FLAGS_RELEASE "/INCREMENTAL:NO /LTCG:incremental /OPT:ICF /OPT:REF")
 		set(CMAKE_STATIC_LINKER_FLAGS_RELEASE "/LTCG")
 	endif()

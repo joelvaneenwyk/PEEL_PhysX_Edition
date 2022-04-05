@@ -1,5 +1,6 @@
 #
-# Used to generate PEEL executable.
+# Include Jolt settings to build the library and then use that to create
+# a PEEL plugin for Jolt.
 #
 
 set_option(TARGET_UNIT_TESTS 		OFF)
@@ -8,7 +9,13 @@ set_option(TARGET_PERFORMANCE_TEST 	OFF)
 set_option(TARGET_SAMPLES 			OFF)
 set_option(TARGET_VIEWER 			OFF)
 
-add_subdirectory(${PEEL_REPO_ROOT}/Externals/JoltPhysics/Build)
+set(PHYSICS_REPO_ROOT ${PEEL_REPO_ROOT}/Externals/JoltPhysics)
+set(JOLT_PHYSICS_ROOT ${PHYSICS_REPO_ROOT}/Jolt)
+
+# Alternatively, we could include `${JOLT_PHYSICS_ROOT}/Jolt.cmake` but this has the benefit of
+# defining a few useful variables in the process which reduces coupling and knowledge of the
+# internals of Jolt.
+add_subdirectory(${PHYSICS_REPO_ROOT}/Build)
 
 # Source files
 set(PINT_JOLT_SRC_FILES
@@ -17,30 +24,67 @@ set(PINT_JOLT_SRC_FILES
 		${PEEL_SOURCE_ROOT}/PINT_Jolt/PINT_Jolt.cpp
 )
 
-if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
-	# Enable Precompiled Headers for PEEL
-	set_source_files_properties(${PINT_JOLT_SRC_FILES} PROPERTIES COMPILE_FLAGS "/Yustdafx.h")
-	set(PINT_JOLT_SRC_FILES ${PINT_JOLT_SRC_FILES} ${PEEL_SOURCE_ROOT}/PINT_Jolt/stdafx.cpp)
-	set_source_files_properties(${PEEL_SOURCE_ROOT}/PINT_Jolt/stdafx.cpp PROPERTIES COMPILE_FLAGS "/Ycstdafx.h")
-endif()
-
 # Group source files
 source_group(TREE ${PEEL_REPO_ROOT} FILES ${PINT_JOLT_SRC_FILES})
 
 add_library(PINT_Jolt SHARED ${PINT_JOLT_SRC_FILES})
+target_precompile_headers(PINT_Jolt PRIVATE ${PEEL_SOURCE_ROOT}/PINT_Jolt/stdafx.h)
+
+if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
+    # Set compiler flags for various configurations
+    set(CMAKE_CXX_FLAGS_DEBUG "/D_DEBUG /GS /Od /Ob0 /RTC1 /DJPH_PROFILE_ENABLED /DJPH_DEBUG_RENDERER")
+    set(CMAKE_CXX_FLAGS_RELEASE "/DNDEBUG /GS- /GL /Gy /O2 /Oi /Ot /DJPH_PROFILE_ENABLED /DJPH_DEBUG_RENDERER")
+    set(CMAKE_CXX_FLAGS_DISTRIBUTION "/DNDEBUG /GS- /GL /Gy /O2 /Oi /Ot")
+    set(CMAKE_CXX_FLAGS_RELEASEASAN "/DNDEBUG /DJPH_PROFILE_ENABLED /DJPH_DISABLE_TEMP_ALLOCATOR /DJPH_DEBUG_RENDERER -fsanitize=address /Od")
+    set(CMAKE_CXX_FLAGS_RELEASEUBSAN "/DNDEBUG /DJPH_PROFILE_ENABLED /DJPH_DEBUG_RENDERER -fsanitize=undefined,implicit-conversion")
+    set(CMAKE_CXX_FLAGS_RELEASECOVERAGE "/DNDEBUG -fprofile-instr-generate -fcoverage-mapping")
+
+    # Set general compiler flags
+    target_compile_options(PINT_Jolt PRIVATE /Zc:__cplusplus /GR- /Gm- /nologo /diagnostics:classic /FC /fp:except- /Zc:inline /Zi /DWIN32 /D_WINDOWS /DUNICODE /D_UNICODE)
+
+    if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+        target_compile_options(PINT_Jolt PRIVATE /MP /fp:fast) # Clang doesn't use fast math because it cannot be turned off inside a single compilation unit
+
+        if (USE_AVX2)
+            target_compile_options(PINT_Jolt PRIVATE /arch:AVX2)
+        elseif (USE_AVX)
+            target_compile_options(PINT_Jolt PRIVATE /arch:AVX)
+        endif ()
+
+        if (USE_SSE4_2)
+            target_compile_definitions(PINT_Jolt PRIVATE JPH_USE_SSE4_2)
+        endif ()
+
+        if (USE_LZCNT)
+            target_compile_definitions(PINT_Jolt PRIVATE JPH_USE_LZCNT)
+        endif ()
+
+        if (USE_TZCNT)
+            target_compile_definitions(PINT_Jolt PRIVATE JPH_USE_TZCNT)
+        endif ()
+
+        if (USE_F16C)
+            target_compile_definitions(PINT_Jolt PRIVATE JPH_USE_F16C)
+        endif ()
+
+        if (USE_FMADD)
+            target_compile_definitions(PINT_Jolt PRIVATE JPH_USE_FMADD)
+        endif ()
+    endif ()
+endif ()
 
 set_target_properties(PINT_Jolt PROPERTIES
 		MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>"
 		DEBUG_POSTFIX _D)
 
 target_compile_definitions(PINT_Jolt PRIVATE
-		WIN32
-		$<IF:$<CONFIG:Debug>,_DEBUG,NDEBUG>
-		_WINDOWS
-		_USRDLL
-		GLUT_NO_LIB_PRAGMA
-		PX_PHYSX_STATIC_LIB
-		PINT_PHYSX_EXPORTS)
+        WIN32
+        $<$<CONFIG:Debug>:_DEBUG JPH_PROFILE_ENABLED JPH_DEBUG_RENDERER JPH_FLOATING_POINT_EXCEPTIONS_ENABLED>
+        $<$<CONFIG:Release>:NDEBUG JPH_PROFILE_ENABLED JPH_DEBUG_RENDERER JPH_FLOATING_POINT_EXCEPTIONS_ENABLED>
+        _WINDOWS
+        _USRDLL
+        GLUT_NO_LIB_PRAGMA
+        PINT_JOLT_EXPORTS)
 
 target_include_directories(PINT_Jolt SYSTEM BEFORE
 		PUBLIC ${PEEL_SOURCE_ROOT}
