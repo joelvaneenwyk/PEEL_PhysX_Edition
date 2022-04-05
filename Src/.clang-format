@@ -4,30 +4,36 @@
 
 BasedOnStyle: Chromium
 
-AlignConsecutiveDeclarations: AcrossEmptyLinesAndComments
+AlignConsecutiveDeclarations: AcrossEmptyLines
 
 Standard: c++17
-SortIncludes: Never
-IndentWidth: 4
+
 TabWidth: 4
 UseTab: Always
+IndentWidth: 4
 ColumnLimit: 130
-BreakBeforeBraces: Allman
-SpacesInParentheses: false
-SpaceBeforeParens: ControlStatements
+ContinuationIndentWidth: 4
+
 AccessModifierOffset: -4
-FixNamespaceComments: false
-NamespaceIndentation: All
-BreakConstructorInitializers: BeforeComma
-SpaceAfterTemplateKeyword: true
-IndentPPDirectives: AfterHash
-AllowShortFunctionsOnASingleLine: Inline
-SpacesBeforeTrailingComments: 2
-AllowShortIfStatementsOnASingleLine: true
+AlignConsecutiveAssignments: AcrossEmptyLines
+AlignConsecutiveMacros: AcrossEmptyLines
+AlignAfterOpenBracket: AlwaysBreak
+AlignArrayOfStructures: Right
 AlignEscapedNewlines: DontAlign
-AlignAfterOpenBracket: Align
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortIfStatementsOnASingleLine: true
 BinPackArguments: true
 BinPackParameters: false
-AllowAllParametersOfDeclarationOnNextLine: false
-ConstructorInitializerAllOnOneLineOrOnePerLine: true
+BreakBeforeBraces: Allman
+BreakConstructorInitializers: BeforeComma
 BreakStringLiterals: false
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+FixNamespaceComments: false
+IndentPPDirectives: AfterHash
+NamespaceIndentation: All
+SortIncludes: Never
+SpaceAfterTemplateKeyword: true
+SpaceBeforeParens: ControlStatements
+SpacesBeforeTrailingComments: 2
+SpacesInParentheses: false
