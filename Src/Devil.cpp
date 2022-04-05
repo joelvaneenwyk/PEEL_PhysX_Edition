@@ -8,8 +8,6 @@
 
 #include "stdafx.h"
 
-#undef _UNICODE
-
 #include "Devil.h"
 #include <IL/il.h>
 
