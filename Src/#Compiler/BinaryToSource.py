@@ -10,6 +10,7 @@ import binascii  # Converts bytes to hex e.g., '1f'
 import inspect
 import logging
 import os
+import io
 import sys
 from itertools import islice
 
@@ -141,7 +142,7 @@ def _add_file(filename, data):
     output_files = {}
 
     if os.path.exists(filename):
-        src_data = open(filename, "r", encoding="utf-8").read()
+        src_data = io.open(filename, "r", encoding="utf-8").read()
     else:
         src_data = None
 
@@ -162,7 +163,7 @@ def _save_files(output_files):
         directory = os.path.dirname(dest)
         if not os.path.exists(directory):
             os.makedirs(directory)
-        with open(dest, "w", encoding="utf-8") as output_data:
+        with io.open(dest, "w", encoding="utf-8") as output_data:
             output_data.write(value)
         LOGGER.info("Updated %s", dest.replace(PEEL_ROOT, ""))
 
@@ -180,10 +181,13 @@ def _convert_graphics_resources():
     output_file_mapping = {}
 
     for src, dest in six.iteritems(mapping):
-        LOGGER.info("Processing %s", src.replace(PEEL_ROOT, ""))
-
         src = os.path.join(PEEL_ROOT, "Media", src)
         dest = os.path.join(PEEL_ROOT, "Src", dest)
+
+        LOGGER.info(
+            "Converting '%s' to source file.",
+            src.replace(PEEL_ROOT, "").replace("\\", "/").lstrip("/"),
+        )
         output_file_mapping.update(
             _add_file(
                 dest, _get_source(src, dest, "stdafx.h", base_name="gPictureData")
@@ -209,12 +213,12 @@ def main():
     """
 
     logging.basicConfig(level=logging.INFO)
-    processed_files = 0
-    processed_files += _convert_graphics_resources()
+
+    processed_files = _convert_graphics_resources()
 
     LOGGER.info(
         "'%s' Done. Processed '%d' files.",
-        sys.argv[0].replace(PEEL_ROOT, ""),
+        sys.argv[0].replace(PEEL_ROOT, "").replace("\\", "/").lstrip("/"),
         processed_files,
     )
 
