@@ -568,6 +568,7 @@ target_compile_definitions(PEEL PRIVATE
 		PX_PHYSX_STATIC_LIB)
 
 target_include_directories(PEEL SYSTEM BEFORE
+		PUBLIC ${PEEL_SOURCE_ROOT}
 		PUBLIC ${PEEL_APPLICATION_ROOT}
 		PUBLIC ${PEEL_APPLICATION_ROOT}/Ice/APIs/Ice/Plugins/FlexineSDK
 		PUBLIC ${PEEL_APPLICATION_ROOT}/Ice/APIs/Ice
@@ -576,7 +577,6 @@ target_include_directories(PEEL SYSTEM BEFORE
 		PUBLIC ${PEEL_APPLICATION_ROOT}/DevIL/include
 		PUBLIC ${PEEL_APPLICATION_ROOT}/PxFoundation
 		PUBLIC ${PEEL_APPLICATION_ROOT}/PxFoundation/include
-		PUBLIC ${PEEL_APPLICATION_ROOT}/
 		PUBLIC ${PEEL_REPO_ROOT}/Externals
 		PUBLIC ${PEEL_REPO_ROOT}/Externals/DevIL/include
 		PUBLIC ${PEEL_REPO_ROOT}/Externals/fmod/3.75/inc
@@ -620,18 +620,18 @@ else()
 	copy_peel_dependency(Externals/DevIL/lib/x86/Release DevIL.dll)
 endif()
 
-copy_peel_dependency(Src/GL glut32.dll)
-copy_peel_dependency(Src/GL glew32.dll)
-copy_peel_dependency(Src/GL glew64.dll)
+copy_peel_dependency(Src/PEEL/GL glut32.dll)
+copy_peel_dependency(Src/PEEL/GL glew32.dll)
+copy_peel_dependency(Src/PEEL/GL glew64.dll)
 
-copy_peel_dependency_variant(Src/GlutX/Bin GlutX)
+copy_peel_dependency_variant(Src/PEEL/GlutX/Bin GlutX)
 
-copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} Contact)
-copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceCharacter)
-copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceCore)
-copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceGUI)
-copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceImageWork)
-copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceMaths)
-copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceRenderer)
-copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} IceTerrain)
-copy_peel_dependency_variant(Src/Ice/Bin/${PEEL_BIN_DIR_NAME} Meshmerizer)
+copy_peel_dependency_variant(Src/PEEL/Ice/Bin/${PEEL_BIN_DIR_NAME} Contact)
+copy_peel_dependency_variant(Src/PEEL/Ice/Bin/${PEEL_BIN_DIR_NAME} IceCharacter)
+copy_peel_dependency_variant(Src/PEEL/Ice/Bin/${PEEL_BIN_DIR_NAME} IceCore)
+copy_peel_dependency_variant(Src/PEEL/Ice/Bin/${PEEL_BIN_DIR_NAME} IceGUI)
+copy_peel_dependency_variant(Src/PEEL/Ice/Bin/${PEEL_BIN_DIR_NAME} IceImageWork)
+copy_peel_dependency_variant(Src/PEEL/Ice/Bin/${PEEL_BIN_DIR_NAME} IceMaths)
+copy_peel_dependency_variant(Src/PEEL/Ice/Bin/${PEEL_BIN_DIR_NAME} IceRenderer)
+copy_peel_dependency_variant(Src/PEEL/Ice/Bin/${PEEL_BIN_DIR_NAME} IceTerrain)
+copy_peel_dependency_variant(Src/PEEL/Ice/Bin/${PEEL_BIN_DIR_NAME} Meshmerizer)

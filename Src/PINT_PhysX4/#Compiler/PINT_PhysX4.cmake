@@ -230,13 +230,13 @@ target_compile_definitions(PINT_PhysX4 PRIVATE
 target_include_directories(PINT_PhysX4 SYSTEM BEFORE
         PUBLIC ${PEEL_REPO_ROOT}/Externals
         PUBLIC ${PEEL_SOURCE_ROOT}
+        PUBLIC ${PEEL_SOURCE_ROOT}/PINT_PhysX4
         PUBLIC ${PEEL_APPLICATION_ROOT}
         PUBLIC ${PEEL_APPLICATION_ROOT}/DevIL/include
         PUBLIC ${PEEL_APPLICATION_ROOT}/Glut/include
         PUBLIC ${PEEL_APPLICATION_ROOT}/HACD
         PUBLIC ${PEEL_APPLICATION_ROOT}/Ice/APIs/Ice
         PUBLIC ${PEEL_APPLICATION_ROOT}/Ice/APIs/Ice/Plugins/FlexineSDK
-        PUBLIC ${PEEL_APPLICATION_ROOT}/PINT_PhysX4
         PUBLIC ${PEEL_APPLICATION_ROOT}/PxFoundation
         PUBLIC ${PEEL_APPLICATION_ROOT}/PxFoundation/include
         PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/include
