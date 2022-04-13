@@ -21,7 +21,10 @@ source_group(TREE ${PEEL_REPO_ROOT} FILES ${PINT_SKELETON_SRC_FILES})
 add_library(PINT_Skeleton SHARED ${PINT_SKELETON_SRC_FILES})
 target_precompile_headers(PINT_Skeleton PRIVATE ${PEEL_SOURCE_ROOT}/PINT_Skeleton/stdafx.h)
 set_target_properties(PINT_Skeleton PROPERTIES
-		DEBUG_POSTFIX _D)
+		DEBUG_POSTFIX _D
+		ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<IF:$<CONFIG:Debug>,Debug,Release>"
+		LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<IF:$<CONFIG:Debug>,Debug,Release>"
+		RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<IF:$<CONFIG:Debug>,Debug,Release>")
 
 target_compile_definitions(PINT_Skeleton PRIVATE
 		WIN32

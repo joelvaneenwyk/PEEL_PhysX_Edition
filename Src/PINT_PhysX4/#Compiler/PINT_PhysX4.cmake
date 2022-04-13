@@ -213,7 +213,10 @@ add_library(PINT_PhysX4 SHARED ${PINT_PHYSX4_SRC_FILES})
 target_precompile_headers(PINT_PhysX4 PRIVATE ${PEEL_SOURCE_ROOT}/PINT_PhysX4/stdafx.h)
 
 set_target_properties(PINT_PhysX4 PROPERTIES
-		DEBUG_POSTFIX _D)
+		DEBUG_POSTFIX _D
+		ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<IF:$<CONFIG:Debug>,Debug,Release>"
+		LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<IF:$<CONFIG:Debug>,Debug,Release>"
+		RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<IF:$<CONFIG:Debug>,Debug,Release>")
 
 target_link_options(PINT_PhysX4
 		PRIVATE /NODEFAULTLIB:LIBCMT)

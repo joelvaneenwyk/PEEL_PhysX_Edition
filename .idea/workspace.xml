@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated>
+      <config projectName="PEEL" targetName="SimulationController" />
+      <config projectName="PEEL" targetName="PINT_PhysX4" />
+      <config projectName="PEEL" targetName="PhysXVehicle" />
+      <config projectName="PEEL" targetName="PhysXCommon" />
+      <config projectName="PEEL" targetName="PhysXFoundation" />
+      <config projectName="PEEL" targetName="PhysX" />
+      <config projectName="PEEL" targetName="PINT_Jolt" />
+      <config projectName="PEEL" targetName="PhysXPvdSDK" />
+      <config projectName="PEEL" targetName="PEEL" />
+      <config projectName="PEEL" targetName="LowLevel" />
+      <config projectName="PEEL" targetName="PhysXCharacterKinematic" />
+      <config projectName="PEEL" targetName="PhysXCooking" />
+      <config projectName="PEEL" targetName="FastXml" />
+      <config projectName="PEEL" targetName="LowLevelAABB" />
+      <config projectName="PEEL" targetName="PINT_Skeleton" />
+      <config projectName="PEEL" targetName="SceneQuery" />
+      <config projectName="PEEL" targetName="LowLevelDynamics" />
+      <config projectName="PEEL" targetName="Jolt" />
+      <config projectName="PEEL" targetName="PhysXTask" />
+      <config projectName="PEEL" targetName="PhysXExtensions" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2145e0e7-a063-4d46-9b3d-b53d38287807" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/FastXml.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/Jolt.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/LowLevel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/LowLevelAABB.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/LowLevelDynamics.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/PhysX.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/PhysXCharacterKinematic.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/PhysXCommon.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/PhysXCooking.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/PhysXExtensions.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/PhysXFoundation.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/PhysXPvdSDK.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/PhysXTask.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/PhysXVehicle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/SceneQuery.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/SimulationController.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea2/PEEL.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PEEL.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PEEL.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/cmake.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/cmake.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/PEEL.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/BinaryToSource.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/PEEL.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/PEEL.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/PINT_Jolt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/PINT_Jolt.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/PINT_PhysX4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/PINT_PhysX4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/PINT_Skeleton.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/PINT_Skeleton.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Externals/JoltPhysics" beforeDir="false" afterPath="$PROJECT_DIR$/Externals/JoltPhysics" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Externals/JoltPhysics/Jolt/Jolt.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Externals/JoltPhysics/Jolt/Jolt.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/PEEL/#Compiler/PEEL.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Src/PEEL/#Compiler/PEEL.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/PINT_Jolt/#Compiler/PINT_Jolt.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Src/PINT_Jolt/#Compiler/PINT_Jolt.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/PINT_PhysX4/#Compiler/PINT_PhysX4.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Src/PINT_PhysX4/#Compiler/PINT_PhysX4.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/PINT_Skeleton/#Compiler/PINT_Skeleton.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Src/PINT_Skeleton/#Compiler/PINT_Skeleton.cmake" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Release | x64" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Externals/JoltPhysics/Jolt/Jolt.cmake" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Src/PINT_Jolt/#Compiler/PINT_Jolt.cmake" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Src/PEEL/#Compiler/PEEL.cmake" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Src/PINT_PhysX4/#Compiler/PINT_PhysX4.cmake" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Externals/JoltPhysics/Jolt/Physics/Collision/Shape/Shape.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Src/PINT_Skeleton/#Compiler/PINT_Skeleton.cmake" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Externals/JoltPhysics/Build/CMakeLists.txt" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="yct8qvbw" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2021" />
+    <option name="minorVersion" value="3.4" />
+  </component>
+  <component name="ProjectId" id="27l63s8DjFpiewtpPo9Tn0lACt9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="cmake.loaded.for.project" value="true" />
+    <property name="settings.editor.selected.configurable" value="CMakeSettings" />
+  </component>
+  <component name="RunManager" selected="CMake Application.PEEL">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="CMake Application.Jolt" />
+      <item itemvalue="CMake Application.FastXml" />
+      <item itemvalue="CMake Application.LowLevel" />
+      <item itemvalue="CMake Application.LowLevelAABB" />
+      <item itemvalue="CMake Application.LowLevelDynamics" />
+      <item itemvalue="CMake Application.PhysX" />
+      <item itemvalue="CMake Application.PhysXCharacterKinematic" />
+      <item itemvalue="CMake Application.PhysXCommon" />
+      <item itemvalue="CMake Application.PhysXCooking" />
+      <item itemvalue="CMake Application.PhysXExtensions" />
+      <item itemvalue="CMake Application.PhysXFoundation" />
+      <item itemvalue="CMake Application.PhysXPvdSDK" />
+      <item itemvalue="CMake Application.PhysXTask" />
+      <item itemvalue="CMake Application.PhysXVehicle" />
+      <item itemvalue="CMake Application.SceneQuery" />
+      <item itemvalue="CMake Application.SimulationController" />
+      <item itemvalue="CMake Application.PINT_PhysX4" />
+      <item itemvalue="CMake Application.PINT_Skeleton" />
+      <item itemvalue="CMake Application.PINT_Jolt" />
+      <item itemvalue="CMake Application.PEEL" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2145e0e7-a063-4d46-9b3d-b53d38287807" name="Changes" comment="" />
+      <created>1649882133385</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1649882133385</updated>
+      <workItem from="1649882137106" duration="2396000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

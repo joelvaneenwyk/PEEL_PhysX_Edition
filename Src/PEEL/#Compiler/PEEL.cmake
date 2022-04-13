@@ -549,6 +549,13 @@ add_executable(PEEL
 set_property(TARGET PEEL PROPERTY VS_DEBUGGER_WORKING_DIRECTORY "${PEEL_APPLICATION_ROOT}")
 set_property(TARGET PEEL PROPERTY CXX_STANDARD 17)
 
+set_target_properties(PEEL
+		PROPERTIES
+		ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<IF:$<CONFIG:Debug>,Debug,Release>"
+		LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<IF:$<CONFIG:Debug>,Debug,Release>"
+		RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<IF:$<CONFIG:Debug>,Debug,Release>"
+		)
+
 target_precompile_headers(PEEL PRIVATE ${PEEL_APPLICATION_ROOT}/stdafx.h)
 
 set_target_properties(PEEL PROPERTIES
@@ -607,12 +614,12 @@ target_link_library_config(ZCB2)
 target_link_library_config(GlutX)
 
 # if (CMAKE_SIZEOF_VOID_P EQUAL 8)
-#     copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} Microsoft.VC90.DebugCRT.manifest)
-#     copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} msvcm90d.dll)
-#     copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} msvcp90.dll)
-#     copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} msvcp90d.dll)
-#     copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} msvcr90.dll)
-#     copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} msvcr90d.dll)
+copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} Microsoft.VC90.DebugCRT.manifest)
+copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} msvcm90d.dll)
+copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} msvcp90.dll)
+copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} msvcp90d.dll)
+copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} msvcr90.dll)
+copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} msvcr90d.dll)
 # else ()
 #     copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} msvcp90.dll)
 #     copy_peel_dependency(Externals/VC9/${PEEL_BIN_DIR_NAME} msvcr90.dll)

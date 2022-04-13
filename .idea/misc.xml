@@ -1,26 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
-  <component name="CidrRootsConfiguration">
-    <sourceRoots>
-      <file path="$PROJECT_DIR$/Externals/JoltPhysics" />
-      <file path="$PROJECT_DIR$/Externals/PhysX4" />
-      <file path="$PROJECT_DIR$/Media/#Scripts" />
-      <file path="$PROJECT_DIR$/Media/#Shaders" />
-      <file path="$PROJECT_DIR$/Src" />
-      <file path="$PROJECT_DIR$/Src/Ice/APIs/Ice" />
-    </sourceRoots>
-    <libraryRoots>
-      <file path="$PROJECT_DIR$/Externals/DevIL/include" />
-      <file path="$PROJECT_DIR$/Externals/fmodapi375win/api/inc" />
-    </libraryRoots>
-    <excludeRoots>
-      <file path="$PROJECT_DIR$/Build" />
-      <file path="$PROJECT_DIR$/Externals/PhysX4/kaplademo" />
-    </excludeRoots>
-  </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9" project-jdk-type="Python SDK" />
-  <component name="PythonCompatibilityInspectionAdvertiser">
-    <option name="version" value="3" />
-  </component>
 </project>
