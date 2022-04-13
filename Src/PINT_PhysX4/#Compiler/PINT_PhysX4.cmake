@@ -228,44 +228,45 @@ target_compile_definitions(PINT_PhysX4 PRIVATE
         PINT_PHYSX_EXPORTS)
 
 target_include_directories(PINT_PhysX4 SYSTEM BEFORE
-        PUBLIC ${PEEL_SOURCE_ROOT}
-        PUBLIC ${PEEL_SOURCE_ROOT}/PINT_PhysX4
-        PUBLIC ${PEEL_SOURCE_ROOT}/Ice/APIs/Ice/Plugins/FlexineSDK
-        PUBLIC ${PEEL_SOURCE_ROOT}/Ice/APIs/Ice
-        PUBLIC ${PEEL_SOURCE_ROOT}/HACD
-        PUBLIC ${PEEL_SOURCE_ROOT}/Glut/include
-        PUBLIC ${PEEL_SOURCE_ROOT}/DevIL/include
-        PUBLIC ${PEEL_SOURCE_ROOT}/PxFoundation
-        PUBLIC ${PEEL_SOURCE_ROOT}/PxFoundation/include
-        PUBLIC ${PEEL_SOURCE_ROOT}/
         PUBLIC ${PEEL_REPO_ROOT}/Externals
+        PUBLIC ${PEEL_SOURCE_ROOT}
+        PUBLIC ${PEEL_APPLICATION_ROOT}
+        PUBLIC ${PEEL_APPLICATION_ROOT}/DevIL/include
+        PUBLIC ${PEEL_APPLICATION_ROOT}/Glut/include
+        PUBLIC ${PEEL_APPLICATION_ROOT}/HACD
+        PUBLIC ${PEEL_APPLICATION_ROOT}/Ice/APIs/Ice
+        PUBLIC ${PEEL_APPLICATION_ROOT}/Ice/APIs/Ice/Plugins/FlexineSDK
+        PUBLIC ${PEEL_APPLICATION_ROOT}/PINT_PhysX4
+        PUBLIC ${PEEL_APPLICATION_ROOT}/PxFoundation
+        PUBLIC ${PEEL_APPLICATION_ROOT}/PxFoundation/include
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/include
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/include/characterkinematic
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/include/common
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/include/cooking
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/include/extensions
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/include/foundation
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/include/geometry
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/include/physxprofilesdk
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/include/pxtask
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/include/vehicle
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/source/Common/src
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/source/foundation
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/source/foundation/include
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/source/geomutils/include
         PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/source/physxextensions/src
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/Include
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/Include/extensions
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/Include/geometry
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/Include/foundation
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/Source/foundation
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/Source/foundation/include
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/Source/Common/src
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/Include/common
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/Include/pxtask
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/Include/physxprofilesdk
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/Include/cooking
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/pxshared/trunk/include
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/pxshared/include/trunk/include/stdint
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/pxshared/include
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/pxshared/trunk/src/pvd/include
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/Include/vehicle
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/Source/PhysXGpu/include
         PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/source/physxextensions/src/serialization/File
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/source/PhysXGpu/include
         PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/source/pvd/include/
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/Include/characterkinematic
-        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/source/geomutils/include)
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/pxshared/include
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/pxshared/include/trunk/include/stdint
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/pxshared/trunk/include
+        PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/pxshared/trunk/src/pvd/include
+)
 
 target_link_directories(PINT_PhysX4
-        PUBLIC "${PEEL_SOURCE_ROOT}/Ice/Lib${PEEL_BIN_ARCH}"
-        PUBLIC "${PEEL_SOURCE_ROOT}/GL"
-        PUBLIC "${PEEL_SOURCE_ROOT}/GlutX/Lib"
+        PUBLIC "${PEEL_APPLICATION_ROOT}/Ice/Lib${PEEL_BIN_ARCH}"
+        PUBLIC "${PEEL_APPLICATION_ROOT}/GL"
+        PUBLIC "${PEEL_APPLICATION_ROOT}/GlutX/Lib"
         PUBLIC "${PEEL_REPO_ROOT}/Externals"
         PUBLIC "${PEEL_REPO_ROOT}/PhysX4/physx/compiler/vc17win64/sdk_source_bin")
 

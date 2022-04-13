@@ -33,21 +33,20 @@ target_compile_definitions(PINT_Skeleton PRIVATE
         PINT_SKELETON_EXPORTS)
 
 target_include_directories(PINT_Skeleton SYSTEM BEFORE
-        PUBLIC ${PEEL_SOURCE_ROOT}
-        PUBLIC ${PEEL_SOURCE_ROOT}/Ice/APIs/Ice/Plugins/FlexineSDK
-        PUBLIC ${PEEL_SOURCE_ROOT}/Ice/APIs/Ice
-        PUBLIC ${PEEL_SOURCE_ROOT}/HACD
-        PUBLIC ${PEEL_SOURCE_ROOT}/Glut/include
-        PUBLIC ${PEEL_SOURCE_ROOT}/DevIL/include
-        PUBLIC ${PEEL_SOURCE_ROOT}/PxFoundation
-        PUBLIC ${PEEL_SOURCE_ROOT}/PxFoundation/include
-        PUBLIC ${PEEL_SOURCE_ROOT}/
+        PUBLIC ${PEEL_APPLICATION_ROOT}
+        PUBLIC ${PEEL_APPLICATION_ROOT}/Ice/APIs/Ice/Plugins/FlexineSDK
+        PUBLIC ${PEEL_APPLICATION_ROOT}/Ice/APIs/Ice
+        PUBLIC ${PEEL_APPLICATION_ROOT}/HACD
+        PUBLIC ${PEEL_APPLICATION_ROOT}/Glut/include
+        PUBLIC ${PEEL_APPLICATION_ROOT}/DevIL/include
+        PUBLIC ${PEEL_APPLICATION_ROOT}/PxFoundation
+        PUBLIC ${PEEL_APPLICATION_ROOT}/PxFoundation/include
         PUBLIC ${PEEL_REPO_ROOT}/Externals)
 
 target_link_directories(PINT_Skeleton
-        PUBLIC "${PEEL_SOURCE_ROOT}/Ice/Lib${PEEL_BIN_ARCH}"
-        PUBLIC "${PEEL_SOURCE_ROOT}/GL"
-        PUBLIC "${PEEL_SOURCE_ROOT}/GlutX/Lib"
+        PUBLIC "${PEEL_APPLICATION_ROOT}/Ice/Lib${PEEL_BIN_ARCH}"
+        PUBLIC "${PEEL_APPLICATION_ROOT}/GL"
+        PUBLIC "${PEEL_APPLICATION_ROOT}/GlutX/Lib"
         PUBLIC "${PEEL_REPO_ROOT}/Externals")
 
 target_link_libraries(PINT_Skeleton

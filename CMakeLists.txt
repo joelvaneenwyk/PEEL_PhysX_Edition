@@ -4,6 +4,7 @@ project(PEEL LANGUAGES CXX)
 
 # Set repository root
 set(PEEL_SOURCE_ROOT ${PROJECT_SOURCE_DIR}/Src)
+set(PEEL_APPLICATION_ROOT ${PROJECT_SOURCE_DIR}/Src/PEEL)
 set(PEEL_REPO_ROOT ${PROJECT_SOURCE_DIR})
 
 macro(set_option option value)
@@ -77,7 +78,7 @@ else()
 endif()
 
 # Make PEEL executable
-include("${PEEL_SOURCE_ROOT}/#Compiler/PEEL.cmake")
+include("${PEEL_SOURCE_ROOT}/PEEL/#Compiler/PEEL.cmake")
 
 #
 # Plugins
