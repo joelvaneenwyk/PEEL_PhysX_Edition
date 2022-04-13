@@ -154,8 +154,13 @@ PxU32 MemoryOutputStream::write(const void* src, PxU32 size)
 		}
 		mData = newData;
 	}
-	memcpy(mData+mSize, src, size);
-	mSize += size;
+
+	if (mData != nullptr)
+	{
+		memcpy(mData+mSize, src, size);
+		mSize += size;
+	}
+
 	return size;
 }
 
@@ -267,6 +272,8 @@ PxRigidBody* PhysX3::GetRigidBody(PintActorHandle handle)
 
 	return RigidBody;
 #else
+	ASSERT(RigidActor != nullptr);
+
 	if(RigidActor->getConcreteType()==PxConcreteType::eRIGID_DYNAMIC)
 		RigidBody = static_cast<PxRigidBody*>(RigidActor);
 	else if(RigidActor->getConcreteType()==PxConcreteType::eARTICULATION_LINK)

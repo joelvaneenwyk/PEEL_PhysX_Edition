@@ -4,8 +4,8 @@
 
 macro(target_link_library_config library)
     target_link_libraries(PINT_PhysX4
-            debug ${library}${PEEL_BIN_ARCH}_D
-            optimized ${library}${PEEL_BIN_ARCH})
+            debug ${library}${PEEL_SYSTEM_BIN_POSTFIX}_D
+            optimized ${library}${PEEL_SYSTEM_BIN_POSTFIX})
 endmacro()
 
 set(PEEL_PHYSX4_ROOT_DIR ${PEEL_REPO_ROOT}/Externals/PhysX4)
@@ -263,7 +263,7 @@ target_include_directories(PINT_PhysX4 SYSTEM BEFORE
         PUBLIC ${PEEL_PHYSX4_ROOT_DIR}/physx/source/geomutils/include)
 
 target_link_directories(PINT_PhysX4
-        PUBLIC "${PEEL_SOURCE_ROOT}/Ice/Lib${PEEL_BIN_ARCH}"
+        PUBLIC "${PEEL_SOURCE_ROOT}/Ice/Lib${PEEL_SYSTEM_BIN_POSTFIX}"
         PUBLIC "${PEEL_SOURCE_ROOT}/GL"
         PUBLIC "${PEEL_SOURCE_ROOT}/GlutX/Lib"
         PUBLIC "${PEEL_REPO_ROOT}/Externals"
@@ -287,18 +287,19 @@ target_link_libraries(PINT_PhysX4
         SimulationController
         opengl32.lib
         glu32.lib
-        glew${PEEL_BIN_ARCH}
-        ZCB2${PEEL_BIN_ARCH})
+        glew${PEEL_BIN_ARCH})
 
-target_link_library_config(IceCore)
-target_link_library_config(IceMaths)
 target_link_library_config(Contact)
-target_link_library_config(Meshmerizer)
-target_link_library_config(IceImageWork)
 target_link_library_config(IceCharacter)
+target_link_library_config(IceCore)
 target_link_library_config(IceGUI)
+target_link_library_config(IceImageWork)
+target_link_library_config(IceMaths)
 target_link_library_config(IceRenderer)
 target_link_library_config(IceTerrain)
+target_link_library_config(Meshmerizer)
+
+target_link_library_config(ZCB2)
 target_link_library_config(GlutX)
 
 macro(copy_physx_library filename)
