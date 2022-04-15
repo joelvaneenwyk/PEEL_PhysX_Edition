@@ -6,3 +6,25 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+
+# Source control may vary so exclude it
+/vcs.xml
+
+#
+# Include only the run configurations we care about
+#
+
+/runConfigurations/*
+!/runConfigurations/PEEL.xml
+
+!/runConfigurations/PINT_PhysX4.xml
+!/runConfigurations/PhysX*.xml
+!/runConfigurations/FastXml.xml
+!/runConfigurations/LowLevel*.xml
+!/runConfigurations/SceneQuery.xml
+!/runConfigurations/SimulationController.xml
+
+!/runConfigurations/Jolt.xml
+!/runConfigurations/PINT_Jolt.xml
+
+!/runConfigurations/PINT_Skeleton.xml

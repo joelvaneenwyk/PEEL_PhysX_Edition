@@ -42,6 +42,9 @@
         "*.cmake": "cmake",
         ".clang-tidy": "yaml"
     },
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": ".github/**/*.yml"
+    },
     "cSpell.words": [
         "backface",
         "Baumgarte",
