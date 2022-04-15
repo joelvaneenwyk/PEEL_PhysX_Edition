@@ -35,7 +35,8 @@ set_target_properties(PINT_Jolt PROPERTIES
 		DEBUG_POSTFIX _D
 		ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<IF:$<CONFIG:Debug>,Debug,Release>"
 		LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<IF:$<CONFIG:Debug>,Debug,Release>"
-		RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<IF:$<CONFIG:Debug>,Debug,Release>")
+		RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/$<IF:$<CONFIG:Debug>,Debug,Release>"
+		EXCLUDE_FROM_DEFAULT_BUILD_DEBUG $<IF:$<EQUAL:4,${CMAKE_SIZEOF_VOID_P}>,True,False>)
 
 if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
 	# Set compiler flags for various configurations

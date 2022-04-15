@@ -23,7 +23,7 @@ set_option(USE_FMADD ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_INSTALL_PREFIX ${PEEL_REPO_ROOT}/Build/Install)
 
-if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang")
+if (("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang") OR ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang"))
 	set(CMAKE_CONFIGURATION_TYPES "Debug;Release;ReleaseASAN;ReleaseUBSAN;ReleaseCoverage;Distribution")
 else ()
 	set(CMAKE_CONFIGURATION_TYPES "Debug;Release;Distribution")
@@ -41,7 +41,7 @@ if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
 
 		# Set compiler flags for various configurations
 		set(CMAKE_CXX_FLAGS_DEBUG "/D_DEBUG /GS /Od /Ob0 /RTC1")
-		set(CMAKE_CXX_FLAGS_RELEASE "/DNDEBUG /GS- /GL /Gy /O2 /Oi /OtR")
+		set(CMAKE_CXX_FLAGS_RELEASE "/DNDEBUG /GS- /GL /Gy /O2 /Oi /Ot")
 		set(CMAKE_CXX_FLAGS_DISTRIBUTION "/DNDEBUG /GS- /GL /Gy /O2 /Oi /Ot")
 		set(CMAKE_CXX_FLAGS_RELEASEASAN "/DNDEBUG -fsanitize=address /Od")
 		set(CMAKE_CXX_FLAGS_RELEASEUBSAN "/DNDEBUG -fsanitize=undefined,implicit-conversion")
@@ -49,7 +49,7 @@ if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Windows")
 	endif ()
 
 	# Set linker flags
-	set(CMAKE_EXE_LINKER_FLAGS "/SUBSYSTEM:WINDOWS /ignore:4221 /DEBUG:FASTLINK")
+	set(CMAKE_EXE_LINKER_FLAGS "/ignore:4221 /DEBUG:FASTLINK")
 
 	if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
 		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP /fp:fast") # Clang doesn't use fast math because it cannot be turned off inside a single compilation unit
@@ -85,6 +85,23 @@ include("${PEEL_SOURCE_ROOT}/PEEL/#Compiler/PEEL.cmake")
 # Plugins
 #
 
-include("${PEEL_SOURCE_ROOT}/PINT_Skeleton/#Compiler/PINT_Skeleton.cmake")
-include("${PEEL_SOURCE_ROOT}/PINT_Jolt/#Compiler/PINT_Jolt.cmake")
-include("${PEEL_SOURCE_ROOT}/PINT_PhysX4/#Compiler/PINT_PhysX4.cmake")
+macro(get_directory_list result current_directory)
+	file(GLOB children RELATIVE ${current_directory} ${current_directory}/*)
+	set(directory_list "")
+	foreach (child ${children})
+		if ((IS_DIRECTORY ${current_directory}/${child}) AND (NOT ${child} MATCHES "PEEL"))
+			list(APPEND directory_list ${child})
+		endif ()
+	endforeach ()
+	set(${result} ${directory_list})
+endmacro()
+
+get_directory_list(PEEL_PLUGINS ${PEEL_SOURCE_ROOT})
+
+foreach (peel_plugin_directory ${PEEL_PLUGINS})
+	set(peel_plugin_include "${PEEL_SOURCE_ROOT}/${peel_plugin_directory}/#Compiler/${peel_plugin_directory}.cmake")
+	if (EXISTS "${peel_plugin_include}")
+		message("Including PEEL plugin: '${peel_plugin_directory}'")
+		include("${peel_plugin_include}")
+	endif ()
+endforeach ()
