@@ -1,0 +1,30 @@
+#
+# PEEL Ignore List
+#
+
+.git/
+
+/Build/
+
+/Src/#Compiler/*.exe
+/Src/*/#Compiler/cmake-*/
+
+/Excel/
+
+#
+# Externals
+#
+
+/Externals/JoltPhysics/Build/VS20*_CL/
+
+/Externals/PhysX4/physx/bin/
+PxConfig.h
+
+#
+# Intermediate or temporary files
+#
+
+UpgradeLog.htm
+.suo
+*.user
+.vs/*

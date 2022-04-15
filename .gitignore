@@ -1,13 +1,28 @@
-/Src/x64/Debug/
-/Src/x64/Release/
-/Src/Win32/Debug/
-/Src/Win32/Release/
+#
+# PEEL Ignore List
+#
+
 /Build/
+
+/Src/*
+!/Src/.clang-format
+!/Src/.clang-tidy
+!/Src/PEEL/
+!/Src/PINT_Common/
+!/Src/PINT_PhysX4/
+!/Src/PINT_Skeleton/
+!/Src/PINT_Jolt/
+
 /Src/**/Debug/**
 /Src/**/Release/**
 /Src/**/#Compiler/cmake-*/**
 /Src/#Compiler/*.exe
 /Excel/
+
+/Externals/*
+!/Externals/VC9/
+!/Externals/DevIL/
+!/Externals/fmod/
 
 #
 # Intermediate or temporary files
