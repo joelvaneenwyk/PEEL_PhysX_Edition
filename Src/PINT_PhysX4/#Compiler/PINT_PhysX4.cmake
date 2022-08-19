@@ -29,6 +29,7 @@ set_option(NV_USE_STATIC_WINCRT OFF)
 set_option(NV_USE_DEBUG_WINCRT $<IF:$<CONFIG:Debug>,ON,OFF>)
 set_option(PX_FLOAT_POINT_PRECISE_MATH ON)
 
+if (EXISTS "${PHYSX_ROOT_DIR}/compiler/public")
 	add_subdirectory(${PHYSX_ROOT_DIR}/compiler/public)
 
 	# Source files
@@ -231,6 +232,7 @@ set_option(PX_FLOAT_POINT_PRECISE_MATH ON)
 			PINT_PHYSX_EXPORTS)
 
 	target_include_directories(PINT_PhysX4 SYSTEM BEFORE
+			PUBLIC ${PEEL_REPO_ROOT}/Src
 			PUBLIC ${PEEL_REPO_ROOT}/Externals
 			PUBLIC ${PEEL_SOURCE_ROOT}
 			PUBLIC ${PEEL_SOURCE_ROOT}/PINT_PhysX4
@@ -334,3 +336,4 @@ set_option(PX_FLOAT_POINT_PRECISE_MATH ON)
 	copy_physx_library(PhysXCommon.dll)
 	copy_physx_library(PhysXCooking.dll)
 	copy_physx_library(PhysXFoundation.dll)
+endif ()

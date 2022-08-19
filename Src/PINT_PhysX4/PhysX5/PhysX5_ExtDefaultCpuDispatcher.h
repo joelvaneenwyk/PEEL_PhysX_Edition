@@ -39,7 +39,7 @@
 #include "PsUserAllocated.h"
 #include "PsSync.h"
 #include "PsSList.h"
-#include "extensions/ExtSharedQueueEntryPool.h"
+#include "Extensions/ExtSharedQueueEntryPool.h"
 
 
 namespace physx5

@@ -1,4 +1,3 @@
-//
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 // are met:
@@ -27,9 +26,13 @@
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
 // Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
-#include "foundation/PxMemory.h"
+#include "stdafx.h"
+
 #include "CctObstacleContext.h"
 #include "CctCharacterControllerManager.h"
+
+#include "foundation/PxMemory.h"
+
 #include "PsUtilities.h"
 
 using namespace physx;
@@ -38,7 +41,7 @@ using namespace Cct;
 //! Initial list size
 #define DEFAULT_HANDLEMANAGER_SIZE	2
 
-HandleManager::HandleManager() : mCurrentNbObjects(0), mNbFreeIndices(0)
+Cct::HandleManager::HandleManager() : mCurrentNbObjects(0), mNbFreeIndices(0)
 {
 	mMaxNbObjects	= DEFAULT_HANDLEMANAGER_SIZE;
 	mObjects		= reinterpret_cast<void**>(PX_ALLOC(sizeof(void*)*mMaxNbObjects, "HandleManager"));
@@ -50,12 +53,12 @@ HandleManager::HandleManager() : mCurrentNbObjects(0), mNbFreeIndices(0)
 	PxMemZero(mStamps, mMaxNbObjects*sizeof(PxU16));
 }
 
-HandleManager::~HandleManager()
+Cct::HandleManager::~HandleManager()
 {
 	SetupLists();
 }
 
-bool HandleManager::SetupLists(void** objects, PxU16* oti, PxU16* ito, PxU16* stamps)
+bool Cct::HandleManager::SetupLists(void** objects, PxU16* oti, PxU16* ito, PxU16* stamps)
 {
 	// Release old data
 	PX_FREE_AND_RESET(mStamps);
@@ -70,7 +73,7 @@ bool HandleManager::SetupLists(void** objects, PxU16* oti, PxU16* ito, PxU16* st
 	return true;
 }
 
-Handle HandleManager::Add(void* object)
+Handle Cct::HandleManager::Add(void* object)
 {
 	// Are there any free indices I should recycle?
 	if(mNbFreeIndices)
@@ -113,7 +116,7 @@ Handle HandleManager::Add(void* object)
 	}
 }
 
-void HandleManager::Remove(Handle handle)
+void Cct::HandleManager::Remove(Handle handle)
 {
 	const PxU16 VirtualIndex = PxU16(handle);
 	if(VirtualIndex>=mMaxNbObjects)		return;			// Invalid handle
@@ -138,7 +141,7 @@ void HandleManager::Remove(Handle handle)
 	}
 }
 
-void* HandleManager::GetObject(Handle handle) const
+void* Cct::HandleManager::GetObject(Handle handle) const
 {
 	const PxU16 VirtualIndex = PxU16(handle);
 	if(VirtualIndex>=mMaxNbObjects)			return NULL;	// Invalid handle
@@ -149,7 +152,7 @@ void* HandleManager::GetObject(Handle handle) const
 	return mObjects[PhysicalIndex];							// Returns stored pointer
 }
 
-bool HandleManager::UpdateObject(Handle handle, void* object)
+bool Cct::HandleManager::UpdateObject(Handle handle, void* object)
 {
 	const PxU16 VirtualIndex = PxU16(handle);
 	if(VirtualIndex>=mMaxNbObjects)			return false;	// Invalid handle
@@ -254,7 +257,7 @@ ObstacleHandle ObstacleContext::addObstacle(const PxObstacle& obstacle)
 
 #ifdef NEW_ENCODING
 template<class T>
-static PX_FORCE_INLINE void remove(HandleManager& manager, void* object, ObstacleHandle handle, PxU32 index, PxU32 size, const Ps::Array<T>& obstacles)
+static PX_FORCE_INLINE void remove(Cct::HandleManager& manager, void* object, ObstacleHandle handle, PxU32 index, PxU32 size, const Ps::Array<T>& obstacles)
 {
 	manager.Remove(handle);
 	if(index!=size-1)

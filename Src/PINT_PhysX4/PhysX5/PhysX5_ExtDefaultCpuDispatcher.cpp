@@ -28,9 +28,11 @@
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
 // Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
+#include "stdafx.h"
+
 #include "PhysX5_ExtDefaultCpuDispatcher.h"
 #include "PhysX5_ExtCpuWorkerThread.h"
-#include "extensions/ExtTaskQueueHelper.h"
+#include "Extensions/ExtTaskQueueHelper.h"
 #include "PsString.h"
 
 using namespace physx;

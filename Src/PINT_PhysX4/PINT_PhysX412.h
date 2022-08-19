@@ -34,8 +34,10 @@
 				void					UpdateFromUI();
 		private:
 			//	PxProfileZoneManager*	mProfileZoneManager;
+#	ifdef SUPPORT_PVD
 				PxPvd*					mPVD;
 				PxPvdTransport*			mTransport;
+#	endif
 	};
 
 	IceWindow*	PhysX_InitGUI(IceWidget* parent, PintGUIHelper& helper);

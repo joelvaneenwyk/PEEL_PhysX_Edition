@@ -8,21 +8,17 @@
 
 #pragma once
 
-#include "../PINT_Common/PINT_Ice.h"
+#include "PINT_Common/PINT_Ice.h"
 
-#include <vector>
-
-#ifndef UINT32_MAX
-#   define UINT32_MAX MAX_UDWORD
-#endif
-
-#ifndef UINT8_MAX
-#   define UINT8_MAX MAX_UBYTE
-#endif
+ICE_DIAG_CLANG_OFF("microsoft-include")
+ICE_DIAG_CLANG_OFF("gnu-folding-constant")
 
 #include "PxPhysicsAPI.h"
 #include "PsFoundation.h"
 #include "PsUtilities.h"
+
+#include <vector>
+#include <cstdio>
 
 using namespace physx;
 
@@ -99,13 +95,14 @@ using namespace physx;
 // Fluids
 #define	PHYSX_SUPPORT_FLUIDS								0
 
-
-#define PHYSX_SUPPORT_GPU
 #ifdef PHYSX_SUPPORT_GPU
 #	define BUILD_GPU_DATA				buildGPUData
+#else
+#	define BUILD_GPU_DATA
 #endif
-#define BUILD_GPU_DATA	buildGPUData
+
 #define PHYSX_NUM_PRIMS_PER_LEAF		numPrimsPerLeaf
+
 //#define PHYSX_SUPPORT_LINEAR_COEFF
 #define NEW_D6_API
 //#define PHYSX_SUPPORT_CHARACTERS

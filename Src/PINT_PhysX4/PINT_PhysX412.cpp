@@ -7,9 +7,11 @@
 ///////////////////////////////////////////////////////////////////////////////
 
 #include "stdafx.h"
+
 #include "PINT_PhysX412.h"
-#include "../PINT_Common/PINT_Common.h"
-#include "../PINT_Common/PINT_CommonPhysX3_Setup.h"
+
+#include "PINT_Common/PINT_Common.h"
+#include "PINT_Common/PINT_CommonPhysX3_Setup.h"
 
 #include "extensions/PxExtensionsAPI.h"
 //#include "common/PxIO.h"
@@ -19,7 +21,6 @@
 //#include "NvProfileZoneManager.h"
 
 #include "PhysX5/PhysX5_ExtDefaultCpuDispatcher.h"
-
 
 //#define MODIFY_CONTACTS
 
@@ -38,12 +39,10 @@ static PhysX* gPhysX = null;
 //#define SUPPORT_PVD
 //#define SUPPORT_PVD2
 
-/*
-PHYSX_PROFILE_SDK
-PX_DEBUG=1
-PX_CHECKED=1
-PX_SUPPORT_PVD=1
-*/
+// PHYSX_PROFILE_SDK
+// PX_DEBUG=1
+// PX_CHECKED=1
+// PX_SUPPORT_PVD=1
 
 #ifdef SUPPORT_PVD
 
@@ -174,11 +173,13 @@ static PxCudaContextManager* gCudaContextManager = NULL;
 
 ///////////////////////////////////////////////////////////////////////////////
 
-PhysX::PhysX(const EditableParams& params) :
-	SharedPhysX_Vehicles(params),
-	mPVD				(null),
-	mTransport			(null)
-//	mProfileZoneManager	(null),
+PhysX::PhysX(const EditableParams& params)
+	 : SharedPhysX_Vehicles(params)
+#ifdef SUPPORT_PVD
+	,					mPVD(null)
+	,					mTransport(null)
+#endif
+//	,					mProfileZoneManager(null)
 {
 }
 
@@ -188,8 +189,11 @@ PhysX::~PhysX()
 	ASSERT(!gDefaultErrorCallback);
 	ASSERT(!gDefaultAllocator);
 //	ASSERT(!mProfileZoneManager);
+
+#ifdef SUPPORT_PVD
 	ASSERT(!mPVD);
 	ASSERT(!mTransport);
+#endif
 }
 
 const char* PhysX::GetName() const
@@ -916,4 +920,3 @@ Pint* PhysXPlugIn::GetPint()												{ return GetPhysX();					}
 const char*	PhysXPlugIn::GetTestGUIName()									{ return "PhysX 4.1.2";					}
 static PhysXPlugIn gPlugIn;
 PintPlugin*	GetPintPlugin()													{ return &gPlugIn;						}
-

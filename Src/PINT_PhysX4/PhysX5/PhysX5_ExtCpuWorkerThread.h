@@ -34,7 +34,8 @@
 #include "CmPhysXCommon.h"
 #include "PsThread.h"
 #include "PhysX5_PxDefaultCpuDispatcher.h"
-#include "extensions/ExtSharedQueueEntryPool.h"
+
+#include "Extensions/ExtSharedQueueEntryPool.h"
 
 namespace physx5
 {

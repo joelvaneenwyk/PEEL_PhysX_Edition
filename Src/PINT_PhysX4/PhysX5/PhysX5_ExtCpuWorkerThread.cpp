@@ -28,6 +28,8 @@
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
 // Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
+#include "stdafx.h"
+
 #include "task/PxTask.h"
 #include "PhysX5_ExtCpuWorkerThread.h"
 #include "PhysX5_ExtDefaultCpuDispatcher.h"

@@ -1,4 +1,3 @@
-//
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 // are met:
@@ -27,6 +26,7 @@
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
 // Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
+#include "stdafx.h"
 
 #include "geometry/PxBoxGeometry.h"
 #include "geometry/PxSphereGeometry.h"
@@ -54,6 +54,7 @@
 
 using namespace physx;
 using namespace Cm;
+
 
 static bool computeMassAndDiagInertia(Ext::InertiaTensorComputer& inertiaComp,
 		PxVec3& diagTensor, PxQuat& orient, PxReal& massOut, PxVec3& coM, bool lockCOM, const PxRigidBody& body, const char* errorStr)
@@ -640,5 +641,3 @@ void PxRigidBodyExt::computeVelocityDeltaFromImpulse(const PxRigidBody& body, co
 		deltaAngularVelocity = recipInertiaWorldSpace*(impulsiveTorque);
 	}
 }
-
-
