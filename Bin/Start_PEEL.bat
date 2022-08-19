@@ -2,24 +2,37 @@
 
 setlocal EnableDelayedExpansion
 
-call :FindPEEL
+call :FindPEEL "%~dp0..\"
+
 if not exist "%_peel%" (
     echo Failed to find compiled version of PEEL. Please compile first.
     exit /b 5
 )
 
-:$StartPEEL
-"%_peel%" %*
+call :StartPEEL %*
 exit /b
 
 :FindPEEL
-    if exist "%~dp0..\Build\x64-vs2022-release\Release" cd /d "%~dp0..\Build\x64-vs2022-release\Release"
-    set _peel=%~dp0..\Build\x64-vs2022-release\Release\PEEL.exe
+    set _root=%~dp1
+    if %_root:~-1%==\ set _root=%_root:~0,-1%
+
+    set _peel=%_root%\Build\x64-vs2022-Release\Release\PEEL.exe
     if exist "%_peel%" goto:$Done
 
-    if exist "%~dp0..\Build\x64-vs2022\Release" cd /d "%~dp0..\Build\x64-vs2022\Release"
-    set _peel=%~dp0..\Build\x64-vs2022\Release\PEEL.exe
+    set _peel=%_root%\Build\x64-vs2022\Release\PEEL.exe
     if exist "%_peel%" goto:$Done
 
     :$Done
+    call :SetPEEL "%_peel%"
+exit /b
+
+:SetPEEL
+    set _peel_dir=%~dp1
+    set _peel=%~1
+exit /b
+
+:StartPEEL
+    cd /d "%_peel_dir%"
+    echo ##[cmd] "%_peel%" %*
+    call "%_peel%" %*
 exit /b

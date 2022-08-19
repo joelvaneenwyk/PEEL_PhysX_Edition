@@ -2,12 +2,10 @@
 
 setlocal EnableDelayedExpansion EnableExtensions
 
-if exist "%~dp0..\Build" rmdir /q /s "%~dp0..\Build"
-
-call "%~dp0Build_PEEL.bat" Debug
+call "%~dp0Build_PEEL.bat" Debug Clean
 if errorlevel 1 exit /b
 
-call "%~dp0Build_PEEL.bat" Release
+call "%~dp0Build_PEEL.bat" Release Clean
 if errorlevel 1 exit /b
 
 echo.
