@@ -128,5 +128,3 @@ void PEEL_SimulationEventCallback::onTrigger(PxTriggerPair* pairs, PxU32 count)
 void PEEL_SimulationEventCallback::onAdvance(const PxRigidBody*const* bodyBuffer, const PxTransform* poseBuffer, const PxU32 count)
 {
 }
-
-

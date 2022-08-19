@@ -1,9 +1,11 @@
+
+#include "stdafx.h"
+
 #include "RackAndPinion.h"
-#include "extensions/ExtConstraintHelper.h"
+#include "Extensions/ExtConstraintHelper.h"
 #include "PxPhysics.h"
 #include "extensions/PxRevoluteJoint.h"
 #include "extensions/PxPrismaticJoint.h"
-#include <stdio.h>
 
 using namespace physx;
 using namespace Ext;
@@ -291,4 +293,3 @@ static PxU32 RackAndPinionJointSolverPrep(Px1DConstraint* constraints,
 }
 
 PxConstraintShaderTable Ext::RackAndPinionJoint::sShaders = { RackAndPinionJointSolverPrep, RackAndPinionJointProject, RackAndPinionJointVisualize, PxConstraintFlag::Enum(0) };
-

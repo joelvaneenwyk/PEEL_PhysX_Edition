@@ -28,7 +28,7 @@ set_target_properties(PINT_Skeleton PROPERTIES
 
 target_compile_definitions(PINT_Skeleton PRIVATE
 		WIN32
-		_DEBUG
+		$<IF:$<CONFIG:Debug>,_DEBUG,NDEBUG>
 		_WINDOWS
 		_USRDLL
 		GLUT_NO_LIB_PRAGMA
@@ -44,6 +44,7 @@ target_include_directories(PINT_Skeleton SYSTEM BEFORE
 		PUBLIC ${PEEL_APPLICATION_ROOT}/DevIL/include
 		PUBLIC ${PEEL_APPLICATION_ROOT}/PxFoundation
 		PUBLIC ${PEEL_APPLICATION_ROOT}/PxFoundation/include
+		PUBLIC ${PEEL_REPO_ROOT}/Src
 		PUBLIC ${PEEL_REPO_ROOT}/Externals)
 
 target_link_directories(PINT_Skeleton

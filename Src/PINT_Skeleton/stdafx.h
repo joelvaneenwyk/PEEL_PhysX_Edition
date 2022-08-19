@@ -6,9 +6,4 @@
  */
 ///////////////////////////////////////////////////////////////////////////////
 
-#pragma once
-
-#define NOMINMAX
-#define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
-
-#include "../PINT_Common/PINT_Ice.h"
+#include "PINT_Common/PINT_Ice.h"

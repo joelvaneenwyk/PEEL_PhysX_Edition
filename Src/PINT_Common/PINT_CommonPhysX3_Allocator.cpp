@@ -57,7 +57,7 @@ void* PEEL_PhysX3_AllocatorCallback::allocate(size_t size, const char* typeName,
 	char* memory = (char*)_aligned_malloc(size+32, 16);
 	Header* H = (Header*)memory;
 	H->mMagic		= 0x12345678;
-	H->mSize		= size;
+	H->mSize		= (udword)size;
 	H->mType		= typeName;
 	H->mFilename	= filename;
 	H->mLine		= line;
@@ -68,7 +68,7 @@ void* PEEL_PhysX3_AllocatorCallback::allocate(size_t size, const char* typeName,
 	atomicIncrement((int*)&mNbAllocs);
 //	mNbAllocs++;
 
-	atomicAdd((int*)&mCurrentMemory, size);
+	atomicAdd((int*)&mCurrentMemory, (int)size);
 //	mCurrentMemory+=size;
 
 	return memory + 32;
@@ -91,4 +91,3 @@ void PEEL_PhysX3_AllocatorCallback::deallocate(void* ptr)
 	atomicAdd((int*)&mCurrentMemory, -(int)Size);
 //	mCurrentMemory-=Size;
 }
-

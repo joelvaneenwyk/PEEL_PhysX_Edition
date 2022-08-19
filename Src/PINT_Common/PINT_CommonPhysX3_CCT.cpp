@@ -89,4 +89,3 @@ udword PhysX_CCT_API::MoveCharacter(PintCharacterHandle h, const Point& disp)
 
 	return CCT->move(ToPxVec3(disp), minDist, elapsedTime, filters, null);
 }
-

@@ -9,7 +9,7 @@
 #include "stdafx.h"
 
 #include "PINT_Common.h"
-#include "../PintGUIHelper.h"
+#include "PEEL/PintGUIHelper.h"
 
 void Common_GetFromEditBox(float& value, const IceEditBox* edit_box, float min_value, float max_value)
 {
@@ -138,13 +138,11 @@ MyIceAllocator::~MyIceAllocator()
 void* MyIceAllocator::malloc(size_t size, MemoryType type)
 {
 	mCurrentNbAllocs++;
-//	return ::malloc(size);
-
 	MemHeader* Header	= (MemHeader*)_aligned_malloc(size+sizeof(MemHeader), 16);
 	Header->mName		= mName;
 	Header->mCheckValue	= 0x12345678;
-	Header->mSize		= size;
-	mUsedMemory += size;
+	Header->mSize		= (udword)size;
+	mUsedMemory			+= Header->mSize;
 	return Header+1;
 }
 
@@ -157,8 +155,8 @@ void* MyIceAllocator::mallocDebug(size_t size, const char* filename, udword line
 	MemHeader* Header	= (MemHeader*)_aligned_malloc(size+sizeof(MemHeader), 16);
 	Header->mName		= mName;
 	Header->mCheckValue	= 0x12345678;
-	Header->mSize		= size;
-	mUsedMemory += size;
+	Header->mSize		= (udword)size;
+	mUsedMemory			+= Header->mSize;
 	return Header+1;
 }
 

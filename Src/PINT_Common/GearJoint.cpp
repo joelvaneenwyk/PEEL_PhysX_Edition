@@ -1,8 +1,15 @@
+
+#include "stdafx.h"
+
 #include "GearJoint.h"
-#include "extensions/ExtConstraintHelper.h"
+
 #include "PxPhysics.h"
+
+// Local PEEL extension for PhysX
+#include "Extensions/ExtConstraintHelper.h"
+
+// External PhysX extension
 #include "extensions/PxRevoluteJoint.h"
-#include <stdio.h>
 
 using namespace physx;
 using namespace Ext;
@@ -263,4 +270,3 @@ static PxU32 GearJointSolverPrep(Px1DConstraint* constraints,
 }
 
 PxConstraintShaderTable Ext::GearJoint::sShaders = { GearJointSolverPrep, GearJointProject, GearJointVisualize, PxConstraintFlag::Enum(0) };
-

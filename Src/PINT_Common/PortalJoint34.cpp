@@ -1,3 +1,4 @@
+
 #include "PortalJoint34.h"
 #include "Extensions/ExtConstraintHelper.h"
 #include "PxPhysics.h"
@@ -165,4 +166,3 @@ static PxU32 PortalJointSolverPrep(Px1DConstraint* constraints,
 }
 
 PxConstraintShaderTable Ext::PortalJoint::sShaders = { PortalJointSolverPrep, PortalJointProject, PortalJointVisualize, PxConstraintFlag::Enum(0) };
-

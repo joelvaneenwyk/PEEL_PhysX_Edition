@@ -2013,4 +2013,3 @@ Pint_Vehicle* SharedPhysX_Vehicles::GetVehicleAPI()
 {
 	return this;
 }
-

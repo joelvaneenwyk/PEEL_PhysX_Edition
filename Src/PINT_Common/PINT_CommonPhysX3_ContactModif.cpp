@@ -232,4 +232,3 @@ void PEEL_ContactModifyCallback::onContactModify(PxContactModifyPair* const pair
 		}
 	}
 }
-

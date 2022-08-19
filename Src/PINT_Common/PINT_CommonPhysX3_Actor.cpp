@@ -357,4 +357,3 @@ bool PhysX_ActorAPI::SetCMassLocalPose(PintActorHandle handle, const PR& pose)
 	RigidBody->setCMassLocalPose(ToPxTransform(pose));
 	return true;
 }
-

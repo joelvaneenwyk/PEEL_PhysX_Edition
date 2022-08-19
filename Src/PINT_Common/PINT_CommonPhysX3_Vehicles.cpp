@@ -1814,7 +1814,7 @@ PxVehicleDrive4W* SampleVehicle_VehicleManager::create4WVehicle(SharedPhysX_Vehi
 
 SharedPhysX_Vehicles::SharedPhysX_Vehicles(const EditableParams& params) :
 	SharedPhysX		(params),
-	Pint_Vehicle	(*this)
+	Pint_Vehicle	(*((Pint*)this))
 {
 }
 

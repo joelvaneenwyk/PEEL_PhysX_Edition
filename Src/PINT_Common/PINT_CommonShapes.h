@@ -79,9 +79,9 @@
 	// "Mesh" = convex / triangle / heightfield / etc
 	struct InternalMeshShapeData : InternalShapeData
 	{
-		InternalMeshShapeData(const void* mesh, void* shape, const void* material, PintShapeRenderer* renderer, const PR& local_pose, udword collision_group) :
-			mMesh				(mesh),
-			InternalShapeData	(shape, material, renderer, local_pose, collision_group)
+		InternalMeshShapeData(const void* mesh, void* shape, const void* material, PintShapeRenderer* renderer, const PR& local_pose, udword collision_group)
+			: InternalShapeData(shape, material, renderer, local_pose, collision_group)
+			, mMesh(mesh)
 		{
 		}
 		const void*	mMesh;

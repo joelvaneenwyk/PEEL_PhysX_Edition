@@ -1566,4 +1566,3 @@ bool ImmediateScene::raycastClosest(const PxVec3& origin, const PxVec3& dir, flo
 	}
 	return minDist!=MAX_FLOAT;
 }
-

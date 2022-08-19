@@ -5307,7 +5307,7 @@ static udword GetNumberOfLogicalThreads()
 #if (_WIN32_WINNT >= 0x0601)
 	udword groups = GetActiveProcessorGroupCount();
 	udword totalProcessors = 0;
-	for(udword i=0; i<groups; i++)
+	for(WORD i=0; i<groups; i++)
 		totalProcessors += udword(GetActiveProcessorCount(i));
 	return totalProcessors;
 #else
@@ -6091,4 +6091,3 @@ void PhysX3::CloseSharedGUI()
 {
 	DELETESINGLE(gPhysXUI);
 }
-
