@@ -36,7 +36,7 @@
 							CellularLayer();
 		virtual				~CellularLayer();
 
-		virtual	bool		Init(const CELLULARLAYERCREATE& create);
+		virtual bool Init(const CELLULARLAYERCREATE& create);
 		virtual	bool		Update(float* field, udword width, udword height)	const;
 		virtual	bool		SupportsCache()	const	{ return true;			}
 		virtual	bool		SupportsOp()	const	{ return true;			}

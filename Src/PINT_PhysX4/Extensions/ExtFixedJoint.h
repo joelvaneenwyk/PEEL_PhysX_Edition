@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #ifndef NP_FIXEDJOINTCONSTRAINT_H
 #define NP_FIXEDJOINTCONSTRAINT_H
@@ -44,8 +44,8 @@ namespace Ext
 	struct FixedJointData : public JointData
 	{
 	//= ATTENTION! =====================================================================================
-	// Changing the data layout of this class breaks the binary serialization format.  See comments for 
-	// PX_BINARY_SERIAL_VERSION.  If a modification is required, please adjust the getBinaryMetaData 
+	// Changing the data layout of this class breaks the binary serialization format.  See comments for
+	// PX_BINARY_SERIAL_VERSION.  If a modification is required, please adjust the getBinaryMetaData
 	// function.  If the modification is made on a custom branch, please change PX_BINARY_SERIAL_VERSION
 	// accordingly.
 	//==================================================================================================
@@ -59,8 +59,8 @@ namespace Ext
 	class FixedJoint : public FixedJointT
 	{
 	//= ATTENTION! =====================================================================================
-	// Changing the data layout of this class breaks the binary serialization format.  See comments for 
-	// PX_BINARY_SERIAL_VERSION.  If a modification is required, please adjust the getBinaryMetaData 
+	// Changing the data layout of this class breaks the binary serialization format.  See comments for
+	// PX_BINARY_SERIAL_VERSION.  If a modification is required, please adjust the getBinaryMetaData
 	// function.  If the modification is made on a custom branch, please change PX_BINARY_SERIAL_VERSION
 	// accordingly.
 	//==================================================================================================
@@ -91,7 +91,7 @@ namespace Ext
 		}
 
 		bool			attach(PxPhysics &physics, PxRigidActor* actor0, PxRigidActor* actor1);
-		
+
 		static const PxConstraintShaderTable& getConstraintShaderTable() { return sShaders; }
 
 		virtual PxConstraintSolverPrep getPrep() const { return sShaders.solverPrep;  }
@@ -100,8 +100,8 @@ namespace Ext
 
 		static PxConstraintShaderTable sShaders;
 
-		PX_FORCE_INLINE FixedJointData& data() const				
-		{	
+		PX_FORCE_INLINE FixedJointData& data() const
+		{
 			return *static_cast<FixedJointData*>(mData);
 		}
 	};
@@ -109,7 +109,7 @@ namespace Ext
 
 namespace Ext
 {
-	// global function to share the joint shaders with API capture	
+	// global function to share the joint shaders with API capture
 	extern "C" const PxConstraintShaderTable* GetFixedJointShaderTable();
 }
 

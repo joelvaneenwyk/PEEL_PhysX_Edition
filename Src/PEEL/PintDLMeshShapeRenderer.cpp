@@ -136,7 +136,7 @@ void ActiveEdgesRenderer::CreateDL(const SurfaceInterface& surface)
 		EdgeList EL;
 		if(EL.Init(EC))
 		{
-			glBegin(GL_LINES);		
+			glBegin(GL_LINES);
 				const udword NbEdges = EL.GetNbEdges();
 				const EdgeDesc* ED = EL.GetEdgeToTriangles();
 				const Edge* Edges = EL.GetEdges();
@@ -579,7 +579,7 @@ void PintDLMeshShapeRenderer::CreateDisplayList(const SurfaceInterface& surface,
 				if(uses_vertex_normals && uses_smooth_normals)
 				{
 					const Point& n = Normals[VRef];
-					glNormal3f(n.x, n.y, n.z);		
+					glNormal3f(n.x, n.y, n.z);
 				}
 
 				if(TVertsRefs && TVerts)

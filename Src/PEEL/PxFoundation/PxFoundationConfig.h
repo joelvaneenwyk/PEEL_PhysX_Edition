@@ -50,7 +50,7 @@
 	#else
 		#define PX_FOUNDATION_API
 	#endif
-#endif 
+#endif
 
 
 /** @} */

@@ -17,7 +17,7 @@
 
 struct MidphaseHits : Allocateable
 {
-	MidphaseHits(PintActorHandle mesh_handle, PintActorHandle query_shape_handle) : mMeshHandle(mesh_handle), mQueryShapeHandle(query_shape_handle)	
+	MidphaseHits(PintActorHandle mesh_handle, PintActorHandle query_shape_handle) : mMeshHandle(mesh_handle), mQueryShapeHandle(query_shape_handle)
 	{
 		mHits.SetNoHit();
 	}

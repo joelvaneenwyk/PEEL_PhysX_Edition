@@ -86,7 +86,7 @@
 		public:
 		//! Constructor
 		inline_			PR()													{}
-		//! Identity constructor		
+		//! Identity constructor
 		inline_			PR(IDENTITY) : mPos(0.0f, 0.0f, 0.0f), mRot(Idt)		{}
 		//! Constructor
 		inline_			PR(const Point& p, const Quat& r) : mPos(p), mRot(r)	{}

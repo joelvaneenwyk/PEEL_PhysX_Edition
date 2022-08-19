@@ -41,7 +41,7 @@ public:
 	void render();
 	void setShaderMaterial(Shader* shader, const ShaderMaterial& mat) {this->mShader = shader; this->mShaderMat = mat;}
 	void setTexArrays(unsigned int diffuse, unsigned int bump, unsigned int specular, unsigned int specPower) {
-		mDiffuseTexArray = diffuse; mBumpTexArray = bump; 
+		mDiffuseTexArray = diffuse; mBumpTexArray = bump;
 		mSpecularTexArray = specular; mEmissiveReflectSpecPowerTexArray = specPower; }
 	void setVolTex(unsigned int volTexi) { volTex = volTexi;}
 private:
@@ -133,11 +133,11 @@ void ConvexRenderer::init()
 void ConvexRenderer::add(const Convex* convex, Shader* shader)
 {
 	if (!mActive)
-		return; 
+		return;
 
 	ConvexGroup *g;
 
-	// int gnr = 0;					// to search all groups 
+	// int gnr = 0;					// to search all groups
 	int gnr = 0;// !mGroups.empty() ? mGroups.size() - 1 : 0;		// to search only last
 	int numNewVerts = convex->getVisVertices().size();
 
@@ -164,7 +164,7 @@ void ConvexRenderer::add(const Convex* convex, Shader* shader)
 void ConvexRenderer::remove(const Convex* convex)
 {
 	if (!mActive)
-		return; 
+		return;
 
 	int gnr = convex->getConvexRendererGroupNr();
 	int pos = convex->getConvexRendererGroupPos();
@@ -199,8 +199,8 @@ void ConvexRenderer::updateRenderBuffers()
 	*/
 
 	for (int i = 0; i < (int)mGroups.size(); i++) {
-	
-		
+
+
 		ConvexGroup *g = mGroups[i];
 		if (!g->dirty)
 			continue;
@@ -239,7 +239,7 @@ void ConvexRenderer::updateRenderBuffers()
 		g->indices.resize(g->numIndices);
 		float* vp = &g->vertices[0];
 		unsigned int* ip = &g->indices[0];
-		
+
 		int sumV = 0;
 		// Make cpu copy of VBO and IBO
 
@@ -263,10 +263,10 @@ void ConvexRenderer::updateRenderBuffers()
 					*(vp++) = *(cvp++);
 					*(vp++) = *(cvp++);
 					*(vp++) = *(cvp++);
-				
+
 					*(vp++) = *(cnp++);
 					*(vp++) = *(cnp++);
-					*(vp++) = *(cnp++);				
+					*(vp++) = *(cnp++);
 
 					*(vp++) = *(ctanp++);
 					*(vp++) = *(ctanp++);
@@ -335,7 +335,7 @@ void ConvexRenderer::updateRenderBuffers()
 }
 
 //--------------------------------------------------------
-void ConvexRenderer::updateTransformations() 
+void ConvexRenderer::updateTransformations()
 {
 	for (int i = 0; i < (int)mGroups.size(); i++) {
 		ConvexGroup *g = mGroups[i];
@@ -368,7 +368,7 @@ void ConvexRenderer::updateTransformations()
 		}
 
 		glBindTexture(GL_TEXTURE_2D, g->matTex);
-		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, g->texSize, g->texSize, 
+		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, g->texSize, g->texSize,
 			GL_RGBA, GL_FLOAT, &g->texCoords[0]);
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
@@ -378,14 +378,14 @@ void ConvexRenderer::updateTransformations()
 void ConvexRenderer::render()
 {
 	if (!mActive)
-		return; 
+		return;
 
 	updateRenderBuffers();
 
 	updateTransformations();
 
 	for (int i = 0; i < (int)mGroups.size(); i++) {
-	
+
 		ConvexGroup *g = mGroups[i];
 
 		Shader* shader = mShader;
@@ -396,10 +396,10 @@ void ConvexRenderer::render()
 		// Assume convex all use the same shader
 
 		glActiveTexture(GL_TEXTURE7);
-		glBindTexture(GL_TEXTURE_3D, volTex);				
+		glBindTexture(GL_TEXTURE_3D, volTex);
 
 		glActiveTexture(GL_TEXTURE8);
-		glBindTexture(GL_TEXTURE_2D, g->matTex);				
+		glBindTexture(GL_TEXTURE_2D, g->matTex);
 
 		glActiveTexture(GL_TEXTURE10);
 		glBindTexture(GL_TEXTURE_2D_ARRAY_EXT, mDiffuseTexArray);
@@ -411,9 +411,9 @@ void ConvexRenderer::render()
 		glBindTexture(GL_TEXTURE_2D_ARRAY_EXT, mEmissiveReflectSpecPowerTexArray);
 
 		glActiveTexture(GL_TEXTURE0);
-		
+
 		float itt = 1.0f/g->texSize;
-		
+
 		shader->setUniform("diffuseTexArray", 10);
 		shader->setUniform("bumpTexArray", 11);
 		shader->setUniform("specularTexArray", 12);
@@ -428,7 +428,7 @@ void ConvexRenderer::render()
 		shader->setUniform("roughnessScale", mRoughnessScale);
 
 		if (mShaderMat.color[3] < 1.0f) {
-			glEnable(GL_BLEND); 
+			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 			glDisable(GL_DEPTH_TEST);
 			glColor4f(mShaderMat.color[0], mShaderMat.color[1], mShaderMat.color[2], mShaderMat.color[3]);
@@ -444,17 +444,17 @@ void ConvexRenderer::render()
 
 		int stride = 12*sizeof(float);
 		glVertexPointer(3, GL_FLOAT, stride, 0);
-		
+
 		glNormalPointer(GL_FLOAT, stride, (void*)(3*sizeof(float)));
-		
+
 		glTexCoordPointer(4, GL_FLOAT, stride, (void*)(6*sizeof(float)));
 
 		glClientActiveTexture(GL_TEXTURE1);
 		glTexCoordPointer(2, GL_FLOAT, stride, (void*)(10*sizeof(float)));
 		glEnableClientState(GL_TEXTURE_COORD_ARRAY);
-		
-		glDrawElements(GL_TRIANGLES, g->numIndices, GL_UNSIGNED_INT, 0);	
-		
+
+		glDrawElements(GL_TRIANGLES, g->numIndices, GL_UNSIGNED_INT, 0);
+
 		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 		glClientActiveTexture(GL_TEXTURE0);
 		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -467,7 +467,7 @@ void ConvexRenderer::render()
 			glDisable(GL_BLEND);
 			glEnable(GL_DEPTH_TEST);
 		}
-		
+
 		shader->deactivate();
 	}
 #endif

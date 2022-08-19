@@ -31,7 +31,7 @@
 	//! Count the number of '1' bits in a 32 bit word (from Steve Baker's Cute Code Collection)
 	inline_ udword	CountBits(udword n)
 	{
-		// This relies of the fact that the count of n bits can NOT overflow 
+		// This relies of the fact that the count of n bits can NOT overflow
 		// an n bit integer. EG: 1 bit count takes a 1 bit integer, 2 bit counts
 		// 2 bit integer, 3 bit count requires only a 2 bit integer.
 		// So we add all bit pairs, then each nible, then each byte etc...
@@ -159,7 +159,7 @@
 	// -- be aware, however, that the C language does not require that shifts are signed even if their
 	// operands are signed, so there is a potential portability problem. Additionally, one might think
 	// that a shift by any number greater than or equal to WORDBITS would have the same effect, but many
-	// instruction sets have shifts that behave strangely when such shift distances are specified. 
+	// instruction sets have shifts that behave strangely when such shift distances are specified.
 	// Of course, maximum can be computed using the same trick:
 	// x-(((x-y)>>(WORDBITS-1))&(x-y))."
 

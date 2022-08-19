@@ -41,7 +41,7 @@
 				void				Reset();
 
 				bool				Update(Skeleton& skeleton, float current_time)	const;
-		// 
+		//
 				MotionCell*			CreateMotionCell(const MOTIONCELLCREATE& create);
 				bool				DeleteMotionCell(MotionCell* mc);
 

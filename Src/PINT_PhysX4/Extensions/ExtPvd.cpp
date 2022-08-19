@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 // suppress LNK4221
 #include "foundation/PxPreprocessor.h"
@@ -55,7 +55,7 @@ namespace Ext
 	template<typename TObjType, typename TOperator>
 	inline void visitPvdInstanceProperties( TOperator inOperator )
 	{
-		PxClassInfoTraits<TObjType>().Info.visitInstanceProperties( makePvdPropertyFilter( inOperator ), 0 );	
+		PxClassInfoTraits<TObjType>().Info.visitInstanceProperties( makePvdPropertyFilter( inOperator ), 0 );
 	}
 
 	template<typename TObjType, typename TOperator>
@@ -132,7 +132,7 @@ namespace Ext
 			registerPropertiesAndValueStruct<PxD6Joint,PxD6JointGeneratedValues>( inStream);
 		}
 	}
-	
+
 	void Pvd::setActors( physx::pvdsdk::PvdDataStream& inStream, const PxJoint& inJoint, const PxConstraint& c, const PxActor* newActor0, const PxActor* newActor1 )
 	{
 		PxRigidActor* actor0, *actor1;
@@ -141,7 +141,7 @@ namespace Ext
 			inStream.removeObjectRef( actor0, "Joints", &inJoint );
 		if ( actor1 )
 			inStream.removeObjectRef( actor1, "Joints", &inJoint );
-		
+
 		if ( newActor0 && newActor0->getScene())
 			inStream.pushBackObjectRef( newActor0, "Joints", &inJoint );
 		if ( newActor1 && newActor1->getScene())

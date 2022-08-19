@@ -87,7 +87,7 @@ void GLIndexBuffer::Select() const
 
 void GLIndexBuffer::Unselect() const
 {
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);	
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -366,7 +366,7 @@ void OpenGLMesh::Draw(GLMesh* m/*, const Matrix44& xform, const Vec3& color*/)
 			glBindBuffer(GL_ARRAY_BUFFER, mesh->mNormalsVBO);
 			glNormalPointer(GL_FLOAT, sizeof(Point), 0);
 		}
-		
+
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->mIndicesIBO);
 		if(mesh->mHas16BitIndices)
 			glDrawElements(GL_TRIANGLES, mesh->mNbTris*3, GL_UNSIGNED_SHORT, 0);
@@ -378,7 +378,7 @@ void OpenGLMesh::Draw(GLMesh* m/*, const Matrix44& xform, const Vec3& color*/)
 			glDisableClientState(GL_NORMAL_ARRAY);
 
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-		glBindBuffer(GL_ARRAY_BUFFER, 0);	
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 //		if (program)
 //			glUniformMatrix4fv(glGetUniformLocation(program, "objectTransform"), 1, false, Matrix44::kIdentity);
@@ -715,7 +715,7 @@ void OpenGLMesh::Draw(GLMeshEx* mesh)
 		glBindBuffer(GL_ARRAY_BUFFER, mesh->mNormalsVBO);
 		glNormalPointer(GL_FLOAT, sizeof(Point), 0);
 	}
-	
+
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mesh->mIndicesIBO);
 
 	glDrawElements(GL_TRIANGLES, mesh->mNbTris*3, GL_UNSIGNED_INT, 0);
@@ -727,7 +727,7 @@ void OpenGLMesh::Draw(GLMeshEx* mesh)
 		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);	
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 void OpenGLMesh::UpdateVerts(GLMeshEx* mesh, const Point* verts)
@@ -780,12 +780,12 @@ void OpenGLMesh::UpdateVerts(GLMeshEx* mesh, const Point* verts)
 
 		glVerify(glEnableClientState(GL_VERTEX_ARRAY));
 		glVerify(glBindBuffer(GL_ARRAY_BUFFER, m->mPositionsVBO));
-		glVerify(glVertexPointer(3, GL_FLOAT, sizeof(float)*3, 0));	
+		glVerify(glVertexPointer(3, GL_FLOAT, sizeof(float)*3, 0));
 
 		glVerify(glEnableClientState(GL_NORMAL_ARRAY));
 		glVerify(glBindBuffer(GL_ARRAY_BUFFER, m->mNormalsVBO));
 		glVerify(glNormalPointer(GL_FLOAT, sizeof(float)*3, 0));
-		
+
 		glVerify(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m->mIndicesIBO));
 
 		for (int i=0; i < n; ++i)
@@ -843,7 +843,7 @@ static const char* testPixelShader = "#version 330 core\n" STRINGIFY(
 
 		FragColor = vec4(normal, 1.0f);
 //		FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);
-	} 
+	}
 );
 
 void ModernTest()
@@ -912,9 +912,9 @@ void ModernTest()
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Point), (void*)0);
 		glEnableVertexAttribArray(0);
 
-		glBindBuffer(GL_ARRAY_BUFFER, 0); 
-//		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0); 
-		glBindVertexArray(0); 
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+//		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		glBindVertexArray(0);
 
 //		glDeleteVertexArrays(1, &VAO);
 //		glDeleteBuffers(1, &VBO);
@@ -932,7 +932,7 @@ void ModernTest()
 
 		glBindBuffer(GL_ARRAY_BUFFER, IBO);
 		glBufferData(GL_ARRAY_BUFFER, NB_INSTANCES*NB_INSTANCES * sizeof(Matrix4x4), Matrices, GL_DYNAMIC_DRAW);
- 
+
 			glBindVertexArray(VAO);
 			// vertex Attributes
 			GLsizei vec4Size = 4*4;//sizeof(glm::vec4);
@@ -948,7 +948,7 @@ void ModernTest()
 			glVertexAttribDivisor(baseLoc+3, 1);
 
 			glBindVertexArray(0);
-		glBindBuffer(GL_ARRAY_BUFFER, 0); 
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
 	glUseProgram(Prg);
@@ -988,7 +988,7 @@ void ModernTest()
 		}
 
 		glBufferData(GL_ARRAY_BUFFER, NB_INSTANCES*NB_INSTANCES * sizeof(Matrix4x4), Matrices, GL_DYNAMIC_DRAW);
-		glBindBuffer(GL_ARRAY_BUFFER, 0); 
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
 	glBindVertexArray(VAO);

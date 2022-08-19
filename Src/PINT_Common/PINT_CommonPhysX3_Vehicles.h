@@ -32,7 +32,7 @@
 
 	class SharedPhysX_Vehicles;
 
-	//Data structure to store reports for each wheel. 
+	//Data structure to store reports for each wheel.
 	class SampleVehicleWheelQueryResults
 	{
 	public:
@@ -53,7 +53,7 @@
 		//Maximum number of wheels.
 		PxU32 mMaxNumWheels;
 
-		//Number of wheels 
+		//Number of wheels
 		PxU32 mNumWheels;
 
 		SampleVehicleWheelQueryResults()
@@ -114,12 +114,12 @@
 		PxSweepHit* mSweepSqHitBuffer;				//One hit for each wheel.
 
 		// For raycasts:
-		PxRaycastQueryResult* mRaycastSqResults;	//One result for each wheel.		
+		PxRaycastQueryResult* mRaycastSqResults;	//One result for each wheel.
 		PxRaycastHit* mRaycastSqHitBuffer;			//One hit for each wheel.
 
 		PxU32 mNbSqResults;
 
-		//Maximum number of suspension raycasts that can be supported by the allocated buffers 
+		//Maximum number of suspension raycasts that can be supported by the allocated buffers
 		//assuming a single query and hit per suspension line.
 		PxU32 mNumQueries;
 	};

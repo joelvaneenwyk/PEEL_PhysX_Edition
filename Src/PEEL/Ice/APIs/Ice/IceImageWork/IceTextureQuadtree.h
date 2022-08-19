@@ -25,7 +25,7 @@
 
 				udword		get_texture_id(int level, int col, int row)	const;
 				Picture*	load_image(int level, int col, int row)		const;
-			
+
 		private:
 			Container		m_toc;
 			int				m_depth;

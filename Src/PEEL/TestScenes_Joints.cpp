@@ -951,10 +951,10 @@ START_TEST(ThreeLegoGears, CATEGORY_JOINTS, gDesc_ThreeLegoGears)
 		Copy0.SetShape(&Box0);
 		Copy1.SetShape(&Box1);
 		Copy2.SetShape(&Box2);
-		Copy0.mMass = 1.0f;
-		Copy1.mMass = 1.0f;
-		Copy2.mMass = 1.0f;
-/*
+		Copy0.mMass           = 1.0f;
+		Copy1.mMass           = 1.0f;
+		Copy2.mMass           = 1.0f;
+		/*
 Matrix3x3 Rot;
 Rot.RotY(HALFPI);
 //Rot.FromTo(Point(), Point());

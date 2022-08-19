@@ -397,11 +397,11 @@ class Array : protected Alloc
 		T* it = mData + i;
 		it->~T();
 		while (++i < mSize)
-		{								
+		{
 			new (it) T(mData[i]);
 			++it;
 			it->~T();
-		} 
+		}
 		--mSize;
 	}
 

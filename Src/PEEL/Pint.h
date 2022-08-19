@@ -1895,7 +1895,7 @@
 		DIFFERENTIAL_LS_4WD,		// limited slip differential for car with 4 driven wheels
 		DIFFERENTIAL_LS_FRONTWD,	// limited slip differential for car with front-wheel drive
 		DIFFERENTIAL_LS_REARWD,		// limited slip differential for car with rear-wheel drive
-		DIFFERENTIAL_OPEN_4WD,		// open differential for car with 4 driven wheels 
+		DIFFERENTIAL_OPEN_4WD,		// open differential for car with 4 driven wheels
 		DIFFERENTIAL_OPEN_FRONTWD,	// open differential for car with front-wheel drive
 		DIFFERENTIAL_OPEN_REARWD,	// open differential for car with rear-wheel drive
 		DIFFERENTIAL_UNDEFINED

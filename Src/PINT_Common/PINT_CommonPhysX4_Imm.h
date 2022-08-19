@@ -607,7 +607,7 @@
 						const bool							mUseTGS;
 
 						// Enables whether we want persistent state caching (contact cache, friction caching) or not.
-						// Avoiding persistency results in one-shot collision detection and zero friction 
+						// Avoiding persistency results in one-shot collision detection and zero friction
 						// correlation but simplifies code by not longer needing to cache persistent pairs.
 						const bool							mUsePersistency;
 

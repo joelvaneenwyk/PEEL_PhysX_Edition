@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "ExtContactJoint.h"
 #include "PxPhysics.h"
@@ -168,7 +168,7 @@ void ContactJoint::computeJacobians(PxJacobianRow* jacobian) const
 	jacobian->angular0 = raXn;
 	jacobian->linear1 = -normal;
 	jacobian->angular1 = -rbXn;
-	
+
 }
 PxU32 ContactJoint::getNbJacobianRows() const
 {
@@ -185,7 +185,7 @@ ContactJoint* ContactJoint::createObject(PxU8*& address, PxDeserializationContex
 	return obj;
 }
 
-// global function to share the joint shaders with API capture	
+// global function to share the joint shaders with API capture
 const PxConstraintShaderTable* Ext::GetContactJointShaderTable()
 {
 	return &ContactJoint::getConstraintShaderTable();

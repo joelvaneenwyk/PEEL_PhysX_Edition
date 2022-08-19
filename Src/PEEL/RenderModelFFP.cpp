@@ -60,9 +60,9 @@ static void InitLighting()
 	if(0)
 	{
 		glEnable(GL_FOG);
-		//glFogi(GL_FOG_MODE,GL_LINEAR); 
-		//glFogi(GL_FOG_MODE,GL_EXP); 
-		glFogi(GL_FOG_MODE,GL_EXP2); 
+		//glFogi(GL_FOG_MODE,GL_LINEAR);
+		//glFogi(GL_FOG_MODE,GL_EXP);
+		glFogi(GL_FOG_MODE,GL_EXP2);
 		glFogf(GL_FOG_START, 0.0f);
 		glFogf(GL_FOG_END, 100.0f);
 		glFogf(GL_FOG_DENSITY, 0.005f);

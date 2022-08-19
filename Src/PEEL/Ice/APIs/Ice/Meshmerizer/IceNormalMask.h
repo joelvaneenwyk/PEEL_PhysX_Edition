@@ -31,10 +31,10 @@
 // The NormalMask is used as the frontface mask in which every
 // normal cluster has a bit to indicate whether it is
 // front-facing (when the bit is 1) or backfacing (when
-// the bit is 0). 
+// the bit is 0).
 //
-// Note that In my 1997 I3D paper I described the algorithm 
-// in terms of a backface mask, which is the bitwise NOT of 
+// Note that In my 1997 I3D paper I described the algorithm
+// in terms of a backface mask, which is the bitwise NOT of
 // the front-face mask used in this implementation - just to
 // test if you really understand it :^)
 //
@@ -46,12 +46,12 @@
 // So the whole thing normally works this way:
 //
 // As a preprocessing (or during model loading) each polygon's
-// 2-byte normal code is computed and stored in 
+// 2-byte normal code is computed and stored in
 // PolygonNormalMask;
-// Then for each frame, a FrontfaceMask (of type NormalMask) 
+// Then for each frame, a FrontfaceMask (of type NormalMask)
 // is computed given the viewing direction and FOV, using
-// the FillBits() function in NormalMask (you can do 
-// this multiple time, each for a sub-frustum... see the 
+// the FillBits() function in NormalMask (you can do
+// this multiple time, each for a sub-frustum... see the
 // paper);
 // For each polygon, FrontfaceMask[byteOffset] & bitMask tells
 // you whether the polygon's considered front-facing. The macro
@@ -76,7 +76,7 @@
 
 		// Called in the constructor
 				void			InitNormals();
-    
+
 		// This is called for each frame to form the viewing masking
 		// representing all the "active" normal clusters. The main thing.
 				void			FillBits(const Point& dir, float fov, bool silmode=false);

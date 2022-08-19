@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "ExtSphericalJoint.h"
 #include "ExtConstraintHelper.h"
@@ -38,8 +38,8 @@ using namespace shdfnd;
 
 PxSphericalJoint* physx::PxSphericalJointCreate(PxPhysics& physics, PxRigidActor* actor0, const PxTransform& localFrame0, PxRigidActor* actor1, const PxTransform& localFrame1)
 {
-	PX_CHECK_AND_RETURN_NULL(localFrame0.isSane(), "PxSphericalJointCreate: local frame 0 is not a valid transform"); 
-	PX_CHECK_AND_RETURN_NULL(localFrame1.isSane(), "PxSphericalJointCreate: local frame 1 is not a valid transform"); 
+	PX_CHECK_AND_RETURN_NULL(localFrame0.isSane(), "PxSphericalJointCreate: local frame 0 is not a valid transform");
+	PX_CHECK_AND_RETURN_NULL(localFrame1.isSane(), "PxSphericalJointCreate: local frame 1 is not a valid transform");
 	PX_CHECK_AND_RETURN_NULL(actor0 != actor1, "PxSphericalJointCreate: actors must be different");
 	PX_CHECK_AND_RETURN_NULL((actor0 && actor0->is<PxRigidBody>()) || (actor1 && actor1->is<PxRigidBody>()), "PxSphericalJointCreate: at least one actor must be dynamic");
 
@@ -54,37 +54,37 @@ PxSphericalJoint* physx::PxSphericalJointCreate(PxPhysics& physics, PxRigidActor
 }
 
 void SphericalJoint::setProjectionLinearTolerance(PxReal tolerance)
-{	
+{
 	PX_CHECK_AND_RETURN(PxIsFinite(tolerance) && tolerance >=0, "PxSphericalJoint::setProjectionLinearTolerance: invalid parameter");
 	data().projectionLinearTolerance = tolerance;
-	markDirty(); 
+	markDirty();
 }
 
-PxReal SphericalJoint::getProjectionLinearTolerance() const	
-{	
-	return data().projectionLinearTolerance;		
+PxReal SphericalJoint::getProjectionLinearTolerance() const
+{
+	return data().projectionLinearTolerance;
 }
 
 void SphericalJoint::setLimitCone(const PxJointLimitCone &limit)
-{	
+{
 	PX_CHECK_AND_RETURN(limit.isValid(), "PxSphericalJoint::setLimit: invalid parameter");
-	data().limit = limit; 
+	data().limit = limit;
 	markDirty();
 }
 
 PxJointLimitCone SphericalJoint::getLimitCone() const
-{	
-	return data().limit; 
+{
+	return data().limit;
 }
 
 PxSphericalJointFlags SphericalJoint::getSphericalJointFlags(void) const
-{ 
-	return data().jointFlags; 
+{
+	return data().jointFlags;
 }
 
 void SphericalJoint::setSphericalJointFlags(PxSphericalJointFlags flags)
-{ 
-	data().jointFlags = flags; 
+{
+	data().jointFlags = flags;
 }
 
 void SphericalJoint::setSphericalJointFlag(PxSphericalJointFlag::Enum flag, bool value)
@@ -131,21 +131,21 @@ void SphericalJoint::importExtraData(PxDeserializationContext& context)
 
 void SphericalJoint::resolveReferences(PxDeserializationContext& context)
 {
-	setPxConstraint(resolveConstraintPtr(context, getPxConstraint(), getConnector(), sShaders));	
+	setPxConstraint(resolveConstraintPtr(context, getPxConstraint(), getConnector(), sShaders));
 }
 
 SphericalJoint* SphericalJoint::createObject(PxU8*& address, PxDeserializationContext& context)
 {
 	SphericalJoint* obj = new (address) SphericalJoint(PxBaseFlag::eIS_RELEASABLE);
-	address += sizeof(SphericalJoint);	
+	address += sizeof(SphericalJoint);
 	obj->importExtraData(context);
 	obj->resolveReferences(context);
 	return obj;
 }
 
-// global function to share the joint shaders with API capture	
-const PxConstraintShaderTable* Ext::GetSphericalJointShaderTable() 
-{ 
+// global function to share the joint shaders with API capture
+const PxConstraintShaderTable* Ext::GetSphericalJointShaderTable()
+{
 	return &SphericalJoint::getConstraintShaderTable();
 }
 
@@ -182,7 +182,7 @@ static void SphericalJointVisualize(PxConstraintVisualizer& viz, const void* con
 		if(cA2w.q.dot(cB2w.q)<0.0f)
 			cB2w.q = -cB2w.q;
 
-		const PxTransform cB2cA = cA2w.transformInv(cB2w);	
+		const PxTransform cB2cA = cA2w.transformInv(cB2w);
 		PxQuat swing, twist;
 		Ps::separateSwingTwist(cB2cA.q,swing,twist);
 
@@ -198,7 +198,7 @@ static PxU32 SphericalJointSolverPrep(Px1DConstraint* constraints,
 	PxVec3& body0WorldOffset,
 	PxU32 /*maxConstraints*/,
 	PxConstraintInvMassScale& invMassScale,
-	const void* constantBlock,							  
+	const void* constantBlock,
 	const PxTransform& bA2w,
 	const PxTransform& bB2w,
 	bool /*useExtendedLimits*/,
@@ -223,7 +223,7 @@ static PxU32 SphericalJointSolverPrep(Px1DConstraint* constraints,
 		PxReal error;
 		const PxReal pad = data.limit.isSoft() ? 0.0f : data.limit.contactDistance;
 		const Cm::ConeLimitHelperTanLess coneHelper(data.limit.yAngle, data.limit.zAngle, pad);
-		const bool active = coneHelper.getLimit(swing, axis, error);				
+		const bool active = coneHelper.getLimit(swing, axis, error);
 		if(active)
 			ch.angularLimit(cA2w.rotate(axis), error, data.limit);
 	}

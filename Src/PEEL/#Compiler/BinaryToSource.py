@@ -60,7 +60,7 @@ def _get_hex_data(raw_data, extra_space=""):
     hex_data = six.ensure_str(binascii.hexlify(raw_data))
 
     n = 2
-    hex_data = [hex_data[i : i + n] for i in range(0, len(hex_data), n)]
+    hex_data = [hex_data[i:i + n] for i in range(0, len(hex_data), n)]
 
     # This takes it from '1f' -> '0x1f'
     hex_string_data = [
@@ -78,7 +78,7 @@ def _get_hex_data(raw_data, extra_space=""):
         Yield successive n-sized chunks from ``sourceList``.
         """
         for chunk_index in range(0, len(source_list), chunk_size):
-            yield source_list[chunk_index : chunk_index + chunk_size]
+            yield source_list[chunk_index:chunk_index + chunk_size]
 
     # This groups it into array chunks: [['0x0f', '0x1f'], ['0x2f', '0x1a'], ...]
     _hex_chunks = list(_chunks(hex_string_data, 6))
@@ -105,9 +105,9 @@ def _get_source(src, dest, header, base_name=None, extra_space=""):
 
     if os.path.exists(src):
         with PIL.Image.open(src) as sourceImage:
-            output_image = sourceImage.resize(
-                (400, 195), resample=PIL.Image.LANCZOS
-            ).convert("RGBA")
+                output_image = sourceImage.resize(
+                    (400, 195), resample=PIL.Image.LANCZOS
+                ).convert("RGBA")
             r, g, b, a = output_image.split()
             output_image = PIL.Image.merge("RGBA", (a, b, g, r))
             raw_data = output_image.tobytes()
@@ -147,7 +147,7 @@ def _add_file(filename, data):
         src_data = None
 
     if data is not None and data != src_data:
-        output_files[filename] = data
+            output_files[filename] = data
 
     return output_files
 
@@ -163,7 +163,7 @@ def _save_files(output_files):
         directory = os.path.dirname(dest)
         if not os.path.exists(directory):
             os.makedirs(directory)
-        with io.open(dest, "w", encoding="utf-8") as output_data:
+            with io.open(dest, "w", encoding="utf-8") as output_data:
             output_data.write(value)
         LOGGER.info("Updated %s", dest.replace(PEEL_ROOT, ""))
 

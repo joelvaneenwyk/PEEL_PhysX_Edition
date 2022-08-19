@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "foundation/PxPreprocessor.h"
 #include "foundation/PxAssert.h"
@@ -43,8 +43,8 @@
 
 using namespace physx;
 
-PxDefaultMemoryOutputStream::PxDefaultMemoryOutputStream(PxAllocatorCallback &allocator) 
-:	mAllocator	(allocator)	
+PxDefaultMemoryOutputStream::PxDefaultMemoryOutputStream(PxAllocatorCallback &allocator)
+:	mAllocator	(allocator)
 ,	mData		(NULL)
 ,	mSize		(0)
 ,	mCapacity	(0)
@@ -119,7 +119,7 @@ PxDefaultFileOutputStream::PxDefaultFileOutputStream(const char* filename)
 	// - the file does not already exist. If it does, check that it is not write protected.
 	if(NULL == mFile)
 	{
-		Ps::getFoundation().error(PxErrorCode::eINTERNAL_ERROR, __FILE__, __LINE__, 
+		Ps::getFoundation().error(PxErrorCode::eINTERNAL_ERROR, __FILE__, __LINE__,
 			"Unable to open file %s, errno 0x%x\n",filename,errno);
 	}
 	PX_ASSERT(mFile);

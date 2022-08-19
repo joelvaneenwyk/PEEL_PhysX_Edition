@@ -160,7 +160,7 @@ void GLFontRenderer::print_(float x, float y, float fontSize, const char* pStrin
 				float glyphWidth = (float)GLFontGlyphWidth[c]+1;
 				if(forceMonoSpace)
 					glyphWidth = (float)monoSpaceWidth;
-				
+
 				glyphWidth = glyphWidth*(fontSize/(((float)OGL_FONT_TEXTURE_WIDTH)/OGL_FONT_CHARS_PER_ROW))-0.01f;
 
 				const float cxUV = float((c)%OGL_FONT_CHARS_PER_ROW)/OGL_FONT_CHARS_PER_ROW+0.008f;
@@ -198,14 +198,14 @@ void GLFontRenderer::print_(float x, float y, float fontSize, const char* pStrin
 
 				pTextureCoordList[textureCoordIndex++] = cxUV+glyphWidthUV;
 				pTextureCoordList[textureCoordIndex++] = cyUV+glyphHeightUV;
-				
+
 				pVertList[vertIndex++] = x+fontSize+translate;
 				pVertList[vertIndex++] = y+0+translateDown;
 				pVertList[vertIndex++] = z;
 
 				pTextureCoordList[textureCoordIndex++] = cxUV+glyphWidthUV;
 				pTextureCoordList[textureCoordIndex++] = cyUV;
-				
+
 				pVertList[vertIndex++] = x+fontSize+translate;
 				pVertList[vertIndex++] = y+fontSize+translateDown;
 				pVertList[vertIndex++] = z;
@@ -214,7 +214,7 @@ void GLFontRenderer::print_(float x, float y, float fontSize, const char* pStrin
 			}
 		}
 
-		glEnableClientState(GL_VERTEX_ARRAY);		
+		glEnableClientState(GL_VERTEX_ARRAY);
 //		glVertexPointer(3, GL_FLOAT, num*6, pVertList);
 		glVertexPointer(3, GL_FLOAT, 3*4, pVertList);
 
@@ -240,10 +240,10 @@ void GLFontRenderer::print_(float x, float y, float fontSize, const char* pStrin
 		// ???
 		glMatrixMode(GL_MODELVIEW);
 		glPopMatrix();
-		
+
 		glEnable(GL_DEPTH_TEST);
 		glEnable(GL_LIGHTING);
-		glDisable(GL_TEXTURE_2D);	
+		glDisable(GL_TEXTURE_2D);
 		glDisable(GL_BLEND);
 	}
 }

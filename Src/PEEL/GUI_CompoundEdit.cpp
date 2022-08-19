@@ -111,7 +111,7 @@ void CompoundCreateWindow::InitFrom(Pint* pint, udword index, udword nb, const P
 
 				const PR GlobalPose = pint->GetWorldTransform(handles[i]);
 				CompoundPos += GlobalPose.mPos*Coeff;
-				
+
 				if(i==0)
 					CompoundRot = GlobalPose.mRot;
 			}

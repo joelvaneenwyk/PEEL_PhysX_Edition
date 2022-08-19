@@ -180,8 +180,8 @@ void SampleVehicleSceneQueryData::free()
 }
 #endif
 
-static PxQueryHitType::Enum MySampleVehicleWheelRaycastPreFilter(	
-	PxFilterData filterData0, 
+static PxQueryHitType::Enum MySampleVehicleWheelRaycastPreFilter(
+	PxFilterData filterData0,
 	PxFilterData filterData1,
 	const void* constantBlock, PxU32 constantBlockSize,
 	PxHitFlags& queryFlags)
@@ -410,7 +410,7 @@ class MyBatchQuery : public PxBatchQuery, public PxQueryFilterCallback
 			else
 				mDesc.queryMemory.userSweepResultBuffer[mNb].hasBlock = false;
 		}
-		else		
+		else
 		{
 			bool blockingHit;
 			PxSweepHit hits[NB_SWEEP_HITS_PER_WHEEL];
@@ -519,18 +519,18 @@ static /*const*/ PxVehicleKeySmoothingData gKeySmoothingData=
 static /*const*/ PxVehiclePadSmoothingData gCarPadSmoothingData=
 {
 	{
-		6.0f,	//rise rate eANALOG_INPUT_ACCEL		
-		6.0f,	//rise rate eANALOG_INPUT_BRAKE		
-		12.0f,	//rise rate eANALOG_INPUT_HANDBRAKE	
-		2.5f,	//rise rate eANALOG_INPUT_STEER_LEFT	
-		2.5f,	//rise rate eANALOG_INPUT_STEER_RIGHT	
+		6.0f,	//rise rate eANALOG_INPUT_ACCEL
+		6.0f,	//rise rate eANALOG_INPUT_BRAKE
+		12.0f,	//rise rate eANALOG_INPUT_HANDBRAKE
+		2.5f,	//rise rate eANALOG_INPUT_STEER_LEFT
+		2.5f,	//rise rate eANALOG_INPUT_STEER_RIGHT
 	},
 	{
-		10.0f,	//fall rate eANALOG_INPUT_ACCEL		
-		10.0f,	//fall rate eANALOG_INPUT_BRAKE		
-		12.0f,	//fall rate eANALOG_INPUT_HANDBRAKE	
-		5.0f,	//fall rate eANALOG_INPUT_STEER_LEFT	
-		5.0f	//fall rate eANALOG_INPUT_STEER_RIGHT	
+		10.0f,	//fall rate eANALOG_INPUT_ACCEL
+		10.0f,	//fall rate eANALOG_INPUT_BRAKE
+		12.0f,	//fall rate eANALOG_INPUT_HANDBRAKE
+		5.0f,	//fall rate eANALOG_INPUT_STEER_LEFT
+		5.0f	//fall rate eANALOG_INPUT_STEER_RIGHT
 	}
 };
 
@@ -606,7 +606,7 @@ namespace
 		bool			mIsMovingForwardSlowly;
 		bool			mInReverseMode;
 
-		//Update 
+		//Update
 		void processRawInputs(const PxF32 timestep, const bool useAutoGears, PxVehicleDrive4WRawInputData& rawInputData);
 		void processAutoReverse(const VehicleData& data,
 								const PxVehicleWheels& focusVehicle, const PxVehicleDriveDynData& driveDynData, const PxVehicleWheelQueryResult& vehicleWheelQueryResults,
@@ -659,7 +659,7 @@ void VehicleController::clear()
 	mKeyPressedSteerRight	= false;
 
 	mGamepadAccel			= 0.0f;
-	mGamepadGearup			= false;			
+	mGamepadGearup			= false;
 	mGamepadGeardown		= false;
 
 	mGamepadCarBrake		= 0.0f;
@@ -768,7 +768,7 @@ void VehicleController::processAutoReverse(	const VehicleData& data, const PxVeh
 	//If the car is travelling very slowly in reverse gear without player input and the player subsequently presses the accel then we want the car to go into forward gear
 	//If the car is in forward gear and is travelling backwards then we want to automatically put the car into reverse gear.
 	//If the car is in reverse gear and is travelling forwards then we want to automatically put the car into forward gear.
-	//(If the player brings the car to rest with the brake the player needs to release the brake then reapply it 
+	//(If the player brings the car to rest with the brake the player needs to release the brake then reapply it
 	//to indicate they want to toggle between forward and reverse.)
 
 	const bool prevIsMovingForwardSlowly=mIsMovingForwardSlowly;
@@ -812,7 +812,7 @@ void VehicleController::processAutoReverse(	const VehicleData& data, const PxVeh
 		//Now work if we need to toggle from forwards gear to reverse gear or vice versa.
 		if(isMovingBackwards)
 		{
-			if(!accelRaw && !brakeRaw && !handbrakeRaw && (currentGear == targetGear))			
+			if(!accelRaw && !brakeRaw && !handbrakeRaw && (currentGear == targetGear))
 			{
 				//The car is rolling against the gear and the player is doing nothing to stop this.
 				toggleAutoReverse = true;
@@ -823,14 +823,14 @@ void VehicleController::processAutoReverse(	const VehicleData& data, const PxVeh
 		{
 			if((currentGear > PxVehicleGearsData::eNEUTRAL) && brakeRaw && !accelRaw && (currentGear == targetGear))
 			{
-				//The car was moving slowly in forward gear without player input and is now moving slowly with player input that indicates the 
+				//The car was moving slowly in forward gear without player input and is now moving slowly with player input that indicates the
 				//player wants to switch to reverse gear.
 				toggleAutoReverse = true;
 				//printf("CHECKPOINT1\n");
 			}
 			else if(currentGear == PxVehicleGearsData::eREVERSE && accelRaw && !brakeRaw && (currentGear == targetGear))
 			{
-				//The car was moving slowly in reverse gear without player input and is now moving slowly with player input that indicates the 
+				//The car was moving slowly in reverse gear without player input and is now moving slowly with player input that indicates the
 				//player wants to switch to forward gear.
 				toggleAutoReverse = true;
 				//printf("CHECKPOINT2\n");
@@ -876,7 +876,7 @@ void VehicleController::update(const PxF32 timestep, const PxVehicleWheelQueryRe
 	if(toggleAutoReverse)
 	{
 		mInReverseMode = !mInReverseMode;
-		
+
 		if(mInReverseMode)
 			driveDynData->forceGearChange(PxVehicleGearsData::eREVERSE);
 		else
@@ -964,7 +964,7 @@ void SampleVehicle_VehicleManager::init(PxPhysics& physics, PxScene& scene, cons
 
 	//Set the vehicle update mode to be immediate velocity changes.
 	PxVehicleSetUpdateMode(PxVehicleUpdateMode::eVELOCITY_CHANGE);
-	
+
 	//Scene query data for to allow raycasts for all suspensions of all vehicles.
 #if PHYSX_SUPPORT_VEHICLE5
 //	mBatchQueryExt = createMyBatchQueryExt(scene, &gMyFilter, MAX_NUM_4W_VEHICLES*4, MAX_NUM_4W_VEHICLES*4, MAX_NUM_4W_VEHICLES*4, MAX_NUM_4W_VEHICLES*4, 0, 0);
@@ -990,7 +990,7 @@ void SampleVehicle_VehicleManager::init(PxPhysics& physics, PxScene& scene, cons
 		for(PxU32 j=0;j<MAX_NUM_TIRE_TYPES;j++)
 		{
 //			mSurfaceTirePairs->setTypePairFriction(i,j,gTireFrictionMultipliers[i][j]);
-			//### 
+			//###
 			mSurfaceTirePairs->setTypePairFriction(i, j, tireFrictionMultiplier);
 		}
 	}*/
@@ -1282,7 +1282,7 @@ static void SetupVehicleWheelShape(SharedPhysX& physx, PxShape* shape, const PxT
 	}*/
 }
 
-static void setupActor(	SharedPhysX& physx, PxRigidDynamic* vehActor, 
+static void setupActor(	SharedPhysX& physx, PxRigidDynamic* vehActor,
 						const PxGeometry** wheelGeometries, const PxTransform* wheelLocalPoses, const PxU32 numWheelGeometries, const PxMaterial* wheelMaterial,
 						const PxGeometry** chassisGeometries, const PxTransform* chassisLocalPoses, const PxU32 numChassisGeometries, const PxMaterial* chassisMaterial,
 						const PxVehicleChassisData& chassisData,
@@ -1467,7 +1467,7 @@ static void createVehicle4WSimulationData(udword vehicle_id, PxConvexMesh* chass
 		((chassisDims.y*chassisDims.y + chassisDims.z*chassisDims.z)*desc.mChassisMass/12.0f,
 		 (chassisDims.x*chassisDims.x + chassisDims.z*chassisDims.z)*desc.mChassisMass/12.0f,
 		 (chassisDims.x*chassisDims.x + chassisDims.y*chassisDims.y)*desc.mChassisMass/12.0f);
-	//A bit of tweaking here.  The car will have more responsive turning if we reduce the 	
+	//A bit of tweaking here.  The car will have more responsive turning if we reduce the
 	//y-component of the chassis moment of inertia.
 	chassisMOI.y *= desc.mChassisMOICoeffY;
 #else
@@ -1640,7 +1640,7 @@ chassisMOI.z = 770.0f;*/
 		wheelsData.setTireForceAppPointOffset(i, tireForceAppCMOffsets[i]);
 	}
 
-	//Set the car to perform 3 sub-steps when it moves with a forwards speed of less than 5.0 
+	//Set the car to perform 3 sub-steps when it moves with a forwards speed of less than 5.0
 	//and with a single step when it moves at speed greater than or equal to 5.0.
 //	wheelsData.setSubStepCount(5.0f, 3, 1);
 //	wheelsData.setSubStepCount(5.0f, 1, 1);
@@ -1660,7 +1660,7 @@ chassisMOI.z = 770.0f;*/
 	diff.mFrontBias				= desc.mFrontBias;
 	diff.mRearBias				= desc.mRearBias;
 	driveData.setDiffData(diff);
-	
+
 	//Engine
 	PxVehicleEngineData engine;
 	engine.mMOI			= desc.mEngineMOI;
@@ -1719,7 +1719,7 @@ PxVehicleDrive4W* SampleVehicle_VehicleManager::create4WVehicle(SharedPhysX_Vehi
 			for(PxU32 j=0;j<MAX_NUM_TIRE_TYPES;j++)
 			{
 	//			mSurfaceTirePairs->setTypePairFriction(i,j,gTireFrictionMultipliers[i][j]);
-				//### 
+				//###
 				mSurfaceTirePairs->setTypePairFriction(i, j, tireFrictionMultiplier);
 			}
 		}*/
@@ -1968,7 +1968,7 @@ VehicleTest::VehicleTest(SharedPhysX_Vehicles& owner, bool use_sweeps, float swe
 	const PxF32 staticFrictions[MAX_NUM_SURFACE_TYPES] = {0.5f, 0.5f, 0.5f, 0.5f};
 	const PxF32 dynamicFrictions[MAX_NUM_SURFACE_TYPES] = {0.5f, 0.5f, 0.5f, 0.5f};
 
-	for(PxU32 i=0;i<MAX_NUM_SURFACE_TYPES;i++) 
+	for(PxU32 i=0;i<MAX_NUM_SURFACE_TYPES;i++)
 	{
 		//Create a new material.
 		mStandardMaterials[i] = physics.createMaterial(staticFrictions[i], dynamicFrictions[i], restitutions[i]);
@@ -2222,7 +2222,7 @@ PintVehicleHandle SharedPhysX_Vehicles::CreateVehicle(PintVehicleData& data, con
 		*dst++ = BrakeFall;
 		*dst++ = HandBrakeFall;
 		*dst++ = SteeringFall;
-		*dst++ = SteeringFall;	
+		*dst++ = SteeringFall;
 	}
 
 #if PHYSX_SUPPORT_VEHICLE_SUSPENSION_SWEEPS
@@ -2271,7 +2271,7 @@ PintVehicleHandle SharedPhysX_Vehicles::CreateVehicle(PintVehicleData& data, con
 		WheelMesh2 = CreateConvexMesh(wheel2->mVerts, wheel2->mNbVerts, convexFlags, wheel2->mRenderer, mParams.mShareMeshData);
 		ASSERT(WheelMesh2);
 		Renderer2 = wheel2->mRenderer;
-		
+
 		ASSERT(vehicle.mWheels[3]->mType==PINT_SHAPE_CONVEX);
 		const PINT_CONVEX_CREATE* wheel3 = static_cast<const PINT_CONVEX_CREATE*>(vehicle.mWheels[3]);
 		WheelMesh3 = CreateConvexMesh(wheel3->mVerts, wheel3->mNbVerts, convexFlags, wheel3->mRenderer, mParams.mShareMeshData);
@@ -2478,7 +2478,7 @@ void SharedPhysX_Vehicles::UpdateVehiclesAndPhysX(float dt)
 	bool useBlockingSweeps = mParams.mUseBlockingSweeps;
 	if(gVehicleTest && !gVehicleTest->mUseSweeps)
 		useBlockingSweeps = true;	// Raycasts don't support touch hits
-	
+
 	#if PHYSX_SUPPORT_VEHICLE5
 	gMyFilter.mUseBlockingSweeps = useBlockingSweeps;
 	#else
@@ -2698,7 +2698,7 @@ void VehicleTest::drawVehicleDebug(PintRender& renderer)
 	const Point colorColl(1.0f, 0, 0);
 	const Point colorCol2(0, 1.0f, 0);
 	const Point colorCol3(0, 0, 1.0f);
-	
+
 	const PxVec3* tireForceAppPoints=mTelemetryData4W->getTireforceAppPoints();
 	const PxVec3* suspForceAppPoints=mTelemetryData4W->getSuspforceAppPoints();
 

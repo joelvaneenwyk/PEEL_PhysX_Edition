@@ -20,7 +20,7 @@ private:
 	static float m_color[4];
 
 public:
-	
+
 	static bool init();
 	static void print(float x, float y, float fontSize, const char* pString, bool forceMonoSpace=false, int monoSpaceWidth=11, bool doOrthoProj=true);
 	static void print_(float x, float y, float fontSize, const char* pString, bool forceMonoSpace=false, int monoSpaceWidth=11, bool doOrthoProj=true);

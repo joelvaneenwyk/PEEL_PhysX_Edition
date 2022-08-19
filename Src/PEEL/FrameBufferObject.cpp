@@ -26,7 +26,7 @@ FrameBufferObject::FrameBufferObject() : m_fboId(_GenerateFboId()), m_savedFboId
 	_GuardedUnbind();
 }
 
-FrameBufferObject::~FrameBufferObject() 
+FrameBufferObject::~FrameBufferObject()
 {
 #if LOG_FBO_CALLS
 	printf("deleting FBO %d\n", m_fboId);
@@ -34,7 +34,7 @@ FrameBufferObject::~FrameBufferObject()
 	glDeleteFramebuffersEXT(1, &m_fboId);
 }
 
-void FrameBufferObject::Bind() 
+void FrameBufferObject::Bind()
 {
 #if LOG_FBO_CALLS
 	printf("binding framebuffer %d\n", m_fboId);
@@ -42,7 +42,7 @@ void FrameBufferObject::Bind()
 	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, m_fboId);
 }
 
-void FrameBufferObject::Disable() 
+void FrameBufferObject::Disable()
 {
 #if LOG_FBO_CALLS
 	printf("binding window framebuffer \n");
@@ -172,7 +172,7 @@ GLint FrameBufferObject::GetMaxColorAttachments()
 	return maxAttach;
 }
 
-void FrameBufferObject::_GuardedBind() 
+void FrameBufferObject::_GuardedBind()
 {
 	// Only binds if m_fboId is different than the currently bound FBO
 	glGetIntegerv( GL_FRAMEBUFFER_BINDING_EXT, &m_savedFboId );
@@ -185,7 +185,7 @@ void FrameBufferObject::_GuardedBind()
 	}
 }
 
-void FrameBufferObject::_GuardedUnbind() 
+void FrameBufferObject::_GuardedUnbind()
 {
 	// Returns FBO binding to the previously enabled FBO
 	if (m_fboId != (GLuint)m_savedFboId)
@@ -208,10 +208,10 @@ bool FrameBufferObject::IsValid( ostream& ostr )
 
 	bool isOK = false;
 
-	GLenum status;                                            
+	GLenum status;
 	status = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
 	switch(status)
-	{                                          
+	{
 		case GL_FRAMEBUFFER_COMPLETE_EXT: // Everything's OK
 			isOK = true;
 			break;

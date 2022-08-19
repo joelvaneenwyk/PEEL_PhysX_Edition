@@ -18,7 +18,7 @@ static const char *vertexPointShader = "#version 130\n" STRINGIFY(
 uniform float pointRadius;  // point size in world space
 uniform float pointScale;   // scale to calculate size in pixels
 
-uniform mat4 lightTransform; 
+uniform mat4 lightTransform;
 uniform vec3 lightDir;
 uniform vec3 lightDirView;
 
@@ -153,7 +153,7 @@ void GLPointRenderer::Draw(const Point& color, udword nb_pts, const Point* pts, 
 					glEnable(GL_VERTEX_PROGRAM_POINT_SIZE);
 					//glDepthMask(GL_TRUE);
 					glEnable(GL_DEPTH_TEST);
-				
+
 					int mode = 0;
 			//		if (showDensity)
 			//			mode = 1;
@@ -213,18 +213,18 @@ void GLPointRenderer::Draw(const Point& color, udword nb_pts, const Point* pts, 
 
 					glUseProgram(0);
 //					glBindBuffer(GL_ARRAY_BUFFER, 0);
-//					glDisableClientState(GL_VERTEX_ARRAY);	
-/*					
+//					glDisableClientState(GL_VERTEX_ARRAY);
+/*
 					if (d != -1)
 						glDisableVertexAttribArray(d);
 					if (p != -1)
 						glDisableVertexAttribArray(p);
 					*/
 					glDisable(GL_POINT_SPRITE);
-					glDisable(GL_VERTEX_PROGRAM_POINT_SIZE);		
+					glDisable(GL_VERTEX_PROGRAM_POINT_SIZE);
 				}
 			}
-	
+
 	}
 
 
@@ -315,7 +315,7 @@ const char *vertexPointShader = "#version 130\n" STRINGIFY(
 uniform float pointRadius;  // point size in world space
 uniform float pointScale;   // scale to calculate size in pixels
 
-uniform mat4 lightTransform; 
+uniform mat4 lightTransform;
 uniform vec3 lightDir;
 uniform vec3 lightDirView;
 
@@ -389,7 +389,7 @@ float shadowSample()
 		return 1.0;
 	if (uvw.y < 0.0 || uvw.y > 1.0)
 		return 1.0;
-	
+
 	float s = 0.0;
 	float radius = 0.002;
 
@@ -423,14 +423,14 @@ void main()
 
     // calculate lighting
 	float shadow = shadowSample();
-	
+
 	vec3 lVec = normalize(gl_TexCoord[4].xyz-(lightPos));
 	vec3 lPos = vec3(gl_TexCoord[1].xyz/gl_TexCoord[1].w);
 	float attenuation = max(smoothstep(spotMax, spotMin, dot(lPos.xy, lPos.xy)), 0.05);
 
 	vec3 diffuse = vec3(0.9, 0.9, 0.9);
 	vec3 reflectance =  gl_TexCoord[3].xyz;
-	
+
 	vec3 Lo = diffuse*reflectance*max(0.0, sqr(-dot(gl_TexCoord[2].xyz, normal)*0.5 + 0.5))*max(0.2,shadow)*attenuation;
 
 	gl_FragColor = vec4(pow(Lo, vec3(1.0/2.2)), 1.0);
@@ -445,7 +445,7 @@ void main()
 // vertex shader
 const char *vertexShader = "#version 130\n" STRINGIFY(
 
-uniform mat4 lightTransform; 
+uniform mat4 lightTransform;
 uniform vec3 lightDir;
 uniform float bias;
 uniform vec4 clipPlane;
@@ -515,7 +515,7 @@ float shadowSample()
 		return 1.0;
 	if (uvw.y < 0.0 || uvw.y > 1.0)
 		return 1.0;
-	
+
 	float s = 0.0;
 	float radius = 0.002;
 
@@ -536,9 +536,9 @@ float filterwidth(vec2 v)
   return max(fw.x, fw.y);
 }
 
-vec2 bump(vec2 x) 
+vec2 bump(vec2 x)
 {
-	return (floor((x)/2) + 2.f * max(((x)/2) - floor((x)/2) - .5f, 0.f)); 
+	return (floor((x)/2) + 2.f * max(((x)/2) - floor((x)/2) - .5f, 0.f));
 }
 
 float checker(vec2 uv)
@@ -546,7 +546,7 @@ float checker(vec2 uv)
   float width = filterwidth(uv);
   vec2 p0 = uv - 0.5 * width;
   vec2 p1 = uv + 0.5 * width;
-  
+
   vec2 i = (bump(p1) - bump(p0)) / width;
   return i.x * i.y + (1 - i.x) * (1 - i.y);
 }
@@ -559,7 +559,7 @@ void main()
 	vec3 lVec = normalize(gl_TexCoord[3].xyz-(lightPos));
 	vec3 lPos = vec3(gl_TexCoord[1].xyz/gl_TexCoord[1].w);
 	float attenuation = max(smoothstep(spotMax, spotMin, dot(lPos.xy, lPos.xy)), 0.05);
-		
+
 	vec3 n = gl_TexCoord[0].xyz;
 	vec3 color = gl_TexCoord[4].xyz;
 
@@ -582,11 +582,11 @@ void main()
 	{
 		color = texture2D(tex, gl_TexCoord[5].xy).xyz;
 	}
-	
+
 	// direct light term
 	float wrap = 0.0;
 	vec3 diffuse = color*vec3(1.0, 1.0, 1.0)*max(0.0, (-dot(lightDir, n)+wrap)/(1.0+wrap)*shadow)*attenuation;
-	
+
 	// wrap ambient term aligned with light dir
 	vec3 light = vec3(0.03, 0.025, 0.025)*1.5;
 	vec3 dark = vec3(0.025, 0.025, 0.03);
@@ -594,7 +594,7 @@ void main()
 
 	vec3 fog = mix(vec3(fogColor), diffuse + ambient, exp(gl_TexCoord[7].z*fogColor.w));
 
-	gl_FragColor = vec4(pow(fog, vec3(1.0/2.2)), 1.0);				
+	gl_FragColor = vec4(pow(fog, vec3(1.0/2.2)), 1.0);
 }
 );
 
@@ -605,26 +605,26 @@ void main()
 
 	GLint uLightPos = glGetUniformLocation(sprogram, "lightPos");
 	glUniform3fv(uLightPos, 1, lightPos);
-	
+
 	GLint uLightDir = glGetUniformLocation(sprogram, "lightDir");
 	glUniform3fv(uLightDir, 1, Normalize(lightTarget-lightPos));
 
 	GLint uBias = glGetUniformLocation(sprogram, "bias");
 	glUniform1f(uBias, g_shadowBias);
 
-	const Vec2 taps[] = 
-	{ 
+	const Vec2 taps[] =
+	{
 		Vec2(-0.326212f,-0.40581f),Vec2(-0.840144f,-0.07358f),
 		Vec2(-0.695914f,0.457137f),Vec2(-0.203345f,0.620716f),
 		Vec2(0.96234f,-0.194983f),Vec2(0.473434f,-0.480026f),
 		Vec2(0.519456f,0.767022f),Vec2(0.185461f,-0.893124f),
 		Vec2(0.507431f,0.064425f),Vec2(0.89642f,0.412458f),
-		Vec2(-0.32194f,-0.932615f),Vec2(-0.791559f,-0.59771f) 
+		Vec2(-0.32194f,-0.932615f),Vec2(-0.791559f,-0.59771f)
 	};
-	
+
 	GLint uShadowTaps = glGetUniformLocation(sprogram, "shadowTaps");
 	glUniform2fv(uShadowTaps, 12, &taps[0].x);
-	
+
 	glEnable(GL_TEXTURE_2D);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, shadowTex);
@@ -657,7 +657,7 @@ void PointRenderer::Draw(int n, int offset, float radius, float screenWidth, flo
 		glEnable(GL_VERTEX_PROGRAM_POINT_SIZE);
 		//glDepthMask(GL_TRUE);
 		glEnable(GL_DEPTH_TEST);
-	
+
 		int mode = 0;
 //		if (showDensity)
 //			mode = 1;
@@ -702,15 +702,15 @@ void PointRenderer::Draw(int n, int offset, float radius, float screenWidth, flo
 
 		glUseProgram(0);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
-		glDisableClientState(GL_VERTEX_ARRAY);	
-		
+		glDisableClientState(GL_VERTEX_ARRAY);
+
 		if (d != -1)
 			glDisableVertexAttribArray(d);
 		if (p != -1)
 			glDisableVertexAttribArray(p);
-		
+
 		glDisable(GL_POINT_SPRITE);
-		glDisable(GL_VERTEX_PROGRAM_POINT_SIZE);		
+		glDisable(GL_VERTEX_PROGRAM_POINT_SIZE);
 	}
 }
 

@@ -36,15 +36,15 @@ namespace
 
 	struct Thread: public ThreadT<UtilAllocator>
 	{
-		Thread(ThreadEntryPoint entryPoint, void* data): 
+		Thread(ThreadEntryPoint entryPoint, void* data):
 			ThreadT<UtilAllocator>(),
 			mEntryPoint(entryPoint),
 			mData(data)
 		{
 		}
 
-		virtual void execute(void)											
-		{ 
+		virtual void execute(void)
+		{
 			mEntryPoint(mData);
 		}
 

@@ -185,7 +185,7 @@ START_TEST(ScissorLift, CATEGORY_RCARTICULATIONS, gDesc_ScissorLift)
 //		PxArticulationLink* rightRoot = gArticulation->createLink(base, PxTransform(PxVec3(0.f, 0.55f, 0.9f)));
 //		PxRigidActorExt::createExclusiveShape(*rightRoot, PxBoxGeometry(0.5f, 0.05f, 0.05f), *gMaterial);
 //		PxRigidBodyExt::updateMassAndInertia(*rightRoot, 1.f);
-		//Set up the drive joint...	
+		//Set up the drive joint...
 //		gDriveJoint = static_cast<PxArticulationJointReducedCoordinate*>(rightRoot->getInboundJoint());
 //		gDriveJoint->setJointType(PxArticulationJointType::ePRISMATIC);
 //		gDriveJoint->setMotion(PxArticulationAxis::eZ, PxArticulationMotion::eLIMITED);
@@ -344,7 +344,7 @@ START_TEST(ScissorLift, CATEGORY_RCARTICULATIONS, gDesc_ScissorLift)
 			currLeft = rightLink;
 			currRight = leftLink;
 		}
-	
+
 #ifdef TOSEE
 		PxArticulationLink* leftTop = gArticulation->createLink(currLeft, currLeft->getGlobalPose().transform(PxTransform(PxVec3(-0.5f, 0.f, -1.0f), leftParentRot)));
 		PxRigidActorExt::createExclusiveShape(*leftTop, PxBoxGeometry(0.5f, 0.05f, 0.05f), *gMaterial);
@@ -1337,7 +1337,7 @@ START_TEST(MujocoHumanoid, CATEGORY_RCARTICULATIONS, gDesc_MujocoHumanoid)
 			helper.CreateLabel(UI, 4, y+LabelOffsetY, LabelWidth, 20, "Timestep:", &UIElems);
 			mEditBox_Timestep = helper.CreateEditBox(UI, 1, 4+OffsetX, y, EditBoxWidth, 20, "0.005", &UIElems, EDITBOX_FLOAT_POSITIVE, null, null);
 			y += YStep;
-	
+
 		}
 
 		y += YStep;
@@ -1839,8 +1839,8 @@ Point left_footPos;
 
 			MS.Push(ObjectDesc.mPosition, ObjectDesc.mRotation);
 left_footPos = ObjectDesc.mPosition;
-		}                        
-                        
+		}
+
 		MS.Pop();
 		MS.Pop();
 		MS.Pop();
@@ -1954,7 +1954,7 @@ left_footPos = ObjectDesc.mPosition;
 
 				MS.Push(ObjectDesc.mPosition, ObjectDesc.mRotation);
 	right_lower_armPos = ObjectDesc.mPosition;
-			}        
+			}
 
 			MS.Pop();
 			MS.Pop();

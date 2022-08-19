@@ -234,7 +234,7 @@ class MeshMesh : public MidphaseMeshMeshTest, public ZB2CreationCallback
 			else if(Index==MESH_MESH_MULTI_BUDDHAS)
 				Filename = "MeshMesh_MultiBuddhas.zb2";
 			else if(Index==MESH_MESH_MEGA_BUDDHAS)
-				Filename = "MeshMesh_MegaBuddhas.zb2";	
+				Filename = "MeshMesh_MegaBuddhas.zb2";
 		}
 
 		if(Filename)

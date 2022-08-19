@@ -18,80 +18,80 @@
 	#pragma message("----Compiling ICE Terrain")
 #elif !defined(ICETERRAIN_EXPORTS)
 	#pragma message("----Using ICE Terrain")
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Automatic linking
-	#ifndef BAN_ICETERRAIN_AUTOLINK
-		#ifdef _WIN64
-			#ifdef _DEBUG
-				#pragma comment(lib, "IceTerrain64_D.lib")
-			#else
-				#pragma comment(lib, "IceTerrain64.lib")
-			#endif
-		#else
-			#ifdef _DEBUG
-				#pragma comment(lib, "IceTerrain_D.lib")
-			#else
-				#pragma comment(lib, "IceTerrain.lib")
-			#endif
-		#endif
-	#endif
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Automatic linking
+#	ifndef BAN_ICETERRAIN_AUTOLINK
+#		ifdef _WIN64
+#			ifdef _DEBUG
+#				pragma comment(lib, "IceTerrain64_D.lib")
+#			else
+#				pragma comment(lib, "IceTerrain64.lib")
+#			endif
+#		else
+#			ifdef _DEBUG
+#				pragma comment(lib, "IceTerrain_D.lib")
+#			else
+#				pragma comment(lib, "IceTerrain.lib")
+#			endif
+#		endif
+#	endif
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Preprocessor
 
 #ifndef ICE_NO_DLL
-	#ifdef ICETERRAIN_EXPORTS
-		#define ICETERRAIN_API		__declspec(dllexport)
-	#else
-		#define ICETERRAIN_API		__declspec(dllimport)
-	#endif
+#	ifdef ICETERRAIN_EXPORTS
+#		define ICETERRAIN_API __declspec(dllexport)
+#	else
+#		define ICETERRAIN_API __declspec(dllimport)
+#	endif
 #else
-		#define ICETERRAIN_API
+#	define ICETERRAIN_API
 #endif
 
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Includes
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Includes
 
-	#include "IceTerrainSettings.h"
+#include "IceTerrainSettings.h"
 
-	namespace IceTerrain
-	{
-		#include "IceHeightfield.h"
+namespace IceTerrain
+{
+#include "IceHeightfield.h"
 
-		// Height layers
-		#include "IceHeightLayer.h"
+// Height layers
+#include "IceHeightLayer.h"
 
-		#include "IceBitmapLayer.h"
-		#include "IceCellularLayer.h"
-		#include "IceClampLayer.h"
-		#include "IceConstantLayer.h"
-		#include "IceCraterLayer.h"
-		#include "IceErosionLayer.h"
-		#include "IceFBMLayer.h"
-		#include "IceFilterLayer.h"
-		#include "IceMidpointLayer.h"
-		#include "IcePowerLayer.h"
-		#include "IceRidgedFractalLayer.h"
-		#include "IceScaleLayer.h"
-		#include "IceSinusLayer.h"
-		#include "IceSpectralLayer.h"
-		#include "IceTurbulenceLayer.h"
-		#include "IceMaddLayer.h"
+#include "IceBitmapLayer.h"
+#include "IceCellularLayer.h"
+#include "IceClampLayer.h"
+#include "IceConstantLayer.h"
+#include "IceCraterLayer.h"
+#include "IceErosionLayer.h"
+#include "IceFBMLayer.h"
+#include "IceFilterLayer.h"
+#include "IceMidpointLayer.h"
+#include "IcePowerLayer.h"
+#include "IceRidgedFractalLayer.h"
+#include "IceScaleLayer.h"
+#include "IceSinusLayer.h"
+#include "IceSpectralLayer.h"
+#include "IceTurbulenceLayer.h"
+#include "IceMaddLayer.h"
 
-		// Terrain texture
-		#include "IceTerrainTexture.h"
+// Terrain texture
+#include "IceTerrainTexture.h"
 
-		// Weather
-		#include "IceLightning.h"
+// Weather
+#include "IceLightning.h"
 
-		// Scattering
-		#include "IceAtmosphere.h"
-		#include "IceSun.h"
-//		#include "IceSky.h"
+// Scattering
+#include "IceAtmosphere.h"
+#include "IceSun.h"
+	//		#include "IceSky.h"
 
-		FUNCTION ICETERRAIN_API bool InitIceTerrain();
-		FUNCTION ICETERRAIN_API bool CloseIceTerrain();
-	}
+	FUNCTION ICETERRAIN_API bool InitIceTerrain();
+	FUNCTION ICETERRAIN_API bool CloseIceTerrain();
+}
 
-#endif // ICETERRAIN_H
+#endif  // ICETERRAIN_H

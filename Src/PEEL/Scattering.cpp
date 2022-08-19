@@ -68,7 +68,7 @@ void SetupAtmosphereShaderParams(GLuint shader_program)
 
 	float fReflectance = 0.1f;
 	Point vDiffuse(0.138f,0.113f, 0.08f); // Taken from soil's relectance spectrum data.
-	vDiffuse *= fReflectance; 
+	vDiffuse *= fReflectance;
 	GLShader::SetUniform3f(shader_program, "CV_TERRAIN_REFLECTANCE", vDiffuse.x, vDiffuse.y, vDiffuse.z);
 
 	// Scattering multipliers.

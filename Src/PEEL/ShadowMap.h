@@ -58,7 +58,7 @@ private:
 
 	GLuint depth_fb;
 	GLuint depth_tex_ar;
-	
+
 	Frustum f[MAX_SPLITS];
 	float shad_cpm[MAX_SPLITS][16];
 

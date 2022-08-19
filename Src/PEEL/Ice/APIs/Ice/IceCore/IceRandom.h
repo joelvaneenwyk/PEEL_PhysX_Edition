@@ -83,13 +83,13 @@
 							{
 								ASSERT(i<=n);
 								return (sdword)(i + (RandI() % (n - i + 1)) );
-							}   
+							}
 
 				float		RandF(float i, float n)			// i..n float generator
 							{
 								ASSERT(i<=n);
-								return (i + (n - i) * RandF());   
-							}   
+								return (i + (n - i) * RandF());
+							}
 	};
 
 	// Linear Congruential Method, the "minimal standard generator"
@@ -124,8 +124,8 @@
 	class ICECORE_API RandomR250: public RandomGenerator
 	{
 		public:
-						RandomR250(); 
-						RandomR250(sdword s); 
+						RandomR250();
+						RandomR250(sdword s);
 
 		virtual	void	SetSeed(sdword s);
 		virtual	udword	RandI()	const;

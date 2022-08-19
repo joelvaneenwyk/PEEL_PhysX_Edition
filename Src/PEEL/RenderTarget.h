@@ -7,7 +7,7 @@ class SystemTexture;
 
 namespace PEEL	// To avoid conflicts with the ICE RenderTarget class
 {
-	class RenderTarget 
+	class RenderTarget
 	{
 		public:
 									RenderTarget(udword width, udword height);

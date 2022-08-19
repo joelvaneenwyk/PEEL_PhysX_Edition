@@ -226,10 +226,10 @@ void ShadowShader::Activate(const ShaderProps& mat)
 
 	if(mShadowMaps[0])
 	{
-		GLShader::SetUniform4f(mShaderProgram, "far_d", 
-			mShadowMaps[0]->getFarBound(0), 
-			mShadowMaps[0]->getFarBound(1), 
-			mShadowMaps[0]->getFarBound(2), 
+		GLShader::SetUniform4f(mShaderProgram, "far_d",
+			mShadowMaps[0]->getFarBound(0),
+			mShadowMaps[0]->getFarBound(1),
+			mShadowMaps[0]->getFarBound(2),
 			mShadowMaps[0]->getFarBound(3));
 	}
 

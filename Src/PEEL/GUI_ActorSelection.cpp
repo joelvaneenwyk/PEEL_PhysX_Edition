@@ -278,7 +278,7 @@ void ItemSelectionWindow::Populate(Pint& pint, PintActorHandle handle)
 					const char* ShapeName = ShapeAPI->GetName(sh);
 					if(!ShapeName)
 						ShapeName = gNoName;
-					
+
 					const PintShape ShapeType = ShapeAPI->GetType(sh);
 					const char* ShapeTypeName = GetPintShapeName(ShapeType);
 

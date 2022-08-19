@@ -18,7 +18,7 @@
 			http://www.flipcode.com/cgi-bin/msg.cgi?showThread=Tip-StaticMemRTTI&forum=totd&id=-1
 
 		But I'd like to use it that way:
-		
+
 			SomeClass->IsKindOf("ClassName")
 
 		So I need a real strcmp, I can't just compare static char* since one of them might actually be

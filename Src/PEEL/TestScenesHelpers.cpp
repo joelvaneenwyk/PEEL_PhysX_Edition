@@ -60,7 +60,7 @@ void CreateSingleTriangleMesh(SurfaceManager& test, float scale, Triangle* tri, 
 	Verts[0] -= Center;
 	Verts[1] -= Center;
 	Verts[2] -= Center;
-	
+
 	if(tri)
 	{
 		tri->mVerts[0] =  Verts[0];
@@ -1145,7 +1145,7 @@ void CreateCaterpillarTrack_OLD(Pint& pint, CaterpillarTrackObjects& objects, co
 		BoxDesc2.mRenderer	= CreateBoxRenderer(BoxDesc2.mExtents);
 		BoxDesc2.mMaterial	= material;
 #ifdef REMOVED
-		BoxDesc2.mMaterial	= &FrictionlessMaterial;		
+		BoxDesc2.mMaterial	= &FrictionlessMaterial;
 #endif
 		BoxDesc2.mLocalPos	= Point(0.0f, -Extents.y - BoxDesc2.mExtents.y, 0.0f);
 		BoxDesc.SetNext(&BoxDesc2);

@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 
 #include "geometry/PxMeshQuery.h"
@@ -113,12 +113,12 @@ PxU32 PxMeshOverlapUtil::findOverlap(const PxGeometry& geom, const PxTransform& 
 namespace
 {
 template<typename MeshGeometry>
-bool computeMeshPenetrationT(PxVec3& direction, 
+bool computeMeshPenetrationT(PxVec3& direction,
 						     PxReal& depth,
-							 const PxGeometry& geom, 
-							 const PxTransform& geomPose, 
-							 const MeshGeometry& meshGeom, 
-							 const PxTransform& meshPose, 
+							 const PxGeometry& geom,
+							 const PxTransform& geomPose,
+							 const MeshGeometry& meshGeom,
+							 const PxTransform& meshPose,
 							 PxU32 maxIter,
 							 PxU32* nbIterOut)
 {
@@ -139,7 +139,7 @@ bool computeMeshPenetrationT(PxVec3& direction,
 		*nbIterOut = nbIter;
 
 	PxVec3 diff = pose.p - geomPose.p;
-	depth = diff.magnitude();	
+	depth = diff.magnitude();
 
 	if (depth>0)
 		direction = diff / depth;
@@ -148,24 +148,24 @@ bool computeMeshPenetrationT(PxVec3& direction,
 }
 }
 
-bool physx::PxComputeTriangleMeshPenetration(PxVec3& direction, 
+bool physx::PxComputeTriangleMeshPenetration(PxVec3& direction,
 											PxReal& depth,
-											const PxGeometry& geom, 
-											const PxTransform& geomPose, 
-											const PxTriangleMeshGeometry& meshGeom, 
-											const PxTransform& meshPose, 
+											const PxGeometry& geom,
+											const PxTransform& geomPose,
+											const PxTriangleMeshGeometry& meshGeom,
+											const PxTransform& meshPose,
 											PxU32 maxIter,
 											PxU32* nbIter)
 {
 	return computeMeshPenetrationT(direction, depth, geom, geomPose, meshGeom, meshPose, maxIter, nbIter);
 }
 
-bool physx::PxComputeHeightFieldPenetration(PxVec3& direction, 
+bool physx::PxComputeHeightFieldPenetration(PxVec3& direction,
 										    PxReal& depth,
-											const PxGeometry& geom, 
-											const PxTransform& geomPose, 
-											const PxHeightFieldGeometry& hfGeom, 
-											const PxTransform& meshPose, 
+											const PxGeometry& geom,
+											const PxTransform& geomPose,
+											const PxHeightFieldGeometry& hfGeom,
+											const PxTransform& meshPose,
 											PxU32 maxIter,
 											PxU32* nbIter)
 {

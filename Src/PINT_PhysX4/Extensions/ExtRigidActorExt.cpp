@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "geometry/PxGeometryQuery.h"
 #include "extensions/PxRigidActorExt.h"
@@ -42,8 +42,8 @@ PxBounds3*	PxRigidActorExt::getRigidActorShapeLocalBoundsList(const PxRigidActor
 	const PxU32 numShapes = actor.getNbShapes();
 	if(numShapes == 0)
 		return NULL;
-	
-	Ps::InlineArray<PxShape*, 64> shapes("PxShape*"); 
+
+	Ps::InlineArray<PxShape*, 64> shapes("PxShape*");
 	shapes.resize(numShapes);
 
 	actor.getShapes(shapes.begin(), shapes.size());
@@ -61,7 +61,7 @@ PxBounds3*	PxRigidActorExt::getRigidActorShapeLocalBoundsList(const PxRigidActor
 	for(PxU32 i = 0; i < numShapes; i++)
 	{
 		if(shapes[i]->getFlags() & PxShapeFlag::eSCENE_QUERY_SHAPE)
-		{			
+		{
 			bounds[numSqShapes++] = PxGeometryQuery::getWorldBounds(shapes[i]->getGeometry().any(), shapes[i]->getLocalPose(), 1.0f);
 		}
 	}

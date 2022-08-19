@@ -45,7 +45,7 @@
 #if !PX_UWP
 #define _WIN32_WINNT 0x0501
 #else
-#define _WIN32_WINNT 0x0602 
+#define _WIN32_WINNT 0x0602
 #endif
 
 // turn off as much as we can for windows. All we really need is the thread functions(critical sections/Interlocked*

@@ -812,7 +812,7 @@ class KinematicCharacter : public KinematicCharacterTest
 						mTest.mCheckBox_Level->SetEnabled(Enabled);
 						mTest.mCheckBox_UseAggregatesForLevel->SetEnabled(Enabled);
 //						mTest.mCheckBox_ProfileKinePoseUpdate->SetEnabled(Enabled);
-//						mTest.mCheckBox_SkipKinePoseUpdate->SetEnabled(Enabled);						
+//						mTest.mCheckBox_SkipKinePoseUpdate->SetEnabled(Enabled);
 
 						if(!Enabled && SelectedIndex<NB_PRESETS)
 						{
@@ -822,7 +822,7 @@ class KinematicCharacter : public KinematicCharacterTest
 							mTest.mCheckBox_Level->SetChecked(gPreset[SelectedIndex].mAddStaticObjects);
 							mTest.mCheckBox_UseAggregatesForLevel->SetChecked(gPreset[SelectedIndex].mUseAggregates_Level);
 //							mTest.mCheckBox_ProfileKinePoseUpdate->SetChecked(false);
-//							mTest.mCheckBox_SkipKinePoseUpdate->SetChecked(false);							
+//							mTest.mCheckBox_SkipKinePoseUpdate->SetChecked(false);
 							mTest.mEditBox_Desc->SetMultilineText(gPreset[SelectedIndex].mDesc);
 						}
 						if(SelectedIndex<NB_PRESETS)
@@ -1165,7 +1165,7 @@ void WalkCycle::Update(float elapsed_time, bool is_moving, float current_directi
 		{
 			mFixed = true;
 			mFixedPos = mPos + Point(x, 0.0f, 0.0f);
-//			mFixedPos.y = 
+//			mFixedPos.y =
 		}
 
 		const float Delta = mPos.x + x - mFixedPos.x;

@@ -283,7 +283,7 @@ bool SurfaceManager::CreateMeshesFromRegisteredSurfaces(Pint& pint, const PintCa
 			CreatePintObject(pint, ObjectDesc, keep_track_of_objects);
 		}*/
 	}
-	
+
 	if(MergeAll)
 	{
 		ASSERT(!Nb2);

@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 
 #ifndef NP_CONTACTJOINTCONSTRAINT_H
@@ -115,7 +115,7 @@ namespace Ext
 
 namespace Ext
 {
-	// global function to share the joint shaders with API capture	
+	// global function to share the joint shaders with API capture
 	extern "C" const PxConstraintShaderTable* GetContactJointShaderTable();
 }
 

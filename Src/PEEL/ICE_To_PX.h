@@ -1,5 +1,5 @@
 
-	inline_ const Point&	ToPoint(const PxVec3& p)	{ return (const Point&)p;	}
+inline_ const Point&	ToPoint(const PxVec3& p)	{ return (const Point&)p;	}
 	inline_ const PxVec3&	ToPxVec3(const Point& p)	{ return (const PxVec3&)p;	}
 	ICE_COMPILE_TIME_ASSERT(OFFSET_OF(Quat, p.x)==OFFSET_OF(PxQuat, x));
 	ICE_COMPILE_TIME_ASSERT(OFFSET_OF(Quat, p.y)==OFFSET_OF(PxQuat, y));

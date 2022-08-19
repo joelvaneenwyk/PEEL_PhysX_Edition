@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 
 #include "extensions/PxDefaultSimulationFilterShader.h"
@@ -49,7 +49,7 @@ namespace
 		PX_INLINE PxCollisionBitMap() : enable(true) {}
 
 		bool operator()() const { return enable; }
-		bool& operator= (const bool &v) { enable = v; return enable; } 
+		bool& operator= (const bool &v) { enable = v; return enable; }
 
 		private:
 		bool enable;
@@ -58,9 +58,9 @@ namespace
 	PxCollisionBitMap gCollisionTable[GROUP_SIZE][GROUP_SIZE];
 
 	PxFilterOp::Enum gFilterOps[3] = { PxFilterOp::PX_FILTEROP_AND, PxFilterOp::PX_FILTEROP_AND, PxFilterOp::PX_FILTEROP_AND };
-	
+
 	PxGroupsMask gFilterConstants[2];
-	
+
 	bool gFilterBool = false;
 
 	static void gAND(PxGroupsMask& results, const PxGroupsMask& mask0, const PxGroupsMask& mask1)
@@ -113,7 +113,7 @@ namespace
 		results.bits2 = PxU16(mask0.bits2 & mask1.bits0);
 		results.bits3 = PxU16(mask0.bits3 & mask1.bits1);
 	}
-	
+
 	typedef void	(*FilterFunction)	(PxGroupsMask& results, const PxGroupsMask& mask0, const PxGroupsMask& mask1);
 
 	FilterFunction const gTable[] = { gAND, gOR, gXOR, gNAND, gNOR, gNXOR, gSWAP_AND };
@@ -197,9 +197,9 @@ namespace
 
 					// retrieve current group mask
 					PxFilterData resultFd = shape->getSimulationFilterData();
-					
+
 					adjustFilterData(TGroupsMask, fd, resultFd);
-					
+
 					// set new filter data
 					shape->setSimulationFilterData(resultFd);
 				}
@@ -214,7 +214,7 @@ namespace
 
 PxFilterFlags physx::PxDefaultSimulationFilterShader(
 	PxFilterObjectAttributes attributes0,
-	PxFilterData filterData0, 
+	PxFilterData filterData0,
 	PxFilterObjectAttributes attributes1,
 	PxFilterData filterData1,
 	PxPairFlags& pairFlags,
@@ -244,7 +244,7 @@ PxFilterFlags physx::PxDefaultSimulationFilterShader(
 	PxGroupsMask g0k0;	gTable[gFilterOps[0]](g0k0, g0, gFilterConstants[0]);
 	PxGroupsMask g1k1;	gTable[gFilterOps[1]](g1k1, g1, gFilterConstants[1]);
 	PxGroupsMask final;	gTable[gFilterOps[2]](final, g0k0, g1k1);
-	
+
 	bool r = final.bits0 || final.bits1 || final.bits2 || final.bits3;
 	if (r != gFilterBool)
 	{
@@ -258,14 +258,14 @@ PxFilterFlags physx::PxDefaultSimulationFilterShader(
 
 bool physx::PxGetGroupCollisionFlag(const PxU16 group1, const PxU16 group2)
 {
-	PX_CHECK_AND_RETURN_NULL(group1 < 32 && group2 < 32, "Group must be less than 32");	
+	PX_CHECK_AND_RETURN_NULL(group1 < 32 && group2 < 32, "Group must be less than 32");
 
 	return gCollisionTable[group1][group2]();
 }
 
 void physx::PxSetGroupCollisionFlag(const PxU16 group1, const PxU16 group2, const bool enable)
 {
-	PX_CHECK_AND_RETURN(group1 < 32 && group2 < 32, "Group must be less than 32");	
+	PX_CHECK_AND_RETURN(group1 < 32 && group2 < 32, "Group must be less than 32");
 
 	gCollisionTable[group1][group2] = enable;
 	gCollisionTable[group2][group1] = enable;

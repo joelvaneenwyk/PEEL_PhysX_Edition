@@ -147,7 +147,7 @@ static PX_INLINE void collisionResponse(PxExtendedVec3& targetPosition, const Px
 
 	// Compute new destination position
     const PxF32 amplitude = (targetPosition - currentPosition).magnitude();
-    
+
 	targetPosition = currentPosition;
 	if(bump!=0.0f)
 	{
@@ -964,7 +964,7 @@ void SweepTest::voidTestCache()
 }
 
 void SweepTest::onRelease(const PxBase& observed)
-{	
+{
 	if (mTouchedActor == &observed)
 	{
 		mTouchedShape = NULL;
@@ -1241,7 +1241,7 @@ void SweepTest::updateTouchedGeoms(	const InternalCBData_FindTouchedGeom* userDa
 			updateCachedShapesRegistration(mNbCachedStatic, true);
 			mGeomStream.forceSize_Unsafe(mNbCachedStatic);
 			mWorldTriangles.forceSize_Unsafe(mNbCachedT);
-			mTriangleIndices.forceSize_Unsafe(mNbCachedT);			
+			mTriangleIndices.forceSize_Unsafe(mNbCachedT);
 
 			filter.mStaticShapes	= false;
 			if(filters.mFilterFlags & PxQueryFlag::eDYNAMIC)
@@ -2219,7 +2219,7 @@ PxControllerCollisionFlags Controller::move(SweptVolume& volume, const PxVec3& o
 {
 	const bool lockWrite = mManager->mLockingEnabled;
 	if(lockWrite)
-		mWriteLock.lock();	
+		mWriteLock.lock();
 
 	mGlobalTime += PxF64(elapsedTime);
 

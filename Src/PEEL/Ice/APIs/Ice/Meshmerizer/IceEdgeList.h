@@ -140,7 +140,7 @@
 	{
 		//! Constructor
 								EDGELISTCREATE()	: NbFaces(0), DFaces(null), WFaces(null), FacesToEdges(false), EdgesToFaces(false), Verts(null), Epsilon(0.1f)	{}
-				
+
 				udword			NbFaces;		//!< Number of faces in source topo
 				const udword*	DFaces;			//!< List of faces (dwords) or null
 				const uword*	WFaces;			//!< List of faces (words) or null

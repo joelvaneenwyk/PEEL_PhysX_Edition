@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "common/PxBase.h"
 #include "geometry/PxConvexMesh.h"
@@ -52,7 +52,7 @@ void PxCollectionExt::releaseObjects(PxCollection& collection, bool releaseExclu
 	shdfnd::Array<PxBase*> releasableObjects;
 
 	for (PxU32 i = 0; i < collection.getNbObjects(); ++i)
-	{	
+	{
 		PxBase* s = &collection.getObject(i);
 		// pruning structure must be released before its actors
 		if(s->is<PxPruningStructure>())
@@ -72,7 +72,7 @@ void PxCollectionExt::releaseObjects(PxCollection& collection, bool releaseExclu
 	}
 
 	for (PxU32 i = 0; i < releasableObjects.size(); ++i)
-		releasableObjects[i]->release();		
+		releasableObjects[i]->release();
 
 	while (collection.getNbObjects() > 0)
 		collection.remove(collection.getObject(0));
@@ -80,16 +80,16 @@ void PxCollectionExt::releaseObjects(PxCollection& collection, bool releaseExclu
 
 
 void PxCollectionExt::remove(PxCollection& collection, PxType concreteType, PxCollection* to)
-{	
+{
 	shdfnd::Array<PxBase*> removeObjects;
-	
+
 	for (PxU32 i = 0; i < collection.getNbObjects(); i++)
 	{
 		PxBase& object = collection.getObject(i);
 		if(concreteType == object.getConcreteType())
 		{
 			if(to)
-			   to->add(object);	
+			   to->add(object);
 
 			removeObjects.pushBack(&object);
 		}

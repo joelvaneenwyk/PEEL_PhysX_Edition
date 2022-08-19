@@ -43,7 +43,7 @@ namespace shdfnd
 namespace aos
 {
 
-typedef __m128 FloatV;
+	typedef __m128 FloatV;
 typedef __m128 Vec3V;
 typedef __m128 Vec4V;
 typedef __m128 BoolV;

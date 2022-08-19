@@ -909,7 +909,7 @@ START_TEST(SphereMeshUnitTest, CATEGORY_CONTACT_GENERATION, gDesc_SphereMeshUnit
 		{
 			F[j].mRef[0] = j*3+0;
 			F[j].mRef[1] = j*3+1;
-			F[j].mRef[2] = j*3+2;		
+			F[j].mRef[2] = j*3+2;
 		}
 
 		RegisterSurface(IS);

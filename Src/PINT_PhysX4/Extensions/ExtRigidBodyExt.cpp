@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 
 #include "geometry/PxBoxGeometry.h"
@@ -55,7 +55,7 @@
 using namespace physx;
 using namespace Cm;
 
-static bool computeMassAndDiagInertia(Ext::InertiaTensorComputer& inertiaComp, 
+static bool computeMassAndDiagInertia(Ext::InertiaTensorComputer& inertiaComp,
 		PxVec3& diagTensor, PxQuat& orient, PxReal& massOut, PxVec3& coM, bool lockCOM, const PxRigidBody& body, const char* errorStr)
 {
 	// The inertia tensor and center of mass is relative to the actor at this point. Transform to the
@@ -73,7 +73,7 @@ static bool computeMassAndDiagInertia(Ext::InertiaTensorComputer& inertiaComp,
 		inertiaComp.center();
 	}
 	// The inertia matrix is now based on the body's center of mass desc.massLocalPose.p
-	
+
 	massOut = inertiaComp.getMass();
 	diagTensor = PxDiagonalize(inertiaComp.getInertia(), orient);
 
@@ -81,7 +81,7 @@ static bool computeMassAndDiagInertia(Ext::InertiaTensorComputer& inertiaComp,
 		return true;
 	else
 	{
-		Ps::getFoundation().error(PxErrorCode::eDEBUG_WARNING, __FILE__, __LINE__, 
+		Ps::getFoundation().error(PxErrorCode::eDEBUG_WARNING, __FILE__, __LINE__,
 								"%s: inertia tensor has negative components (ill-conditioned input expected). Approximation for inertia tensor will be used instead.", errorStr);
 
 		// keep center of mass but use the AABB as a crude approximation for the inertia tensor
@@ -125,7 +125,7 @@ static bool computeMassAndInertia(bool multipleMassOrDensity, PxRigidBody& body,
 	}
 	if (!PxIsFinite(currentMassOrDensity))
 	{
-		Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__, 
+		Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__,
 			"computeMassAndInertia: Provided mass or density has no valid value");
 		return false;
 	}
@@ -133,7 +133,7 @@ static bool computeMassAndInertia(bool multipleMassOrDensity, PxRigidBody& body,
 	for(PxU32 i=0; i < shapes.size(); i++)
 	{
 		if ((!(shapes[i]->getFlags() & PxShapeFlag::eSIMULATION_SHAPE)) && (!includeNonSimShapes))
-			continue; 
+			continue;
 
 		if (multipleMassOrDensity)
 		{
@@ -143,14 +143,14 @@ static bool computeMassAndInertia(bool multipleMassOrDensity, PxRigidBody& body,
 
 				if (!PxIsFinite(currentMassOrDensity))
 				{
-					Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__, 
+					Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__,
 						"computeMassAndInertia: Provided mass or density has no valid value");
 					return false;
 				}
 			}
 			else
 			{
-				Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__, 
+				Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__,
 					"computeMassAndInertia: Not enough mass/density values provided for all (simulation) shapes");
 				return false;
 			}
@@ -160,7 +160,7 @@ static bool computeMassAndInertia(bool multipleMassOrDensity, PxRigidBody& body,
 
 		switch(shapes[i]->getGeometryType())
 		{
-		case PxGeometryType::eSPHERE : 
+		case PxGeometryType::eSPHERE :
 			{
 				PxSphereGeometry g;
 				bool ok = shapes[i]->getSphereGeometry(g);
@@ -172,7 +172,7 @@ static bool computeMassAndInertia(bool multipleMassOrDensity, PxRigidBody& body,
 			}
 			break;
 
-		case PxGeometryType::eBOX : 
+		case PxGeometryType::eBOX :
 			{
 				PxBoxGeometry g;
 				bool ok = shapes[i]->getBoxGeometry(g);
@@ -184,7 +184,7 @@ static bool computeMassAndInertia(bool multipleMassOrDensity, PxRigidBody& body,
 			}
 			break;
 
-		case PxGeometryType::eCAPSULE : 
+		case PxGeometryType::eCAPSULE :
 			{
 				PxCapsuleGeometry g;
 				bool ok = shapes[i]->getCapsuleGeometry(g);
@@ -196,7 +196,7 @@ static bool computeMassAndInertia(bool multipleMassOrDensity, PxRigidBody& body,
 			}
 			break;
 
-		case PxGeometryType::eCONVEXMESH : 
+		case PxGeometryType::eCONVEXMESH :
 			{
 				PxConvexMeshGeometry g;
 				bool ok = shapes[i]->getConvexMeshGeometry(g);
@@ -228,7 +228,7 @@ static bool computeMassAndInertia(bool multipleMassOrDensity, PxRigidBody& body,
 		case PxGeometryType::eGEOMETRY_COUNT:
 			{
 
-				Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__, 
+				Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__,
 					"computeMassAndInertia: Dynamic actor with illegal collision shapes");
 				return false;
 			}
@@ -277,7 +277,7 @@ static bool updateMassAndInertia(bool multipleMassOrDensity, PxRigidBody& body, 
 		}
 		else
 		{
-			Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__, 
+			Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__,
 				"%s: Mass and inertia computation failed, setting mass to 1 and inertia to (1,1,1)", errorStr);
 
 			success = false;
@@ -285,7 +285,7 @@ static bool updateMassAndInertia(bool multipleMassOrDensity, PxRigidBody& body, 
 	}
 	else
 	{
-		Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__, 
+		Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__,
 			"%s: No density specified, setting mass to 1 and inertia to (1,1,1)", errorStr);
 
 		success = false;
@@ -339,7 +339,7 @@ static bool setMassAndUpdateInertia(bool multipleMassOrDensity, PxRigidBody& bod
 		}
 		else
 		{
-			Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__, 
+			Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__,
 				"%s: Mass and inertia computation failed, setting mass to 1 and inertia to (1,1,1)", errorStr);
 
 			success = false;
@@ -347,7 +347,7 @@ static bool setMassAndUpdateInertia(bool multipleMassOrDensity, PxRigidBody& bod
 	}
 	else
 	{
-		Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__, 
+		Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__,
 			"%s: No mass specified, setting mass to 1 and inertia to (1,1,1)", errorStr);
 		success = false;
 	}
@@ -394,7 +394,7 @@ PX_INLINE void addForceAtPosInternal(PxRigidBody& body, const PxVec3& force, con
 {
 	if(mode == PxForceMode::eACCELERATION || mode == PxForceMode::eVELOCITY_CHANGE)
 	{
-		Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__, 
+		Ps::getFoundation().error(PxErrorCode::eINVALID_PARAMETER, __FILE__, __LINE__,
 			"PxRigidBodyExt::addForce methods do not support eACCELERATION or eVELOCITY_CHANGE modes");
 		return;
 	}
@@ -440,7 +440,7 @@ PX_INLINE PxVec3 getVelocityAtPosInternal(const PxRigidBody& body, const PxVec3&
 {
 	PxVec3 velocity = body.getLinearVelocity();
 	velocity       += body.getAngularVelocity().cross(point);
-	
+
 	return velocity;
 }
 
@@ -471,7 +471,7 @@ PxVec3 PxRigidBodyExt::getVelocityAtOffset(const PxRigidBody& body, const PxVec3
 	return getVelocityAtPosInternal(body, rpoint);
 }
 
-void PxRigidBodyExt::computeVelocityDeltaFromImpulse(const PxRigidBody& body, const PxTransform& globalPose, const PxVec3& point, const PxVec3& impulse, const PxReal invMassScale, 
+void PxRigidBodyExt::computeVelocityDeltaFromImpulse(const PxRigidBody& body, const PxTransform& globalPose, const PxVec3& point, const PxVec3& impulse, const PxReal invMassScale,
 														const PxReal invInertiaScale, PxVec3& linearVelocityChange, PxVec3& angularVelocityChange)
 {
 	const PxVec3 centerOfMass = globalPose.transform(body.getCMassLocalPose().p);
@@ -485,7 +485,7 @@ void PxRigidBodyExt::computeVelocityDeltaFromImpulse(const PxRigidBody& body, co
 	angularVelocityChange = invInertia * rXI;
 }
 
-void PxRigidBodyExt::computeLinearAngularImpulse(const PxRigidBody& body, const PxTransform& globalPose, const PxVec3& point, const PxVec3& impulse, const PxReal invMassScale, 
+void PxRigidBodyExt::computeLinearAngularImpulse(const PxRigidBody& body, const PxTransform& globalPose, const PxVec3& point, const PxVec3& impulse, const PxReal invMassScale,
 														const PxReal invInertiaScale, PxVec3& linearImpulse, PxVec3& angularImpulse)
 {
 	const PxVec3 centerOfMass = globalPose.transform(body.getCMassLocalPose().p);

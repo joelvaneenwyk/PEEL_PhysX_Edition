@@ -95,16 +95,16 @@
 	//
 	// Returns:         true if AABB intersects the frustum, false otherwise
 	//
-	//                  Intersection of AABB and a frustum. The frustum may 
-	//                  contain 0-32 planes (active planes are defined by inClipMask). 
-	//                  If AABB intersects the frustum, an output clip mask is returned 
-	//                  as well (indicating which planes are crossed by the AABB). This 
-	//                  information can be used to optimize testing of child nodes or 
+	//                  Intersection of AABB and a frustum. The frustum may
+	//                  contain 0-32 planes (active planes are defined by inClipMask).
+	//                  If AABB intersects the frustum, an output clip mask is returned
+	//                  as well (indicating which planes are crossed by the AABB). This
+	//                  information can be used to optimize testing of child nodes or
 	//                  objects inside the nodes (pass value as 'inClipMask' next time).
 	//
-	//                  This is a variant of the classic "fast" AABB/frustum 
-	//                  intersection tester. AABBs that are not culled away by any single 
-	//                  plane are classified as "intersecting" even though the AABB may 
+	//                  This is a variant of the classic "fast" AABB/frustum
+	//                  intersection tester. AABBs that are not culled away by any single
+	//                  plane are classified as "intersecting" even though the AABB may
 	//                  actually be outside the convex volume formed by the planes.
 	//------------------------------------------------------------------------
 
@@ -121,7 +121,7 @@
 		Point d;	a.GetMax(d); d-=m;		// get positive half-diagonal (max - center)
 
 		//------------------------------------------------------------------------
-		// Evaluate through all active frustum planes. We determine the relation 
+		// Evaluate through all active frustum planes. We determine the relation
 		// between the AABB and a plane by using the concept of "near" and "far"
 		// vertices originally described by Zhang (and later by Möller). Our
 		// variant here uses 3 fabs ops, 6 muls, 7 adds and two floating point
@@ -131,16 +131,16 @@
 		//------------------------------------------------------------------------
 
 		udword Mask				= 1;			// current mask index (1,2,4,8,..)
-		udword TmpOutClipMask	= 0;			// initialize output clip mask into empty. 
+		udword TmpOutClipMask	= 0;			// initialize output clip mask into empty.
 
 		while(Mask<=in_clip_mask)				// keep looping while we have active planes left...
 		{
 			if(in_clip_mask & Mask)				// if clip plane is active, process it..
-			{               
+			{
 				const float NP = d.x*fabsf(p->n.x) + d.y*fabsf(p->n.y) + d.z*fabsf(p->n.z);
 				const float MP = m.x*p->n.x + m.y*p->n.y + m.z*p->n.z + p->d;
 
-				if(NP < MP)						// near vertex behind the clip plane... 
+				if(NP < MP)						// near vertex behind the clip plane...
 					return false;				// .. so there is no intersection..
 				if((-NP) < MP)					// near and far vertices on different sides of plane..
 					TmpOutClipMask |= Mask;		// .. so update the clip mask...
@@ -166,7 +166,7 @@
 		Point d;	a.GetMax(d); d-=m;		// get positive half-diagonal (max - center)
 
 		//------------------------------------------------------------------------
-		// Evaluate through all active frustum planes. We determine the relation 
+		// Evaluate through all active frustum planes. We determine the relation
 		// between the AABB and a plane by using the concept of "near" and "far"
 		// vertices originally described by Zhang (and later by Möller). Our
 		// variant here uses 3 fabs ops, 6 muls, 7 adds and two floating point
@@ -176,18 +176,18 @@
 		//------------------------------------------------------------------------
 
 		udword Mask				= 1;			// current mask index (1,2,4,8,..)
-		udword TmpOutClipMask	= 0;			// initialize output clip mask into empty. 
+		udword TmpOutClipMask	= 0;			// initialize output clip mask into empty.
 
 		while(Mask<=in_clip_mask)				// keep looping while we have active planes left...
 		{
 			const Plane* p = *pp++;
 
 			if(in_clip_mask & Mask)				// if clip plane is active, process it..
-			{               
+			{
 				const float NP = d.x*fabsf(p->n.x) + d.y*fabsf(p->n.y) + d.z*fabsf(p->n.z);
 				const float MP = m.x*p->n.x + m.y*p->n.y + m.z*p->n.z + p->d;
 
-				if(NP < MP)						// near vertex behind the clip plane... 
+				if(NP < MP)						// near vertex behind the clip plane...
 					return false;				// .. so there is no intersection..
 				if((-NP) < MP)					// near and far vertices on different sides of plane..
 					TmpOutClipMask |= Mask;		// .. so update the clip mask...

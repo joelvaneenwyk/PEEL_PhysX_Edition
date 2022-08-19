@@ -400,7 +400,7 @@ void DefaultRenderer::EndRender()
 	EndInstanceRender();
 
 	// Draw selected shapes
-	
+
 	// ### not great
 	if(1)
 	{

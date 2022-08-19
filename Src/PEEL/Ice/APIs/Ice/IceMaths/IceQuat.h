@@ -23,7 +23,7 @@
 
 		//! Empty constructor
 		inline_				Quat()										{}
-		//! Identity constructor		
+		//! Identity constructor
 		inline_				Quat(IDENTITY)								{ p.x = p.y = p.z = 0.0f;	w = 1.0f;	}
 		//! Copy constructor
 		inline_				Quat(const Quat& q) : w(q.w), p(q.p)		{}
@@ -220,23 +220,23 @@
 			const float yw = y2*w;
 
 			const float zw = z2*w;
-			
+
 			basis0.Set(
-				1.0f - (yy + zz), 
+				1.0f - (yy + zz),
 				(xy + zw),
 				(xz - yw)
 				);
 
 			basis1.Set(
 				(xy - zw),
-				1.0f - (xx + zz), 
+				1.0f - (xx + zz),
 				(yz + xw)
 				);
 
 			basis2.Set(
 				(xz + yw),
 				(yz - xw),
-				1.0f - (xx + yy) 
+				1.0f - (xx + yy)
 				);
 		}
 
@@ -244,7 +244,7 @@
 		inline_	Point		GetBasisVector0()	const
 		{
 			return Point(
-				1.0f - 2.0f*(p.y*p.y + p.z*p.z), 
+				1.0f - 2.0f*(p.y*p.y + p.z*p.z),
 				2.0f*(p.x*p.y + p.z*w),
 				2.0f*(p.x*p.z - p.y*w)
 				);
@@ -255,7 +255,7 @@
 		{
 			return Point(
 				2.0f*(p.x*p.y - p.z*w),
-				1.0f - 2.0f*(p.x*p.x + p.z*p.z), 
+				1.0f - 2.0f*(p.x*p.x + p.z*p.z),
 				2.0f*(p.y*p.z + p.x*w)
 				);
 		}
@@ -266,7 +266,7 @@
 			return Point(
 				2.0f*(p.x*p.z + p.y*w),
 				2.0f*(p.y*p.z - p.x*w),
-				1.0f - 2.0f*(p.x*p.x + p.y*p.y) 
+				1.0f - 2.0f*(p.x*p.x + p.y*p.y)
 				);
 		}
 
@@ -323,7 +323,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Make the quaternion the Spherical Linear Interpolation quaternion (Original routine by Dave Eberly)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Input	: 
+// Input	:
 //	- q0, source quaternion
 //	- q1, destination quaternion
 //	- t, interpolation parameter in the interval [0 , 1]
@@ -365,7 +365,7 @@ inline_ void Quat::MakeSlerp(const Quat& q0, const Quat& q1, float t)
 			scl1 = (float) sin(   t   * omega ) / sinom;
 		}
 		else
-		{	// ends very close -- just lerp 
+		{	// ends very close -- just lerp
 			scl0 = 1 - t;
 			scl1 = t;
 		}
@@ -373,11 +373,11 @@ inline_ void Quat::MakeSlerp(const Quat& q0, const Quat& q1, float t)
 	else
 	{	// p and q nearly opposite on sphere-- this is a 360 degree
 		// rotation, but the axis of rotation is undefined, so
-		// slerp really is undefined too.  So this apparently picks 
-		// an arbitrary plane of rotation. However, I think this 
+		// slerp really is undefined too.  So this apparently picks
+		// an arbitrary plane of rotation. However, I think this
 		// code is incorrect.
 
-		qt.x = -p.y;  qt.y = p.x;  // qt is orthogonal to p 
+		qt.x = -p.y;  qt.y = p.x;  // qt is orthogonal to p
 		qt.z = -p.w;  qt.w = p.z;
 		scl0 = (float) sin( (1-t) * HALFPI );
 		scl1 = (float) sin( t * HALFPI );
@@ -390,7 +390,7 @@ inline_ void Quat::MakeSlerp(const Quat& q0, const Quat& q1, float t)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Make the quaternion the Spherical Linear Interpolation quaternion (Original routine from Game Developper)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Input	: 
+// Input	:
 //	- q0, source quaternion
 //	- q1, destination quaternion
 //	- t, interpolation parameter in the interval [0 , 1]
@@ -437,7 +437,7 @@ inline_ void Quat::MakeShortestSlerp(const Quat& q0, const Quat& q1, float t)
 	*this += q1*c1;
 }
 
-template<class T> 
+template<class T>
 __forceinline T dsl_clamp(const T& x, const T& low, const T& high)
 {
 	if(x>high)
@@ -482,7 +482,7 @@ inline_ void Quat::MakeShortestSlerp2( const Quat& from, const Quat& to, float t
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Make the quaternion the Spherical Quadratic Interpolation quatrenion (Original routine by Dave Eberly)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Input	: 
+// Input	:
 //	- q0, source quaternion
 //	- q1, destination quaterion
 //	- a, source tangent quaternion
@@ -502,7 +502,7 @@ inline_ void Quat::MakeSquad(const Quat& q0, const Quat& q1, const Quat& a, cons
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Compute the Spherical Linear Interpolation (Original routine by Dave Eberly)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Input	: 
+// Input	:
 //	- q, destination quaternion
 //	- t, interpolation parameter in the interval [0 , 1]
 // Output	: None

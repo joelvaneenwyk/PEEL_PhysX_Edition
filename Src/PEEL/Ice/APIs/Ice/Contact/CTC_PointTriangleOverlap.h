@@ -15,7 +15,7 @@
 	// From Mr Gamemaker
 	// http://pub137.ezboard.com/fmrgamemakerfrm0.showMessage?topicID=2687.topic
 	inline_ BOOL PointInTriangle(const Point& p, const Point& p0, const Point& edge10, const Point& edge20)
-	{ 
+	{
 		const float a = edge10|edge10;
 		const float b = edge10|edge20;
 		const float c = edge20|edge20;
@@ -40,7 +40,7 @@
 									float p0x, float p0z,
 									float e10x, float e10z,
 									float e20x, float e20z)
-	{ 
+	{
 		const float a = e10x*e10x + e10z*e10z;
 		const float b = e10x*e20x + e10z*e20z;
 		const float c = e20x*e20x + e20z*e20z;

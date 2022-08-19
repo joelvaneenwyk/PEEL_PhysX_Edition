@@ -11,7 +11,7 @@
 // Include Guard
 #ifndef ICEWHITEGAUSSIANNOISE_H
 #define ICEWHITEGAUSSIANNOISE_H
-	
+
 	// White gaussian noise
 	class ICEMATHS_API WhiteGaussianNoise : public Allocateable
 	{

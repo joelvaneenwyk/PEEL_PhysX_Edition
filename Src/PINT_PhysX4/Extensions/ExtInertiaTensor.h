@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 
 #ifndef PX_PHYSICS_EXTENSIONS_INERTIATENSOR_H
@@ -154,7 +154,7 @@ void Ext::computeBoxInertiaTensor(PxVec3& inertia, PxReal mass, PxReal xlength, 
 void Ext::computeSphereInertiaTensor(PxVec3& inertia, PxReal mass, PxReal radius, bool hollow)
 {
 	inertia.x = mass * radius * radius;
-	if (hollow) 
+	if (hollow)
 		inertia.x *= PxReal(2 / 3.0);
 	else
 		inertia.x *= PxReal(2 / 5.0);
@@ -249,7 +249,7 @@ void Ext::InertiaTensorComputer::translate(const PxVec3& t)
 			mI += (t1 * t1)*mMass;
 		}
 		else
-		{			
+		{
 			t2.column0 = PxVec3(0, sum.z, -sum.y);
 			t2.column1 = PxVec3(-sum.z, 0, sum.x);
 			t2.column2 = PxVec3(sum.y, -sum.x, 0);

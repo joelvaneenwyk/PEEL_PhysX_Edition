@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "foundation/PxIO.h"
 #include "common/PxMetaData.h"
@@ -393,15 +393,15 @@ void getBinaryMetaData_SerializationContext(PxOutputStream& stream)
 	PX_DEF_BIN_METADATA_CLASS(stream,	Sn::ManifestEntry)
 	PX_DEF_BIN_METADATA_ITEM(stream,	Sn::ManifestEntry,			PxU32,		offset,   	0)
 	PX_DEF_BIN_METADATA_ITEM(stream,	Sn::ManifestEntry,			PxType,	    type,   	0)
-		
+
 	PX_DEF_BIN_METADATA_CLASS(stream,	Sn::ImportReference)
 	PX_DEF_BIN_METADATA_ITEM(stream,	Sn::ImportReference,		PxSerialObjectId,		id,   	    0)
 	PX_DEF_BIN_METADATA_ITEM(stream,	Sn::ImportReference,		PxType,	                type,   	0)
-		
+
 	PX_DEF_BIN_METADATA_CLASS(stream,	Sn::ExportReference)
 	PX_DEF_BIN_METADATA_ITEM(stream,	Sn::ExportReference,		PxSerialObjectId,		id,   	    0)
 	PX_DEF_BIN_METADATA_ITEM(stream,	Sn::ExportReference,		SerialObjectIndex,	    objIndex,  	0)
-	
+
 	PX_DEF_BIN_METADATA_CLASS(stream,	Sn::InternalReferencePtr)
 	PX_DEF_BIN_METADATA_ITEM(stream,	Sn::InternalReferencePtr,	void,		            reference,  PxMetaDataFlag::ePTR)
 	PX_DEF_BIN_METADATA_ITEM(stream,	Sn::InternalReferencePtr,	SerialObjectIndex,	    objIndex,  	0)
@@ -422,13 +422,13 @@ void GetExtensionsBinaryMetaData(PxOutputStream& stream)
 
 	getBinaryMetaData_JointData(stream);
 	getBinaryMetaData_PxD6JointDrive(stream);
-	getBinaryMetaData_PxJointLimitParameters(stream);	
-	getBinaryMetaData_PxJointLimitCone(stream);	
-	getBinaryMetaData_PxJointLimitPyramid(stream);	
+	getBinaryMetaData_PxJointLimitParameters(stream);
+	getBinaryMetaData_PxJointLimitCone(stream);
+	getBinaryMetaData_PxJointLimitPyramid(stream);
 	getBinaryMetaData_PxJointLinearLimit(stream);
 	getBinaryMetaData_PxJointLinearLimitPair(stream);
 	getBinaryMetaData_PxJointAngularLimitPair(stream);
-	
+
 	PxJoint::getBinaryMetaData(stream);
 	RevoluteJoint::getBinaryMetaData(stream);
 	SphericalJoint::getBinaryMetaData(stream);

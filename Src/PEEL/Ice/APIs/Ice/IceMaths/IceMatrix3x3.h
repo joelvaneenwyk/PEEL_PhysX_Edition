@@ -22,7 +22,7 @@
 		public:
 		//! Empty constructor
 		inline_					Matrix3x3()									{}
-		//! Identity constructor		
+		//! Identity constructor
 		inline_					Matrix3x3(IDENTITY)							{ Identity();	}
 		//! Constructor from 9 values
 		inline_					Matrix3x3(float m00, float m01, float m02, float m10, float m11, float m12, float m20, float m21, float m22)
@@ -40,7 +40,7 @@
 									m[1][0] = mat[1][0]; m[1][1] = mat[1][1]; m[1][2] = mat[1][2];
 									m[2][0] = mat[2][0]; m[2][1] = mat[2][1]; m[2][2] = mat[2][2];
 /*#else
-									CopyMemory(m, &mat.m, 9*sizeof(float));	
+									CopyMemory(m, &mat.m, 9*sizeof(float));
 #endif*/
 								}
 		//! Destructor

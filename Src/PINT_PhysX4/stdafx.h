@@ -102,10 +102,10 @@ using namespace physx;
 
 #define PHYSX_SUPPORT_GPU
 #ifdef PHYSX_SUPPORT_GPU
-	#define BUILD_GPU_DATA	buildGPUData
+#	define BUILD_GPU_DATA				buildGPUData
 #endif
 #define BUILD_GPU_DATA	buildGPUData
-#define PHYSX_NUM_PRIMS_PER_LEAF	numPrimsPerLeaf
+#define PHYSX_NUM_PRIMS_PER_LEAF		numPrimsPerLeaf
 //#define PHYSX_SUPPORT_LINEAR_COEFF
 #define NEW_D6_API
 //#define PHYSX_SUPPORT_CHARACTERS

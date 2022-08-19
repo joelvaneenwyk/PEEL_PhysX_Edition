@@ -98,7 +98,7 @@ static void FreeString(const char* str)
 							udword		mFirstFree;
 #else
 							udword		mMemBlockFirstFree;
-#endif
+#	endif
 							udword		mMemBlockUsed;
 
 							size_t		mNbAllocatedBytes;

@@ -18,61 +18,61 @@
 	#pragma message("----Compiling ICE Character")
 #elif !defined(ICECHARACTER_EXPORTS)
 	#pragma message("----Using ICE Character")
-	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	// Automatic linking
-	#ifndef BAN_ICECHARACTER_AUTOLINK
-		#ifdef _DEBUG
-			#pragma comment(lib, "IceCharacter_D.lib")
-		#else
-			#pragma comment(lib, "IceCharacter.lib")
-		#endif
-	#endif
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Automatic linking
+#	ifndef BAN_ICECHARACTER_AUTOLINK
+#		ifdef _DEBUG
+#			pragma comment(lib, "IceCharacter_D.lib")
+#		else
+#			pragma comment(lib, "IceCharacter.lib")
+#		endif
+#	endif
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Preprocessor
 
 #ifndef ICE_NO_DLL
-	#ifdef ICECHARACTER_EXPORTS
-		#define ICECHARACTER_API		__declspec(dllexport)
-	#else
-		#define ICECHARACTER_API		__declspec(dllimport)
-	#endif
+#	ifdef ICECHARACTER_EXPORTS
+#		define ICECHARACTER_API __declspec(dllexport)
+#	else
+#		define ICECHARACTER_API __declspec(dllimport)
+#	endif
 #else
-		#define ICECHARACTER_API
+#	define ICECHARACTER_API
 #endif
 
-	#include "IceCharacterSettings.h"
+#include "IceCharacterSettings.h"
 
-	// Includes
-	namespace IceCharacter
-	{
-		#include "IceCharacterErrors.h"
-		#include "IceCharacterStudioNodes.h"
-		#include "IceBone.h"
-		#include "IceSkeletonDescriptor.h"
-		#include "IceCharacterMotion.h"
+// Includes
+namespace IceCharacter
+{
+#include "IceCharacterErrors.h"
+#include "IceCharacterStudioNodes.h"
+#include "IceBone.h"
+#include "IceSkeletonDescriptor.h"
+#include "IceCharacterMotion.h"
 
-		#include "IceMotionEvent.h"
-		#include "IceMotionTransition.h"
-		#include "IceMotionCell.h"
-		#include "IceMotionState.h"
-		#include "IceStateMachine.h"
-		#include "IceStateMachineCompiler.h"
+#include "IceMotionEvent.h"
+#include "IceMotionTransition.h"
+#include "IceMotionCell.h"
+#include "IceMotionState.h"
+#include "IceStateMachine.h"
+#include "IceStateMachineCompiler.h"
 
-		#include "IceSkeleton.h"
-		#include "IceSkin.h"
+#include "IceSkeleton.h"
+#include "IceSkin.h"
 
-		#include "IceCharacterSerialize.h"
+#include "IceCharacterSerialize.h"
 
-		// IK
+	// IK
 #ifdef ICECHARACTER_INCLUDE_IKAN
-		#include "trig.h"
-		#include "myvec.h"
-		#include "srs.h"
+#	include "trig.h"
+#	include "myvec.h"
+#	include "srs.h"
 #endif
 
-		#include "IceCharacterAPI.h"
-	}
+#include "IceCharacterAPI.h"
+}
 
-#endif // ICECHARACTER_H
+#endif  // ICECHARACTER_H

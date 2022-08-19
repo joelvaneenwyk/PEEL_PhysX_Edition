@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "foundation/PxMathUtils.h"
 #include "extensions/PxRigidBodyExt.h"
@@ -49,7 +49,7 @@ using namespace Cct;
 Controller::Controller(const PxControllerDesc& desc, PxScene* s) :
 	mCctModule				(desc.registerDeletionListener),
 	mScene					(s),
-	mPreviousSceneTimestamp	(0xffffffff),		
+	mPreviousSceneTimestamp	(0xffffffff),
 	mGlobalTime				(0.0),
 	mPreviousGlobalTime		(0.0),
 	mProxyDensity			(0.0f),
@@ -77,12 +77,12 @@ Controller::Controller(const PxControllerDesc& desc, PxScene* s) :
 	mProxyDensity						= desc.density;
 	mProxyScaleCoeff					= desc.scaleCoeff;
 
-	mCctModule.mVolumeGrowth			= desc.volumeGrowth;	
+	mCctModule.mVolumeGrowth			= desc.volumeGrowth;
 
 	mRegisterDeletionListener			= desc.registerDeletionListener;
 
 	mDeltaXP							= PxVec3(0);
-	mOverlapRecover						= PxVec3(0);	
+	mOverlapRecover						= PxVec3(0);
 
 	mUserParams.mUpDirection = PxVec3(0.0f);
 	setUpDirectionInternal(desc.upDirection);
@@ -100,7 +100,7 @@ Controller::~Controller()
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void Controller::onRelease(const PxBase& observed)
-{	
+{
 	mCctModule.onRelease(observed);
 }
 
@@ -109,11 +109,11 @@ void Controller::onRelease(const PxBase& observed)
 void Controller::onOriginShift(const PxVec3& shift)
 {
 	mPosition -= shift;
-	
+
 	if(mManager && mManager->mLockingEnabled)
 		mWriteLock.lock();
 
-	mCctModule.onOriginShift(shift);	
+	mCctModule.onOriginShift(shift);
 
 	if(mManager && mManager->mLockingEnabled)
 		mWriteLock.unlock();
@@ -138,7 +138,7 @@ void Controller::setUpDirectionInternal(const PxVec3& up)
 	{
 		PxTransform pose = mKineActor->getGlobalPose();
 		pose.q = q;
-		mKineActor->setGlobalPose(pose);	
+		mKineActor->setGlobalPose(pose);
 	}*/
 }
 
@@ -191,7 +191,7 @@ bool Controller::setPos(const PxExtendedVec3& pos)
 		PxTransform targetPose = mKineActor->getGlobalPose();
 		targetPose.p = toVec3(mPosition);  // LOSS OF ACCURACY
 		targetPose.q = mUserParams.mQuatFromUp;
-		mKineActor->setKinematicTarget(targetPose);	
+		mKineActor->setKinematicTarget(targetPose);
 	}
 	return true;
 }

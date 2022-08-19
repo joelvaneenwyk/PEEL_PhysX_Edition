@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "foundation/PxMathUtils.h"
 #include "foundation/PxQuat.h"
@@ -56,7 +56,7 @@ namespace
 
 bool isDynamicGeometry(PxGeometryType::Enum type)
 {
-	return type == PxGeometryType::eBOX 
+	return type == PxGeometryType::eBOX
 		|| type == PxGeometryType::eSPHERE
 		|| type == PxGeometryType::eCAPSULE
 		|| type == PxGeometryType::eCONVEXMESH;
@@ -65,8 +65,8 @@ bool isDynamicGeometry(PxGeometryType::Enum type)
 
 namespace physx
 {
-PxRigidDynamic* PxCreateDynamic(PxPhysics& sdk, 
-								const PxTransform& transform, 
+PxRigidDynamic* PxCreateDynamic(PxPhysics& sdk,
+								const PxTransform& transform,
 								PxShape& shape,
 								PxReal density)
 {
@@ -81,10 +81,10 @@ PxRigidDynamic* PxCreateDynamic(PxPhysics& sdk,
 	return actor;
 }
 
-PxRigidDynamic* PxCreateDynamic(PxPhysics& sdk, 
-								const PxTransform& transform, 
+PxRigidDynamic* PxCreateDynamic(PxPhysics& sdk,
+								const PxTransform& transform,
 								const PxGeometry& geometry,
-							    PxMaterial& material, 
+							    PxMaterial& material,
 								PxReal density,
 								const PxTransform& shapeOffset)
 {
@@ -107,8 +107,8 @@ PxRigidDynamic* PxCreateDynamic(PxPhysics& sdk,
 
 
 
-PxRigidDynamic* PxCreateKinematic(PxPhysics& sdk, 
-								  const PxTransform& transform, 
+PxRigidDynamic* PxCreateKinematic(PxPhysics& sdk,
+								  const PxTransform& transform,
 								  PxShape& shape,
 								  PxReal density)
 {
@@ -118,7 +118,7 @@ PxRigidDynamic* PxCreateKinematic(PxPhysics& sdk,
 	if(isDynGeom && density <= 0.0f)
 	    return NULL;
 
-	PxRigidDynamic* actor = sdk.createRigidDynamic(transform);	
+	PxRigidDynamic* actor = sdk.createRigidDynamic(transform);
 	if(actor)
 	{
 		actor->setRigidBodyFlag(PxRigidBodyFlag::eKINEMATIC, true);
@@ -129,7 +129,7 @@ PxRigidDynamic* PxCreateKinematic(PxPhysics& sdk,
 
 		if(isDynGeom)
 			PxRigidBodyExt::updateMassAndInertia(*actor, density);
-		else		
+		else
 		{
 			actor->setMass(1.f);
 			actor->setMassSpaceInertiaTensor(PxVec3(1.f,1.f,1.f));
@@ -140,9 +140,9 @@ PxRigidDynamic* PxCreateKinematic(PxPhysics& sdk,
 }
 
 
-PxRigidDynamic* PxCreateKinematic(PxPhysics& sdk, 
-								  const PxTransform& transform, 
-								  const PxGeometry& geometry, 
+PxRigidDynamic* PxCreateKinematic(PxPhysics& sdk,
+								  const PxTransform& transform,
+								  const PxGeometry& geometry,
 								  PxMaterial& material,
 								  PxReal density,
 								  const PxTransform& shapeOffset)
@@ -168,8 +168,8 @@ PxRigidDynamic* PxCreateKinematic(PxPhysics& sdk,
 
 
 
-PxRigidStatic* PxCreateStatic(PxPhysics& sdk, 
-							  const PxTransform& transform, 
+PxRigidStatic* PxCreateStatic(PxPhysics& sdk,
+							  const PxTransform& transform,
 							  PxShape& shape)
 {
 	PX_CHECK_AND_RETURN_NULL(transform.isValid(), "PxCreateStatic: transform is not valid.");
@@ -212,7 +212,7 @@ PxRigidStatic* PxCreatePlane(PxPhysics& sdk,
 
 	if (!plane.n.isNormalized())
 		return NULL;
-	
+
 	return PxCreateStatic(sdk, PxTransformFromPlaneEquation(plane), PxPlaneGeometry(), material);
 }
 
@@ -254,7 +254,7 @@ namespace
 			{
 				PxShape* newShape = physx::PxCloneShape(physics, *s, true);
 				to.attachShape(*newShape);
-				newShape->release();		
+				newShape->release();
 			}
 		}
 
@@ -264,8 +264,8 @@ namespace
 	}
 }
 
-PxRigidStatic* PxCloneStatic(PxPhysics& physicsSDK, 
-							 const PxTransform& transform, 
+PxRigidStatic* PxCloneStatic(PxPhysics& physicsSDK,
+							 const PxTransform& transform,
 							 const PxRigidActor& from)
 {
 	PxRigidStatic* to = physicsSDK.createRigidStatic(transform);
@@ -277,7 +277,7 @@ PxRigidStatic* PxCloneStatic(PxPhysics& physicsSDK,
 	return to;
 }
 
-PxRigidDynamic* PxCloneDynamic(PxPhysics& physicsSDK, 
+PxRigidDynamic* PxCloneDynamic(PxPhysics& physicsSDK,
 							   const PxTransform& transform,
 							   const PxRigidDynamic& from)
 {
@@ -334,13 +334,13 @@ void PxScaleRigidActor(PxRigidActor& actor, PxReal scale, bool scaleMassProps)
 
 	for(PxU32 i=0;i<shapes.size();i++)
 	{
-		shapes[i]->setLocalPose(scalePosition(shapes[i]->getLocalPose(), scale));		
+		shapes[i]->setLocalPose(scalePosition(shapes[i]->getLocalPose(), scale));
 		PxGeometryHolder h = shapes[i]->getGeometry();
 
 		switch(h.getType())
 		{
-		case PxGeometryType::eSPHERE:	
-			h.sphere().radius *= scale;			
+		case PxGeometryType::eSPHERE:
+			h.sphere().radius *= scale;
 			break;
 		case PxGeometryType::ePLANE:
 			break;

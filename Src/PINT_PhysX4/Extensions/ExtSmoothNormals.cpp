@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 
 #include "foundation/PxMemory.h"
@@ -68,7 +68,7 @@ static PxReal computeAngle(const PxVec3* verts, const PxU32* refs, PxU32 vref)
 
 bool PxBuildSmoothNormals(PxU32 nbTris, PxU32 nbVerts, const PxVec3* verts, const PxU32* dFaces, const PxU16* wFaces, PxVec3* normals, bool flip)
 {
-	if(!verts || !normals || !nbTris || !nbVerts)	
+	if(!verts || !normals || !nbTris || !nbVerts)
 		return false;
 
 	// Get correct destination buffers

@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #ifndef CCT_CHARACTER_CONTROLLER_MANAGER
 #define CCT_CHARACTER_CONTROLLER_MANAGER
@@ -64,7 +64,7 @@ namespace Cct
 
 	//Implements the PxControllerManager interface, this class used to be called ControllerManager
 	class CharacterControllerManager : public PxControllerManager   , public Ps::UserAllocated, public PxDeletionListener
-	{		
+	{
 	public:
 														CharacterControllerManager(PxScene& scene, bool lockingEnabled = false);
 		virtual											~CharacterControllerManager();
@@ -75,7 +75,7 @@ namespace Cct
 		virtual			PxU32							getNbControllers()	const;
 		virtual			PxController*					getController(PxU32 index);
         virtual			PxController*					createController(const PxControllerDesc& desc);
-       
+
 		virtual			void							purgeControllers();
 		virtual			PxRenderBuffer&					getRenderBuffer();
 		virtual			void							setDebugRenderingFlags(PxControllerDebugRenderFlags flags);
@@ -87,7 +87,7 @@ namespace Cct
 		virtual			void							setOverlapRecoveryModule(bool flag);
 		virtual			void							setPreciseSweeps(bool flag);
 		virtual			void							setPreventVerticalSlidingAgainstCeiling(bool flag);
-		virtual			void							shiftOrigin(const PxVec3& shift);		
+		virtual			void							shiftOrigin(const PxVec3& shift);
 		//~PxControllerManager
 
 		// PxDeletionListener
@@ -129,7 +129,7 @@ namespace Cct
 						bool							mPreciseSweeps;
 						bool							mPreventVerticalSlidingAgainstCeiling;
 
-						bool							mLockingEnabled;						
+						bool							mLockingEnabled;
 
 	protected:
 		CharacterControllerManager &operator=(const CharacterControllerManager &);

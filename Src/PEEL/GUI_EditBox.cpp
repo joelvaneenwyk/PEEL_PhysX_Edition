@@ -41,7 +41,7 @@ bool PEEL_EditBox::FilterKey(udword key) const
 
 static void gEBCallback(const IceEditBox& edit_box, udword param, void* user_data)
 {
-	if(param!=IceEditBox::CB_PARAM_RETURN)	
+	if(param!=IceEditBox::CB_PARAM_RETURN)
 		return;
 
 	EditBoxInterface* EBI = reinterpret_cast<EditBoxInterface*>(user_data);

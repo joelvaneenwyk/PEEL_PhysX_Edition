@@ -27,7 +27,7 @@ udword GetNbTools()
 	return TOOL_COUNT;
 }
 
-static const char* gToolNames[] = 
+static const char* gToolNames[] =
 {
 	"Picking",
 	"Add impulse",

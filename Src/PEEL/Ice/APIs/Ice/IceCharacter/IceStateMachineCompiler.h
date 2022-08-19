@@ -68,7 +68,7 @@
 		inline_	StateMachine*			GetStateMachine()						const	{ return mSM;					}
 //		inline_	Container&				GetMotions()									{ return mMotions;				}
 
-		// 
+		//
 				udword					ComputeSourceFrameIndex(const char* text);
 				udword					ComputeDestFrameIndex(const char* text);
 #ifdef OBSOLETE_ACTIVATION

@@ -65,15 +65,15 @@ class UserAllocated
 	{
 		// align is not respected, we have 16bit aligned allocator
 		return alloc.allocate(size, fileName, line);
-	}	
+	}
 	template <typename Alloc>
 	PX_INLINE void* operator new [](size_t size, Alloc alloc, const char* fileName, int line)
 	{ return alloc.allocate(size, fileName, line); }
 	template <typename Alloc>
 	PX_INLINE void* operator new [](size_t size, size_t /*align*/, Alloc alloc, const char* fileName, int line)
-	{ 
+	{
 		// align is not respected, we have 16bit aligned allocator
-		return alloc.allocate(size, fileName, line); 
+		return alloc.allocate(size, fileName, line);
 	}
 
 	// placement delete

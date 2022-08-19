@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "foundation/PxAssert.h"
 #include "extensions/PxDefaultErrorCallback.h"
@@ -94,12 +94,12 @@ void PxDefaultErrorCallback::reportError(PxErrorCode::Enum e, const char* messag
 		// in debug builds halt execution for abort codes
 		PX_ASSERT(e != PxErrorCode::eABORT);
 
-		// in release builds we also want to halt execution 
-		// and make sure that the error message is flushed  
+		// in release builds we also want to halt execution
+		// and make sure that the error message is flushed
 		while (e == PxErrorCode::eABORT)
 		{
 			physx::shdfnd::printString(buffer);
 			physx::shdfnd::Thread::sleep(1000);
 		}
-	}	
+	}
 }

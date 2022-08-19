@@ -192,7 +192,7 @@ udword RaytracingTest(Picture& pic, Pint& pint, udword& total_time, udword scree
 					{
 						const udword xi = udword(fScreenWidth*float(i));
 //						RaycastData[i].mDir = ComputeWorldRay(xi, yi);
-						RaycastData[i].mDir = WRC.ComputeWorldRay(xi, yi);					
+						RaycastData[i].mDir = WRC.ComputeWorldRay(xi, yi);
 						Hits[i].mTouchedActor = null;
 					}
 				}

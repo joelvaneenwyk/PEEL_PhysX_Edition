@@ -30,7 +30,7 @@
 		udword	id1;	//!< Second index of the pair
 	};
 #pragma pack()
-	
+
 	ICE_COMPILE_TIME_ASSERT(sizeof(Pair)==8);
 
 	class ICECORE_API Pairs : public Allocateable

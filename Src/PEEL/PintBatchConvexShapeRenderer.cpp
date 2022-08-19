@@ -13,8 +13,8 @@
 #include <xmmintrin.h>
 #include <emmintrin.h>
 
-extern	bool	gWireframePass;
-extern	udword	gBatchSize;
+extern bool       gWireframePass;
+extern udword     gBatchSize;
 
 static Container* gBatchIndices = null;
 static Vertices* gBatchVertices = null;
@@ -121,7 +121,7 @@ static void BatchRender(udword nb_tris, udword nb_verts, const Point* verts, con
 	}
 }
 
-static	inline_ __m128 Multiply3x3V(const __m128 p, const Matrix4x4& mat)	
+static	inline_ __m128 Multiply3x3V(const __m128 p, const Matrix4x4& mat)
 {
 //	const __m128 xxxV = _mm_castsi128_ps(_mm_shuffle_epi32(_mm_castps_si128(p), _MM_SHUFFLE(3,0,0,0)));
 //	const __m128 yyyV = _mm_castsi128_ps(_mm_shuffle_epi32(_mm_castps_si128(p), _MM_SHUFFLE(3,1,1,1)));

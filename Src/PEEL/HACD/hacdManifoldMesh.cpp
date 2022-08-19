@@ -1,15 +1,15 @@
 /* Copyright (c) 2011 Khaled Mamou (kmamou at gmail dot com)
  All rights reserved.
- 
- 
+
+
  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
- 
+
  1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
- 
+
  2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
- 
+
  3. The names of the contributors may not be used to endorse or promote products derived from this software without specific prior written permission.
- 
+
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
@@ -19,7 +19,7 @@ using namespace std;
 
 
 namespace HACD
-{    
+{
     Material::Material(void)
     {
         m_diffuseColor.X()  = 0.5;
@@ -35,7 +35,7 @@ namespace HACD
         m_shininess         = 0.4;
         m_transparency      = 0.0;
     }
-    
+
 	TMMVertex::TMMVertex(void)
 	{
 		m_name = 0;
@@ -78,7 +78,7 @@ namespace HACD
 	{
 	}
 
-	void TMMesh::Print() 
+	void TMMesh::Print()
 	{
 		size_t nV = m_vertices.GetSize();
 		std::cout << "-----------------------------" << std::endl;
@@ -86,13 +86,13 @@ namespace HACD
         for(size_t v = 0; v < nV; v++)
 		{
 			const TMMVertex & currentVertex = m_vertices.GetData();
-			std::cout  << currentVertex.m_id	  << ", " 
-		 			   << currentVertex.m_pos.X() << ", " 
+			std::cout  << currentVertex.m_id	  << ", "
+		 			   << currentVertex.m_pos.X() << ", "
 					   << currentVertex.m_pos.Y() << ", "
 					   << currentVertex.m_pos.Z() << std::endl;
 			m_vertices.Next();
 		}
-    
+
 
 		size_t nE = m_edges.GetSize();
 		std::cout << "edges (" << nE << ")" << std::endl;
@@ -104,13 +104,13 @@ namespace HACD
             const CircularListElement<TMMTriangle> * f0 = currentEdge.m_triangles[0];
             const CircularListElement<TMMTriangle> * f1 = currentEdge.m_triangles[1];
 
-			std::cout << "-> (" << v0->GetData().m_name << ", " << v1->GetData().m_name << ")" << std::endl; 
-            std::cout << "-> F0 (" << f0->GetData().m_vertices[0]->GetData().m_name << ", " 
+			std::cout << "-> (" << v0->GetData().m_name << ", " << v1->GetData().m_name << ")" << std::endl;
+            std::cout << "-> F0 (" << f0->GetData().m_vertices[0]->GetData().m_name << ", "
                                    << f0->GetData().m_vertices[1]->GetData().m_name << ", "
-                                   << f0->GetData().m_vertices[2]->GetData().m_name <<")" << std::endl; 
-            std::cout << "-> F1 (" << f1->GetData().m_vertices[0]->GetData().m_name << ", " 
+                                   << f0->GetData().m_vertices[2]->GetData().m_name <<")" << std::endl;
+            std::cout << "-> F1 (" << f1->GetData().m_vertices[0]->GetData().m_name << ", "
                                    << f1->GetData().m_vertices[1]->GetData().m_name << ", "
-                                   << f1->GetData().m_vertices[2]->GetData().m_name << ")" << std::endl;                         
+                                   << f1->GetData().m_vertices[2]->GetData().m_name << ")" << std::endl;
 			m_edges.Next();
 		}
 		size_t nT = m_triangles.GetSize();
@@ -124,17 +124,17 @@ namespace HACD
             const CircularListElement<TMMEdge> * e0 = currentTriangle.m_edges[0];
             const CircularListElement<TMMEdge> * e1 = currentTriangle.m_edges[1];
             const CircularListElement<TMMEdge> * e2 = currentTriangle.m_edges[2];
-            
-			std::cout << "-> (" << v0->GetData().m_name << ", " << v1->GetData().m_name << ", "<< v2->GetData().m_name << ")" << std::endl; 
-         
-            std::cout << "-> E0 (" << e0->GetData().m_vertices[0]->GetData().m_name << ", " 
-                                   << e0->GetData().m_vertices[1]->GetData().m_name << ")" << std::endl; 
-            std::cout << "-> E1 (" << e1->GetData().m_vertices[0]->GetData().m_name << ", " 
+
+			std::cout << "-> (" << v0->GetData().m_name << ", " << v1->GetData().m_name << ", "<< v2->GetData().m_name << ")" << std::endl;
+
+            std::cout << "-> E0 (" << e0->GetData().m_vertices[0]->GetData().m_name << ", "
+                                   << e0->GetData().m_vertices[1]->GetData().m_name << ")" << std::endl;
+            std::cout << "-> E1 (" << e1->GetData().m_vertices[0]->GetData().m_name << ", "
                                    << e1->GetData().m_vertices[1]->GetData().m_name << ")" << std::endl;
-            std::cout << "-> E2 (" << e2->GetData().m_vertices[0]->GetData().m_name << ", " 
-                                   << e2->GetData().m_vertices[1]->GetData().m_name << ")" << std::endl;   
+            std::cout << "-> E2 (" << e2->GetData().m_vertices[0]->GetData().m_name << ", "
+                                   << e2->GetData().m_vertices[1]->GetData().m_name << ")" << std::endl;
 			m_triangles.Next();
-		}   
+		}
 	}
     bool TMMesh::Save(const char *fileName)
     {
@@ -153,30 +153,30 @@ namespace HACD
     }
     bool TMMesh::SaveVRML2(std::ofstream &fout, const Material & material)
     {
-        if (fout.is_open()) 
+        if (fout.is_open())
         {
             size_t nV = m_vertices.GetSize();
-            size_t nT = m_triangles.GetSize();            
-            fout <<"#VRML V2.0 utf8" << std::endl;	    	
+            size_t nT = m_triangles.GetSize();
+            fout <<"#VRML V2.0 utf8" << std::endl;
             fout <<"" << std::endl;
-            fout <<"# Vertices: " << nV << std::endl;		
-            fout <<"# Triangles: " << nT << std::endl;		
+            fout <<"# Vertices: " << nV << std::endl;
+            fout <<"# Triangles: " << nT << std::endl;
             fout <<"" << std::endl;
             fout <<"Group {" << std::endl;
             fout <<"	children [" << std::endl;
             fout <<"		Shape {" << std::endl;
             fout <<"			appearance Appearance {" << std::endl;
             fout <<"				material Material {" << std::endl;
-            fout <<"					diffuseColor "      << material.m_diffuseColor.X()      << " " 
+            fout <<"					diffuseColor "      << material.m_diffuseColor.X()      << " "
                                                             << material.m_diffuseColor.Y()      << " "
-                                                            << material.m_diffuseColor.Z()      << std::endl;  
+                                                            << material.m_diffuseColor.Z()      << std::endl;
             fout <<"					ambientIntensity "  << material.m_ambientIntensity      << std::endl;
-            fout <<"					specularColor "     << material.m_specularColor.X()     << " " 
+            fout <<"					specularColor "     << material.m_specularColor.X()     << " "
                                                             << material.m_specularColor.Y()     << " "
-                                                            << material.m_specularColor.Z()     << std::endl; 
-            fout <<"					emissiveColor "     << material.m_emissiveColor.X()     << " " 
+                                                            << material.m_specularColor.Z()     << std::endl;
+            fout <<"					emissiveColor "     << material.m_emissiveColor.X()     << " "
                                                             << material.m_emissiveColor.Y()     << " "
-                                                            << material.m_emissiveColor.Z()     << std::endl; 
+                                                            << material.m_emissiveColor.Z()     << std::endl;
             fout <<"					shininess "         << material.m_shininess             << std::endl;
             fout <<"					transparency "      << material.m_transparency          << std::endl;
             fout <<"				}" << std::endl;
@@ -191,8 +191,8 @@ namespace HACD
                 for(size_t v = 0; v < nV; v++)
                 {
                     TMMVertex & currentVertex = m_vertices.GetData();
-                    fout <<"						" << currentVertex.m_pos.X() << " " 
-                                                      << currentVertex.m_pos.Y() << " " 
+                    fout <<"						" << currentVertex.m_pos.X() << " "
+                                                      << currentVertex.m_pos.Y() << " "
                                                       << currentVertex.m_pos.Z() << "," << std::endl;
                     currentVertex.m_id = v;
                     m_vertices.Next();
@@ -205,8 +205,8 @@ namespace HACD
                 for(size_t f = 0; f < nT; f++)
                 {
                     TMMTriangle & currentTriangle = m_triangles.GetData();
-                    fout <<"						" << currentTriangle.m_vertices[0]->GetData().m_id << ", " 
-                                                      << currentTriangle.m_vertices[1]->GetData().m_id << ", "                                                  
+                    fout <<"						" << currentTriangle.m_vertices[0]->GetData().m_id << ", "
+                                                      << currentTriangle.m_vertices[1]->GetData().m_id << ", "
                                                       << currentTriangle.m_vertices[2]->GetData().m_id << ", -1," << std::endl;
                     m_triangles.Next();
                 }
@@ -215,14 +215,14 @@ namespace HACD
             fout <<"			}" << std::endl;
             fout <<"		}" << std::endl;
             fout <<"	]" << std::endl;
-            fout <<"}" << std::endl;	
+            fout <<"}" << std::endl;
         }
         return true;
     }
     void TMMesh::GetIFS(Vec3<Real> * const points, Vec3<long> * const triangles)
     {
         size_t nV = m_vertices.GetSize();
-        size_t nT = m_triangles.GetSize(); 
+        size_t nT = m_triangles.GetSize();
 
         for(size_t v = 0; v < nV; v++)
         {
@@ -255,14 +255,14 @@ namespace HACD
         for(size_t v = 0; v < nV; v++)
         {
             mesh.m_vertices.GetData().m_id = v;
-            mesh.m_vertices.Next();            
+            mesh.m_vertices.Next();
         }
         for(size_t e = 0; e < nE; e++)
         {
             mesh.m_edges.GetData().m_id = e;
             mesh.m_edges.Next();
-            
-        }        
+
+        }
         for(size_t f = 0; f < nT; f++)
         {
             mesh.m_triangles.GetData().m_id = f;
@@ -272,7 +272,7 @@ namespace HACD
         m_vertices  = mesh.m_vertices;
         m_edges     = mesh.m_edges;
         m_triangles = mesh.m_triangles;
- 
+
         // generating mapping
         CircularListElement<TMMVertex> ** vertexMap     = new CircularListElement<TMMVertex> * [nV];
         CircularListElement<TMMEdge> ** edgeMap         = new CircularListElement<TMMEdge> * [nE];
@@ -280,19 +280,19 @@ namespace HACD
         for(size_t v = 0; v < nV; v++)
         {
             vertexMap[v] = m_vertices.GetHead();
-            m_vertices.Next();            
+            m_vertices.Next();
         }
         for(size_t e = 0; e < nE; e++)
         {
             edgeMap[e] = m_edges.GetHead();
-            m_edges.Next();            
-        }        
+            m_edges.Next();
+        }
         for(size_t f = 0; f < nT; f++)
         {
             triangleMap[f] = m_triangles.GetHead();
             m_triangles.Next();
         }
-        
+
         // updating pointers
         for(size_t v = 0; v < nV; v++)
         {
@@ -315,7 +315,7 @@ namespace HACD
 					{
 						edgeMap[e]->GetData().m_triangles[f] = triangleMap[edgeMap[e]->GetData().m_triangles[f]->GetData().m_id];
 					}
-				}            
+				}
 			}
             for(int v = 0; v < 2; v++)
             {
@@ -324,7 +324,7 @@ namespace HACD
                     edgeMap[e]->GetData().m_vertices[v] = vertexMap[edgeMap[e]->GetData().m_vertices[v]->GetData().m_id];
                 }
             }
-        }        
+        }
         for(size_t f = 0; f < nT; f++)
         {
 			if (nE > 0)
@@ -335,7 +335,7 @@ namespace HACD
 					{
 						triangleMap[f]->GetData().m_edges[e] = edgeMap[triangleMap[f]->GetData().m_edges[e]->GetData().m_id];
 					}
-				}            
+				}
 			}
             for(int v = 0; v < 3; v++)
             {
@@ -348,10 +348,10 @@ namespace HACD
         delete [] vertexMap;
         delete [] edgeMap;
         delete [] triangleMap;
-        
+
     }
-	long  IntersectRayTriangle(const Vec3<double> & P0, const Vec3<double> & dir, 
-							   const Vec3<double> & V0, const Vec3<double> & V1, 
+	long  IntersectRayTriangle(const Vec3<double> & P0, const Vec3<double> & dir,
+							   const Vec3<double> & V0, const Vec3<double> & V1,
 							   const Vec3<double> & V2, double &t)
 	{
 		Vec3<double> edge1, edge2, edge3;
@@ -382,15 +382,15 @@ namespace HACD
 		return 0;
 	}
 
-    bool IntersectLineLine(const Vec3<double> & p1, const Vec3<double> & p2, 
+    bool IntersectLineLine(const Vec3<double> & p1, const Vec3<double> & p2,
                           const Vec3<double> & p3, const Vec3<double> & p4,
-                          Vec3<double> & pa, Vec3<double> & pb, 
+                          Vec3<double> & pa, Vec3<double> & pb,
                           double & mua, double & mub)
     {
         Vec3<double> p13,p43,p21;
         double d1343,d4321,d1321,d4343,d2121;
         double numer,denom;
-        
+
         p13.X() = p1.X() - p3.X();
         p13.Y() = p1.Y() - p3.Y();
         p13.Z() = p1.Z() - p3.Z();
@@ -404,33 +404,33 @@ namespace HACD
         p21.Z() = p2.Z() - p1.Z();
         if (p21.X()==0.0 && p21.Y()==0.0 && p21.Z()==0.0)
             return false;
-        
+
         d1343 = p13.X() * p43.X() + p13.Y() * p43.Y() + p13.Z() * p43.Z();
         d4321 = p43.X() * p21.X() + p43.Y() * p21.Y() + p43.Z() * p21.Z();
         d1321 = p13.X() * p21.X() + p13.Y() * p21.Y() + p13.Z() * p21.Z();
         d4343 = p43.X() * p43.X() + p43.Y() * p43.Y() + p43.Z() * p43.Z();
         d2121 = p21.X() * p21.X() + p21.Y() * p21.Y() + p21.Z() * p21.Z();
-        
+
         denom = d2121 * d4343 - d4321 * d4321;
         if (denom==0.0)
             return false;
         numer = d1343 * d4321 - d1321 * d4343;
-        
+
         mua = numer / denom;
         mub = (d1343 + d4321 * (mua)) / d4343;
-        
+
         pa.X() = p1.X() + mua * p21.X();
         pa.Y() = p1.Y() + mua * p21.Y();
         pa.Z() = p1.Z() + mua * p21.Z();
         pb.X() = p3.X() + mub * p43.X();
         pb.Y() = p3.Y() + mub * p43.Y();
         pb.Z() = p3.Z() + mub * p43.Z();
-        
+
         return true;
     }
 
-	long  IntersectRayTriangle2(const Vec3<double> & P0, const Vec3<double> & dir, 
-							   const Vec3<double> & V0, const Vec3<double> & V1, 
+	long  IntersectRayTriangle2(const Vec3<double> & P0, const Vec3<double> & dir,
+							   const Vec3<double> & V0, const Vec3<double> & V1,
 							   const Vec3<double> & V2, double &r)
 	{
 		Vec3<double> u, v, n;          // triangle vectors
@@ -481,8 +481,8 @@ namespace HACD
 			return 0;
 		return 1;                      // I is in T
 	}
-    
-    
+
+
 	bool TMMesh::CheckConsistancy()
     {
         size_t nE = m_edges.GetSize();
@@ -495,9 +495,9 @@ namespace HACD
                 {
                     return false;
                 }
-            }            
+            }
 			m_edges.Next();
-        }        
+        }
 
         for(size_t f = 0; f < nT; f++)
         {
@@ -515,7 +515,7 @@ namespace HACD
                 {
                     return false;
                 }
-            }            
+            }
 			m_triangles.Next();
         }
 

@@ -20,7 +20,7 @@
 		SCREEN_QUAD_SHADOWS_INIT			= (1<<3),	//!< If SCREEN_QUAD_SHADOWS_ON, mark the init or end of shadowing
 		SCREEN_QUAD_DISABLE_COLOR_BUFFER	= (1<<4),	//!< Enable or disable color buffer updates
 		SCREEN_QUAD_DISABLE_TEXTURING		= (1<<5),	//!< Enable or disable texturing
-		SCREEN_QUAD_ENABLE_ALPHA_ONE		= (1<<6),	//!< 
+		SCREEN_QUAD_ENABLE_ALPHA_ONE		= (1<<6),	//!<
 	};
 
 	class ICERENDERER_API ScreenQuad

@@ -66,16 +66,16 @@
 	};
 
 	struct CONTACT_API PrecompRay
-	{	
+	{
 		//common variables
-		float x, y, z;		// ray origin	
-		float i, j, k;		// ray direction	
+		float x, y, z;		// ray origin
+		float i, j, k;		// ray direction
 		float ii, ij, ik;	// inverses of direction components
-		
+
 		// ray slope
 		int classification;
 		float ibyj, jbyi, kbyj, jbyk, ibyk, kbyi; //slope
-		float c_xy, c_xz, c_yx, c_yz, c_zx, c_zy;	
+		float c_xy, c_xz, c_yx, c_yz, c_zx, c_zy;
 	};
 
 	CONTACT_API void PrecomputeRay(float x, float y, float z, float i, float j, float k, PrecompRay& r);

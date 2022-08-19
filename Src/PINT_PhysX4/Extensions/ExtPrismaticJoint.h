@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #ifndef NP_PRISMATICJOINTCONSTRAINT_H
 #define NP_PRISMATICJOINTCONSTRAINT_H
@@ -44,8 +44,8 @@ namespace Ext
 	struct PrismaticJointData : public JointData
 	{
 	//= ATTENTION! =====================================================================================
-	// Changing the data layout of this class breaks the binary serialization format.  See comments for 
-	// PX_BINARY_SERIAL_VERSION.  If a modification is required, please adjust the getBinaryMetaData 
+	// Changing the data layout of this class breaks the binary serialization format.  See comments for
+	// PX_BINARY_SERIAL_VERSION.  If a modification is required, please adjust the getBinaryMetaData
 	// function.  If the modification is made on a custom branch, please change PX_BINARY_SERIAL_VERSION
 	// accordingly.
 	//==================================================================================================
@@ -62,12 +62,12 @@ namespace Ext
 	};
 
     typedef Joint<PxPrismaticJoint, PxPrismaticJointGeneratedValues> PrismaticJointT;
-   
+
 	class PrismaticJoint : public PrismaticJointT
 	{
 	//= ATTENTION! =====================================================================================
-	// Changing the data layout of this class breaks the binary serialization format.  See comments for 
-	// PX_BINARY_SERIAL_VERSION.  If a modification is required, please adjust the getBinaryMetaData 
+	// Changing the data layout of this class breaks the binary serialization format.  See comments for
+	// PX_BINARY_SERIAL_VERSION.  If a modification is required, please adjust the getBinaryMetaData
 	// function.  If the modification is made on a custom branch, please change PX_BINARY_SERIAL_VERSION
 	// accordingly.
 	//==================================================================================================
@@ -105,16 +105,16 @@ namespace Ext
 		virtual	void					setProjectionAngularTolerance(PxReal tolerance);
 		virtual	PxReal					getProjectionAngularTolerance()	const;
 		//~PxPrismaticJoint
-		
+
 		bool					attach(PxPhysics &physics, PxRigidActor* actor0, PxRigidActor* actor1);
-		
+
 		static const PxConstraintShaderTable& getConstraintShaderTable() { return sShaders; }
 
 		virtual PxConstraintSolverPrep getPrep() const { return sShaders.solverPrep; }
 
 	private:
-		PX_FORCE_INLINE PrismaticJointData& data() const				
-		{	
+		PX_FORCE_INLINE PrismaticJointData& data() const
+		{
 			return *static_cast<PrismaticJointData*>(mData);
 		}
 
@@ -124,7 +124,7 @@ namespace Ext
 
 namespace Ext
 {
-	// global function to share the joint shaders with API capture	
+	// global function to share the joint shaders with API capture
 	extern "C" const PxConstraintShaderTable* GetPrismaticJointShaderTable();
 }
 

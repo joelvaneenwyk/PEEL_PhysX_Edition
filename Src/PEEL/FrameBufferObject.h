@@ -17,9 +17,9 @@ share depth buffers between multiple sets of color buffers/textures and
 are a complete replacement for pbuffers.
 
 Performance Notes:
-  1) It is more efficient (but not required) to call Bind() 
+  1) It is more efficient (but not required) to call Bind()
      on an FBO before making multiple method calls. For example:
-		
+
       FramebufferObject fbo;
       fbo.Bind();
       fbo.AttachTexture(GL_TEXTURE_2D, texId0, GL_COLOR_ATTACHMENT0_EXT);
@@ -43,7 +43,7 @@ Performance Notes:
      and encourages rendundant Bind/Unbind coding. Binding an FBO is
      usually much faster than enabling/disabling a pbuffer, but is
      still a costly operation. When switching between multiple FBOs
-     and a visible OpenGL framebuffer, the following usage pattern 
+     and a visible OpenGL framebuffer, the following usage pattern
      is recommended:
 
       FramebufferObject fbo1, fbo2;
@@ -69,7 +69,7 @@ public:
   void Bind();
 
   /// Bind a texture to the "attachment" point of this FBO
-  void AttachTexture( GLenum texTarget, 
+  void AttachTexture( GLenum texTarget,
                       GLuint texId,
                       GLenum attachment = GL_COLOR_ATTACHMENT0_EXT,
                       int mipLevel      = 0,
@@ -78,8 +78,8 @@ public:
   /// Bind an array of textures to multiple "attachment" points of this FBO
   ///  - By default, the first 'numTextures' attachments are used,
   ///    starting with GL_COLOR_ATTACHMENT0_EXT
-/*  void AttachTextures( int numTextures, 
-                       GLenum texTarget[], 
+/*  void AttachTextures( int numTextures,
+                       GLenum texTarget[],
                        GLuint texId[],
                        GLenum attachment[] = NULL,
                        int mipLevel[]      = NULL,
@@ -112,8 +112,8 @@ public:
 #ifndef NDEBUG
   bool IsValid( std::ostream& ostr = std::cerr );
 #else
-  bool IsValid( std::ostream& ostr = std::cerr ) { 
-    return true; 
+  bool IsValid( std::ostream& ostr = std::cerr ) {
+    return true;
   }
 #endif
 
@@ -121,7 +121,7 @@ public:
     /// Is attached type GL_RENDERBUFFER_EXT or GL_TEXTURE?
     GLenum GetAttachedType( GLenum attachment );
 
-    /// What is the Id of Renderbuffer/texture currently 
+    /// What is the Id of Renderbuffer/texture currently
     /// attached to "attachement?"
     GLuint GetAttachedId( GLenum attachment );
 

@@ -134,18 +134,18 @@
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	/**
 	 *	A function to detect the 3D card. Usage:
-	 *	
+	 *
 	 *	// Detect the 3D card
 	 *	DDDEVICEIDENTIFIER2 devIdent;
 	 *	mDirectDraw->GetDeviceIdentifier(&devIdent, 0);
-	 *	
+	 *
 	 *	// Catch IDs
 	 *	DWORD VID = devIdent.dwVendorId;
 	 *	DWORD DID = devIdent.dwDeviceId;
 	 *	DWORD Rev = devIdent.dwRevision;
-	 *	
+	 *
 	 *	IHVCode Code = Detect3DCard(VID, DID, Rev);
-	 *	
+	 *
 	 *	\fn			Detect3DCard(udword vid, udword did, udword rev)
 	 *	\return		IHVCode enum value
 	 */

@@ -41,7 +41,7 @@ bool LoopTheLoop::Generate(float radius, float width, udword nb_circle_pts, bool
 	mNbTris = NbTris;
 	mIndices = (udword*)ICE_ALLOC(NbTris*3*sizeof(udword));
 	udword* Indices = mIndices;
-	for(udword i=0;i<nb_circle_pts;i++)	
+	for(udword i=0;i<nb_circle_pts;i++)
 	{
 		const udword j = (i+1)%nb_circle_pts;
 

@@ -82,7 +82,7 @@ bool InitGamepads()
 void ReleaseGamepads()
 {
 #ifdef PEEL_SUPPORT_GAMEPAD
-	if(gXInputLibrary) 
+	if(gXInputLibrary)
 	{
 		FreeLibrary(gXInputLibrary);
 		gXInputLibrary = null;
@@ -165,7 +165,7 @@ void ProcessGamepads(GamepadInterface& gpint)
 							XINPUT_GAMEPAD_START,
 							XINPUT_GAMEPAD_BACK,
 							XINPUT_GAMEPAD_LEFT_THUMB,
-							XINPUT_GAMEPAD_RIGHT_THUMB, 
+							XINPUT_GAMEPAD_RIGHT_THUMB,
 							XINPUT_GAMEPAD_Y,
 							XINPUT_GAMEPAD_A,
 							XINPUT_GAMEPAD_X,
@@ -213,7 +213,7 @@ void ProcessGamepads(GamepadInterface& gpint)
 							gpint.OnAnalogButtonEvent(0, oldTriggerVal, newTriggerVal);
 						}
 					}
-				}		
+				}
 
 				const int axisData[] = {inputState.Gamepad.sThumbRX, inputState.Gamepad.sThumbRY, inputState.Gamepad.sThumbLX, inputState.Gamepad.sThumbLY };
 				for(udword i=0;i<MAX_GAMEPAD_AXES;i++)

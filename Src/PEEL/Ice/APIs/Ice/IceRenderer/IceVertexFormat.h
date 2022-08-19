@@ -55,9 +55,9 @@
 	struct ICERENDERER_API PNDT_Vertex : public Allocateable	{	Point p;				Point n;	udword color;					float u,v;						};
 	//! Transformed vertex
 	struct ICERENDERER_API PRT_Vertex : public Allocateable		{	Point p;	float rhw;												float u,v;						};
-	//! 
+	//!
 	struct ICERENDERER_API PRD_Vertex : public Allocateable		{	Point p;	float rhw;				udword color;													};
-	//! 
+	//!
 	struct ICERENDERER_API PRDT_Vertex : public Allocateable	{	Point p;	float rhw;				udword color;					float u,v;						};
 	//! Standard TL vertex
 	struct ICERENDERER_API PRDST_Vertex : public Allocateable	{	Point p;	float rhw;				udword color;	float specular;	float u,v;						};

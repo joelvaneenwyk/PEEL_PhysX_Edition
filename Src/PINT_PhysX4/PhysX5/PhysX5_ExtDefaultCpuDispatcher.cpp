@@ -26,7 +26,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "PhysX5_ExtDefaultCpuDispatcher.h"
 #include "PhysX5_ExtCpuWorkerThread.h"
@@ -74,7 +74,7 @@ physx5::Ext::DefaultCpuDispatcher::DefaultCpuDispatcher(PxU32 numThreads, PxU32*
 		getAffinityMasks(defaultAffinityMasks, numThreads);
 		affinityMasks = defaultAffinityMasks;
 	}
-	 
+
 	// initialize threads first, then start
 
 	mWorkerThreads = PX_ALLOCATE(CpuWorkerThread, numThreads, "CpuWorkerThread");
@@ -136,7 +136,7 @@ void physx5::Ext::DefaultCpuDispatcher::submitTask(PxBaseTask& task)
 		runTask(task);
 		task.release();
 		return;
-	}	
+	}
 
 	// TODO: Could use TLS to make this more efficient
 	const Ps::Thread::Id currentThread = Ps::Thread::getId();
@@ -206,7 +206,7 @@ void physx5::Ext::DefaultCpuDispatcher::resetWakeSignal()
 {
 	PX_ASSERT(PxDefaultCpuDispatcherWaitForWorkMode::eWAIT_FOR_WORK == mWaitForWorkMode);
 	mWorkReady.reset();
-	
+
 	// The code below is necessary to avoid deadlocks on shut down.
 	// A thread usually loops as follows:
 	// while quit is not signaled

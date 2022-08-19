@@ -26,7 +26,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #ifndef PHYSX5_EXT_DEFAULT_CPU_DISPATCHER_H
 #define PHYSX5_EXT_DEFAULT_CPU_DISPATCHER_H

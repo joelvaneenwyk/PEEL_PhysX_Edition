@@ -59,7 +59,7 @@ namespace Cct
 
 					void								releaseInternal();
 					void								getInternalState(PxControllerState& state)	const;
-					void								getInternalStats(PxControllerStats& stats)	const;					
+					void								getInternalStats(PxControllerStats& stats)	const;
 
 		virtual		PxF32								getHalfHeightInternal()				const	= 0;
 		virtual		bool								getWorldBox(PxExtendedBounds3& box)	const	= 0;
@@ -91,7 +91,7 @@ namespace Cct
 					PxVec3								mDeltaXP;
 					PxVec3								mOverlapRecover;
 					PxScene*							mScene;				// Handy scene owner
-					PxU32								mPreviousSceneTimestamp;					
+					PxU32								mPreviousSceneTimestamp;
 					PxF64								mGlobalTime;
 					PxF64								mPreviousGlobalTime;
 					PxF32								mProxyDensity;		// Density for proxy actor
@@ -99,7 +99,7 @@ namespace Cct
 					PxControllerCollisionFlags			mCollisionFlags;	// Last known collision flags (PxControllerCollisionFlag)
 					bool								mCachedStandingOnMoving;
 					bool								mRegisterDeletionListener;
-		mutable		Ps::Mutex							mWriteLock;			// Lock used for guarding touched pointers and cache data from overwriting 
+		mutable		Ps::Mutex							mWriteLock;			// Lock used for guarding touched pointers and cache data from overwriting
 																			// during onRelease call.
 	protected:
 		// Internal methods

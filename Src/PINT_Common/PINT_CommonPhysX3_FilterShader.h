@@ -12,7 +12,7 @@
 	#define PEEL_GROUP_SIZE	32
 
 	PxFilterFlags PhysX3_SimulationFilterShader(
-		PxFilterObjectAttributes attributes0, PxFilterData filterData0, 
+		PxFilterObjectAttributes attributes0, PxFilterData filterData0,
 		PxFilterObjectAttributes attributes1, PxFilterData filterData1,
 		PxPairFlags& pairFlags, const void* constantBlock, PxU32 constantBlockSize);
 

@@ -165,7 +165,7 @@ class MyQuat
 		// required: Normalize the axis
 
 		const float i_length =  float(1.0) / sqrtf( x*x + y*y + z*z );
-		
+
 		x = x * i_length;
 		y = y * i_length;
 		z = z * i_length;

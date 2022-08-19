@@ -1105,12 +1105,12 @@ static void PrintTimings()
 		y -= TextScale;
 	}
 
-	if(gShowInfos)
+	if (gShowInfos)
 	{
 		FOR_EACH_ENGINE(i)
 		{
 			ASSERT(gEngines[i].mEngine);
-			Pint* Engine = gEngines[i].mEngine;
+			Pint* Engine        = gEngines[i].mEngine;
 			if(!(Engine->GetFlags() & PINT_IS_ACTIVE))
 				continue;
 #ifdef TEST_COLOR
@@ -1119,12 +1119,12 @@ static void PrintTimings()
 			const Point MainColor = Engine->GetMainColor();
 #endif
 			gTexter.setColor(MainColor.x, MainColor.y, MainColor.z, 1.0f);
-			if(gEngines[i].mEnabled)
+			if (gEngines[i].mEnabled)
 			{
-				if(gEngines[i].mSupportsCurrentTest)
+				if (gEngines[i].mSupportsCurrentTest)
 				{
 					const PintTiming& Timing = gEngines[i].mTiming;
-					if(Timing.mCurrentTestResult == INVALID_ID)
+					if (Timing.mCurrentTestResult == INVALID_ID)
 					{
 						gTexter.print(0.0f, y, TextScale, _F("%s: %d (Avg: %d)(Worst: %d)(%d Kb)\n",
 							Engine->GetName(), Timing.mCurrentTime, Timing.GetAvgTime(), Timing.mWorstTime, Timing.mCurrentMemory/1024));
@@ -2183,7 +2183,7 @@ static void RegisterPlugIn(const char* filename)
 static char gBuildFolder[MAX_PATH];
 static char gCurrentFile[MAX_PATH];
 
-static char* gFolders[] = {
+static char*  gFolders[] = {
 	"../../../Media/%s",
 	"../../../Media/#Private/Customers/%s",
 	"../../../Media/#Private/Debug/%s",

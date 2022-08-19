@@ -136,7 +136,7 @@ PhysicsTest* RenderTestSelector(const GLFontRenderer& texter, float x, float tex
 		PhysicsTest* Test = GetTest(RealIndex);
 		if(Test)
 		{
-			static const char* CategoryText[] = 
+			static const char* CategoryText[] =
 			{
 				"(undefined)",
 				"(API)",

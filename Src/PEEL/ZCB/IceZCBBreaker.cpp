@@ -1328,10 +1328,10 @@ bool ZCBBreaker::ImportLights(ImportArray& importer)
  *	\param		cvalues		[out] a place to store the cropping values
  *	\param		tmtx		[out] a place to store the texture matrix
  *	\param		importer	[in] the imported array.
- *	\param		wrap_u		[out] 
- *	\param		mirror_u	[out] 
- *	\param		wrap_v		[out] 
- *	\param		mirror_v	[out] 
+ *	\param		wrap_u		[out]
+ *	\param		mirror_u	[out]
+ *	\param		wrap_v		[out]
+ *	\param		mirror_v	[out]
  *	\return		true if success.
  */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1408,7 +1408,7 @@ bool ZCBBreaker::ImportMaterials(ImportArray& importer)
 			// Get version number back
 			mMATLVersion	= importer.ReadDword();
 			ZCB_CHECKVERSION(mMATLVersion, CHUNK_MATL_VER, "MATL");
-//IceCore::MessageBox(null, _F("MATL version %d", mMATLVersion), "Report", MB_OK);			
+//IceCore::MessageBox(null, _F("MATL version %d", mMATLVersion), "Report", MB_OK);
 			// Log message
 			ZCBLog("Importing %d materials...\n", mNbMaterials);
 
@@ -2629,7 +2629,7 @@ bool ZCBBreaker::ImportConsolidated(ZCBMeshInfo& curmesh, ImportArray& importer)
 				{
 					*p++ = importer.ReadFloat();
 					*p++ = importer.ReadFloat();
-					if(!(curmesh.mFlags & ZCB_W_DISCARDED))	
+					if(!(curmesh.mFlags & ZCB_W_DISCARDED))
 					{
 						*p++ = importer.ReadFloat();
 					}
@@ -2936,7 +2936,7 @@ bool ZCBBreaker::ImportControllers(ImportArray& importer)
 			return false;
 		}
 	}
-	
+
 	return true;
 }
 

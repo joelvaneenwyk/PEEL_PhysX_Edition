@@ -140,7 +140,7 @@ void* MyIceAllocator::malloc(size_t size, MemoryType type)
 	mCurrentNbAllocs++;
 //	return ::malloc(size);
 
-	MemHeader* Header = (MemHeader*)_aligned_malloc(size+sizeof(MemHeader), 16);
+	MemHeader* Header	= (MemHeader*)_aligned_malloc(size+sizeof(MemHeader), 16);
 	Header->mName		= mName;
 	Header->mCheckValue	= 0x12345678;
 	Header->mSize		= size;
@@ -154,7 +154,7 @@ void* MyIceAllocator::mallocDebug(size_t size, const char* filename, udword line
 //	return ::malloc(size);
 //	return _aligned_malloc(size, 16);
 
-	MemHeader* Header = (MemHeader*)_aligned_malloc(size+sizeof(MemHeader), 16);
+	MemHeader* Header	= (MemHeader*)_aligned_malloc(size+sizeof(MemHeader), 16);
 	Header->mName		= mName;
 	Header->mCheckValue	= 0x12345678;
 	Header->mSize		= size;

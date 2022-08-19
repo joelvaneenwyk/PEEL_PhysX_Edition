@@ -9,8 +9,8 @@ using namespace Ext;
 
 PxGearJoint* physx::PxGearJointCreate(PxPhysics& physics, PxRigidActor* actor0, const PxTransform& localFrame0, PxRigidActor* actor1, const PxTransform& localFrame1)
 {
-	PX_CHECK_AND_RETURN_NULL(localFrame0.isSane(), "PxGearJointCreate: local frame 0 is not a valid transform"); 
-	PX_CHECK_AND_RETURN_NULL(localFrame1.isSane(), "PxGearJointCreate: local frame 1 is not a valid transform"); 
+	PX_CHECK_AND_RETURN_NULL(localFrame0.isSane(), "PxGearJointCreate: local frame 0 is not a valid transform");
+	PX_CHECK_AND_RETURN_NULL(localFrame1.isSane(), "PxGearJointCreate: local frame 1 is not a valid transform");
 	PX_CHECK_AND_RETURN_NULL((actor0 && actor0->is<PxRigidBody>()) || (actor1 && actor1->is<PxRigidBody>()), "PxGearJointCreate: at least one actor must be dynamic");
 	PX_CHECK_AND_RETURN_NULL(actor0 != actor1, "PxGearJointCreate: actors must be different");
 
@@ -188,7 +188,7 @@ void GearJoint::resolveReferences(PxDeserializationContext& context)
 GearJoint* GearJoint::createObject(PxU8*& address, PxDeserializationContext& context)
 {
 	GearJoint* obj = PX_PLACEMENT_NEW(address, GearJoint(PxBaseFlag::eIS_RELEASABLE));
-	address += sizeof(GearJoint);	
+	address += sizeof(GearJoint);
 	obj->importExtraData(context);
 	obj->resolveReferences(context);
 	return obj;

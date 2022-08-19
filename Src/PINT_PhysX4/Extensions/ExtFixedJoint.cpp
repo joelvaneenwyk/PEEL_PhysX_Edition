@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "ExtFixedJoint.h"
 #include "ExtConstraintHelper.h"
@@ -36,8 +36,8 @@ using namespace Ext;
 
 PxFixedJoint* physx::PxFixedJointCreate(PxPhysics& physics, PxRigidActor* actor0, const PxTransform& localFrame0, PxRigidActor* actor1, const PxTransform& localFrame1)
 {
-	PX_CHECK_AND_RETURN_NULL(localFrame0.isSane(), "PxFixedJointCreate: local frame 0 is not a valid transform"); 
-	PX_CHECK_AND_RETURN_NULL(localFrame1.isSane(), "PxFixedJointCreate: local frame 1 is not a valid transform"); 
+	PX_CHECK_AND_RETURN_NULL(localFrame0.isSane(), "PxFixedJointCreate: local frame 0 is not a valid transform");
+	PX_CHECK_AND_RETURN_NULL(localFrame1.isSane(), "PxFixedJointCreate: local frame 1 is not a valid transform");
 	PX_CHECK_AND_RETURN_NULL((actor0 && actor0->is<PxRigidBody>()) || (actor1 && actor1->is<PxRigidBody>()), "PxFixedJointCreate: at least one actor must be dynamic");
 	PX_CHECK_AND_RETURN_NULL(actor0 != actor1, "PxFixedJointCreate: actors must be different");
 
@@ -52,26 +52,26 @@ PxFixedJoint* physx::PxFixedJointCreate(PxPhysics& physics, PxRigidActor* actor0
 }
 
 PxReal FixedJoint::getProjectionLinearTolerance() const
-{ 
-	return data().projectionLinearTolerance; 
+{
+	return data().projectionLinearTolerance;
 }
 
 void FixedJoint::setProjectionLinearTolerance(PxReal tolerance)
-{ 
+{
 	PX_CHECK_AND_RETURN(PxIsFinite(tolerance) && tolerance >=0, "PxFixedJoint::setProjectionLinearTolerance: invalid parameter");
-	data().projectionLinearTolerance = tolerance; 
-	markDirty(); 
+	data().projectionLinearTolerance = tolerance;
+	markDirty();
 }
 
 PxReal FixedJoint::getProjectionAngularTolerance() const
-{ 
-	return data().projectionAngularTolerance; 
+{
+	return data().projectionAngularTolerance;
 }
 
-void FixedJoint::setProjectionAngularTolerance(PxReal tolerance)	
-{ 
+void FixedJoint::setProjectionAngularTolerance(PxReal tolerance)
+{
 	PX_CHECK_AND_RETURN(PxIsFinite(tolerance) && tolerance >=0 && tolerance <= PxPi, "PxFixedJoint::setProjectionAngularTolerance: invalid parameter");
-	data().projectionAngularTolerance = tolerance; markDirty(); 
+	data().projectionAngularTolerance = tolerance; markDirty();
 }
 
 bool FixedJoint::attach(PxPhysics &physics, PxRigidActor* actor0, PxRigidActor* actor1)
@@ -99,21 +99,21 @@ void FixedJoint::importExtraData(PxDeserializationContext& context)
 
 void FixedJoint::resolveReferences(PxDeserializationContext& context)
 {
-	setPxConstraint(resolveConstraintPtr(context, getPxConstraint(), getConnector(), sShaders));	
+	setPxConstraint(resolveConstraintPtr(context, getPxConstraint(), getConnector(), sShaders));
 }
 
 FixedJoint* FixedJoint::createObject(PxU8*& address, PxDeserializationContext& context)
 {
 	FixedJoint* obj = new (address) FixedJoint(PxBaseFlag::eIS_RELEASABLE);
-	address += sizeof(FixedJoint);	
+	address += sizeof(FixedJoint);
 	obj->importExtraData(context);
 	obj->resolveReferences(context);
 	return obj;
 }
 
-// global function to share the joint shaders with API capture	
-const PxConstraintShaderTable* Ext::GetFixedJointShaderTable() 
-{ 
+// global function to share the joint shaders with API capture
+const PxConstraintShaderTable* Ext::GetFixedJointShaderTable()
+{
 	return &FixedJoint::getConstraintShaderTable();
 }
 
@@ -129,7 +129,7 @@ static void FixedJointProject(const void* constantBlock, PxTransform& bodyAToWor
 	bool linearTrunc, angularTrunc;
 	projected.p = joint::truncateLinear(cB2cA.p, data.projectionLinearTolerance, linearTrunc);
 	projected.q = joint::truncateAngular(cB2cA.q, PxSin(data.projectionAngularTolerance/2), PxCos(data.projectionAngularTolerance/2), angularTrunc);
-	
+
 	if(linearTrunc || angularTrunc)
 		joint::projectTransforms(bodyAToWorld, bodyBToWorld, cA2w, cB2w, projected, data, projectToA);
 }

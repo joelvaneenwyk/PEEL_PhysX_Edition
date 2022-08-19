@@ -27,7 +27,7 @@
 	}
 
 	CONTACT_API void IntersectLineSegments(const float A1x, const float A1y, const float A1z,
-							   const float A2x, const float A2y, const float A2z, 
+							   const float A2x, const float A2y, const float A2z,
 							   const float B1x, const float B1y, const float B1z,
 							   const float B2x, const float B2y, const float B2z,
 							   bool infinite_lines, float epsilon, float &PointOnSegAx,

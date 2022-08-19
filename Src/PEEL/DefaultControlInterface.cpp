@@ -1101,7 +1101,7 @@ void DefaultControlInterface::DoPopupMenu(const MouseInfo& mouse)
 		const udword NbTools = GetNbTools();
 		const ToolIndex CurrentToolIndex = GetCurrentToolIndex();
 		for(udword i=0;i<NbTools;i++)
-			AddPopupMenuEntry(Menu, GetToolName(i), i, i==CurrentToolIndex, false);	
+			AddPopupMenuEntry(Menu, GetToolName(i), i, i==CurrentToolIndex, false);
 		AddPopupMenuEntry(Menu, "Cancel", NbTools, false, false);
 		const udword Choice = DisplayPopupMenu(GetWindowHandle(), Menu, mMouseX, mMouseY) - 1;
 //		printf("Choice: %d\n", Choice);
@@ -1212,7 +1212,7 @@ void DefaultControlInterface::DoPopupMenu(const MouseInfo& mouse)
 		AddPopupMenuEntry(Menu, "Hide all", HIDE_ALL, false, !Enabled.mHideAll);
 		AddPopupMenuEntry(Menu, "Show all", SHOW_ALL, false, !Enabled.mShowAll);
 		AddPopupMenuEntry(Menu, "Select all   (Ctrl+A)", SELECTION_ALL, false, !Enabled.mSelectAll);
-		//AddPopupMenuEntry(Menu, "Show selection dialog", SELECTION_DIALOG, false, !Enabled.mShowSelectionDialog);		
+		//AddPopupMenuEntry(Menu, "Show selection dialog", SELECTION_DIALOG, false, !Enabled.mShowSelectionDialog);
 		IceCore::AppendMenu(Menu, MF_SEPARATOR, 0, 0);
 		AddPopupMenuEntry(Menu, "Hide selected (H)", SELECTION_HIDE, false, !Enabled.mHideSelection);
 		AddPopupMenuEntry(Menu, "Show selected (J)", SELECTION_SHOW, false, !Enabled.mShowSelection);
@@ -1296,7 +1296,7 @@ void DefaultControlInterface::DoPopupMenu(const MouseInfo& mouse)
 		else if(Choice==SELECT_HIDDEN)
 		{
 			SelectHidden();
-		}		
+		}
 		else if(Choice==HIDE_ALL)
 		{
 			HideAll();
@@ -1364,7 +1364,7 @@ void DefaultControlInterface::DoPopupMenu(const MouseInfo& mouse)
 			}
 			else
 				IceCore::MessageBoxA(0, "Cannot merge objects from different engines.", "Error", MB_OK);
-		}		
+		}
 		else if(Choice==SELECTION_MERGE_COMPOUND2)
 		{
 			udword Index;
@@ -1377,7 +1377,7 @@ void DefaultControlInterface::DoPopupMenu(const MouseInfo& mouse)
 			}
 			else
 				IceCore::MessageBoxA(0, "Cannot merge objects from different engines.", "Error", MB_OK);
-		}		
+		}
 		else if(Choice==SELECTION_MERGE_TO_CONVEX)
 		{
 			udword Index;

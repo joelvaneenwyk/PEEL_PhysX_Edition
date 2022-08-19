@@ -265,7 +265,7 @@ bool VirtualFile2::ReadFromZip(const char* filename)
 			if(Stricmp(filename, p->files[i].name)==0)
 			{
 				FILE* fp = fopen(p->name, "rb");
-				if(fp) 
+				if(fp)
 				{
 					fseek(fp, p->files[i].offset, SEEK_SET);
 
@@ -292,7 +292,7 @@ VirtualFile2::VirtualFile2(const VirtualFileHandle& handle) : mSize(0), mBuffer(
 		Pack* p = reinterpret_cast<Pack*>(handle.mHandle.mArchive);
 		FILE* fp = fopen(p->name, "rb");
 		ASSERT(fp);
-		if(fp) 
+		if(fp)
 		{
 			PackedFile& PF = p->files[handle.mHandle.mIndex];
 			fseek(fp, PF.offset, SEEK_SET);

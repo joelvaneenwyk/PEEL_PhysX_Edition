@@ -128,7 +128,7 @@
 	//		}
 	//		ICE_CATCH	// Here no error is found
 	//
-	#define ICE_RESOLVED		if(GetLastIceError())	((IceError*)GetLastIceError())->mErrorTimeStamp=__RDTSEC;	//!< 
+	#define ICE_RESOLVED		if(GetLastIceError())	((IceError*)GetLastIceError())->mErrorTimeStamp=__RDTSEC;	//!<
 
 	// Catch all errors and display a message box
 	#define ICE_CATCH_AND_DUMP																		\

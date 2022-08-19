@@ -128,9 +128,9 @@ GLShader::Data GLShader::CompileProgram(const char* vsource, const char* fsource
 		data.mGeometryShader = ::CompileShader(GL_GEOMETRY_SHADER, data.mProgram, 1, &gsource);
 
 		// hack, force billboard gs mode
-		glProgramParameteriEXT ( data.mProgram, GL_GEOMETRY_VERTICES_OUT_EXT, 4 ) ; 
-		glProgramParameteriEXT ( data.mProgram, GL_GEOMETRY_INPUT_TYPE_EXT, GL_POINTS ) ; 
-		glProgramParameteriEXT ( data.mProgram, GL_GEOMETRY_OUTPUT_TYPE_EXT, GL_TRIANGLE_STRIP ) ; 
+		glProgramParameteriEXT ( data.mProgram, GL_GEOMETRY_VERTICES_OUT_EXT, 4 ) ;
+		glProgramParameteriEXT ( data.mProgram, GL_GEOMETRY_INPUT_TYPE_EXT, GL_POINTS ) ;
+		glProgramParameteriEXT ( data.mProgram, GL_GEOMETRY_OUTPUT_TYPE_EXT, GL_TRIANGLE_STRIP ) ;
 	}
 
 	glLinkProgram(data.mProgram);

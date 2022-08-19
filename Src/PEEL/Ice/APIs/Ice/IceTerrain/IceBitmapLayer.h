@@ -45,7 +45,7 @@
 					ubyte*				BitmapHeight;		// Initialize from a byte array...
 //					Picture*			PictureHeight;		// ...or from a picture
 	};
-	
+
 	class BitmapLayer : public HeightLayer
 	{
 		public:

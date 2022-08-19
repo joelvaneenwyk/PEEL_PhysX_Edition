@@ -371,8 +371,8 @@ START_SQ_TEST(SweepAccuracy, CATEGORY_SWEEP, gDesc_SweepAccuracy)
 		if(!caps.mSupportCapsuleSweeps)
 			return false;
 
-			const float Radius = 0.5f;
-			const float HalfHeight_ = 1.0f;
+		const float Radius = 0.5f;
+		const float HalfHeight_ = 1.0f;
 	/*
 			PINT_CAPSULE_CREATE ShapeDesc(Radius, HalfHeight_);
 			ShapeDesc.mRenderer		= CreateCapsuleRenderer(Radius, HalfHeight_*2.0f);
@@ -382,15 +382,15 @@ START_SQ_TEST(SweepAccuracy, CATEGORY_SWEEP, gDesc_SweepAccuracy)
 			PINT_SPHERE_CREATE ShapeDesc(Radius);
 			ShapeDesc.mRenderer		= CreateSphereRenderer(Radius);
 	*/
-			PINT_BOX_CREATE ShapeDesc(Radius, Radius, Radius);
-			ShapeDesc.mRenderer		= CreateBoxRenderer(ShapeDesc.mExtents);
+		PINT_BOX_CREATE ShapeDesc(Radius, Radius, Radius);
+		ShapeDesc.mRenderer = CreateBoxRenderer(ShapeDesc.mExtents);
 
-			PINT_OBJECT_CREATE ObjectDesc(&ShapeDesc);
-			ObjectDesc.mMass			= 0.0f;
-			ObjectDesc.mPosition.Zero();
-			ObjectDesc.mRotation = Quat(1.1f, 2.2f, 3.3f, 4.4f);
-			ObjectDesc.mRotation.Normalize();
-			CreatePintObject(pint, ObjectDesc);
+		PINT_OBJECT_CREATE ObjectDesc(&ShapeDesc);
+		ObjectDesc.mMass = 0.0f;
+		ObjectDesc.mPosition.Zero();
+		ObjectDesc.mRotation = Quat(1.1f, 2.2f, 3.3f, 4.4f);
+		ObjectDesc.mRotation.Normalize();
+		CreatePintObject(pint, ObjectDesc);
 
 		return true;
 	}

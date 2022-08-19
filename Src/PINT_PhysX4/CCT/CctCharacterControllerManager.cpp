@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "CctCharacterControllerManager.h"
 #include "CctBoxController.h"
@@ -59,7 +59,7 @@ CharacterControllerManager::CharacterControllerManager(PxScene& scene, bool lock
 	mPreventVerticalSlidingAgainstCeiling	(false),
 	mLockingEnabled							(lockingEnabled)
 {
-	// PT: register ourself as a deletion listener, to be called by the SDK whenever an object is deleted	
+	// PT: register ourself as a deletion listener, to be called by the SDK whenever an object is deleted
 	PxPhysics& physics = scene.getPhysics();
 	physics.registerDeletionListener(*this, PxDeletionEventFlag::eUSER_RELEASE);
 }
@@ -69,7 +69,7 @@ CharacterControllerManager::~CharacterControllerManager()
 	PX_DELETE_AND_RESET(mRenderBuffer);
 }
 
-void CharacterControllerManager::release() 
+void CharacterControllerManager::release()
 {
 	// PT: TODO: use non virtual calls & move to dtor
 	while(getNbControllers()!= 0)
@@ -94,7 +94,7 @@ PxScene& CharacterControllerManager::getScene() const
 PxRenderBuffer& CharacterControllerManager::getRenderBuffer()
 {
 	if(!mRenderBuffer)
-		mRenderBuffer = PX_NEW(Cm::RenderBuffer); 
+		mRenderBuffer = PX_NEW(Cm::RenderBuffer);
 
 	return *mRenderBuffer;
 }
@@ -114,12 +114,12 @@ PxU32 CharacterControllerManager::getNbControllers() const
 	return mControllers.size();
 }
 
-Controller** CharacterControllerManager::getControllers() 
+Controller** CharacterControllerManager::getControllers()
 {
 	return mControllers.begin();
 }
 
-PxController* CharacterControllerManager::getController(PxU32 index) 
+PxController* CharacterControllerManager::getController(PxU32 index)
 {
 	if(index>=mControllers.size())
 	{
@@ -158,7 +158,7 @@ PxController* CharacterControllerManager::createController(const PxControllerDes
 
 	if(newController)
 	{
-		mControllers.pushBack(newController);		
+		mControllers.pushBack(newController);
 		newController->setCctManager(this);
 
 		PxShape* shape = NULL;
@@ -188,16 +188,16 @@ void CharacterControllerManager::releaseController(PxController& controller)
 	PX_UNUSED(nb);
 	mCCTShapes.erase(shape);
 
-	if(controller.getType() == PxControllerShapeType::eCAPSULE) 
+	if(controller.getType() == PxControllerShapeType::eCAPSULE)
 	{
 		CapsuleController* cc = static_cast<CapsuleController*>(&controller);
 		PX_DELETE(cc);
-	} 
-	else if(controller.getType() == PxControllerShapeType::eBOX) 
+	}
+	else if(controller.getType() == PxControllerShapeType::eBOX)
 	{
 		BoxController* bc = static_cast<BoxController*>(&controller);
 		PX_DELETE(bc);
-	} 
+	}
 	else PX_ASSERT(0);
 }
 
@@ -241,11 +241,11 @@ void CharacterControllerManager::onRelease(const PxBase* observed, void* , PxDel
 }
 
 void CharacterControllerManager::registerObservedObject(const PxBase* obj)
-{	
+{
 	if(mLockingEnabled)
 		mWriteLock.lock();
 
-	mObservedRefCountMap[obj].refCount++;	
+	mObservedRefCountMap[obj].refCount++;
 
 	if(mLockingEnabled)
 		mWriteLock.unlock();
@@ -325,7 +325,7 @@ void CharacterControllerManager::onObstacleAdded(ObstacleHandle index, const PxO
 }
 
 // PT: TODO: move to array class?
-template <class T> 
+template <class T>
 void resetOrClear(T& a)
 {
 	const PxU32 c = a.capacity();

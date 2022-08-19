@@ -141,7 +141,7 @@
 																//!< where support for the full TADDRESS_MIRRORONCE texture-addressing mode is not necessary, but the data is
 																//!< symmetric around the one axis.
 		TADDRESS_FORCE_DWORD					= 0x7FFFFFFF
-	}; 
+	};
 
 	//! Texture min filters
 	enum TEXTUREMINFILTER
@@ -201,9 +201,9 @@
 	{
 		SHADE_FLAT								= 1,			//!< Flat shading mode. The color and specular component of the first vertex in the triangle are used to determine
 																//!< the color and specular component of the face. These colors remain constant across the triangle; that is, they
-																//!< are not interpolated. 
+																//!< are not interpolated.
 		SHADE_GOURAUD							= 2,			//!< Gouraud shading mode. The color and specular components of the face are determined by a linear interpolation
-																//!< between all three of the triangle's vertices. 
+																//!< between all three of the triangle's vertices.
 		SHADE_PHONG								= 3,			//!< Not currently supported.
 
 		SHADE_FORCE_DWORD						= 0x7FFFFFFF
@@ -295,7 +295,7 @@
 		STAGEOP_DISABLE							= 1,			//!< Disables output from this texture stage and all stages with a higher index. To disable texture mapping,
 																//!< set this as the color operation for the first texture stage (stage 0). Alpha operations cannot be disabled when
 																//!< color operations are enabled. Setting the alpha operation to D3DTOP_DISABLE when color blending is enabled
-																//!< causes undefined behavior. 
+																//!< causes undefined behavior.
 		STAGEOP_SELECTARG1						= 2,			//!< s = Arg1
 		STAGEOP_SELECTARG2						= 3,			//!< s = Arg2
 		// Modulation members
@@ -336,7 +336,7 @@
 	{
 		// Argument flags
 		STAGEARG_DIFFUSE						= 0,			//!< The texture argument is the diffuse color interpolated from vertex components during Gouraud shading.
-																//!< If the vertex does not contain a diffuse color, the default color is 0xFFFFFFFF. 
+																//!< If the vertex does not contain a diffuse color, the default color is 0xFFFFFFFF.
 		STAGEARG_CURRENT						= 1,			//!< The texture argument is the result of the previous blending stage. In the first texture stage (stage 0),
 																//!< this argument is equivalent to STAGEARG_DIFFUSE. If the previous blending stage uses a bump-map texture
 																//!< (the STAGEOP_BUMPENVMAP operation), the system chooses the texture from the stage before the bump-map texture.
@@ -347,10 +347,10 @@
 																//!< If the vertex does not contain a diffuse color, the default color is 0xFFFFFFFF.
 		STAGEARG_TEMP							= 5,			//!< The texture argument is a temporary register color for read or write. D3DTA_TEMP is supported if the
 																//!< D3DPMISCCAPS_TSSARGTEMP device capability is present. The default value for the register is (0.0, 0.0, 0.0, 0.0).
-																//!< Permissions are read/write. 
+																//!< Permissions are read/write.
 		STAGEARG_SELECTMASK						= 0xf,			//!< Mask value for all arguments; not used when setting texture arguments.
 		// Modifier flags
-		STAGEARG_COMPLEMENT						= 0x10,			//!< Invert the argument so that, if the result of the argument were referred to by the variable x, the value would be 1.0 - x. 
+		STAGEARG_COMPLEMENT						= 0x10,			//!< Invert the argument so that, if the result of the argument were referred to by the variable x, the value would be 1.0 - x.
 		STAGEARG_ALPHAREPLICATE					= 0x20,			//!< Replicate the alpha information to all color channels before the operation completes.
 
 		STAGEARG_DIFFUSE_COMPLEMENT				= STAGEARG_DIFFUSE|STAGEARG_COMPLEMENT,

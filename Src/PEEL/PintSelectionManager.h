@@ -16,7 +16,7 @@ namespace ps = physx::shdfnd;
 	class Pint;
 
 	struct SelectedObject
-	{	
+	{
 		Pint*				mEngine;
 		PintActorHandle		mActor;
 		udword				mEngineIndex;

@@ -432,7 +432,7 @@ class D6Joint_PrismaticDrive : public TestBase
 		return y;
 	}
 
-	virtual	void		OnObjectReleased(Pint& pint, PintActorHandle removed_object)	
+	virtual	void		OnObjectReleased(Pint& pint, PintActorHandle removed_object)
 	{
 		MyData* UserData = reinterpret_cast<MyData*>(pint.mUserData);
 		if(UserData && UserData->mDynamicObject==removed_object)

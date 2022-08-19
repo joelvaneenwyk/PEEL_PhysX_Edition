@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #ifndef NP_JOINTCONSTRAINT_H
 #define NP_JOINTCONSTRAINT_H
@@ -60,25 +60,25 @@ PxConstraint* resolveConstraintPtr(PxDeserializationContext& v, PxConstraint* ol
 namespace Ext
 {
 	template <class Base, class ValueStruct>
-	class Joint : public Base, 
-				  public PxConstraintConnector, 
+	class Joint : public Base,
+				  public PxConstraintConnector,
 				  public shdfnd::UserAllocated
 	{
-  
+
     public:
 // PX_SERIALIZATION
 						Joint(PxBaseFlags baseFlags) : Base(baseFlags) {}
 
 		virtual void	preExportDataReset(){}
 		virtual	void	requiresObjects(PxProcessPxBaseCallback& c)
-		{			
+		{
 			c.process(*mPxConstraint);
-			
+
 			{
 				PxRigidActor* a0 = NULL;
 				PxRigidActor* a1 = NULL;
 				mPxConstraint->getActors(a0,a1);
-				
+
 				if (a0)
 				{
 					c.process(*a0);
@@ -88,9 +88,9 @@ namespace Ext
 					c.process(*a1);
 				}
 			}
-		}	
+		}
 //~PX_SERIALIZATION
-		
+
 #if PX_SUPPORT_PVD
 		// PxConstraintConnector
 		virtual bool updatePvdProperties(physx::pvdsdk::PvdDataStream& pvdConnection, const PxConstraint* c, PxPvdUpdateType::Enum updateType) const
@@ -126,7 +126,7 @@ namespace Ext
 
 		// PxJoint
 		virtual void setActors(PxRigidActor* actor0, PxRigidActor* actor1)
-		{	
+		{
 			//TODO SDK-DEV
 			//You can get the debugger stream from the NpScene
 			//Ext::Pvd::setActors( stream, this, mPxConstraint, actor0, actor1 );
@@ -144,7 +144,7 @@ namespace Ext
 					*conn,
 					*this,
 					*mPxConstraint,
-					actor0, 
+					actor0,
 					actor1
 					);
 			}
@@ -156,8 +156,8 @@ namespace Ext
 		}
 
 		// PxJoint
-		virtual	void getActors(PxRigidActor*& actor0, PxRigidActor*& actor1)	const		
-		{	
+		virtual	void getActors(PxRigidActor*& actor0, PxRigidActor*& actor1)	const
+		{
 			if(mPxConstraint)
 				mPxConstraint->getActors(actor0, actor1);
 			else
@@ -168,7 +168,7 @@ namespace Ext
 		}
 
 		// this is the local pose relative to the actor, and we store internally the local
-		// pose relative to the body 
+		// pose relative to the body
 
 		// PxJoint
 		virtual void setLocalPose(PxJointActorIndex::Enum actor, const PxTransform& pose)
@@ -176,13 +176,13 @@ namespace Ext
 			PX_CHECK_AND_RETURN(pose.isSane(), "PxJoint::setLocalPose: transform is invalid");
 			PxTransform p = pose.getNormalized();
 			mLocalPose[actor] = p;
-			mData->c2b[actor] = getCom(actor).transformInv(p); 
+			mData->c2b[actor] = getCom(actor).transformInv(p);
 			mPxConstraint->markDirty();
 		}
 
 		// PxJoint
 		virtual	PxTransform	getLocalPose(PxJointActorIndex::Enum actor) const
-		{	
+		{
 			return mLocalPose[actor];
 		}
 
@@ -200,7 +200,7 @@ namespace Ext
 				linear = angular = PxVec3(0.0f);
 				return;
 			}
-			
+
 			linear = static_cast<const PxRigidBody*>(actor)->getLinearVelocity();
 			angular = static_cast<const PxRigidBody*>(actor)->getAngularVelocity();
 		}
@@ -226,7 +226,7 @@ namespace Ext
 			getActorVelocity(actor0, l0, a0);
 			getActorVelocity(actor1, l1, a1);
 
-			PxVec3 p0 = t0.q.rotate(mLocalPose[0].p), 
+			PxVec3 p0 = t0.q.rotate(mLocalPose[0].p),
 				   p1 = t1.q.rotate(mLocalPose[1].p);
 			return t0.transformInv(l1 - a1.cross(p1) - l0 + a0.cross(p0));
 		}
@@ -365,7 +365,7 @@ namespace Ext
 		// PxConstraintConnector
 		virtual	void onComShift(PxU32 actor)
 		{
-			mData->c2b[actor] = getCom(actor).transformInv(mLocalPose[actor]); 
+			mData->c2b[actor] = getCom(actor).transformInv(mLocalPose[actor]);
 			markDirty();
 		}
 
@@ -418,7 +418,7 @@ namespace Ext
 		// PxConstraintConnector
 		virtual const void* getConstantBlock()	const
 		{
-			return mData; 
+			return mData;
 		}
 
 	private:
@@ -474,7 +474,7 @@ namespace Ext
 		}
 
 		PX_FORCE_INLINE	void markDirty()
-		{ 
+		{
 			mPxConstraint->markDirty();
 		}
 
@@ -503,8 +503,8 @@ namespace Ext
 				{
 					PxRigidDynamic* rd = static_cast<PxRigidDynamic*>(a[i]);
 					if(!(rd->getRigidBodyFlags() & PxRigidBodyFlag::eKINEMATIC))
-					{											
-						const PxScene* scene = rd->getScene();						
+					{
+						const PxScene* scene = rd->getScene();
 						const PxReal wakeCounterResetValue = scene->getWakeCounterResetValue();
 
 						PxReal wakeCounter = rd->getWakeCounter();

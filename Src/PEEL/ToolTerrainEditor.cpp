@@ -275,7 +275,7 @@ namespace
 		HeightLayerType	mType;
 	};
 
-	static LayerData gLayers[] = 
+	static LayerData gLayers[] =
 	{
 		{ "Multiply-Add", null, HEIGHT_LAYER_TYPE_MADD },
 		{ "Power", null, HEIGHT_LAYER_TYPE_POWER },
@@ -517,7 +517,7 @@ void ToolTerrainEditor::RenderCallback(PintRender& render, Pint& pint, udword pi
 		else
 		{
 			IndexedTriangle T;
-			if(ShapeAPI->GetIndexedTriangle(T, TerrainShape, TouchedTriangleIndices[i]))						
+			if(ShapeAPI->GetIndexedTriangle(T, TerrainShape, TouchedTriangleIndices[i]))
 			{
 				const Point p0 = SI.mVerts[T.mRef[0]] * M;
 				const Point p1 = SI.mVerts[T.mRef[1]] * M;

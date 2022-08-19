@@ -126,7 +126,7 @@ static IceWindow* CreateUI_Generic(IceWidget* parent, PintGUIHelper& helper, Wid
 	{
 		IceCheckBox* CB = helper.CreateCheckBox(TabWindow, 0, 4, y, CheckBoxWidth, 20, "Enable TGS", &owner, create.mTGS==UI_ELEM_ENABLED_CHECKED, null, null);
 
-		gCheckBox_Generic0 = 
+		gCheckBox_Generic0 =
 		y += YStep;
 	}
 #endif
@@ -821,7 +821,7 @@ static bool IsJointTest(const char* test_name)
 	||	strcmp(test_name, "ConfigurableLimitedHingeJoint")==0
 	||	strcmp(test_name, "LimitedPrismaticJoint")==0
 	||	strcmp(test_name, "LimitedPrismaticJoint2")==0
-	||	strcmp(test_name, "PrismaticSpring")==0	
+	||	strcmp(test_name, "PrismaticSpring")==0
 	||	strcmp(test_name, "D6Joint_PointInPlane")==0
 	||	strcmp(test_name, "D6Joint_PointInBox")==0
 	)
@@ -838,7 +838,7 @@ IceWindow* PhysXPlugIn::InitTestGUI(const char* test_name, IceWidget* parent, Pi
 		return CreateUI_CCD(parent, helper, owner, test_name);
 
 	if(	strcmp(test_name, "ArticulationDriveVsStaticObstacle")==0
-	||	strcmp(test_name, "HingeJointMotorVsObstacle")==0)		
+	||	strcmp(test_name, "HingeJointMotorVsObstacle")==0)
 		return CreateUI_ArticulationDriveVsStaticObstacle(parent, helper, owner);
 
 	if(	strcmp(test_name, "CompoundTowerTweaked")==0)
@@ -1080,7 +1080,7 @@ void PhysXPlugIn::ApplyTestUIParams(const char* test_name)
 	}
 
 	if(	strcmp(test_name, "ArticulationDriveVsStaticObstacle")==0
-	||	strcmp(test_name, "HingeJointMotorVsObstacle")==0)		
+	||	strcmp(test_name, "HingeJointMotorVsObstacle")==0)
 	{
 		float ContactOffset;
 		Common_GetFromEditBox(ContactOffset, gEditBox_Generic0, 0.0f, MAX_FLOAT);

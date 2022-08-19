@@ -127,6 +127,6 @@
 				ListElem*		mHead;		//!< Head of list
 				ListElem*		mTail;		//!< Tail of list
 				udword			mNb;		//!< Number of elements in the list
-	}; 
+	};
 
 #endif // ICELINKEDLIST_H

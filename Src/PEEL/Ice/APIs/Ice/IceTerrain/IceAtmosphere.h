@@ -15,7 +15,7 @@
 	class ICETERRAIN_API Atmosphere
 	{
 		public:
-								Atmosphere(); 
+								Atmosphere();
 								~Atmosphere()	{}
 
 				void			SetParam(AtmosphereParams param, float fValue);
@@ -25,7 +25,7 @@
 		inline_ const Point&	GetBetaDashRayleigh()			const	{ return m_vBetaDashRay;	}
 		inline_ const Point&	GetBetaMie()					const	{ return m_vBetaMie;		}
 		inline_ const Point&	GetBetaDashMie()				const	{ return m_vBetaDashMie;	}
-				
+
 				void			Interpolate(Atmosphere *one, Atmosphere *two, float f);
 
 				Atmosphere		operator + (const Atmosphere&)	const;
@@ -44,7 +44,7 @@
 				float		m_fHGg;		// g value in Henyey Greenstein approximation function.
 
 		// Ideally, the following multipliers should all be 1.0, but provided here for study.
-		// The final color of an object in atmosphere is sum of inscattering term and extinction term. 
+		// The final color of an object in atmosphere is sum of inscattering term and extinction term.
 				float		m_fInscatteringMultiplier;	// Multiply inscattering term with this factor.
 				float		m_fExtinctionMultiplier;	// Multiply extinction term with this factor.
 				float		m_fBetaRayMultiplier;		// Multiply Rayleigh scattering coefficient with this factor

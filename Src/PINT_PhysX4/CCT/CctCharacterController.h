@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #ifndef CCT_CHARACTER_CONTROLLER
 #define CCT_CHARACTER_CONTROLLER
@@ -55,7 +55,7 @@ namespace Cm
 }
 
 namespace Cct
-{	    
+{
 	struct CCTParams
 	{
 											CCTParams();
@@ -279,7 +279,7 @@ namespace Cct
 		STF_NORMALIZE_RESPONSE		= (1<<6),
 		STF_FIRST_UPDATE			= (1<<7),
 		STF_IS_MOVING_UP			= (1<<8)
-	};	
+	};
 
 	enum SweepPass
 	{
@@ -288,7 +288,7 @@ namespace Cct
 		SWEEP_PASS_DOWN,
 		SWEEP_PASS_SENSOR
 	};
-	
+
 	class Controller;
 
 	template<class T>
@@ -331,7 +331,7 @@ namespace Cct
 	};
 
 	class SweepTest
-	{		
+	{
 	public:
 										SweepTest(bool registerDeletionListener);
 										~SweepTest();
@@ -420,16 +420,16 @@ namespace Cct
 											mNbIterations		= 0;
 										}
 
-					void				setCctManager(CharacterControllerManager* cm) 
-					{ 
+					void				setCctManager(CharacterControllerManager* cm)
+					{
 						mCctManager = cm;
-						mTouchedActor.setCctManager(cm); 
-						mTouchedShape.setCctManager(cm); 
+						mTouchedActor.setCctManager(cm);
+						mTouchedShape.setCctManager(cm);
 					}
 
 	private:
 				void					updateTouchedGeoms(	const InternalCBData_FindTouchedGeom* userData, const UserObstacles& userObstacles,
-															const PxExtendedBounds3& worldBox, const PxControllerFilters& filters, const PxVec3& sideVector);				
+															const PxExtendedBounds3& worldBox, const PxControllerFilters& filters, const PxVec3& sideVector);
 
 				CharacterControllerManager*	mCctManager;
 				SweepTest(const SweepTest&);

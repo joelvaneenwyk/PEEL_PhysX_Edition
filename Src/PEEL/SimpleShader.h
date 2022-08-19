@@ -30,7 +30,7 @@
 		// Shader
 		virtual	void	Activate(const ShaderProps& mat)	override;
 		//~Shader
-		
+
 		private:
 				float	mCamModelView[16];
 				float	mCamProj[16];

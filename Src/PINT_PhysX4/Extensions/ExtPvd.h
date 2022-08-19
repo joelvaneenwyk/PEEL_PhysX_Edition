@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 
 #ifndef EXT_PVD_H
@@ -77,7 +77,7 @@ namespace pvdsdk {
 	DEFINE_NATIVE_PVD_PHYSX3_TYPE_MAP(PxSphericalJointGeneratedValues)
 	DEFINE_NATIVE_PVD_PHYSX3_TYPE_MAP(PxD6Joint)
 	DEFINE_NATIVE_PVD_PHYSX3_TYPE_MAP(PxD6JointGeneratedValues)
-#undef DEFINE_NATIVE_PVD_PHYSX3_TYPE_MAP	
+#undef DEFINE_NATIVE_PVD_PHYSX3_TYPE_MAP
 } //pvdsdk
 } // physx
 
@@ -85,15 +85,15 @@ namespace physx
 {
 namespace Ext
 {
-	using namespace physx::pvdsdk;	
-	
+	using namespace physx::pvdsdk;
+
 	class Pvd: public physx::shdfnd::UserAllocated
 	{
 		Pvd& operator=(const Pvd&);
 	public:
 		class PvdNameSpace
 		{
-		
+
 		public:
 			PvdNameSpace(PvdDataStream& conn, const char* name);
 			~PvdNameSpace();
@@ -102,12 +102,12 @@ namespace Ext
 			PvdDataStream& mConnection;
 		};
 
-		static void setActors( PvdDataStream& PvdDataStream, 
+		static void setActors( PvdDataStream& PvdDataStream,
 			const PxJoint& inJoint, const PxConstraint& c, const PxActor* newActor0, const PxActor* newActor1 );
-		
+
 		template<typename TObjType>
 		static void createInstance( PvdDataStream& inStream, const PxConstraint& c, const TObjType& inSource )
-		{				
+		{
 			inStream.createInstance( &inSource );
 			inStream.pushBackObjectRef( c.getScene(), "Joints", &inSource );
 
@@ -122,13 +122,13 @@ namespace Ext
 				PxRigidActor* actor0, *actor1;
 				ConstraintUpdateCmd(const PxConstraint& constraint, const PxJoint& joint):PvdDataStream::PvdCommand(), mConstraint(constraint), mJoint(joint)
 				{
-					mConstraint.getActors( actor0, actor1 ); 
+					mConstraint.getActors( actor0, actor1 );
 				}
 
 							//Assigned is needed for copying
 				ConstraintUpdateCmd(const ConstraintUpdateCmd& cmd)
 					:PvdDataStream::PvdCommand(), mConstraint(cmd.mConstraint), mJoint(cmd.mJoint)
-				{					
+				{
 				}
 
 				virtual bool canRun(PvdInstanceDataStream &inStream_ )
@@ -158,7 +158,7 @@ namespace Ext
 
 			ConstraintUpdateCmd* cmd = PX_PLACEMENT_NEW(inStream.allocateMemForCmd(sizeof(ConstraintUpdateCmd)),
 				ConstraintUpdateCmd)(c, inSource);
-			
+
 			if(cmd->canRun( inStream ))
 				cmd->run( inStream );
 			else
@@ -171,14 +171,14 @@ namespace Ext
 			structValue theValueStruct( &joint );
 			pvdConnection.setPropertyMessage( &joint, theValueStruct );
 		}
-		
+
 		template<typename jointtype>
-		static void simUpdate(PvdDataStream& /*pvdConnection*/, const jointtype& /*joint*/) {}		
-		
+		static void simUpdate(PvdDataStream& /*pvdConnection*/, const jointtype& /*joint*/) {}
+
 		template<typename jointtype>
 		static void createPvdInstance(PvdDataStream& pvdConnection, const PxConstraint& c, const jointtype& joint)
 		{
-			createInstance<jointtype>( pvdConnection, c, joint );		
+			createInstance<jointtype>( pvdConnection, c, joint );
 		}
 
 		static void releasePvdInstance(PvdDataStream& pvdConnection, const PxConstraint& c, const PxJoint& joint);

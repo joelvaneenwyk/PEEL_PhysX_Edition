@@ -121,7 +121,7 @@ class BoxStackConfigurable : public TestBase//, public PintContactNotifyCallback
 			mComboBox_Preset->Add("LargeBoxStack30 - PEEL 1.1 test");
 			mComboBox_Preset->Add("LargeBoxStack50 - PEEL 1.1 test");
 			mComboBox_Preset->Add("MediumBoxStacks20 - PEEL 1.1 test");
-			mComboBox_Preset->Add("ManySmallBoxStacks10 - PEEL 1.1 test");			
+			mComboBox_Preset->Add("ManySmallBoxStacks10 - PEEL 1.1 test");
 			mComboBox_Preset->Add("User-defined");
 			mComboBox_Preset->Select(2);
 			mComboBox_Preset->SetVisible(true);
@@ -387,9 +387,9 @@ class BoxContainerConfigurable : public TestBase
 			else if(SelectedIndex==2)
 				return "BoxContainerAndCapsules";
 			else if(SelectedIndex==3)
-				return "PotPourri_Box";			
+				return "PotPourri_Box";
 			else if(SelectedIndex==4)
-				return "PotPourri_Box_WithConvexes";			
+				return "PotPourri_Box_WithConvexes";
 		}
 		return null;
 	}
@@ -2884,7 +2884,7 @@ START_TEST(AddDynamicConvexes, CATEGORY_PERFORMANCE, gDesc_AddDynamicConvexes)
 		const udword NbVerts = 8;
 		Point Verts[NbVerts];
 		for(udword i=0;i<NbVerts;i++)
-		{			
+		{
 			Verts[i].x = Rnd.RandomFloat();
 			Verts[i].y = Rnd.RandomFloat();
 			Verts[i].z = Rnd.RandomFloat();
@@ -2978,17 +2978,17 @@ END_TEST(AddDynamicConvexes)
 	bool invert = false;
 	bool addExtraDistPoints = false;
 	bool addNeighboursDistPoints = false;
-	bool addFacesPoints = false;       
+	bool addFacesPoints = false;
 
 	myHACD.SetNClusters(nClusters);                     // minimum number of clusters
 	myHACD.SetNVerticesPerCH(100);                      // max of 100 vertices per convex-hull
 	myHACD.SetConcavity(concavity);                     // maximum concavity
-	myHACD.SetAddExtraDistPoints(addExtraDistPoints);   
-	myHACD.SetAddNeighboursDistPoints(addNeighboursDistPoints);   
-	myHACD.SetAddFacesPoints(addFacesPoints); 
+	myHACD.SetAddExtraDistPoints(addExtraDistPoints);
+	myHACD.SetAddNeighboursDistPoints(addNeighboursDistPoints);
+	myHACD.SetAddFacesPoints(addFacesPoints);
 
 	myHACD.Compute();
-	nClusters = myHACD.GetNClusters();	
+	nClusters = myHACD.GetNClusters();
 
 //	myHACD.Save("output.wrl", false);
 
@@ -3002,7 +3002,7 @@ END_TEST(AddDynamicConvexes)
 
 			float* vertices = new float[nPoints*3];
 //			udword* triangles = new unsigned int[nTriangles*3];
-			
+
 			HACD::Vec3<HACD::Real> * pointsCH = new HACD::Vec3<HACD::Real>[nPoints];
 			HACD::Vec3<long> * trianglesCH = new HACD::Vec3<long>[nTriangles];
 			myHACD.GetCH(c, pointsCH, trianglesCH);

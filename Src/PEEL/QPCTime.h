@@ -30,7 +30,7 @@
 		typedef double Second;
 		static const unsigned __int64 sNumTensOfNanoSecondsInASecond = 100000000;
 		//This is supposedly guaranteed to not change after system boot
-		//regardless of processors, speedstep, etc.		
+		//regardless of processors, speedstep, etc.
 		static const CounterFrequencyToTensOfNanos& getBootCounterFrequency();
 
 		static CounterFrequencyToTensOfNanos getCounterFrequency();

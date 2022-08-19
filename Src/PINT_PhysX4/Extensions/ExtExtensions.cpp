@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "foundation/PxIO.h"
 #include "common/PxMetaData.h"
@@ -60,7 +60,7 @@ struct JointConnectionHandler : public PvdClient
 	PvdDataStream*		getDataStream()
 	{
 		return NULL;
-	}	
+	}
 
 	void onPvdConnected()
 	{
@@ -68,9 +68,9 @@ struct JointConnectionHandler : public PvdClient
 		if(stream)
 		{
 			mConnected = true;
-			Ext::Pvd::sendClassDescriptions(*stream);	
+			Ext::Pvd::sendClassDescriptions(*stream);
 			stream->release();
-		}		
+		}
 	}
 
 	bool isConnected() const
@@ -113,12 +113,12 @@ bool PxInitExtensions(PxPhysics& physics, PxPvd* pvd)
 }
 
 void PxCloseExtensions(void)
-{	
+{
 	Ps::Foundation::decRefCount();
 
 #if PX_SUPPORT_PVD
 	if(gPvdHandler.mConnected)
-	{	
+	{
 		PX_ASSERT(gPvdHandler.mPvd);
 		gPvdHandler.mPvd->removeClient(&gPvdHandler);
 		gPvdHandler.mPvd = NULL;

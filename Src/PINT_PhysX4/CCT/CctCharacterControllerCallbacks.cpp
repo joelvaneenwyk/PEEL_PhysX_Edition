@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "common/PxProfileZone.h"
 #include "geometry/PxSphereGeometry.h"
@@ -350,7 +350,7 @@ static void outputBoxToStream(	PxShape* boxShape, const PxRigidActor* actor, con
 
 		{3,6,2},
 		{6,3,7},	//3,2,6,7
-		
+
 		{7,5,6},
 		{5,7,4},	//7,6,5,4
 
@@ -830,7 +830,7 @@ static void outputConvexToStream(PxShape* convexShape, const PxRigidActor* actor
 
 	const PxVec3 absPosTmp = absPose.getPosition();
     const PxExtendedVec3 absPos(PxExtended(absPosTmp.x), PxExtended(absPosTmp.y), PxExtended(absPosTmp.z));
-    
+
     const PxVec3 MeshOffset(absPos - origin);	// LOSS OF ACCURACY
 
 	const PxVec3 offset(float(-origin.x), float(-origin.y), float(-origin.z));
@@ -920,7 +920,7 @@ void Cct::findTouchedGeometry(
 	PxU16& nbTessellation)
 {
 	PX_ASSERT(userData);
-	
+
 	const PxInternalCBData_FindTouchedGeom* internalData = static_cast<const PxInternalCBData_FindTouchedGeom*>(userData);
 	PxScene* scene = internalData->scene;
 

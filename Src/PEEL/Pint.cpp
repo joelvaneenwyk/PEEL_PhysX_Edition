@@ -150,7 +150,7 @@ PintCaps::PintCaps() :
 
 ///////////////////////////////////////////////////////////////////////////////
 
-static const char* gShapeTypeName[] = 
+static const char* gShapeTypeName[] =
 {
 	"Undefined",
 	"Sphere",
@@ -167,7 +167,7 @@ const char* GetPintShapeName(PintShape type)
 	return gShapeTypeName[type];
 }
 
-static const char* gJointTypeName[] = 
+static const char* gJointTypeName[] =
 {
 	"Undefined",
 	"Spherical",

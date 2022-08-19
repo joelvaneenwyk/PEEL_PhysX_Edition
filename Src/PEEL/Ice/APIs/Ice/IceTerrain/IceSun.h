@@ -4,7 +4,7 @@
 	class ICETERRAIN_API Sun
 	{
 		public:
-						Sun(float theta=0.0f, float phi=0.0f, float intensity=1.0f); 
+						Sun(float theta=0.0f, float phi=0.0f, float intensity=1.0f);
 									// Theta is angle from zenith direction (Y axis)
 									// Theta = 0 (Pos y), Theta = 180 (Neg Y)
 									// Phi is angle in CW from x axis in XZ coordinate system.

@@ -33,7 +33,7 @@ static inline_ udword getHashValue(const Indices& v)
 	udword b = v.mRef[1];
 	udword c = v.mRef[2];
 	a=a-b;  a=a-c;  a=a^(c >> 13);
-	b=b-c;  b=b-a;  b=b^(a << 8); 
+	b=b-c;  b=b-a;  b=b^(a << 8);
 	c=c-a;  c=c-b;  c=c^(b >> 13);
 	a=a-b;  a=a-c;  a=a^(c >> 12);
 	b=b-c;  b=b-a;  b=b^(a << 16);

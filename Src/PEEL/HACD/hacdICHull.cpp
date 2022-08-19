@@ -1,15 +1,15 @@
 /* Copyright (c) 2011 Khaled Mamou (kmamou at gmail dot com)
  All rights reserved.
- 
- 
+
+
  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
- 
+
  1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
- 
+
  2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
- 
+
  3. The names of the contributors may not be used to endorse or promote products derived from this software without specific prior written permission.
- 
+
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
@@ -24,7 +24,7 @@ template<class T>	__forceinline const T&	TMax(const T& a, const T& b)
 }
 
 namespace HACD
-{   
+{
 	const long ICHull::sc_dummyIndex = std::numeric_limits<long>::max();
 	ICHull::ICHull(void)
     {
@@ -46,7 +46,7 @@ namespace HACD
 			vertex->GetData().m_pos.Y() = points[i].Y();
 			vertex->GetData().m_pos.Z() = points[i].Z();
             vertex->GetData().m_name = static_cast<long>(i);
-		}     
+		}
 		return true;
 	}
 	bool ICHull::AddPoints(std::vector< Vec3<Real> > points)
@@ -58,7 +58,7 @@ namespace HACD
 			vertex->GetData().m_pos.X() = points[i].X();
 			vertex->GetData().m_pos.Y() = points[i].Y();
 			vertex->GetData().m_pos.Z() = points[i].Z();
-		}     
+		}
 		return true;
 	}
 
@@ -74,7 +74,7 @@ namespace HACD
 
 	ICHullError ICHull::Process()
 	{
-        unsigned long addedPoints = 0;	
+        unsigned long addedPoints = 0;
 		if (m_mesh.GetNVertices() < 3)
 		{
 			return ICHullErrorNotEnoughPoints;
@@ -89,8 +89,8 @@ namespace HACD
 	        CircularListElement<TMMVertex> * v2 = v1->GetNext();
 			// Compute the normal to the plane
             Vec3<Real> p0 = v0->GetData().m_pos;
-            Vec3<Real> p1 = v1->GetData().m_pos;            
-            Vec3<Real> p2 = v2->GetData().m_pos;			
+            Vec3<Real> p1 = v1->GetData().m_pos;
+            Vec3<Real> p2 = v2->GetData().m_pos;
             m_normal = (p1-p0) ^ (p2-p0);
             m_normal.Normalize();
 			t1->GetData().m_vertices[0] = v0;
@@ -173,7 +173,7 @@ namespace HACD
             for(size_t e = 0; e < nE; e++)
 			{
 				TMMEdge & currentEdge = m_mesh.m_edges.GetHead()->GetData();
-				if( currentEdge.m_triangles[0] == 0 && currentEdge.m_triangles[1] == 0) 
+				if( currentEdge.m_triangles[0] == 0 && currentEdge.m_triangles[1] == 0)
 				{
 					m_edgesToDelete.push_back(m_mesh.m_edges.GetHead());
 				}
@@ -203,7 +203,7 @@ namespace HACD
 	}
     ICHullError ICHull::Process(unsigned long nPointsCH)
 	{
-        unsigned long addedPoints = 0;  
+        unsigned long addedPoints = 0;
         if (nPointsCH < 3 || m_mesh.GetNVertices() < 3)
 		{
 			return ICHullErrorNotEnoughPoints;
@@ -218,8 +218,8 @@ namespace HACD
 	        CircularListElement<TMMVertex> * v2 = v1->GetNext();
 			// Compute the normal to the plane
             Vec3<Real> p0 = v0->GetData().m_pos;
-            Vec3<Real> p1 = v1->GetData().m_pos;            
-            Vec3<Real> p2 = v2->GetData().m_pos;			
+            Vec3<Real> p1 = v1->GetData().m_pos;
+            Vec3<Real> p2 = v2->GetData().m_pos;
             m_normal = (p1-p0) ^ (p2-p0);
             m_normal.Normalize();
 			t1->GetData().m_vertices[0] = v0;
@@ -237,7 +237,7 @@ namespace HACD
             m_mesh.m_edges.Clear();
             m_isFlat = false;
 		}
-        
+
         if (m_mesh.GetNTriangles() == 0) // we have to create the first polyhedron
         {
 			ICHullError res = DoubleTriangle();
@@ -256,8 +256,8 @@ namespace HACD
             if (!FindMaxVolumePoint())
             {
                 break;
-            }                  
-            vertices.GetData().m_tag = true;                      
+            }
+            vertices.GetData().m_tag = true;
             if (ProcessPoint())
             {
                 addedPoints++;
@@ -308,7 +308,7 @@ namespace HACD
             for(size_t e = 0; e < nE; e++)
 			{
 				TMMEdge & currentEdge = m_mesh.m_edges.GetHead()->GetData();
-				if( currentEdge.m_triangles[0] == 0 && currentEdge.m_triangles[1] == 0) 
+				if( currentEdge.m_triangles[0] == 0 && currentEdge.m_triangles[1] == 0)
 				{
 					m_edgesToDelete.push_back(m_mesh.m_edges.GetHead());
 				}
@@ -341,10 +341,10 @@ namespace HACD
         CircularList<TMMVertex> & vertices = m_mesh.GetVertices();
         CircularListElement<TMMVertex> * vMaxVolume = 0;
         CircularListElement<TMMVertex> * vHeadPrev = vertices.GetHead()->GetPrev();
-        
+
         double maxVolume = 0.0;
         double volume = 0.0;
-        
+
         while (!vertices.GetData().m_tag) // not processed
         {
             if (ComputePointVolume(volume, false))
@@ -358,13 +358,13 @@ namespace HACD
             }
         }
         CircularListElement<TMMVertex> * vHead = vHeadPrev->GetNext();
-        vertices.GetHead() = vHead;  
-        
+        vertices.GetHead() = vHead;
+
         if (!vMaxVolume)
         {
             return false;
         }
-        
+
         if (vMaxVolume != vHead)
         {
             Vec3<Real> pos = vHead->GetData().m_pos;
@@ -374,8 +374,8 @@ namespace HACD
             vMaxVolume->GetData().m_pos = pos;
             vHead->GetData().m_name = id;
         }
-        
- 
+
+
         return true;
     }
 	ICHullError ICHull::DoubleTriangle()
@@ -384,8 +384,8 @@ namespace HACD
 		m_isFlat = false;
         CircularList<TMMVertex> & vertices = m_mesh.GetVertices();
         CircularListElement<TMMVertex> * v0 = vertices.GetHead();
-        while( Colinear(v0->GetData().m_pos, 
-                        v0->GetNext()->GetData().m_pos, 
+        while( Colinear(v0->GetData().m_pos,
+                        v0->GetNext()->GetData().m_pos,
                         v0->GetNext()->GetNext()->GetData().m_pos))
         {
             if ( (v0 = v0->GetNext()) == vertices.GetHead())
@@ -397,7 +397,7 @@ namespace HACD
         CircularListElement<TMMVertex> * v2 = v1->GetNext();
         // mark points as processed
         v0->GetData().m_tag = v1->GetData().m_tag = v2->GetData().m_tag = true;
-        
+
         // create two triangles
         CircularListElement<TMMTriangle> * f0 = MakeFace(v0, v1, v2, 0);
         MakeFace(v2, v1, v0, f0);
@@ -411,7 +411,7 @@ namespace HACD
 		{
 			v3 = v3->GetNext();
 			vol = Volume(v0->GetData().m_pos, v1->GetData().m_pos, v2->GetData().m_pos, v3->GetData().m_pos);
-		}			
+		}
 		if (vol == 0.0)
 		{
 			// compute the barycenter
@@ -426,14 +426,14 @@ namespace HACD
 
 			// Compute the normal to the plane
             Vec3<Real> p0 = v0->GetData().m_pos;
-            Vec3<Real> p1 = v1->GetData().m_pos;            
-            Vec3<Real> p2 = v2->GetData().m_pos;			
+            Vec3<Real> p1 = v1->GetData().m_pos;
+            Vec3<Real> p2 = v2->GetData().m_pos;
             m_normal = (p1-p0) ^ (p2-p0);
             m_normal.Normalize();
 			// add dummy vertex placed at (bary + normal)
 			vertices.GetHead() = v2;
 			Vec3<Real> newPt = bary + m_normal;
-			AddPoint(newPt, sc_dummyIndex); 
+			AddPoint(newPt, sc_dummyIndex);
 			m_dummyVertex = vertices.GetHead();
 			m_isFlat = true;
             v3 = v2->GetNext();
@@ -452,11 +452,11 @@ namespace HACD
 		}
 		return ICHullErrorOK;
 	}
-    CircularListElement<TMMTriangle> *	ICHull::MakeFace(CircularListElement<TMMVertex> * v0,  
+    CircularListElement<TMMTriangle> *	ICHull::MakeFace(CircularListElement<TMMVertex> * v0,
                                                          CircularListElement<TMMVertex> * v1,
                                                          CircularListElement<TMMVertex> * v2,
                                                          CircularListElement<TMMTriangle> * fold)
-	{        
+	{
         CircularListElement<TMMEdge> * e0;
         CircularListElement<TMMEdge> * e1;
         CircularListElement<TMMEdge> * e2;
@@ -465,7 +465,7 @@ namespace HACD
         {
             e0 = m_mesh.AddEdge(); // create the three edges
             e1 = m_mesh.AddEdge();
-            e2 = m_mesh.AddEdge();            
+            e2 = m_mesh.AddEdge();
         }
         else // otherwise re-use existing edges (in reverse order)
         {
@@ -478,9 +478,9 @@ namespace HACD
         e1->GetData().m_vertices[0] = v1; e1->GetData().m_vertices[1] = v2;
         e2->GetData().m_vertices[0] = v2; e2->GetData().m_vertices[1] = v0;
         // create the new face
-        CircularListElement<TMMTriangle> * f = m_mesh.AddTriangle();   
+        CircularListElement<TMMTriangle> * f = m_mesh.AddTriangle();
         f->GetData().m_edges[0]    = e0; f->GetData().m_edges[1]    = e1; f->GetData().m_edges[2]    = e2;
-        f->GetData().m_vertices[0] = v0; f->GetData().m_vertices[1] = v1; f->GetData().m_vertices[2] = v2;     
+        f->GetData().m_vertices[0] = v0; f->GetData().m_vertices[1] = v1; f->GetData().m_vertices[2] = v2;
         // link edges to face f
         e0->GetData().m_triangles[index] = e1->GetData().m_triangles[index] = e2->GetData().m_triangles[index] = f;
 		return f;
@@ -491,7 +491,7 @@ namespace HACD
         CircularListElement<TMMEdge> * newEdges[2];
         for(int i = 0; i < 2; ++i)
         {
-            if ( !( newEdges[i] = e->GetData().m_vertices[i]->GetData().m_duplicate ) )  
+            if ( !( newEdges[i] = e->GetData().m_vertices[i]->GetData().m_duplicate ) )
             { // if the edge doesn't exits add it and mark the vertex as duplicated
                 newEdges[i] = m_mesh.AddEdge();
                 newEdges[i]->GetData().m_vertices[0] = e->GetData().m_vertices[i];
@@ -532,7 +532,7 @@ namespace HACD
         double vol = 0.0;
         totalVolume = 0.0;
 		Vec3<double> ver0, ver1, ver2;
-        do 
+        do
         {
 			ver0.X() = f->GetData().m_vertices[0]->GetData().m_pos.X();
 			ver0.Y() = f->GetData().m_vertices[0]->GetData().m_pos.Y();
@@ -556,7 +556,7 @@ namespace HACD
 				visible = true;
 			}
 			f = f->GetNext();
-        } 
+        }
         while (f != fHead);
 
 		if (m_trianglesToDelete.size() == m_mesh.m_triangles.GetSize())
@@ -587,12 +587,12 @@ namespace HACD
         // Create a new face based on each border edge
         CircularListElement<TMMVertex> * v0 = m_mesh.GetVertices().GetHead();
         CircularListElement<TMMEdge> * eHead = m_mesh.GetEdges().GetHead();
-        CircularListElement<TMMEdge> * e = eHead;    
+        CircularListElement<TMMEdge> * e = eHead;
         CircularListElement<TMMEdge> * tmp = 0;
         long nvisible = 0;
         m_edgesToDelete.clear();
         m_edgesToUpdate.clear();
-        do 
+        do
         {
             tmp = e->GetNext();
             nvisible = 0;
@@ -614,15 +614,15 @@ namespace HACD
             }
             e = tmp;
         }
-        while (e != eHead);        
+        while (e != eHead);
 		return true;
 	}
     bool ICHull::MakeCCW(CircularListElement<TMMTriangle> * f,
-                         CircularListElement<TMMEdge> * e, 
+                         CircularListElement<TMMEdge> * e,
                          CircularListElement<TMMVertex> * v)
     {
         // the visible face adjacent to e
-        CircularListElement<TMMTriangle> * fv; 
+        CircularListElement<TMMTriangle> * fv;
         if (e->GetData().m_triangles[0]->GetData().m_visible)
         {
             fv = e->GetData().m_triangles[0];
@@ -631,13 +631,13 @@ namespace HACD
         {
             fv = e->GetData().m_triangles[1];
         }
-        
+
         //  set vertex[0] and vertex[1] to have the same orientation as the corresponding vertices of fv.
         long i;                                 // index of e->m_vertices[0] in fv
         CircularListElement<TMMVertex> * v0 = e->GetData().m_vertices[0];
         CircularListElement<TMMVertex> * v1 = e->GetData().m_vertices[1];
         for(i = 0; fv->GetData().m_vertices[i] !=  v0; i++);
-        
+
         if ( fv->GetData().m_vertices[(i+1) % 3] != e->GetData().m_vertices[1] )
         {
             f->GetData().m_vertices[0] = v1;
@@ -646,7 +646,7 @@ namespace HACD
         else
         {
             f->GetData().m_vertices[0] = v0;
-            f->GetData().m_vertices[1] = v1;  
+            f->GetData().m_vertices[1] = v1;
             // swap edges
             CircularListElement<TMMEdge> * tmp = f->GetData().m_edges[0];
             f->GetData().m_edges[0] = f->GetData().m_edges[1];
@@ -681,14 +681,14 @@ namespace HACD
                     e->GetData().m_triangles[1] = e->GetData().m_newFace;
                 }
                 e->GetData().m_newFace = 0;
-            }           
+            }
         }
         // delete edges maked for deletion
         CircularList<TMMEdge> & edges = m_mesh.GetEdges();
         const std::vector<CircularListElement<TMMEdge> *>::iterator itEndDelete = m_edgesToDelete.end();
         for(std::vector<CircularListElement<TMMEdge> *>::iterator it = m_edgesToDelete.begin(); it != itEndDelete; ++it)
         {
-            edges.Delete(*it);         
+            edges.Delete(*it);
         }
 		m_edgesToDelete.clear();
         m_edgesToUpdate.clear();
@@ -711,7 +711,7 @@ namespace HACD
 					std::set<long>::const_iterator itPEnd((*it)->GetData().m_incidentPoints.end());
 					std::set<long>::const_iterator itP((*it)->GetData().m_incidentPoints.begin());
 					std::map<long, DPoint>::iterator itPoint;
-					for(; itP != itPEnd; ++itP) 
+					for(; itP != itPEnd; ++itP)
 					{
 						itPoint = m_distPoints->find(*itP);
 						if (itPoint != m_distPoints->end())
@@ -721,7 +721,7 @@ namespace HACD
 					}
 				}
 			}
-            triangles.Delete(*it);         
+            triangles.Delete(*it);
         }
 		m_trianglesToDelete.clear();
         return true;
@@ -743,7 +743,7 @@ namespace HACD
         CircularListElement<TMMVertex> * vHead = vertices.GetHead();
         CircularListElement<TMMVertex> * v = vHead;
         v = v->GetPrev();
-        do 
+        do
         {
             if (v->GetData().m_tag && !v->GetData().m_onHull)
             {
@@ -758,12 +758,12 @@ namespace HACD
                 v->GetData().m_onHull = false;
                 v = v->GetPrev();
             }
-        } 
+        }
         while (v->GetData().m_tag && v != vHead);
         return true;
     }
 	void ICHull::Clear()
-	{	
+	{
 		m_mesh.Clear();
 		m_edgesToDelete = std::vector<CircularListElement<TMMEdge> *>();
 		m_edgesToUpdate = std::vector<CircularListElement<TMMEdge> *>();
@@ -781,14 +781,14 @@ namespace HACD
 			m_isFlat = rhs.m_isFlat;
         }
         return (*this);
-    }   
+    }
     double ICHull::ComputeVolume()
     {
         size_t nV = m_mesh.m_vertices.GetSize();
 		if (nV == 0 || m_isFlat)
 		{
 			return 0.0;
-		}       
+		}
         Vec3<double> bary(0.0, 0.0, 0.0);
         for(size_t v = 0; v < nV; v++)
         {
@@ -798,7 +798,7 @@ namespace HACD
 			m_mesh.m_vertices.Next();
         }
         bary /= static_cast<double>(nV);
-        
+
         size_t nT = m_mesh.m_triangles.GetSize();
         Vec3<double> ver0, ver1, ver2;
         double totalVolume = 0.0;
@@ -876,18 +876,18 @@ namespace HACD
     }
 	double ICHull::ComputeDistance(long name, const Vec3<Real> & pt, const Vec3<Real> & normal, bool & insideHull, bool updateIncidentPoints)
 	{
-		Vec3<double> ptNormal(static_cast<double>(normal.X()), 
-							  static_cast<double>(normal.Y()), 
+		Vec3<double> ptNormal(static_cast<double>(normal.X()),
+							  static_cast<double>(normal.Y()),
 							  static_cast<double>(normal.Z()));
-		Vec3<double> p0( static_cast<double>(pt.X()), 
-						 static_cast<double>(pt.Y()), 
+		Vec3<double> p0( static_cast<double>(pt.X()),
+						 static_cast<double>(pt.Y()),
 						 static_cast<double>(pt.Z()));
 
 		if (m_isFlat)
 		{
 			double distance = 0.0;
-			Vec3<double> chNormal(static_cast<double>(m_normal.X()), 
-								  static_cast<double>(m_normal.Y()), 
+			Vec3<double> chNormal(static_cast<double>(m_normal.X()),
+								  static_cast<double>(m_normal.Y()),
 							      static_cast<double>(m_normal.Z()));
 			ptNormal -= (ptNormal * chNormal) * chNormal;
 			if (ptNormal.GetNorm() > 0.0)
@@ -895,7 +895,7 @@ namespace HACD
 				ptNormal.Normalize();
 				long nameVE1;
 				long nameVE2;
-				Vec3<double> pa, pb, d0, d1, d2, d3;				
+				Vec3<double> pa, pb, d0, d1, d2, d3;
 				Vec3<double> p1 = p0 + ptNormal;
 				Vec3<double> p2, p3;
 				double mua, mub, s;
@@ -913,7 +913,7 @@ namespace HACD
                             return 0.0;
                         }
                         /*
-                        if (debug) std::cout << "V" << name 
+                        if (debug) std::cout << "V" << name
                                              << " E "  << nameVE1 << " " << nameVE2 << std::endl;
                          */
 
@@ -937,7 +937,7 @@ namespace HACD
                                 if (d2.GetNorm() < EPS &&  mua <= 1.0 && mub>=0.0 && s>0.0)
                                 {
                                     //distance = std::max<double>(distance, d3.GetNorm());
-									distance = TMax<double>(distance, d3.GetNorm());								
+									distance = TMax<double>(distance, d3.GetNorm());
                                 }
                             }
                         }
@@ -949,14 +949,14 @@ namespace HACD
 		}
 		else
 		{
-			Vec3<double> ptNormal(static_cast<double>(normal.X()), 
-								  static_cast<double>(normal.Y()), 
+			Vec3<double> ptNormal(static_cast<double>(normal.X()),
+								  static_cast<double>(normal.Y()),
 								  static_cast<double>(normal.Z()));
 
 			Vec3<double> impact;
 			long nhit;
 			double dist;
-			double distance = 0.0; 
+			double distance = 0.0;
 			size_t nT = m_mesh.GetNTriangles();
 			insideHull = false;
 			CircularListElement<TMMTriangle> * face = 0;
@@ -994,7 +994,7 @@ namespace HACD
 				{
 					distance = dist;
 					insideHull = true;
-					face = m_mesh.m_triangles.GetHead();	
+					face = m_mesh.m_triangles.GetHead();
 /*
 					std::cout << name << " -> T " << currentTriangle.m_vertices[0]->GetData().m_name << " "
 												  << currentTriangle.m_vertices[1]->GetData().m_name << " "

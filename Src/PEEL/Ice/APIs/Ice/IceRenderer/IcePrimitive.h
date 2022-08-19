@@ -23,8 +23,8 @@
 		PRIMTYPE_TRISTRIP		= 5,				//!< A triangle strip
 		PRIMTYPE_TRIFAN			= 6,				//!< A triangle fan
 
-		PRIMTYPE_FORCE_DWORD	= 0x7FFFFFFF 
-	}; 
+		PRIMTYPE_FORCE_DWORD	= 0x7FFFFFFF
+	};
 
 	FUNCTION ICERENDERER_API	udword ComputePrimCount(udword nb_indices, PrimType type);
 

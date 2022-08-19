@@ -132,7 +132,7 @@ void GLRenderHelpers::DrawLine2D(float x_start, float x_end, float y_start, floa
 	}
 
 	EndOrtho();
-	
+
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_LIGHTING);
 }
@@ -280,7 +280,7 @@ void GLRenderHelpers::DrawRectangle(float x_start, float x_end, float y_start, f
 	}
 
 	EndOrtho();
-	
+
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_CULL_FACE);
@@ -351,96 +351,96 @@ void GLRenderHelpers::SetupGLMatrix(const PR& pose)
 
 		// 90 lines
 /*
-010285F0  push        ebp  
-010285F1  mov         ebp,esp 
-010285F3  and         esp,0FFFFFFF0h 
-010285F6  sub         esp,0C0h 
-010285FC  mov         eax,dword ptr [pose] 
-010285FF  movss       xmm0,dword ptr [eax+0Ch] 
-01028604  movss       xmm3,dword ptr [eax+10h] 
-01028609  movss       xmm2,dword ptr [__real@40000000 (1127994h)] 
-01028611  movss       xmm6,dword ptr [eax+14h] 
-01028616  movaps      xmm5,xmm0 
-01028619  mulss       xmm5,xmm2 
-0102861D  movaps      xmm1,xmm6 
-01028620  mulss       xmm1,xmm2 
-01028624  movaps      xmm4,xmm3 
-01028627  mulss       xmm4,xmm2 
-0102862B  movss       xmm2,dword ptr [eax+18h] 
-01028630  movaps      xmm7,xmm2 
-01028633  mulss       xmm7,xmm5 
-01028637  movss       dword ptr [esp+8],xmm7 
-0102863D  movaps      xmm7,xmm2 
-01028640  mulss       xmm2,xmm1 
-01028644  movss       dword ptr [esp+0Ch],xmm2 
-0102864A  mulss       xmm7,xmm4 
-0102864E  mulss       xmm6,xmm1 
-01028652  movaps      xmm2,xmm0 
-01028655  mulss       xmm2,xmm5 
-01028659  movss       dword ptr [esp+10h],xmm2 
-0102865F  movaps      xmm2,xmm0 
-01028662  mulss       xmm2,xmm4 
-01028666  mulss       xmm0,xmm1 
-0102866A  movaps      xmm5,xmm3 
-0102866D  mulss       xmm5,xmm4 
-01028671  movss       xmm4,dword ptr [__real@3f800000 (11273E0h)] 
-01028679  mulss       xmm3,xmm1 
-0102867D  subss       xmm4,xmm5 
-01028681  subss       xmm4,xmm6 
-01028685  movaps      xmm1,xmm2 
-01028688  movss       dword ptr [esp+14h],xmm6 
-0102868E  movss       xmm6,dword ptr [esp+0Ch] 
-01028694  addss       xmm1,xmm6 
-01028698  movss       dword ptr [esp+60h],xmm1 
-0102869E  movaps      xmm1,xmm0 
-010286A1  subss       xmm1,xmm7 
-010286A5  subss       xmm2,xmm6 
-010286A9  movss       xmm6,dword ptr [esp+8] 
-010286AF  movss       dword ptr [esp+64h],xmm1 
-010286B5  movss       xmm1,dword ptr [__real@3f800000 (11273E0h)] 
-010286BD  subss       xmm1,dword ptr [esp+10h] 
-010286C3  movss       dword ptr [esp+68h],xmm2 
-010286C9  addss       xmm0,xmm7 
-010286CD  movss       xmm7,dword ptr [eax+8] 
-010286D2  movss       dword ptr [esp+18h],xmm4 
-010286D8  movss       xmm4,dword ptr [esp+60h] 
-010286DE  movaps      xmm2,xmm1 
-010286E1  subss       xmm2,dword ptr [esp+14h] 
-010286E7  movss       dword ptr [esp+6Ch],xmm2 
-010286ED  movss       dword ptr [esp+0B8h],xmm7 
-010286F6  movss       xmm7,dword ptr [esp+68h] 
-010286FC  movss       dword ptr [esp+1Ch],xmm4 
-01028702  movss       xmm4,dword ptr [esp+64h] 
-01028708  movss       dword ptr [esp+38h],xmm0 
-0102870E  movss       xmm0,dword ptr [esp+0B8h] 
-01028717  movaps      xmm2,xmm3 
-0102871A  addss       xmm2,xmm6 
-0102871E  subss       xmm3,xmm6 
-01028722  movss       xmm6,dword ptr [eax+4] 
-01028727  subss       xmm1,xmm5 
-0102872B  movss       xmm5,dword ptr [eax] 
-0102872F  movss       dword ptr [esp+20h],xmm4 
-01028735  xorps       xmm4,xmm4 
-01028738  movss       dword ptr [esp+28h],xmm7 
-0102873E  movss       xmm7,dword ptr [esp+6Ch] 
-01028744  movss       dword ptr [esp+50h],xmm0 
-0102874A  movss       xmm0,dword ptr [__real@3f800000 (11273E0h)] 
-01028752  movss       dword ptr [esp+24h],xmm4 
-01028758  movss       dword ptr [esp+2Ch],xmm7 
-0102875E  movss       dword ptr [esp+30h],xmm2 
-01028764  movss       dword ptr [esp+34h],xmm4 
-0102876A  movss       dword ptr [esp+3Ch],xmm3 
-01028770  movss       dword ptr [esp+40h],xmm1 
-01028776  movss       dword ptr [esp+44h],xmm4 
-0102877C  movss       dword ptr [esp+48h],xmm5 
-01028782  movss       dword ptr [esp+4Ch],xmm6 
-01028788  movss       dword ptr [esp+54h],xmm0 
-0102878E  lea         eax,[esp+18h] 
-01028792  push        eax  
-01028793  call        dword ptr [__imp__glMultMatrixf@4 (1126B3Ch)] 
-01028799  mov         esp,ebp 
-0102879B  pop         ebp  
-0102879C  ret              
+010285F0  push        ebp
+010285F1  mov         ebp,esp
+010285F3  and         esp,0FFFFFFF0h
+010285F6  sub         esp,0C0h
+010285FC  mov         eax,dword ptr [pose]
+010285FF  movss       xmm0,dword ptr [eax+0Ch]
+01028604  movss       xmm3,dword ptr [eax+10h]
+01028609  movss       xmm2,dword ptr [__real@40000000 (1127994h)]
+01028611  movss       xmm6,dword ptr [eax+14h]
+01028616  movaps      xmm5,xmm0
+01028619  mulss       xmm5,xmm2
+0102861D  movaps      xmm1,xmm6
+01028620  mulss       xmm1,xmm2
+01028624  movaps      xmm4,xmm3
+01028627  mulss       xmm4,xmm2
+0102862B  movss       xmm2,dword ptr [eax+18h]
+01028630  movaps      xmm7,xmm2
+01028633  mulss       xmm7,xmm5
+01028637  movss       dword ptr [esp+8],xmm7
+0102863D  movaps      xmm7,xmm2
+01028640  mulss       xmm2,xmm1
+01028644  movss       dword ptr [esp+0Ch],xmm2
+0102864A  mulss       xmm7,xmm4
+0102864E  mulss       xmm6,xmm1
+01028652  movaps      xmm2,xmm0
+01028655  mulss       xmm2,xmm5
+01028659  movss       dword ptr [esp+10h],xmm2
+0102865F  movaps      xmm2,xmm0
+01028662  mulss       xmm2,xmm4
+01028666  mulss       xmm0,xmm1
+0102866A  movaps      xmm5,xmm3
+0102866D  mulss       xmm5,xmm4
+01028671  movss       xmm4,dword ptr [__real@3f800000 (11273E0h)]
+01028679  mulss       xmm3,xmm1
+0102867D  subss       xmm4,xmm5
+01028681  subss       xmm4,xmm6
+01028685  movaps      xmm1,xmm2
+01028688  movss       dword ptr [esp+14h],xmm6
+0102868E  movss       xmm6,dword ptr [esp+0Ch]
+01028694  addss       xmm1,xmm6
+01028698  movss       dword ptr [esp+60h],xmm1
+0102869E  movaps      xmm1,xmm0
+010286A1  subss       xmm1,xmm7
+010286A5  subss       xmm2,xmm6
+010286A9  movss       xmm6,dword ptr [esp+8]
+010286AF  movss       dword ptr [esp+64h],xmm1
+010286B5  movss       xmm1,dword ptr [__real@3f800000 (11273E0h)]
+010286BD  subss       xmm1,dword ptr [esp+10h]
+010286C3  movss       dword ptr [esp+68h],xmm2
+010286C9  addss       xmm0,xmm7
+010286CD  movss       xmm7,dword ptr [eax+8]
+010286D2  movss       dword ptr [esp+18h],xmm4
+010286D8  movss       xmm4,dword ptr [esp+60h]
+010286DE  movaps      xmm2,xmm1
+010286E1  subss       xmm2,dword ptr [esp+14h]
+010286E7  movss       dword ptr [esp+6Ch],xmm2
+010286ED  movss       dword ptr [esp+0B8h],xmm7
+010286F6  movss       xmm7,dword ptr [esp+68h]
+010286FC  movss       dword ptr [esp+1Ch],xmm4
+01028702  movss       xmm4,dword ptr [esp+64h]
+01028708  movss       dword ptr [esp+38h],xmm0
+0102870E  movss       xmm0,dword ptr [esp+0B8h]
+01028717  movaps      xmm2,xmm3
+0102871A  addss       xmm2,xmm6
+0102871E  subss       xmm3,xmm6
+01028722  movss       xmm6,dword ptr [eax+4]
+01028727  subss       xmm1,xmm5
+0102872B  movss       xmm5,dword ptr [eax]
+0102872F  movss       dword ptr [esp+20h],xmm4
+01028735  xorps       xmm4,xmm4
+01028738  movss       dword ptr [esp+28h],xmm7
+0102873E  movss       xmm7,dword ptr [esp+6Ch]
+01028744  movss       dword ptr [esp+50h],xmm0
+0102874A  movss       xmm0,dword ptr [__real@3f800000 (11273E0h)]
+01028752  movss       dword ptr [esp+24h],xmm4
+01028758  movss       dword ptr [esp+2Ch],xmm7
+0102875E  movss       dword ptr [esp+30h],xmm2
+01028764  movss       dword ptr [esp+34h],xmm4
+0102876A  movss       dword ptr [esp+3Ch],xmm3
+01028770  movss       dword ptr [esp+40h],xmm1
+01028776  movss       dword ptr [esp+44h],xmm4
+0102877C  movss       dword ptr [esp+48h],xmm5
+01028782  movss       dword ptr [esp+4Ch],xmm6
+01028788  movss       dword ptr [esp+54h],xmm0
+0102878E  lea         eax,[esp+18h]
+01028792  push        eax
+01028793  call        dword ptr [__imp__glMultMatrixf@4 (1126B3Ch)]
+01028799  mov         esp,ebp
+0102879B  pop         ebp
+0102879C  ret
 */
 	}
 	else
@@ -462,56 +462,56 @@ void GLRenderHelpers::SetupGLMatrix(const PR& pose)
 
 		// 50 lines
 /*
-009A8930  push        ebp  
-009A8931  mov         ebp,esp 
-009A8933  and         esp,0FFFFFFF0h 
-009A8936  sub         esp,40h 
-009A8939  mov         eax,dword ptr [pose] 
-009A893C  movups      xmm3,xmmword ptr [eax+0Ch] 
-009A8940  movups      xmm0,xmmword ptr [eax] 
-009A8943  movaps      xmm4,xmmword ptr [gMaskXYZ (0AADD60h)] 
-009A894A  movups      xmmword ptr [esp+30h],xmm0 
-009A894F  movaps      xmm2,xmmword ptr [minus1w (0AADD50h)] 
-009A8956  movaps      xmm1,xmm3 
-009A8959  addps       xmm1,xmm3 
-009A895C  movaps      xmm0,xmm3 
-009A895F  shufps      xmm0,xmm3,0FFh 
-009A8963  mulps       xmm0,xmm1 
-009A8966  addps       xmm0,xmm2 
-009A8969  xorps       xmm2,xmm2 
-009A896C  subps       xmm2,xmm0 
-009A896F  andps       xmm2,xmm4 
-009A8972  andps       xmm4,xmm3 
-009A8975  movaps      xmm5,xmm0 
-009A8978  shufps      xmm5,xmm2,0DBh 
-009A897C  movaps      xmm3,xmm1 
-009A897F  shufps      xmm3,xmm1,0 
-009A8983  mulps       xmm3,xmm4 
-009A8986  addps       xmm3,xmm5 
-009A8989  movaps      xmmword ptr [esp],xmm3 
-009A898D  movaps      xmm3,xmm0 
-009A8990  shufps      xmm0,xmm2,0C7h 
-009A8994  shufps      xmm3,xmm2,0E3h 
-009A8998  movaps      xmm2,xmm1 
-009A899B  shufps      xmm2,xmm1,0AAh 
-009A899F  movaps      xmm5,xmm1 
-009A89A2  shufps      xmm5,xmm1,55h 
-009A89A6  shufps      xmm0,xmm0,0C9h 
-009A89AA  mulps       xmm2,xmm4 
-009A89AD  addps       xmm2,xmm0 
-009A89B0  movss       xmm0,dword ptr [__real@3f800000 (0AA73E0h)] 
-009A89B8  lea         eax,[esp] 
-009A89BB  mulps       xmm5,xmm4 
-009A89BE  shufps      xmm3,xmm3,0D2h 
-009A89C2  addps       xmm5,xmm3 
-009A89C5  push        eax  
-009A89C6  movaps      xmmword ptr [esp+14h],xmm5 
-009A89CB  movaps      xmmword ptr [esp+24h],xmm2 
-009A89D0  movss       dword ptr [esp+40h],xmm0 
-009A89D6  call        dword ptr [__imp__glMultMatrixf@4 (0AA6B3Ch)] 
-009A89DC  mov         esp,ebp 
-009A89DE  pop         ebp  
-009A89DF  ret              
+009A8930  push        ebp
+009A8931  mov         ebp,esp
+009A8933  and         esp,0FFFFFFF0h
+009A8936  sub         esp,40h
+009A8939  mov         eax,dword ptr [pose]
+009A893C  movups      xmm3,xmmword ptr [eax+0Ch]
+009A8940  movups      xmm0,xmmword ptr [eax]
+009A8943  movaps      xmm4,xmmword ptr [gMaskXYZ (0AADD60h)]
+009A894A  movups      xmmword ptr [esp+30h],xmm0
+009A894F  movaps      xmm2,xmmword ptr [minus1w (0AADD50h)]
+009A8956  movaps      xmm1,xmm3
+009A8959  addps       xmm1,xmm3
+009A895C  movaps      xmm0,xmm3
+009A895F  shufps      xmm0,xmm3,0FFh
+009A8963  mulps       xmm0,xmm1
+009A8966  addps       xmm0,xmm2
+009A8969  xorps       xmm2,xmm2
+009A896C  subps       xmm2,xmm0
+009A896F  andps       xmm2,xmm4
+009A8972  andps       xmm4,xmm3
+009A8975  movaps      xmm5,xmm0
+009A8978  shufps      xmm5,xmm2,0DBh
+009A897C  movaps      xmm3,xmm1
+009A897F  shufps      xmm3,xmm1,0
+009A8983  mulps       xmm3,xmm4
+009A8986  addps       xmm3,xmm5
+009A8989  movaps      xmmword ptr [esp],xmm3
+009A898D  movaps      xmm3,xmm0
+009A8990  shufps      xmm0,xmm2,0C7h
+009A8994  shufps      xmm3,xmm2,0E3h
+009A8998  movaps      xmm2,xmm1
+009A899B  shufps      xmm2,xmm1,0AAh
+009A899F  movaps      xmm5,xmm1
+009A89A2  shufps      xmm5,xmm1,55h
+009A89A6  shufps      xmm0,xmm0,0C9h
+009A89AA  mulps       xmm2,xmm4
+009A89AD  addps       xmm2,xmm0
+009A89B0  movss       xmm0,dword ptr [__real@3f800000 (0AA73E0h)]
+009A89B8  lea         eax,[esp]
+009A89BB  mulps       xmm5,xmm4
+009A89BE  shufps      xmm3,xmm3,0D2h
+009A89C2  addps       xmm5,xmm3
+009A89C5  push        eax
+009A89C6  movaps      xmmword ptr [esp+14h],xmm5
+009A89CB  movaps      xmmword ptr [esp+24h],xmm2
+009A89D0  movss       dword ptr [esp+40h],xmm0
+009A89D6  call        dword ptr [__imp__glMultMatrixf@4 (0AA6B3Ch)]
+009A89DC  mov         esp,ebp
+009A89DE  pop         ebp
+009A89DF  ret
 */
 	}
 }
@@ -718,13 +718,13 @@ void GLRenderHelpers::DrawCapsule(float r, float h, const PR& pose)
 
 		unsigned num = 12;
 		glRotatef(90.0f, 0.0f, 1.0f, 0.0f);
-		gluSphere(GetGLUQuadric(), 
-				  r, 
+		gluSphere(GetGLUQuadric(),
+				  r,
 				  num, num);
 		gluCylinder(GetGLUQuadric(), r, r, h, num, num);
 
 		glTranslatef(0.0f, 0.0f, h);
-		gluSphere(GetGLUQuadric(), 
+		gluSphere(GetGLUQuadric(),
 				  r,
 				  num, num);
 

@@ -751,7 +751,7 @@ void USDExporter::ExportMesh(const RenderDataChunk* parent, const MeshRenderData
 		const ManagedTexture* MT = parent->GetManagedTexture();
 		if(MT)
 		{
-//			const char* 
+//			const char*
 		}
 	}
 
@@ -1004,14 +1004,14 @@ bool USDExporter::ExportRenderMeshes(const ShapeData* data)
 			StartPrependDef("Mesh", ShapeName, gCollisionShapeAPI);
 #else
 			StartDef("Mesh", ShapeName);
-#endif	
+#endif
 				ExportPose(&LocalPoses[i].mPos, &LocalPoses[i].mRot, null, false);
 
 				const Point c(crdc->mColor.R, crdc->mColor.G, crdc->mColor.B);
 				ExportColor(c);
-				
+
 				Indent();	mArray.StoreASCII("uniform bool doubleSided = 0\n");
-				
+
 							ExportMesh(crdc, mrdc);
 //							ExportMesh(RenderSource, mrdc);
 							skip = true;
@@ -1427,42 +1427,42 @@ def Sphere "Sphere"
 			if(!skip)
 				ExportConvexHull(Data);
 
-				if(gExportPhysics)
-				{
+			if(gExportPhysics)
+			{
 #ifdef REMOVED_OLD
-					const char* CollisionShapeName = _F("collisionConvex%d", index);
+				const char* CollisionShapeName = _F("collisionConvex%d", index);
 
 #ifdef REMOVED_OLD
-						StartPrependDef("Mesh", CollisionShapeName, gCollisionShapeAPI);
-#else
-						StartPrependDef("ConvexMesh", CollisionShapeName, gCollisionShapeAPI);
-#endif
+				StartPrependDef("Mesh", CollisionShapeName, gCollisionShapeAPI);
+#	else
+				StartPrependDef("ConvexMesh", CollisionShapeName, gCollisionShapeAPI);
+#	endif
 
-						ExportPose(&Data->mLocalPos, &Data->mLocalRot, null, false);
+				ExportPose(&Data->mLocalPos, &Data->mLocalRot, null, false);
 
 				// TODO: refactor this with other shapes
 					Indent();	mArray.StoreASCII("bool isCollider\n");
 					Indent();	mArray.StoreASCII("uniform token purpose = ");
-					StoreQuotedString(mArray, "guide");
-					mArray.StoreASCII("\n");
+				StoreQuotedString(mArray, "guide");
+				mArray.StoreASCII("\n");
 
 #ifdef REMOVED_OLD
 #else
-//						ExportConvexHull(Data);
+	//			ExportConvexHull(Data);
 
-//					Indent();	mArray.StoreASCII("uniform token approximationShape = ");
-//					StoreQuotedString(mArray, "convexHull");
-//					mArray.StoreASCII("\n");
+	//			Indent();	mArray.StoreASCII("uniform token approximationShape = ");
+	//			StoreQuotedString(mArray, "convexHull");
+	//			mArray.StoreASCII("\n");
 #endif
-					EndDef();
+				EndDef();
 #else
-					//Indent();	mArray.StoreASCII("uniform token approximationShape = ");
-					Indent();	mArray.StoreASCII("uniform token physics:approximation = ");
-					StoreQuotedString(mArray, "convexHull");
-					mArray.StoreASCII("\n");
+				//Indent();	mArray.StoreASCII("uniform token approximationShape = ");
+				Indent();	mArray.StoreASCII("uniform token physics:approximation = ");
+				StoreQuotedString(mArray, "convexHull");
+				mArray.StoreASCII("\n");
 #endif
-					ExportCommonPhysicsShapeParams();
-				}
+				ExportCommonPhysicsShapeParams();
+			}
 
 			EndDef();
 
@@ -1533,29 +1533,29 @@ def Sphere "Sphere"
 			}*/
 			const bool skip = ExportRenderMeshes(Data);
 
-			if(!skip)
+			if (!skip)
 				ExportMesh(Data);
 
-				if(gExportPhysics)
-				{
+			if (gExportPhysics)
+			{
 #ifdef REMOVED_OLD
-					const char* CollisionShapeName = _F("collisionMesh%d", index);
+				const char* CollisionShapeName = _F("collisionMesh%d", index);
 
-						StartPrependDef("Mesh", CollisionShapeName, gCollisionShapeAPI);
+					StartPrependDef("Mesh", CollisionShapeName, gCollisionShapeAPI);
 
-						ExportPose(&Data->mLocalPos, &Data->mLocalRot, null, false);
+					ExportPose(&Data->mLocalPos, &Data->mLocalRot, null, false);
 
-				// TODO: refactor this with other shapes
-					Indent();	mArray.StoreASCII("bool isCollider\n");
-					Indent();	mArray.StoreASCII("uniform token purpose = ");
-					StoreQuotedString(mArray, "guide");
+			// TODO: refactor this with other shapes
+				Indent();	mArray.StoreASCII("bool isCollider\n");
+				Indent();	mArray.StoreASCII("uniform token purpose = ");
+				StoreQuotedString(mArray, "guide");
 //					ca.StoreASCII("\n}\n");
-					mArray.StoreASCII("\n");
-					EndDef();
+				mArray.StoreASCII("\n");
+				EndDef();
 #else
 #endif
-					ExportCommonPhysicsShapeParams();
-				}
+				ExportCommonPhysicsShapeParams();
+			}
 
 			EndDef();
 		}
@@ -1786,7 +1786,7 @@ void USDExporter::ExportSceneData(const SceneData& scene_data)
 	uint physxScene:gpuFoundLostAggregatePairsCapacity = 1024
 	uint physxScene:gpuTotalAggregatePairsCapacity = 1024
 	uint physxScene:gpuMaxSoftBodyContacts = 1048576
-	uint physxScene:gpuMaxParticleContacts = 1048576 
+	uint physxScene:gpuMaxParticleContacts = 1048576
 	uint physxScene:gpuMaxNumPartitions = 8
 */
 		}
@@ -2478,7 +2478,7 @@ static void ExportAllJoints(const EditorPlugin& editor, USDExporter& Exporter, C
 					t1 = PxVec3(0,-n.z*k,n.y*k);
 					t2 = PxVec3(a*k,-n.x*t1.z,n.x*t1.y);
 				}
-				else 
+				else
 				{
 					const PxReal a = n.x*n.x + n.y*n.y;
 					const PxReal k = PxReal(1.0)/PxSqrt(a);

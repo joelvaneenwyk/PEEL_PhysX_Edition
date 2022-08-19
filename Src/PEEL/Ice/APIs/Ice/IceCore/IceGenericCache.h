@@ -34,7 +34,7 @@
 				CacheIndex		mWritePtr;		//!< Virtual running index
 				CacheIndex		mPtrOwner;		//!< Owner of write pointer
 				ubyte*			mPool;			//!< Cyclic-array of mCacheSize bytes
-				CacheIndex		mMarker;		//!< 
+				CacheIndex		mMarker;		//!<
 
 		// Internal methods
 				void			Release();

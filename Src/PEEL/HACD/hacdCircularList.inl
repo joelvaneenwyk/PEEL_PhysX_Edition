@@ -5,7 +5,7 @@
 #include<hacdVersion.h>
 namespace HACD
 {
-	template < typename T > 
+	template < typename T >
 	inline bool CircularList<T>::Delete(CircularListElement<T> * element)
 	{
         if (!element)
@@ -38,8 +38,8 @@ namespace HACD
 			return false;
 		}
 	}
-    
-	template < typename T > 
+
+	template < typename T >
 	inline bool CircularList<T>::Delete()
 	{
 		if (m_size > 1)
@@ -65,7 +65,7 @@ namespace HACD
 			return false;
 		}
 	}
-	template < typename T > 
+	template < typename T >
 	inline CircularListElement<T> * CircularList<T>::Add(const T * data)
 	{
 		if (m_size == 0)
@@ -100,13 +100,13 @@ namespace HACD
 		m_size++;
 		return m_head;
 	}
-	template < typename T > 
+	template < typename T >
 	inline CircularListElement<T> * CircularList<T>::Add(const T & data)
 	{
 		const T * pData = &data;
 		return Add(pData);
 	}
-	template < typename T > 
+	template < typename T >
 	inline bool CircularList<T>::Next()
 	{
 		if (m_size == 0)
@@ -116,7 +116,7 @@ namespace HACD
 		m_head = m_head->GetNext();
 		return true;
 	}
-	template < typename T > 
+	template < typename T >
 	inline bool CircularList<T>::Prev()
 	{
 		if (m_size == 0)
@@ -126,7 +126,7 @@ namespace HACD
 		m_head = m_head->GetPrev();
 		return true;
 	}
-	template < typename T > 
+	template < typename T >
 	inline CircularList<T>::CircularList(const CircularList& rhs)
 	{
 		if (rhs.m_size > 0)
@@ -140,7 +140,7 @@ namespace HACD
 			while ( current != rhs.m_head );
 		}
 	}
-    template < typename T > 
+    template < typename T >
 	inline const CircularList<T>& CircularList<T>::operator=(const CircularList& rhs)
 	{
         if (&rhs != this)

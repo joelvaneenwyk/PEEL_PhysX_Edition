@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #ifndef NP_CONSTRAINT_HELPER_H
 #define NP_CONSTRAINT_HELPER_H
@@ -52,7 +52,7 @@ namespace Ext
 			PX_ASSERT(cA2w.isValid() && cB2w.isValid());
 		}
 
-		PX_INLINE void computeDerived(const JointData& data, 
+		PX_INLINE void computeDerived(const JointData& data,
 									  const PxTransform& bA2w, const PxTransform& bB2w,
 									  PxTransform& cA2w, PxTransform& cB2w, PxTransform& cB2cA,
 									  bool useShortestPath=true)
@@ -70,7 +70,7 @@ namespace Ext
 		}
 
 		PX_INLINE PxVec3 truncateLinear(const PxVec3& in, PxReal tolerance, bool& truncated)
-		{		
+		{
 			const PxReal m = in.magnitudeSquared();
 			truncated = m>tolerance * tolerance;
 			return truncated ? in * PxRecipSqrt(m) * tolerance : in;
@@ -84,19 +84,19 @@ namespace Ext
 				return in;
 
 			const PxQuat q = in.w>=0.0f ? in : -in;
-					
+
 			const PxVec3 im = q.getImaginaryPart();
 			const PxReal m = im.magnitudeSquared();
 			truncated = m>sinHalfTol*sinHalfTol;
 			if(!truncated)
 				return in;
 
-			const PxVec3 outV = im * sinHalfTol * PxRecipSqrt(m);			
+			const PxVec3 outV = im * sinHalfTol * PxRecipSqrt(m);
 			return PxQuat(outV.x, outV.y, outV.z, cosHalfTol);
 		}
 
-		PX_FORCE_INLINE void projectTransforms(PxTransform& bA2w, PxTransform& bB2w, 
-											   const PxTransform& cA2w, const PxTransform& cB2w, 
+		PX_FORCE_INLINE void projectTransforms(PxTransform& bA2w, PxTransform& bB2w,
+											   const PxTransform& cA2w, const PxTransform& cB2w,
 											   const PxTransform& cB2cA, const JointData& data, bool projectToA)
 		{
 			PX_ASSERT(cB2cA.isValid());
@@ -159,7 +159,7 @@ namespace Ext
 			c->angular0			= ra.cross(axis);
 			c->linear1			= axis;
 			c->angular1			= rb.cross(axis);
-			c->geometricError	= posErr;		
+			c->geometricError	= posErr;
 			PX_ASSERT(c->linear0.isFinite());
 			PX_ASSERT(c->linear1.isFinite());
 			PX_ASSERT(c->angular0.isFinite());
@@ -276,7 +276,7 @@ namespace Ext
 			void prepareLockedAxes(const PxQuat& qA, const PxQuat& qB, const PxVec3& cB2cAp, PxU32 lin, PxU32 ang, PxVec3& raOut, PxVec3& rbOut)
 			{
 				Px1DConstraint* current = mCurrent;
-				
+
 				PxVec3 errorVector(0.f);
 
 				PxVec3 ra = mRa;
@@ -284,7 +284,7 @@ namespace Ext
 				if(lin)
 				{
 					const PxMat33 axes(qA);
-					
+
 					if(lin&1) errorVector -= axes.column0 * cB2cAp.x;
 					if(lin&2) errorVector -= axes.column1 * cB2cAp.y;
 					if(lin&4) errorVector -= axes.column2 * cB2cAp.z;
@@ -367,7 +367,7 @@ namespace Ext
 				c->flags = flags;
 				c->mods.spring.stiffness = drive.stiffness;
 				c->mods.spring.damping = drive.damping;
-				
+
 				c->minImpulse = -drive.forceLimit;
 				c->maxImpulse = drive.forceLimit;
 

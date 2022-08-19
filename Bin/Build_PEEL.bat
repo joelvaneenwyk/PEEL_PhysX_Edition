@@ -7,7 +7,7 @@ call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Buil
 python "%~dp0..\Src\#Compiler\BinaryToSource.py"
 
 set _config=%~1
-if "%_config%"=="" set _config=Release
+    if "%_config%"=="" set _config=Release
 
 call :Build %_config%
 if errorlevel 1 exit /b

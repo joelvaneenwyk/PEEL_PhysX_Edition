@@ -272,7 +272,7 @@ class ArticulatedChain : public ConfigurableArticulationTest
 			ObjectDesc.mMass			= 0.0f;
 			ObjectDesc.mPosition		= Pos - Point(2.0f*Scale, 0.0f, 0.0f);
 			ObjectDesc.mCollisionGroup	= 1 + GroupBit;	GroupBit = 1 - GroupBit;
-			
+
 			PintActorHandle h = CreatePintObject(pint, ObjectDesc);
 		}
 
@@ -538,7 +538,7 @@ class ArticulatedChain : public ConfigurableArticulationTest
 //			ObjectDesc.mMass			= 10000.0f;
 //			ObjectDesc.mPosition		= Point(0.0f*Scale, -50.0f*Scale, -15.0f*Scale);
 			ObjectDesc.mPosition		= Point(0.0f*Scale, InitY - float(NbCapsules)*(Radius+HalfHeight)*2.0f - BoxExtents.y, -15.0f*Scale);
-			
+
 			ObjectDesc.mCollisionGroup	= 3;
 			PintActorHandle h = CreatePintObject(pint, ObjectDesc);
 

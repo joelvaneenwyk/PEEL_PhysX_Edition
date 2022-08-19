@@ -19,7 +19,7 @@
 		public:
 											MeshPacker();
 											~MeshPacker();
-		// 
+		//
 						bool				Init(IndexedSurface* surface, Adjacencies* adj, udword nbbits, bool refpredictor, bool compression);
 
 						bool				CompressMesh(CustomArray* packedmesh);

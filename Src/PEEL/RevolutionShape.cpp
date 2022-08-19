@@ -51,7 +51,7 @@ bool RevolutionShape::Init(const char* filename, const Point& offset, float scal
 			sdword	mGridSpacing;
 		};
 
-		// 
+		//
 		FileHeader Header;
 		fread(&Header, 1, sizeof(Header), fp);
 		ASSERT(Header.mIdentifier == 'SHAP');
@@ -59,7 +59,7 @@ bool RevolutionShape::Init(const char* filename, const Point& offset, float scal
 		const sdword gGridSpacingY = Header.mGridSpacing;
 		//const sdword gGridSpacingX = gGridSpacingY*3;
 
-		// 
+		//
 		udword NbShapes;
 		fread(&NbShapes, 1, sizeof(udword), fp);
 		ASSERT(NbShapes==1);
@@ -203,7 +203,7 @@ bool RevolutionShape::Init(const char* filename, const Point& offset, float scal
 		const Point* V1 = Verts + SliceIndex1*NbPtsSmallCircle;
 
 		// Each convex connects two slices and thus contains twice the amount of vertices in a single slice.
-		
+
 		// We copy the vertices because we want to recenter them for each part.
 		Point* ConvexPts = ICE_NEW(Point)[NbPtsSmallCircle*2];
 		for(udword i=0;i<NbPtsSmallCircle;i++)

@@ -100,7 +100,7 @@
 				case FUNC_SAWTOOTH:			return mBase + mAmplitude * FuncSawTooth(mPhase + t * mFrequency);
 				case FUNC_INVERSESAWTOOTH:	return mBase + mAmplitude * FuncInverseSawTooth(mPhase + t * mFrequency);
 
-//				case FUNC_TRIANGLE:			return mBase + TriangleFunc(mPhase + t * mFrequency);
+				// case FUNC_TRIANGLE:			return mBase + TriangleFunc(mPhase + t * mFrequency);
 
 			}
 			return 0.0f;

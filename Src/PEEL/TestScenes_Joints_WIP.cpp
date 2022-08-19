@@ -387,7 +387,7 @@ START_VEHICLE_TEST(VehicleTest, CATEGORY_WIP, gDesc_VehicleTest)
 					if(FrontWheels)
 						WheelDesc.mMaterial	= &mHighFrictionMaterial;
 					else
-						WheelDesc.mMaterial	= &LowFrictionMaterial;					
+						WheelDesc.mMaterial	= &LowFrictionMaterial;
 
 					PINT_OBJECT_CREATE ObjectDesc(&WheelDesc);
 					ObjectDesc.mPosition		= SuspPos + WheelPosOffset;
@@ -2872,7 +2872,7 @@ class MultiBodyVehicle : public VehicleInput
 	virtual	void	GetSceneParams(PINT_WORLD_CREATE& desc)
 	{
 		VehicleInput::GetSceneParams(desc);
-		
+
 		desc.mCamera[0] = PintCameraPose(Point(-12.12f, 6.56f, -0.21f), Point(0.99f, -0.16f, 0.01f));
 		desc.mCamera[1] = PintCameraPose(Point(-9.42f, 6.54f, 2.11f), Point(0.90f, -0.28f, -0.33f));
 
@@ -3050,7 +3050,7 @@ class MultiBodyVehicle : public VehicleInput
 //		const bool AttachWheels = false;
 //		const bool AttachSteering = false;
 //		mCameraMode = 0;
-		const bool TweakWheelsInertia = mCheckBox_TweakWheelsInertia ? mCheckBox_TweakWheelsInertia->IsChecked() : false;	
+		const bool TweakWheelsInertia = mCheckBox_TweakWheelsInertia ? mCheckBox_TweakWheelsInertia->IsChecked() : false;
 		const float ChassisMass = GetFloat(1000.0f, mEditBox_ChassisMass);
 		const float ChassisWidth = GlobalScale*GetFloat(1.0f, mEditBox_ChassisWidth);
 		const float ChassisHeight = GlobalScale*GetFloat(0.2f, mEditBox_ChassisHeight);

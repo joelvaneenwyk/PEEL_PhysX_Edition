@@ -116,12 +116,12 @@ float ShadowMap::applyCropMatrix(Frustum &f)
 	float minZ;
 
 	Matrix44 nv_mvp;
-	Vec4 transf;	
-	
+	Vec4 transf;
+
 	// find the z-range of the current frustum as seen from the light
 	// in order to increase precision
 	glGetFloatv(GL_MODELVIEW_MATRIX, nv_mvp.elems);
-	
+
 	// note that only the z-component is need and thus
 	// the multiplication can be simplified
 	// transf.z = shad_modelview[2] * f.point[0].x + shad_modelview[6] * f.point[0].y + shad_modelview[10] * f.point[0].z + shad_modelview[14];
@@ -134,7 +134,7 @@ float ShadowMap::applyCropMatrix(Frustum &f)
 		if(transf.z > maxZ) maxZ = transf.z;
 		if(transf.z < minZ) minZ = transf.z;
 	}
-	
+
 	minZ += minZAdd;
 	maxZ += maxZAdd;
 
@@ -185,7 +185,7 @@ float ShadowMap::applyCropMatrix(Frustum &f)
 
 //----------------------------------------------------------------------------------
 // here all shadow map textures and their corresponding matrices are created
-void ShadowMap::makeShadowMap(const Point& cameraPos, const Point& cameraDir, const Point& lightDir, float znear, float zfar, 
+void ShadowMap::makeShadowMap(const Point& cameraPos, const Point& cameraDir, const Point& lightDir, float znear, float zfar,
 							  void (*renderShadowCasters)())
 {
 	float shad_modelview[16];
@@ -199,7 +199,7 @@ void ShadowMap::makeShadowMap(const Point& cameraPos, const Point& cameraDir, co
 	glLoadIdentity();
 
 	gluLookAt(
-		cameraPos.x, cameraPos.y, cameraPos.z, 
+		cameraPos.x, cameraPos.y, cameraPos.z,
 		cameraPos.x-lightDir.x, cameraPos.y-lightDir.y, cameraPos.z-lightDir.z,
 		-1.0, 0.0, 0.0);
 
@@ -241,7 +241,7 @@ void ShadowMap::makeShadowMap(const Point& cameraPos, const Point& cameraDir, co
 
 		// draw the scene
 		(*renderShadowCasters)();
-		
+
 		glMatrixMode(GL_PROJECTION);
 		// store the product of all shadow matries for later
 		glMultMatrixf(shad_modelview);
@@ -254,14 +254,14 @@ void ShadowMap::makeShadowMap(const Point& cameraPos, const Point& cameraDir, co
 //	printf("%d\n", Time);
 
 	glDisable(GL_POLYGON_OFFSET_FILL);
-	glPopAttrib(); 
+	glPopAttrib();
 	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
 
 	glEnable(GL_TEXTURE_2D);
 
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
-	glMatrixMode(GL_MODELVIEW);	
+	glMatrixMode(GL_MODELVIEW);
 	glPopMatrix();
 }
 
@@ -288,7 +288,7 @@ static void cameraInverse(float* dst, const float* src)
 }
 
 //----------------------------------------------------------------------------------
-void ShadowMap::doneRender() 
+void ShadowMap::doneRender()
 {
 	// Unbind texture
 	for (int i = 0; i < 8; i++) {
@@ -303,7 +303,7 @@ void ShadowMap::doneRender()
 void ShadowMap::prepareForRender(const float* cam_modelview, const float* cam_proj)
 {
 	float cam_inverse_modelview[16];
-	const float bias[16] = {	0.5, 0.0, 0.0, 0.0, 
+	const float bias[16] = {	0.5, 0.0, 0.0, 0.0,
 								0.0, 0.5, 0.0, 0.0,
 								0.0, 0.0, 0.5, 0.0,
 								0.5, 0.5f, 0.5, 1.0	};

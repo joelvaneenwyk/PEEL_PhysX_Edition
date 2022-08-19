@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "ExtRevoluteJoint.h"
 #include "ExtConstraintHelper.h"
@@ -36,8 +36,8 @@ using namespace Ext;
 
 PxRevoluteJoint* physx::PxRevoluteJointCreate(PxPhysics& physics, PxRigidActor* actor0, const PxTransform& localFrame0, PxRigidActor* actor1, const PxTransform& localFrame1)
 {
-	PX_CHECK_AND_RETURN_NULL(localFrame0.isSane(), "PxRevoluteJointCreate: local frame 0 is not a valid transform"); 
-	PX_CHECK_AND_RETURN_NULL(localFrame1.isSane(), "PxRevoluteJointCreate: local frame 1 is not a valid transform"); 
+	PX_CHECK_AND_RETURN_NULL(localFrame0.isSane(), "PxRevoluteJointCreate: local frame 0 is not a valid transform");
+	PX_CHECK_AND_RETURN_NULL(localFrame1.isSane(), "PxRevoluteJointCreate: local frame 1 is not a valid transform");
 	PX_CHECK_AND_RETURN_NULL(actor0 != actor1, "PxRevoluteJointCreate: actors must be different");
 	PX_CHECK_AND_RETURN_NULL((actor0 && actor0->is<PxRigidBody>()) || (actor1 && actor1->is<PxRigidBody>()), "PxRevoluteJointCreate: at least one actor must be dynamic");
 
@@ -61,89 +61,89 @@ PxReal RevoluteJoint::getVelocity() const
 }
 
 PxJointAngularLimitPair RevoluteJoint::getLimit()	const
-{ 
-	return data().limit;	
+{
+	return data().limit;
 }
 
 void RevoluteJoint::setLimit(const PxJointAngularLimitPair& limit)
-{ 
+{
 	PX_CHECK_AND_RETURN(limit.isValid(), "PxRevoluteJoint::setLimit: limit invalid");
 	PX_CHECK_AND_RETURN(limit.lower>-PxTwoPi && limit.upper<PxTwoPi , "PxRevoluteJoint::twist limit must be strictly between -2*PI and 2*PI");
 
-	data().limit = limit; 
-	markDirty();	
+	data().limit = limit;
+	markDirty();
 }
 
 PxReal RevoluteJoint::getDriveVelocity() const
-{ 
+{
 	return data().driveVelocity;
 }
 
 void RevoluteJoint::setDriveVelocity(PxReal velocity, bool autowake)
-{ 
+{
 	PX_CHECK_AND_RETURN(PxIsFinite(velocity), "PxRevoluteJoint::setDriveVelocity: invalid parameter");
-	data().driveVelocity = velocity; 
+	data().driveVelocity = velocity;
 	if(autowake)
 		wakeUpActors();
-	markDirty(); 
+	markDirty();
 }
 
 PxReal RevoluteJoint::getDriveForceLimit() const
-{ 
-	return data().driveForceLimit;	
+{
+	return data().driveForceLimit;
 }
 
 void RevoluteJoint::setDriveForceLimit(PxReal forceLimit)
-{ 
+{
 	PX_CHECK_AND_RETURN(PxIsFinite(forceLimit), "PxRevoluteJoint::setDriveForceLimit: invalid parameter");
-	data().driveForceLimit = forceLimit; 
-	markDirty(); 
+	data().driveForceLimit = forceLimit;
+	markDirty();
 }
 
 PxReal RevoluteJoint::getDriveGearRatio() const
-{ 
-	return data().driveGearRatio;	
+{
+	return data().driveGearRatio;
 }
 
 void RevoluteJoint::setDriveGearRatio(PxReal gearRatio)
-{ 
+{
 	PX_CHECK_AND_RETURN(PxIsFinite(gearRatio) && gearRatio>0, "PxRevoluteJoint::setDriveGearRatio: invalid parameter");
-	data().driveGearRatio = gearRatio; 
-	markDirty(); 
+	data().driveGearRatio = gearRatio;
+	markDirty();
 }
 
 void RevoluteJoint::setProjectionAngularTolerance(PxReal tolerance)
-{ 
+{
 	PX_CHECK_AND_RETURN(PxIsFinite(tolerance) && tolerance>=0 && tolerance<=PxPi, "PxRevoluteJoint::setProjectionAngularTolerance: invalid parameter");
 	data().projectionAngularTolerance = tolerance;
-	markDirty();	
+	markDirty();
 }
 
-PxReal RevoluteJoint::getProjectionAngularTolerance() const	
-{ 
-	return data().projectionAngularTolerance; 
+PxReal RevoluteJoint::getProjectionAngularTolerance() const
+{
+	return data().projectionAngularTolerance;
 }
 
 void RevoluteJoint::setProjectionLinearTolerance(PxReal tolerance)
-{ 
+{
 	PX_CHECK_AND_RETURN(PxIsFinite(tolerance) && tolerance >=0, "PxRevoluteJoint::setProjectionLinearTolerance: invalid parameter");
 	data().projectionLinearTolerance = tolerance;
-	markDirty(); 
+	markDirty();
 }
 
 PxReal RevoluteJoint::getProjectionLinearTolerance() const
-{ 
-	return data().projectionLinearTolerance;		
+{
+	return data().projectionLinearTolerance;
 }
 
 PxRevoluteJointFlags RevoluteJoint::getRevoluteJointFlags(void)	const
-{ 
-	return data().jointFlags; 
+{
+	return data().jointFlags;
 }
 
 void RevoluteJoint::setRevoluteJointFlags(PxRevoluteJointFlags flags)
-{ 
-	data().jointFlags = flags; 
+{
+	data().jointFlags = flags;
 }
 
 void RevoluteJoint::setRevoluteJointFlag(PxRevoluteJointFlag::Enum flag, bool value)
@@ -180,21 +180,21 @@ void RevoluteJoint::importExtraData(PxDeserializationContext& context)
 
 void RevoluteJoint::resolveReferences(PxDeserializationContext& context)
 {
-	setPxConstraint(resolveConstraintPtr(context, getPxConstraint(), getConnector(), sShaders));	
+	setPxConstraint(resolveConstraintPtr(context, getPxConstraint(), getConnector(), sShaders));
 }
 
 RevoluteJoint* RevoluteJoint::createObject(PxU8*& address, PxDeserializationContext& context)
 {
 	RevoluteJoint* obj = new (address) RevoluteJoint(PxBaseFlag::eIS_RELEASABLE);
-	address += sizeof(RevoluteJoint);	
+	address += sizeof(RevoluteJoint);
 	obj->importExtraData(context);
 	obj->resolveReferences(context);
 	return obj;
 }
 
-// global function to share the joint shaders with API capture	
-const PxConstraintShaderTable* Ext::GetRevoluteJointShaderTable() 
-{ 
+// global function to share the joint shaders with API capture
+const PxConstraintShaderTable* Ext::GetRevoluteJointShaderTable()
+{
 	return &RevoluteJoint::getConstraintShaderTable();
 }
 
@@ -213,7 +213,7 @@ static void RevoluteJointProject(const void* constantBlock, PxTransform& bodyATo
 	PxQuat swing, twist, projSwing;
 	Ps::separateSwingTwist(cB2cA.q, swing, twist);
 	projSwing = joint::truncateAngular(swing, PxSin(data.projectionAngularTolerance/2), PxCos(data.projectionAngularTolerance/2), angularTrunc);
-	
+
 	if(linearTrunc || angularTrunc)
 	{
 		projected.q = projSwing * twist;

@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "ExtJoint.h"
 
@@ -54,7 +54,7 @@ static void normalToTangents(const PxVec3& n, PxVec3& t1, PxVec3& t2)
 		t1 = PxVec3(0,-n.z*k,n.y*k);
 		t2 = PxVec3(a*k,-n.x*t1.z,n.x*t1.y);
 	}
-	else 
+	else
 	{
 		const PxReal a = n.x*n.x + n.y*n.y;
 		const PxReal k = PxReal(1.0)/PxSqrt(a);
@@ -96,7 +96,7 @@ void PxSetJointGlobalFrame(PxJoint& joint, const PxVec3* wsAnchor, const PxVec3*
 		PxVec3 normalw, binormalw;
 		::normalToTangents(axisw, binormalw, normalw);
 		//because axis is supposed to be the Z axis of a frame with the other two being X and Y, we need to negate
-		//Y to make the frame right handed. Note that the above call makes a right handed frame if we pass X --> Y,Z, so 
+		//Y to make the frame right handed. Note that the above call makes a right handed frame if we pass X --> Y,Z, so
 		//it need not be changed.
 
 		for(PxU32 i=0; i<2; i++)
@@ -115,7 +115,7 @@ void PxSetJointGlobalFrame(PxJoint& joint, const PxVec3* wsAnchor, const PxVec3*
 			}
 
 			PxMat33 rot(localAxis[i], localNormal[i], localAxis[i].cross(localNormal[i]));
-			
+
 			localPose[i].q = PxQuat(rot);
 			localPose[i].q.normalize();
 		}

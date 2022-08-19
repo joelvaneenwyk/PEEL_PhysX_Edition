@@ -141,7 +141,7 @@
 									Epsilon	= 0.001f;
 #endif
 									}
-				
+
 				udword				NbFaces;		//!< Number of faces in source topo
 				const udword*		DFaces;			//!< List of faces (dwords) or null
 				const uword*		WFaces;			//!< List of faces (words) or null
@@ -191,7 +191,7 @@
 #else
 				bool				GetBoundaryVertices(udword nb_verts, bool* bound_status, const IndexedTriangle* faces) const;
 #endif
-		// 
+		//
 #ifdef MSH_ADJACENCIES_INCLUDE_TOPOLOGY
 				bool				MakeLastRef(AdjTriangle& cur_tri, udword vref);
 #else

@@ -108,7 +108,7 @@
 	{
 		ZCB_COMPRESSION_NONE		= 0,				//!< Not compressed
 		ZCB_COMPRESSION_ZLIB		= 1,				//!< Compressed with ZLib
-		ZCB_COMPRESSION_BZIP2		= 2,				//!< Compressed with BZip2	
+		ZCB_COMPRESSION_BZIP2		= 2,				//!< Compressed with BZip2
 		ZCB_COMPRESSION_CUSTOM		= 3,				//!< Custom compression
 
 		ZCB_COMPRESSION_FORCE_DWORD	= 0x7fffffff

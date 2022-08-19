@@ -44,7 +44,7 @@
 
 	//private:
 		// ------------------------------------------------------
-		struct Edge 
+		struct Edge
 		{
 			void init(int i0, int i1, int tetraNr, int neighborNr = -1)
 			{
@@ -71,7 +71,7 @@
 		};
 
 		// ------------------------------------------------------
-		struct Tetra 
+		struct Tetra
 		{
 			void init(int i0, int i1, int i2, int i3)
 			{
@@ -84,13 +84,13 @@
 			}
 			inline int& neighborOf(int i0, int i1, int i2)
 			{
-				if (ids[0] != i0 && ids[0] != i1 && ids[0] != i2) return neighborNrs[0]; 
-				if (ids[1] != i0 && ids[1] != i1 && ids[1] != i2) return neighborNrs[1]; 
-				if (ids[2] != i0 && ids[2] != i1 && ids[2] != i2) return neighborNrs[2]; 
-				if (ids[3] != i0 && ids[3] != i1 && ids[3] != i2) return neighborNrs[3]; 
+				if (ids[0] != i0 && ids[0] != i1 && ids[0] != i2) return neighborNrs[0];
+				if (ids[1] != i0 && ids[1] != i1 && ids[1] != i2) return neighborNrs[1];
+				if (ids[2] != i0 && ids[2] != i1 && ids[2] != i2) return neighborNrs[2];
+				if (ids[3] != i0 && ids[3] != i1 && ids[3] != i2) return neighborNrs[3];
 				return neighborNrs[0];
 			}
-			
+
 			int ids[4];
 			int neighborNrs[4];
 			Point center;

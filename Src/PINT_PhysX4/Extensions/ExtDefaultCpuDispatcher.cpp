@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "ExtDefaultCpuDispatcher.h"
 #include "ExtCpuWorkerThread.h"
@@ -65,7 +65,7 @@ Ext::DefaultCpuDispatcher::DefaultCpuDispatcher(PxU32 numThreads, PxU32* affinit
 		getAffinityMasks(defaultAffinityMasks, numThreads);
 		affinityMasks = defaultAffinityMasks;
 	}
-	 
+
 	// initialize threads first, then start
 
 	mWorkerThreads = reinterpret_cast<CpuWorkerThread*>(PX_ALLOC(numThreads * sizeof(CpuWorkerThread), "CpuWorkerThread"));
@@ -129,7 +129,7 @@ void Ext::DefaultCpuDispatcher::submitTask(PxBaseTask& task)
 		runTask(task);
 		task.release();
 		return;
-	}	
+	}
 
 	// TODO: Could use TLS to make this more efficient
 	const Ps::Thread::Id currentThread = Ps::Thread::getId();
@@ -185,7 +185,7 @@ PxBaseTask* Ext::DefaultCpuDispatcher::stealJob()
 void Ext::DefaultCpuDispatcher::resetWakeSignal()
 {
 	mWorkReady.reset();
-	
+
 	// The code below is necessary to avoid deadlocks on shut down.
 	// A thread usually loops as follows:
 	// while quit is not signaled

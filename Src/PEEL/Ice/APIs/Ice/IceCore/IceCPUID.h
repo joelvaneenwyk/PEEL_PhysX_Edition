@@ -35,34 +35,34 @@
 	// For EAX = 1
 	/*
 	Bit		Name	Description When Flag = 1 Comments
-	0		FPU		Floating-point unit on-chip The processor contains an FPU that supports 
+	0		FPU		Floating-point unit on-chip The processor contains an FPU that supports
 					the Intel 387 floating-point instruction set.
 	1		VME		Virtual Mode Extension The processor supports extensions to virtual-8086 mode.
-	2		DE		Debugging Extension The processor supports I/O breakpoints, includ-ing 
-					the CR4.DE bit for enabling debug exten-sions and optional trapping of 
+	2		DE		Debugging Extension The processor supports I/O breakpoints, includ-ing
+					the CR4.DE bit for enabling debug exten-sions and optional trapping of
 					access to the DR4 and DR5 registers.
 	3		PSE		Page Size Extension The processor supports 4-Mbyte pages.
-	4		TSC		Time Stamp Counter The RDTSC instruction is supported including the 
+	4		TSC		Time Stamp Counter The RDTSC instruction is supported including the
 					CR4.TSD bit for access/privilege control.
-	5		MSR		Model Specific Registers Model Specific Registers are implemented with 
+	5		MSR		Model Specific Registers Model Specific Registers are implemented with
 					the RDMSR, WRMSR instructions.
 	6		PAE		Physical Address Extension Physical addresses greater than 32 bits are supported.
-	7		MCE		Machine Check Exception Machine Check Exception, Exception 18, and the CR4.MCE 
+	7		MCE		Machine Check Exception Machine Check Exception, Exception 18, and the CR4.MCE
 					enable bit are supported.
 	8		CX8		CMPXCHG8 Instruction Supported The compare and exchange 8 bytes instruction
 					is supported.
 	9		APIC	Local APIC Supported The processor contains a local APIC.
 	10-11	Reserved (see note)1
-	12		MTRR	Memory Type Range Registers The Processor supports the Memory Type Range 
+	12		MTRR	Memory Type Range Registers The Processor supports the Memory Type Range
 					Registers specifically the MTRR_CAP register.
 	13		PGE		Page Global Enable The global bit in the PDE’s and PTE’s and the CR4.PGE 
 					enable bit are supported.
-	14		MCA		Machine Check Architecture The Machine Check Architecture is supported, 
+	14		MCA		Machine Check Architecture The Machine Check Architecture is supported,
 					specifically the MCG_CAP register.
-	15		CMOV	Conditional Move Instruction Supported The processor supports CMOVcc, and if 
+	15		CMOV	Conditional Move Instruction Supported The processor supports CMOVcc, and if
 					the FPU feature flag (bit 0) is also set, supports the FCMOVcc and FCOMI instructions.
 	16-31	Reserved (see note)1
-	*/	
+	*/
 
 	struct CPUID1{
 		// Signature Register (EAX)
@@ -82,7 +82,7 @@
 		udword		fDebug:1;
 		udword		fPageSize:1;
 		udword		fTSCounter:1;
-		udword		fModelRegister:1;	
+		udword		fModelRegister:1;
 		udword		fPhysicalAddress:1;
 		udword		fMachineCheckException:1;
 		udword		fCmpXchg8:1;

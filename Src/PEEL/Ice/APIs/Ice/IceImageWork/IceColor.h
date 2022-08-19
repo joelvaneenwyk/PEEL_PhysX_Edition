@@ -141,8 +141,8 @@
 									udword drb = srcrb - dstrb;
 									udword dag = srcag - dstag;
 
-									drb *= a;  
-									dag *= a;  
+									drb *= a;
+									dag *= a;
 									drb >>= 8;
 									dag >>= 8;
 

@@ -222,7 +222,7 @@ void ProcessMenuEvent(udword menu_item_id)
 
 		String Filename;
 		if(FileselectOpenSingle(Create, Filename))
-		{			
+		{
 			if(!FileExists(Filename))
 			{
 				IceCore::MessageBox(0, "File not found.", "Error", MB_OK);

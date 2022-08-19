@@ -601,7 +601,7 @@ void normalToTangents(const PxVec3& n, PxVec3& t1, PxVec3& t2)
 		t1 = PxVec3(0,-n.z*k,n.y*k);
 		t2 = PxVec3(a*k,-n.x*t1.z,n.x*t1.y);
 	}
-	else 
+	else
 	{
 		const PxReal a = n.x*n.x + n.y*n.y;
 		const PxReal k = PxReal(1.0)/PxSqrt(a);

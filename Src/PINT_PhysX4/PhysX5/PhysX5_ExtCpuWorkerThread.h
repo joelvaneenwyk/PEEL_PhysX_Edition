@@ -26,7 +26,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #ifndef PHYSX5_EXT_CPU_WORKER_THREAD_H
 #define PHYSX5_EXT_CPU_WORKER_THREAD_H
@@ -52,7 +52,7 @@ class DefaultCpuDispatcher;
 	public:
 										CpuWorkerThread();
 										~CpuWorkerThread();
-		
+
 		void							initialize(DefaultCpuDispatcher* ownerDispatcher);
 		void							execute();
 		bool							tryAcceptJobToLocalQueue(physx::PxBaseTask& task, physx::shdfnd::Thread::Id taskSubmitionThread);
@@ -60,7 +60,7 @@ class DefaultCpuDispatcher;
 		physx::shdfnd::Thread::Id		getWorkerThreadId() const { return mThreadId; }
 
 	protected:
-	physx::Ext::SharedQueueEntryPool<>	mQueueEntryPool;
+		physx::Ext::SharedQueueEntryPool<>	mQueueEntryPool;
 		DefaultCpuDispatcher*			mOwner;
 		physx::shdfnd::SList			mLocalJobList;
 		physx::shdfnd::Thread::Id		mThreadId;

@@ -1,5 +1,5 @@
 
-	class VoidPlug : public IcePlugin
+class VoidPlug : public IcePlugin
 	{
 		public:
 

@@ -10,8 +10,8 @@ using namespace Ext;
 
 PxRackAndPinionJoint* physx::PxRackAndPinionJointCreate(PxPhysics& physics, PxRigidActor* actor0, const PxTransform& localFrame0, PxRigidActor* actor1, const PxTransform& localFrame1)
 {
-	PX_CHECK_AND_RETURN_NULL(localFrame0.isSane(), "PxRackAndPinionJointCreate: local frame 0 is not a valid transform"); 
-	PX_CHECK_AND_RETURN_NULL(localFrame1.isSane(), "PxRackAndPinionJointCreate: local frame 1 is not a valid transform"); 
+	PX_CHECK_AND_RETURN_NULL(localFrame0.isSane(), "PxRackAndPinionJointCreate: local frame 0 is not a valid transform");
+	PX_CHECK_AND_RETURN_NULL(localFrame1.isSane(), "PxRackAndPinionJointCreate: local frame 1 is not a valid transform");
 	PX_CHECK_AND_RETURN_NULL((actor0 && actor0->is<PxRigidBody>()) || (actor1 && actor1->is<PxRigidBody>()), "PxRackAndPinionJointCreate: at least one actor must be dynamic");
 	PX_CHECK_AND_RETURN_NULL(actor0 != actor1, "PxRackAndPinionJointCreate: actors must be different");
 
@@ -208,7 +208,7 @@ void RackAndPinionJoint::resolveReferences(PxDeserializationContext& context)
 RackAndPinionJoint* RackAndPinionJoint::createObject(PxU8*& address, PxDeserializationContext& context)
 {
 	RackAndPinionJoint* obj = PX_PLACEMENT_NEW(address, RackAndPinionJoint(PxBaseFlag::eIS_RELEASABLE));
-	address += sizeof(RackAndPinionJoint);	
+	address += sizeof(RackAndPinionJoint);
 	obj->importExtraData(context);
 	obj->resolveReferences(context);
 	return obj;

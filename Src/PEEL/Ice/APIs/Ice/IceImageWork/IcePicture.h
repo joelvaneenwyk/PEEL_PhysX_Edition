@@ -29,7 +29,7 @@
 	{
 		AT_NONE,			//!< No alpha used - All 0xff
 		AT_BINARY,			//!< 0x00 / 0xff
-		AT_CONSTANT,		//!< Single, constant non-0xff value used 
+		AT_CONSTANT,		//!< Single, constant non-0xff value used
 		AT_CONSTANTBINARY,	//!< 0x00 / 0x??
 		AT_DUALCONSTANT,	//!< 0x?? / 0x?? - Two constants
 		AT_MODULATED,		//!< Multiple values used

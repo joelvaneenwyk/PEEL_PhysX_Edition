@@ -320,7 +320,7 @@ struct MeshInfo
 };
 }
 
-static MeshInfo gMeshInfo[] = 
+static MeshInfo gMeshInfo[] =
 {
 	{"Venus.bin",			0, Point(1.0f, 1.0f, 1.0f), false, false},
 	{"Venus.bin",			1, Point(1.0f, 1.0f, 1.0f), false, false},
@@ -582,7 +582,7 @@ struct CustomerMeshInfo
 };
 }
 
-static CustomerMeshInfo gCustomerMeshInfo[] = 
+static CustomerMeshInfo gCustomerMeshInfo[] =
 {
 	{null,										1.0f, false, false},
 	{"Planetside_Statics.repx",					1.0f, false, true},

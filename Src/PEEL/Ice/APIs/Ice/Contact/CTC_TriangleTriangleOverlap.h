@@ -19,12 +19,12 @@
 
 
 #ifdef SUPPORT_NEW_TRI_TRI_CODE	// Usually disabled, too bloody slow to compile
-CONTACT_API int tri_tri_overlap_test_3d(float p1[3], float q1[3], float r1[3], 
+CONTACT_API int tri_tri_overlap_test_3d(float p1[3], float q1[3], float r1[3],
 			    float p2[3], float q2[3], float r2[3]);
 
-CONTACT_API int tri_tri_intersection_test_3d(float p1[3], float q1[3], float r1[3], 
+CONTACT_API int tri_tri_intersection_test_3d(float p1[3], float q1[3], float r1[3],
 				 float p2[3], float q2[3], float r2[3],
-				 int * coplanar, 
+				 int * coplanar,
 				 float source[3],float target[3]);
 #endif
 

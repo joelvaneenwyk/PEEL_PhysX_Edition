@@ -34,7 +34,7 @@
 		virtual void	Deactivate()										override;
 		virtual	void	SetupGeometry(const PintShapeRenderer* renderer)	override;
 		//~Shader
-		
+
 		private:
 				float	mCamModelView[16];
 				float	mCamProj[16];

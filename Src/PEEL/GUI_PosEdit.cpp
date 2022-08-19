@@ -30,7 +30,7 @@ EditPosWindow::EditPosWindow(const WindowDesc& desc, EditBoxInterface* owner) :
 	{
 		static void gEBCallback(const IceEditBox& edit_box, udword param, void* user_data)
 		{
-			if(param!=IceEditBox::CB_PARAM_RETURN)	
+			if(param!=IceEditBox::CB_PARAM_RETURN)
 				return;
 
 			EditPosWindow* EPW = reinterpret_cast<EditPosWindow*>(user_data);
@@ -154,7 +154,7 @@ void EditPosWindow::SetEnabled(bool b)
 	if(mEnabled==b)
 		return;
 	mEnabled = b;
-	
+
 	if(mEditBoxX)
 		mEditBoxX->SetEnabled(b);
 	if(mEditBoxY)

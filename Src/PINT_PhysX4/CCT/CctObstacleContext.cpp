@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #include "foundation/PxMemory.h"
 #include "CctObstacleContext.h"
@@ -479,7 +479,7 @@ const PxObstacle* ObstacleContext::raycastSingle(PxRaycastHit& hit, const PxVec3
 
 
 const PxObstacle* ObstacleContext::raycastSingle(PxRaycastHit& hit, const ObstacleHandle& obstacleHandle, const PxVec3& origin, const PxVec3& unitDir, const PxReal distance) const
-{	
+{
 	const PxHitFlags hitFlags = PxHitFlags(0);
 
 #ifdef NEW_ENCODING
@@ -504,7 +504,7 @@ const PxObstacle* ObstacleContext::raycastSingle(PxRaycastHit& hit, const Obstac
 			1, &hit);
 
 		if(status)
-		{								
+		{
 			return &userBoxObstacle;
 		}
 	}

@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 
 #ifndef CCT_UTILS
@@ -161,7 +161,7 @@ PX_INLINE PxTransform getShapeGlobalPose(const PxShape& shape, const PxRigidActo
 		b.maximum.maximum(b2.maximum);
 	}
 #else
-	
+
 	#include "foundation/PxBounds3.h"
 	#include "GuBox.h"
 	#include "GuCapsule.h"

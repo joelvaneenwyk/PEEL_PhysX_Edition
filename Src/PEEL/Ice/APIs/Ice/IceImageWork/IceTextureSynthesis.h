@@ -14,7 +14,7 @@
 
 	// Constants got from Efros
 	static const float _ERR_THRESHOLD			= 0.1f;
-	static const float _INIT_MAX_ERR_THRESHOLD	= 0.3f; 
+	static const float _INIT_MAX_ERR_THRESHOLD	= 0.3f;
 	static const float _MAX_ERR_THRESHOLD_SCALE	= 1.1f;
 
 	/*
@@ -29,13 +29,13 @@ public:
   Image(const char *fileName) throw(Memory, Size, File);
   Image(constImage & original) throw(Memory);
   virtual ~Matrix3D(void);
-  
+
   // assignment operator
   Image & operator = (constImage & original) throw(Memory);
 
 
 
-  // clear 
+  // clear
   constImage & Clear(const ElementType & element);
 
   // file IO stuff

@@ -378,7 +378,7 @@ static void RenderShadowCasters_()
 
 			glDepthFunc(GL_LEQUAL);	// EQUAL should work, too. (Only draw pixels if they are the closest ones)
 			glColorMask(1,1,1,1);	// We want color this time
-			glDepthMask(GL_FALSE);	// Writing the z component is useless now, we already have it		
+			glDepthMask(GL_FALSE);	// Writing the z component is useless now, we already have it
 
 			RenderScene_(PINT_RENDER_PASS_SHADOW, false);
 
@@ -530,7 +530,7 @@ if(w!=width || h!=height)
 
 			glDepthFunc(GL_LEQUAL);	// EQUAL should work, too. (Only draw pixels if they are the closest ones)
 			glColorMask(1,1,1,1);	// We want color this time
-			glDepthMask(GL_FALSE);	// Writing the z component is useless now, we already have it		
+			glDepthMask(GL_FALSE);	// Writing the z component is useless now, we already have it
 
 			RenderObjects_(PINT_RENDER_PASS_MAIN);
 

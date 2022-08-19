@@ -250,7 +250,7 @@ void ThreadImpl::start(uint32_t stackSize, Runnable* runnable)
 			                                    "PsWindowsThread::start: Failed to resume thread.");
 		getThread(this)->state = _ThreadImpl::NotStarted;
 		return;
-	}	
+	}
 }
 
 void ThreadImpl::signalQuit()

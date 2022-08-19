@@ -16,7 +16,7 @@
 				TBCallback	mCallback;
 				bool		mChecked;
 	};
-	
+
 	class ICEGUI_API IceToggleButton : public IceWidget
 	{
 		public:

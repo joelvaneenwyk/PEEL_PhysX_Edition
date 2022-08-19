@@ -480,7 +480,7 @@ PX_FORCE_INLINE Vec3V V3NegMulSub(const Vec3V a, const Vec3V b, const Vec3V c);
 // fabs(a)
 PX_FORCE_INLINE Vec3V V3Abs(const Vec3V a);
 
-// a.b 
+// a.b
 // Note: a.w and b.w must have value zero
 PX_FORCE_INLINE FloatV V3Dot(const Vec3V a, const Vec3V b);
 // aXb
@@ -498,7 +498,7 @@ PX_FORCE_INLINE Vec3V V3Normalize(const Vec3V a);
 // a.a>0 ? a*|a.a|^-1/2 : (0,0,0,0)
 // Note: a.w must have value zero
 PX_FORCE_INLINE FloatV V3Length(const Vec3V a);
-// a.a>0 ? a*|a.a|^-1/2 : unsafeReturnValue 
+// a.a>0 ? a*|a.a|^-1/2 : unsafeReturnValue
 // Note: a.w must have value zero
 PX_FORCE_INLINE Vec3V V3NormalizeSafe(const Vec3V a, const Vec3V unsafeReturnValue);
 // a.x + a.y + a.z
@@ -727,7 +727,7 @@ PX_FORCE_INLINE FloatV V4LengthSq(const Vec4V a);
 
 // a*|a.a|^-1/2
 PX_FORCE_INLINE Vec4V V4Normalize(const Vec4V a);
-// a.a>0 ? a*|a.a|^-1/2 : unsafeReturnValue 
+// a.a>0 ? a*|a.a|^-1/2 : unsafeReturnValue
 PX_FORCE_INLINE Vec4V V4NormalizeSafe(const Vec4V a, const Vec4V unsafeReturnValue);
 // a*|a.a|^-1/2
 PX_FORCE_INLINE Vec4V V4NormalizeFast(const Vec4V a);
@@ -1004,10 +1004,10 @@ PX_FORCE_INLINE VecU32V V4U32Andc(VecU32V a, VecU32V b);
 PX_FORCE_INLINE VecU32V V4IsGrtrV32u(const Vec4V a, const Vec4V b);
 
 // Math operations on 16-byte aligned Mat33s (represents any 3x3 matrix)
-PX_FORCE_INLINE Mat33V M33Load(const PxMat33& m) 
+PX_FORCE_INLINE Mat33V M33Load(const PxMat33& m)
 {
-	return Mat33V(Vec3V_From_Vec4V(V4LoadU(&m.column0.x)), 
-	Vec3V_From_Vec4V(V4LoadU(&m.column1.x)), V3LoadU(m.column2)); 
+	return Mat33V(Vec3V_From_Vec4V(V4LoadU(&m.column0.x)),
+	Vec3V_From_Vec4V(V4LoadU(&m.column1.x)), V3LoadU(m.column2));
 }
 // a*b
 PX_FORCE_INLINE Vec3V M33MulV3(const Mat33V& a, const Vec3V b);

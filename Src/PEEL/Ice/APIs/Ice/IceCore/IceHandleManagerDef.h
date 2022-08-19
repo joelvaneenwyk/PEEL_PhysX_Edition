@@ -1,5 +1,5 @@
 
-	// Will be included by relevant files
+// Will be included by relevant files
 
 	#define TEMPLATED_MANAGER		HandleManager
 	#define TEMPLATED_OBJECT		void*

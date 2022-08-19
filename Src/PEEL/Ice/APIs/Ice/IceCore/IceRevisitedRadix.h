@@ -60,7 +60,7 @@
 	};
 
 	#define StackRadixSort(name, ranks0, ranks1)	\
-		RadixSort name;								\
+		RadixSort name; \
 		name.SetRankBuffers(ranks0, ranks1);
 
 #endif // ICERADIXSORT_H

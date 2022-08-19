@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #ifndef NP_D6JOINTCONSTRAINT_H
 #define NP_D6JOINTCONSTRAINT_H
@@ -43,13 +43,13 @@ namespace Ext
 	struct D6JointData : public JointData
 	{
 	//= ATTENTION! =====================================================================================
-	// Changing the data layout of this class breaks the binary serialization format.  See comments for 
-	// PX_BINARY_SERIAL_VERSION.  If a modification is required, please adjust the getBinaryMetaData 
+	// Changing the data layout of this class breaks the binary serialization format.  See comments for
+	// PX_BINARY_SERIAL_VERSION.  If a modification is required, please adjust the getBinaryMetaData
 	// function.  If the modification is made on a custom branch, please change PX_BINARY_SERIAL_VERSION
 	// accordingly.
 	//==================================================================================================
 
-		PxD6Motion::Enum		motion[6]; 
+		PxD6Motion::Enum		motion[6];
 		PxJointLinearLimit		distanceLimit;
 		PxJointLinearLimitPair	linearLimitX;
 		PxJointLinearLimitPair	linearLimitY;
@@ -110,7 +110,7 @@ namespace Ext
 	};
 
 	typedef Joint<PxD6Joint, PxD6JointGeneratedValues> D6JointT;
-    
+
     class D6Joint : public Joint<PxD6Joint, PxD6JointGeneratedValues>
 	{
 	public:
@@ -146,7 +146,7 @@ namespace Ext
 		virtual	void					setDrivePosition(const PxTransform& pose, bool autowake = true);
 		virtual	PxTransform				getDrivePosition()	const;
 		virtual	void					setDriveVelocity(const PxVec3& linear, const PxVec3& angular, bool autowake = true);
-		virtual	void					getDriveVelocity(PxVec3& linear, PxVec3& angular)	const;															
+		virtual	void					getDriveVelocity(PxVec3& linear, PxVec3& angular)	const;
 		virtual	void					setProjectionLinearTolerance(PxReal tolerance);
 		virtual	PxReal					getProjectionLinearTolerance()	const;
 		virtual	void					setProjectionAngularTolerance(PxReal tolerance);
@@ -171,8 +171,8 @@ namespace Ext
 
 		static PxConstraintShaderTable sShaders;
 
-		PX_FORCE_INLINE	D6JointData& data() const				
-		{	
+		PX_FORCE_INLINE	D6JointData& data() const
+		{
 			return *static_cast<D6JointData*>(mData);
 		}
 
@@ -192,7 +192,7 @@ namespace Ext
 
 namespace Ext
 {
-	// global function to share the joint shaders with API capture	
+	// global function to share the joint shaders with API capture
 	extern "C" const PxConstraintShaderTable* GetD6JointShaderTable();
 }
 

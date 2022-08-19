@@ -26,7 +26,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 #ifndef PX_DEFAULT_CPU_DISPATCHER_H
 #define PX_DEFAULT_CPU_DISPATCHER_H
@@ -52,7 +52,7 @@ class PxDefaultCpuDispatcher : public physx::PxCpuDispatcher
 public:
 	/**
 	\brief Deletes the dispatcher.
-	
+
 	Do not keep a reference to the deleted instance.
 
 	@see PxDefaultCpuDispatcherCreate()
@@ -63,7 +63,7 @@ public:
 	\brief Enables profiling at task level.
 
 	\note By default enabled only in profiling builds.
-	
+
 	\param[in] runProfiled True if tasks should be profiled.
 	*/
 	virtual void setRunProfiled(bool runProfiled) = 0;
@@ -80,7 +80,7 @@ public:
 /**
 \brief If a thread ends up waiting for work it will find itself in a spin-wait loop until work becomes available.
 Three strategies are available to limit wasted cycles.
-The strategies are as follows: 
+The strategies are as follows:
 a) wait until a work task signals the end of the spin-wait period.
 b) yield the thread by providing a hint to reschedule thread execution, thereby allowing other threads to run.
 c) yield the processor by informing it that it is waiting for work and requesting it to more efficiently use compute resources.
@@ -101,7 +101,7 @@ struct PxDefaultCpuDispatcherWaitForWorkMode
 
 \param[in] numThreads Number of worker threads the dispatcher should use.
 \param[in] affinityMasks Array with affinity mask for each thread. If not defined, default masks will be used.
-\param[in] mode is the strategy employed when a busy-wait is encountered. 
+\param[in] mode is the strategy employed when a busy-wait is encountered.
 \param[in] yieldProcessorCount specifies the number of times a OS-specific yield processor command will be executed
 during each cycle of a busy-wait in the event that the specified mode is eYIELD_PROCESSOR
 

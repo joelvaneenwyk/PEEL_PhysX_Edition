@@ -1205,7 +1205,7 @@ START_TEST(ConvexCompoundsChain, CATEGORY_BEHAVIOR, gDesc_ConvexCompoundsChain)
 
 			const Point Trans = Rot[1]*BigRadius;
 			for(udword i=0;i<NbPtsSmallCircle;i++)
-				Verts[Index++] = Trans + Pts[i]*Rot; 
+				Verts[Index++] = Trans + Pts[i]*Rot;
 		}
 		ASSERT(Index==TotalNbVerts);
 
@@ -1335,7 +1335,7 @@ START_TEST(BoxCompoundsChain, CATEGORY_BEHAVIOR, gDesc_BoxCompoundsChain)
 
 			const Point Trans = Rot[1]*BigRadius;
 			for(udword i=0;i<NbPtsSmallCircle;i++)
-				Verts[Index++] = Trans + Pts[i]*Rot; 
+				Verts[Index++] = Trans + Pts[i]*Rot;
 		}
 		ASSERT(Index==TotalNbVerts);
 

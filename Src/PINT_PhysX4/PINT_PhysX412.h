@@ -33,7 +33,7 @@
 
 				void					UpdateFromUI();
 		private:
-//				PxProfileZoneManager*	mProfileZoneManager;
+			//	PxProfileZoneManager*	mProfileZoneManager;
 				PxPvd*					mPVD;
 				PxPvdTransport*			mTransport;
 	};

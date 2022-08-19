@@ -152,7 +152,7 @@ class HashBase : private Allocator
 		if(*ptr == EOL)
 			return false;
 
-		PX_PLACEMENT_NEW(&e, Entry)(mEntries[*ptr]);		
+		PX_PLACEMENT_NEW(&e, Entry)(mEntries[*ptr]);
 
 		return eraseInternal(ptr);
 	}
@@ -168,7 +168,7 @@ class HashBase : private Allocator
 			ptr = mEntriesNext + *ptr;
 
 		if(*ptr == EOL)
-			return false;		
+			return false;
 
 		return eraseInternal(ptr);
 	}
@@ -557,8 +557,8 @@ class HashBase : private Allocator
 			// traverse mHash to find next entry
 			if(mCurrentEntryIndexPtr == NULL)
 				return traverseHashEntries();
-			
-			const uint32_t index = *mCurrentEntryIndexPtr;			
+
+			const uint32_t index = *mCurrentEntryIndexPtr;
 			if(mBase.mEntriesNext[index] == mBase.EOL)
 			{
 				return traverseHashEntries();
@@ -573,13 +573,13 @@ class HashBase : private Allocator
 		PX_INLINE void reset()
 		{
 			mCurrentHashIndex = 0;
-			mCurrentEntryIndexPtr = NULL;			
+			mCurrentEntryIndexPtr = NULL;
 		}
 
 	private:
 		PX_INLINE Entry* traverseHashEntries()
 		{
-			mCurrentEntryIndexPtr = NULL;			
+			mCurrentEntryIndexPtr = NULL;
 			while (mCurrentEntryIndexPtr == NULL && mCurrentHashIndex < mBase.mHashSize)
 			{
 				if (mBase.mHash[mCurrentHashIndex] != mBase.EOL)
@@ -599,7 +599,7 @@ class HashBase : private Allocator
 		EraseIterator& operator=(const EraseIterator&);
 	private:
 		uint32_t*	mCurrentEntryIndexPtr;
-		uint32_t	mCurrentHashIndex;		
+		uint32_t	mCurrentHashIndex;
 		HashBase&	mBase;
 	};
 };
@@ -753,7 +753,7 @@ class HashMapBase
 		return mBase.erase(k);
 	}
 	PX_INLINE bool erase(const Key& k, Entry& e)
-	{		
+	{
 		return mBase.erase(k, e);
 	}
 	PX_INLINE uint32_t size() const

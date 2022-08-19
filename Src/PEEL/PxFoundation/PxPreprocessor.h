@@ -32,7 +32,7 @@
 
 #include <stddef.h>
 #if !defined(PX_GENERATE_META_DATA)
-#include <ciso646>  
+#include <ciso646>
 #endif
 /** \addtogroup foundation
   @{
@@ -53,31 +53,31 @@ All definitions have a value of 1 or 0, use '#if' instead of '#ifdef'.
 Compiler defines, see http://sourceforge.net/p/predef/wiki/Compilers/
 */
 #if defined(_MSC_VER)
-#if _MSC_VER >= 1930
-#define PX_VC 17
-#elif _MSC_VER >= 1920
-#define PX_VC 16
-#elif _MSC_VER >= 1910
-#define PX_VC 15
-#elif _MSC_VER >= 1900
-#define PX_VC 14
-#elif _MSC_VER >= 1800
-#define PX_VC 12
-#elif _MSC_VER >= 1700
-#define PX_VC 11
-#elif _MSC_VER >= 1600
-#define PX_VC 10
-#elif _MSC_VER >= 1500
-#define PX_VC 9
-#else
-#error "Unknown VC version"
-#endif
+#	if _MSC_VER >= 1930
+#		define PX_VC 17
+#	elif _MSC_VER >= 1920
+#		define PX_VC 16
+#	elif _MSC_VER >= 1910
+#		define PX_VC 15
+#	elif _MSC_VER >= 1900
+#		define PX_VC 14
+#	elif _MSC_VER >= 1800
+#		define PX_VC 12
+#	elif _MSC_VER >= 1700
+#		define PX_VC 11
+#	elif _MSC_VER >= 1600
+#		define PX_VC 10
+#	elif _MSC_VER >= 1500
+#		define PX_VC 9
+#	else
+#		error "Unknown VC version"
+#	endif
 #elif defined(__clang__)
-#define PX_CLANG 1
-#elif defined(__GNUC__) // note: __clang__ implies __GNUC__
-#define PX_GCC 1
+#	define PX_CLANG 1
+#elif defined(__GNUC__)  // note: __clang__ implies __GNUC__
+#	define PX_GCC 1
 #else
-#error "Unknown compiler"
+#	error "Unknown compiler"
 #endif
 
 /**
@@ -423,7 +423,7 @@ General defines
 #if(defined(__GNUC__) && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 7))) || (PX_PS4) || (PX_APPLE_FAMILY) || (PX_SWITCH) || (PX_CLANG && PX_ARM)
 #define PX_COMPILE_TIME_ASSERT(exp) typedef char PX_CONCAT(PxCompileTimeAssert_Dummy, __COUNTER__)[(exp) ? 1 : -1] __attribute__((unused))
 #else
-#define PX_COMPILE_TIME_ASSERT(exp) typedef char PxCompileTimeAssert_Dummy[(exp) ? 1 : -1]
+#	define PX_COMPILE_TIME_ASSERT(exp) typedef char PxCompileTimeAssert_Dummy[(exp) ? 1 : -1]
 #endif
 
 #if PX_GCC_FAMILY
@@ -514,7 +514,7 @@ protected:                                                                      
 	Class& operator=(const Class&);
 
 #ifndef DISABLE_CUDA_PHYSX
-//CUDA is currently supported only on windows 
+//CUDA is currently supported only on windows
 #define PX_SUPPORT_GPU_PHYSX ((PX_WINDOWS_FAMILY) || (PX_LINUX && PX_X64))
 #else
 #define PX_SUPPORT_GPU_PHYSX 0

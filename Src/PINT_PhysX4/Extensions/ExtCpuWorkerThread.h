@@ -25,7 +25,7 @@
 //
 // Copyright (c) 2008-2021 NVIDIA Corporation. All rights reserved.
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
-// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.  
+// Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
 
 #ifndef PX_PHYSICS_EXTENSIONS_NP_CPU_WORKER_THREAD_H
@@ -54,7 +54,7 @@ class DefaultCpuDispatcher;
 	public:
         CpuWorkerThread();
         ~CpuWorkerThread();
-		
+
 		void					initialize(DefaultCpuDispatcher* ownerDispatcher);
 		void					execute();
 		bool					tryAcceptJobToLocalQueue(PxBaseTask& task, Ps::Thread::Id taskSubmitionThread);

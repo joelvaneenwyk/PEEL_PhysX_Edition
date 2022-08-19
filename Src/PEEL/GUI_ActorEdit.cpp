@@ -674,7 +674,7 @@ static void FillShapesAndJointsListBox(EAListBox* list_box, Pint* pint, PintActo
 					const char* ShapeName = ShapeAPI->GetName(sh);
 					if(!ShapeName)
 						ShapeName = gNoName;
-					
+
 					const PintShape ShapeType = ShapeAPI->GetType(sh);
 					const char* ShapeTypeName = GetPintShapeName(ShapeType);
 
@@ -700,7 +700,7 @@ static void FillShapesAndJointsListBox(EAListBox* list_box, Pint* pint, PintActo
 					const char* JointName = JointAPI->GetName(jh);
 					if(!JointName)
 						JointName = gNoName;
-					
+
 					const PintJoint JointType = JointAPI->GetType(jh);
 					const char* JointTypeName = GetPintJointName(JointType);
 
@@ -740,7 +740,7 @@ void EditActorWindow::JointNameHasChanged(PintJointHandle handle)
 		const char* JointName = JointAPI->GetName(jh);
 		if(!JointName)
 			JointName = gNoName;
-		
+
 		const PintJoint JointType = JointAPI->GetType(jh);
 		const char* JointTypeName = GetPintJointName(JointType);
 
