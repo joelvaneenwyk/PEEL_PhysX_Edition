@@ -69,8 +69,8 @@ Right arrow keys skip an entire category, which makes the navigation
 quicker when you know what category you are interested in.
 
 Once the desired test is selected (highlighted in orange), press the
-Return key to activate the test and switch the window to _Simulation
-Mode_.
+Return key to activate the test and switch the window to `Simulation
+Mode`.
 
 ### Categories
 
@@ -155,7 +155,7 @@ enable/disable VSync in PEEL's Options Panel.
 While a test is running, press Return to stop the simulation and return
 to Menu Mode.
 
-Press S to save an Excel file containing the current test's performance
+Press `S` to save an Excel file containing the current test's performance
 data so far. PEEL currently does not display performance graphs on its
 own, so it relies on Excel to create these.
 
@@ -407,9 +407,9 @@ and display such stats, but this plugin does.
 PEEL supports the following command line (CLI) options:
 
 ```c
--r Disable rendering
--p filename.dll Load given plug-in
--t test_name Select given test
+-r               // Disable rendering
+-p filename.dll  // Load given plug-in
+-t test_name     // Select given test
 
 // Disable all further command line arguments
 ```
@@ -706,9 +706,14 @@ surface of what supported physics engines can do. Already though, in the
 limited set of available tests, no single engine always ends up
 "fastest". Sometimes engine A wins. Sometimes engine B wins.
 
-## Appendix B: list of supported physics engines
+## Appendix B: Supported physics engines
 
-At time of writing, PEEL has plugins for:
+### [PEEL v2.0](https://github.com/Pierre-Terdiman/PEEL_PhysX_Edition)
+
+- [NVIDIA PhysX v4.1](https://github.com/NVIDIAGameWorks/PhysX)
+- [Jolt Physics v1.1](https://github.com/jrouwe/JoltPhysics)
+
+### [PEEL v1.0](https://github.com/Pierre-Terdiman/PEEL)
 
 - Bullet 2.79
 - Bullet 2.81
