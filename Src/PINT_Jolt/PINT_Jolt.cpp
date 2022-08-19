@@ -52,8 +52,6 @@ Damping prevents overshoot. A damping of 0 means that the body will oscillate fo
 A damping of 1 will barely overshoot the target and have almost no oscillation, but it will also take slightly longer to reach the target. I would say sensible ranges for frequency are 0.1-20 and for damping 0-1."
 */
 
-//#define USE_AVX	// doesn't seem to make any difference
-
 #include "PINT_Jolt.h"
 
 // The Jolt headers don't include Jolt.h. Always include Jolt.h before including any other Jolt header.
@@ -82,19 +80,24 @@ A damping of 1 will barely overshoot the target and have almost no oscillation, 
 #include <Jolt/Physics/Collision/CastResult.h>
 #include <Jolt/Physics/Collision/CollisionCollectorImpl.h>
 #include <Jolt/Physics/Collision/GroupFilterTable.h>
+#include <Jolt/Physics/Collision/Broadphase/BroadPhaseLayer.h>
 #include <Jolt/Physics/Constraints/PointConstraint.h>
 #include <Jolt/Physics/Constraints/HingeConstraint.h>
 #include <Jolt/Physics/Constraints/FixedConstraint.h>
 #include <Jolt/Physics/Constraints/DistanceConstraint.h>
 #include <Jolt/Physics/Constraints/SliderConstraint.h>
 
-#include "../PintShapeRenderer.h"
-#include "../PINT_Common/PINT_Ice.h"
-#include "../PINT_Common/PINT_Common.h"
+#include "PintShapeRenderer.h"
+#include "PINT_Common/PINT_Ice.h"
+#include "PINT_Common/PINT_Common.h"
 
 #include <iostream>
 #include <cstdarg>
 #include <thread>
+
+#include <stdio.h>
+#include <math.h>
+#include <limits>
 
 using namespace JPH;
 
@@ -123,17 +126,11 @@ static void TraceImpl(const char *inFMT, ...)
 
 ///////////////////////////////////////////////////////////////////////////////
 
-#include <stdio.h>
-#include <math.h>
-#include <limits>
-
-///////////////////////////////////////////////////////////////////////////////
-
 static bool		gEnableCCD					= false;
 static bool		gAllowSleeping				= true;
 static bool		gAllowShapeSharing			= true;
 static bool		gBackfaceCulling			= true;
-static udword	gNbThreads					= 0;
+static udword	gNbThreads					= 1;		// Single threaded by default, zero means automatic
 static udword	gNbSubsteps					= 1;
 static udword	gTempAllocSize				= 100;		// Mb
 static udword	gMaxBodies					= 65536;	// "This is the max amount of rigid bodies that you can add to the physics system. If you try to add more you'll get an error. For a real project use something in the order of 65536."
@@ -169,64 +166,6 @@ static bool AssertFailedImpl(const char *inExpression, const char *inMessage, co
 
 #endif // JPH_ENABLE_ASSERTS
 
-#ifdef USE_JOLT_0
-
-	// Layer that objects can be in, determines which other objects it can collide with
-	// Typically you at least want to have 1 layer for moving bodies and 1 layer for static bodies, but you can have more
-	// layers if you want. E.g. you could have a layer for high detail collision (which is not used by the physics simulation
-	// but only if you do collision testing).
-	namespace Layers
-	{
-		static constexpr uint8 NON_MOVING = 0;
-		static constexpr uint8 MOVING = 1;
-		static constexpr uint8 NUM_LAYERS = 2;
-	};
-
-	// Function that determines if two object layers can collide
-	static bool MyObjectCanCollide(ObjectLayer inObject1, ObjectLayer inObject2)
-	{
-		switch (inObject1)
-		{
-		case Layers::NON_MOVING:
-			return inObject2 == Layers::MOVING; // Non moving only collides with moving
-		case Layers::MOVING:
-			return true; // Moving collides with everything
-		default:
-			JPH_ASSERT(false);
-			return false;
-		}
-	};
-
-	// Each broadphase layer results in a separate bounding volume tree in the broad phase. You at least want to have
-	// a layer for non-moving and moving objects to avoid having to update a tree full of static objects every frame.
-	// You can have a 1-on-1 mapping between object layers and broadphase layers (like in this case) but if you have
-	// many object layers you'll be creating many broad phase trees, which is not efficient. If you want to fine tune
-	// your broadphase layers define JPH_TRACK_BROADPHASE_STATS and look at the stats reported on the TTY.
-	namespace BroadPhaseLayers
-	{
-		static constexpr BroadPhaseLayer NON_MOVING(0);
-		static constexpr BroadPhaseLayer MOVING(1);
-	};
-
-	// Function that determines if two broadphase layers can collide
-	static bool MyBroadPhaseCanCollide(ObjectLayer inLayer1, BroadPhaseLayer inLayer2)
-	{
-		switch (inLayer1)
-		{
-		case Layers::NON_MOVING:
-			return inLayer2 == BroadPhaseLayers::MOVING;
-		case Layers::MOVING:
-			return true;
-		default:
-			JPH_ASSERT(false);
-			return false;
-		}
-	}
-#endif
-
-////
-
-#ifdef USE_JOLT_1
 /// Layer that objects can be in, determines which other objects it can collide with
 namespace Layers
 {
@@ -273,7 +212,7 @@ namespace BroadPhaseLayers
 };
 
 /// BroadPhaseLayerInterface implementation
-	class BPLayerInterfaceImpl final : public BroadPhaseLayerInterface
+class BPLayerInterfaceImpl final : public JPH::BroadPhaseLayerInterface
 {
 public:
 									BPLayerInterfaceImpl()
@@ -337,7 +276,6 @@ inline bool MyBroadPhaseCanCollide(ObjectLayer inLayer1, BroadPhaseLayer inLayer
 		return false;
 	}
 }
-#endif
 
 ////
 
@@ -383,11 +321,7 @@ public:
 		cout << "A body got activated" << endl;
 	}
 
-#ifdef USE_JOLT_0
-	virtual void		OnBodyDeactivated(const BodyID &inBodyID, void *inBodyUserData) override
-#else
 	virtual void OnBodyDeactivated(const BodyID& inBodyID, uint64 inBodyUserData) override
-#endif
 	{
 		cout << "A body went to sleep" << endl;
 	}
@@ -741,31 +675,20 @@ JoltPint::~JoltPint()
 {
 }
 
+#ifndef JPH_JOLT_BUILD_DATE
+#	define JPH_JOLT_BUILD_DATE "12.03.22"
+#endif
+
 const char* JoltPint::GetName() const
 {
 	const int inNumThreads = gNbThreads ? gNbThreads : thread::hardware_concurrency() - 1;
-
-#ifdef USE_JOLT_0
-	#ifdef USE_AVX
-		const char* Name = "Jolt AVX";
-	#else
-		const char* Name = "Jolt";
-	#endif
-#endif
-#ifdef USE_JOLT_1
-	const char* Name = "Jolt_12_03_22";
-#endif
-
-	return _F("%s (%dT)", Name, inNumThreads);
+	const char* baseName = "Jolt " JPH_JOLT_BUILD_DATE;
+	return _F("%s (%dT)", baseName, inNumThreads);
 }
 
 const char* JoltPint::GetUIName() const
 {
-#ifdef USE_AVX
-	return "Jolt AVX";
-#else
-	return "Jolt";
-#endif
+	return "Jolt " JPH_JOLT_BUILD_DATE;
 }
 
 void JoltPint::GetCaps(PintCaps& caps) const
@@ -1043,10 +966,11 @@ static PintShapeRenderer* RetrieveRenderer(const JoltPint& pint, const JPH::Shap
 #endif
 
 #ifdef USE_JOLT_1
+
 static inline_ void BindRenderer(JPH::Shape* shape, udword, PintShapeRenderer* renderer)
 {
 	if (shape != nullptr) {
-		shape->SetUserData(uint64(renderer));
+		shape->SetUserData((JPH::uint64)(size_t)renderer);
 	}
 }
 
@@ -1054,7 +978,8 @@ static inline_ PintShapeRenderer* RetrieveRenderer(const JoltPint&, const JPH::S
 {
 	return reinterpret_cast<PintShapeRenderer*>(user_data);
 }
-#endif
+
+#endif	// USE_JOLT_1
 
 void JoltPint::Render(PintRender& renderer, PintRenderPass render_pass)
 {
@@ -1130,7 +1055,6 @@ void JoltPint::Render(PintRender& renderer, PintRenderPass render_pass)
 					}
 				}
 			}
-
 
 		}
 		else

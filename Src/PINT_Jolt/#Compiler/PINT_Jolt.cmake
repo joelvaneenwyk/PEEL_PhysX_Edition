@@ -12,6 +12,7 @@ set_option(TARGET_VIEWER OFF)
 set(EXTERNAL_JOLT_PHYSICS_ROOT ${PEEL_REPO_ROOT}/Externals/JoltPhysics)
 set(EXTERNAL_JOLT_SOURCE_ROOT ${EXTERNAL_JOLT_PHYSICS_ROOT}/Jolt)
 
+if (EXISTS "${PEEL_REPO_ROOT}/EXTERNAL_JOLT_PHYSICS_ROOT/Build")
 	# Alternatively, we could include `${EXTERNAL_JOLT_SOURCE_ROOT}/Jolt.cmake` but this has the benefit of
 	# defining a few useful variables in the process which reduces coupling and knowledge of the
 	# internals of Jolt.
@@ -99,6 +100,7 @@ set(EXTERNAL_JOLT_SOURCE_ROOT ${EXTERNAL_JOLT_PHYSICS_ROOT}/Jolt)
 			PUBLIC ${PEEL_APPLICATION_ROOT}/DevIL/include
 			PUBLIC ${PEEL_APPLICATION_ROOT}/PxFoundation
 			PUBLIC ${PEEL_APPLICATION_ROOT}/PxFoundation/include
+			PUBLIC ${PEEL_REPO_ROOT}/Src
 			PUBLIC ${PEEL_REPO_ROOT}/Externals/JoltPhysics
 			PUBLIC ${PEEL_REPO_ROOT}/Externals
 			PUBLIC ${PEEL_REPO_ROOT}/Private/NVD)
@@ -133,3 +135,4 @@ set(EXTERNAL_JOLT_SOURCE_ROOT ${EXTERNAL_JOLT_PHYSICS_ROOT}/Jolt)
 
 	target_link_library_config(ZCB2)
 	target_link_library_config(GlutX)
+endif ()
