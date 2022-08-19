@@ -2,7 +2,11 @@
 # PEEL Ignore List
 #
 
+*.build
+
 /Build/
+
+/Docs/*Internal*
 
 /Src/*
 !/Src/.clang-format
@@ -32,3 +36,4 @@ UpgradeLog.htm
 .suo
 *.user
 **/.vs/*
+.DS_Store

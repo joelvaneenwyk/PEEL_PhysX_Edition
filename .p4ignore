@@ -3,6 +3,7 @@
 #
 
 .git/
+.gitmodules
 
 /Build/
 
@@ -28,3 +29,4 @@ UpgradeLog.htm
 .suo
 *.user
 .vs/*
+.DS_Store
