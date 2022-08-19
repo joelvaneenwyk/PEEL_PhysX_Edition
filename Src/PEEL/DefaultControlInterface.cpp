@@ -116,7 +116,7 @@ namespace
 		if(mIgnoreHiddenObjects && mEngine->mVisHelper && !mEngine->mVisHelper->IsRenderable2(h))
 			return true;
 
-		SelectedObject* Selected = mSelMan.AddToSelection(mEngine, h, mEngineIndex);
+		/*SelectedObject* Selected = */mSelMan.AddToSelection(mEngine, h, mEngineIndex);
 
 		mHideActorWindow = true;
 		return true;
@@ -265,12 +265,14 @@ void DefaultControlInterface::LeftUpCallback(const MouseInfo& mouse)
 							if(0)
 							{
 								DWORD time = timeGetTime();
-								API->Cull(4, PL, EmptyReportActorCallback());
+								EmptyReportActorCallback reporter;
+								API->Cull(4, PL, reporter);
 								time = timeGetTime() - time;
 								printf("Rectangle selection time: %d ms\n", time);
 							}
 
-							API->Cull(4, PL, ReportActorCallback(mSelMan, P, i, true));
+							ReportActorCallback reporter(mSelMan, P, i, true);
+							API->Cull(4, PL, reporter);
 						}
 						else
 							ASSERT(0);
@@ -642,8 +644,9 @@ void DefaultControlInterface::SelectAll(bool ignore_hidden_objects)
 			{
 				Pint* P = GetEngine(i);
 				Pint_Scene* API = P->GetSceneAPI();
+				ReportActorCallback callback(mSelMan, P, i, ignore_hidden_objects);
 				if(API)
-					API->GetActors(ReportActorCallback(mSelMan, P, i, ignore_hidden_objects));
+					API->GetActors(callback);
 				else
 					ASSERT(0);
 			}
@@ -736,8 +739,9 @@ void DefaultControlInterface::HideUnselected()
 		{
 			Pint* P = GetEngine(i);
 			Pint_Scene* API = P->GetSceneAPI();
+			HideUnselectedCallback callback(mSelMan, P);
 			if(API)
-				API->GetActors(HideUnselectedCallback(mSelMan, P));
+				API->GetActors(callback);
 			else
 				ASSERT(0);
 		}
@@ -805,8 +809,9 @@ void DefaultControlInterface::SelectHidden()
 		{
 			Pint* P = GetEngine(i);
 			Pint_Scene* API = P->GetSceneAPI();
+			SelectHiddenCallback callback(mSelMan, P, i);
 			if(API)
-				API->GetActors(SelectHiddenCallback(mSelMan, P, i));
+				API->GetActors(callback);
 			else
 				ASSERT(0);
 		}
@@ -871,8 +876,9 @@ void DefaultControlInterface::ShowAll()
 		{
 			Pint* P = GetEngine(i);
 			Pint_Scene* API = P->GetSceneAPI();
+			ShowAllCallback callback(P);
 			if(API)
-				API->GetActors(ShowAllCallback(P));
+				API->GetActors(callback);
 			else
 				ASSERT(0);
 		}

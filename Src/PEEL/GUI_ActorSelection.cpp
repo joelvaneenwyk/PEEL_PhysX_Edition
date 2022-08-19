@@ -243,7 +243,8 @@ void ItemSelectionWindow::Populate()
 			if(API)
 			{
 				IceListBox* LB = mItems;
-				API->GetActors(ReportActorCallback(*P, *static_cast<ASWListBox*>(LB), i));
+				ReportActorCallback callback(*P, *static_cast<ASWListBox*>(LB), i);
+				API->GetActors(callback);
 			}
 		}
 	}

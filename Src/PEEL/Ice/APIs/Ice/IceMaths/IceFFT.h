@@ -16,4 +16,3 @@
 	FUNCTION ICEMATHS_API void FFT(float* complex, int* extents, int dimensions, bool inverse);
 
 #endif	// ICEFFT_H
-

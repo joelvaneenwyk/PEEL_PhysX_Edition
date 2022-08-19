@@ -54,4 +54,3 @@
 	};
 
 #endif	// ICEPROGRESSIVEEIGEN_H
-

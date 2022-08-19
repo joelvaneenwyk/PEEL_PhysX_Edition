@@ -330,4 +330,3 @@ bool ZCB2FactoryEx::NewLegacyChunk(const BaseChunk* chunk)
 	}
 	return true;
 }
-

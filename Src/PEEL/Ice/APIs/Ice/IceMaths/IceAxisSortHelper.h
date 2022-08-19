@@ -31,4 +31,3 @@
 	};
 
 #endif	// ICEAXISSORTHELPER_H
-

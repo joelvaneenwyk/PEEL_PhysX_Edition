@@ -15,4 +15,3 @@
 	CONTACT_API bool SweptBoxesIntersect(float time, const OBB& box0, const Point& vel0, const OBB& box1, const Point& vel1);
 
 #endif // CTCSWEPTBOX_H
-

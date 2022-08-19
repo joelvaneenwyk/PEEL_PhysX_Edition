@@ -1,4 +1,3 @@
-//
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 // are met:
@@ -37,7 +36,7 @@
 
 #if(PX_WINDOWS_FAMILY || PX_XBOXONE)
 #	include <exception>
-#	if PX_VC >= 16
+#	if _MSC_VER >= 1920
 #		include <typeinfo>
 #	else
 #		include <typeinfo.h>

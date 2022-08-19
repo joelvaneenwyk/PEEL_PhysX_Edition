@@ -117,7 +117,7 @@
 		inline_			operator sdword()								const	{ sdword tmp = INVALID_NUMBER; IsDecimal(mText, &tmp); return tmp;	}
 
 		// Access operators
-						const char	operator[](udword i)				const	{ return mText ? mText[i] : (const char)0;					}
+						char	operator[](udword i)				const	{ return mText ? mText[i] : (const char)0;					}
 
 		// Assignment operators
 		//! Operator for String = const char*
@@ -161,7 +161,10 @@
 	inline_ bool operator==(const StringRef& s1, const char* s2)
 	{
 		if(!s1.mText || !s2)	return false;
+		ICE_DIAG_CLANG_PUSH()
+		ICE_DIAG_CLANG_OFF("deprecated-declarations")
 		return stricmp(s1.mText, s2) == 0;
+		ICE_DIAG_CLANG_POP()
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -402,4 +402,3 @@ CompoundCreateWindow* GetVisibleCompoundCreateWindow()
 		return null;
 	return gCompoundCreateWindow;
 }
-

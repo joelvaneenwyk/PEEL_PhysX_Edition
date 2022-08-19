@@ -16,4 +16,3 @@
 	CONTACT_API	bool	ClipAllPlanes(Vertices& verts, const Planes& planes);
 
 #endif // CTCPLANEPLANE_H
-

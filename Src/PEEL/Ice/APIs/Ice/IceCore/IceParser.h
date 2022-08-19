@@ -115,9 +115,9 @@
 				void				ForceNbParams(udword i)			{ mNbParams = i;									}
 		// Data access
 		inline_	udword				GetNbParams()			const	{ return mNbParams;									}
-		inline_	String&				GetParam(udword i)				{ ASSERT(i<mNbParams); return mTable[i];			}
-		inline_	const String&		GetParam(udword i)		const	{ ASSERT(i<mNbParams); return mTable[i];			}
-		inline_	String&				operator[](udword i)	const	{ ASSERT(i<mNbParams); return mTable[i];			}
+				String&				GetParam(udword i)				{ ASSERT(i<mNbParams); return mTable[i];			}
+		const	String&				GetParam(udword i)		const	{ ASSERT(i<mNbParams); return mTable[i];			}
+				String&				operator[](udword i)	const	{ ASSERT(i<mNbParams); return mTable[i];			}
 
 		inline_	const String&		GetCommand()			const	{ return mCommand;									}
 		inline_	CMDPARSE_CALLBACK	GetCallback()			const	{ return mCallback;									}
@@ -153,7 +153,7 @@
 				void				ForceNbParams(udword i)			{ mNbParams = i;									}
 		// Data access
 		inline_	udword				GetNbParams()			const	{ return mNbParams;									}
-		inline_	const char*			operator[](udword i)	const	{ ASSERT(i<mNbParams); return mTable[i];			}
+		const char*			operator[](udword i)	const	{ ASSERT(i<mNbParams); return mTable[i];			}
 
 		inline_	const String&		GetCommand()			const	{ return mCommand;									}
 		inline_	CMDPARSE_CALLBACK	GetCallback()			const	{ return mCallback;									}

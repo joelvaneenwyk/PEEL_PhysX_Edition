@@ -1,3 +1,4 @@
+
 /*
 *  xxHash - Fast Hash algorithm
 *  Copyright (C) 2012-2016, Yann Collet
@@ -32,6 +33,7 @@
 *  - xxHash source repository : https://github.com/Cyan4973/xxHash
 */
 
+#include "stdafx.h"
 
 /* *************************************
 *  Tuning parameters

@@ -226,4 +226,3 @@
 	};
 
 #endif // ICESCANLINE_H
-

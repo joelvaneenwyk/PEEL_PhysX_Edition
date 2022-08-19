@@ -16,6 +16,8 @@
 #include "PintShapeRenderer.h"
 #include "PEEL.h"
 
+#ifdef PEEL_USE_NVD
+
 extern EditorPlugin* gEditor;
 extern Pint* mEdited;
 
@@ -264,3 +266,5 @@ void TestNVD::Update()
 //		Nvd->sync();
 	}
 }
+
+#endif

@@ -13,6 +13,8 @@
 #include <xmmintrin.h>
 #include <emmintrin.h>
 
+extern void SetGlobalPoseRenderModel(const float*);
+
 void RenderVolumeLine(const Point& p1, const Point& p2, float size, udword color);
 
 
@@ -457,7 +459,6 @@ void GLRenderHelpers::SetupGLMatrix(const PR& pose)
 
 		glMultMatrixf(m);
 
-		void SetGlobalPoseRenderModel(const float*);
 		SetGlobalPoseRenderModel(m);
 
 		// 50 lines

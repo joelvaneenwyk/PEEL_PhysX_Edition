@@ -1,4 +1,3 @@
-//
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 // are met:
@@ -73,7 +72,11 @@ namespace shdfnd
 */
 PX_FORCE_INLINE void memoryBarrier()
 {
+	ICE_DIAG_CLANG_PUSH()
+	ICE_DIAG_CLANG_OFF("deprecated-declarations")
 	_ReadWriteBarrier();
+	ICE_DIAG_CLANG_POP()
+
 	/* long Barrier;
 	__asm {
 	    xchg Barrier, eax

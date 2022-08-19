@@ -20,4 +20,3 @@
 	FUNCTION MESHMERIZER_API bool CreateHullFromPlanes2(Vertices& vertices, const ConvexHull& hull, const Point* inside_point=null);
 
 #endif	// ICEHULLFROMPLANES_H
-

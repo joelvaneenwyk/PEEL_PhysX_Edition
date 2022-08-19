@@ -1425,7 +1425,9 @@ def Sphere "Sphere"
 			const bool skip = ExportRenderMeshes(Data);
 
 			if(!skip)
+			{
 				ExportConvexHull(Data);
+			}
 
 			if(gExportPhysics)
 			{
@@ -1441,8 +1443,10 @@ def Sphere "Sphere"
 				ExportPose(&Data->mLocalPos, &Data->mLocalRot, null, false);
 
 				// TODO: refactor this with other shapes
-					Indent();	mArray.StoreASCII("bool isCollider\n");
-					Indent();	mArray.StoreASCII("uniform token purpose = ");
+				Indent();
+				mArray.StoreASCII("bool isCollider\n");
+				Indent();
+				mArray.StoreASCII("uniform token purpose = ");
 				StoreQuotedString(mArray, "guide");
 				mArray.StoreASCII("\n");
 
@@ -1534,7 +1538,9 @@ def Sphere "Sphere"
 			const bool skip = ExportRenderMeshes(Data);
 
 			if (!skip)
+			{
 				ExportMesh(Data);
+			}
 
 			if (gExportPhysics)
 			{
@@ -3270,4 +3276,3 @@ void ExportUSD2(const EditorPlugin& editor, const String* filename)
 
 	gEvilTmpContainer.Empty();
 }
-

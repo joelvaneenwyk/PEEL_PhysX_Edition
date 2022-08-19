@@ -346,4 +346,3 @@ void ToolCreateRope::CreateUI(PintGUIHelper& helper, IceWidget* parent, Widgets&
 		y += 74;
 	}
 }
-

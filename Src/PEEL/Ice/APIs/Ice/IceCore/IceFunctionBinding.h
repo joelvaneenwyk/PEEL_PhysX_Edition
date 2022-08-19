@@ -62,8 +62,8 @@
 
 	// Multimedia functions
 	FUNCTION ICECORE_API udword			TimeGetTime();
-	FUNCTION ICECORE_API UINT			SetTimer(HWND hWnd, UINT nIDEvent, UINT uElapse, TIMERPROC lpTimerFunc);
-	FUNCTION ICECORE_API BOOL			KillTimer(HWND hWnd, UINT nIDEvent);
+	// FUNCTION ICECORE_API UINT_PTR		SetTimer(HWND hWnd, UINT nIDEvent, UINT uElapse, TIMERPROC lpTimerFunc);
+	FUNCTION ICECORE_API BOOL			KillTimer(HWND hWnd, UINT_PTR nIDEvent);
 
 	// Keyboard functions
 	FUNCTION ICECORE_API SHORT			GetKeyState(int key);
@@ -100,7 +100,7 @@
 	FUNCTION ICECORE_API BOOL			TranslateMessage(CONST MSG* msg);
 	FUNCTION ICECORE_API BOOL			PeekMessage(LPMSG msg, HWND hwnd, UINT msg_filter_min, UINT msg_filter_max, UINT remove_msg);
 	FUNCTION ICECORE_API BOOL			GetMessage(LPMSG msg, HWND hwnd, UINT msg_filter_min, UINT msg_filter_max);
-	FUNCTION ICECORE_API LONG			DispatchMessage(CONST MSG* msg);
+	FUNCTION ICECORE_API LRESULT		DispatchMessage(CONST MSG* msg);
 	FUNCTION ICECORE_API LRESULT		SendMessage(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 	FUNCTION ICECORE_API LONG			SetWindowLong(HWND hwnd, int index, LONG new_long);
 	FUNCTION ICECORE_API LONG			GetWindowLong(HWND hwnd, int index);
@@ -130,7 +130,7 @@
 	FUNCTION ICECORE_API BOOL			SetDlgItemText(HWND dlg, int dlg_item, LPCSTR string);
 	FUNCTION ICECORE_API UINT			GetDlgItemText(HWND dlg, int dlg_item, LPSTR string, int max_count);
 	FUNCTION ICECORE_API int			DialogBox_(HINSTANCE hinstance, LPCSTR template_name, HWND hwnd_parent, DLGPROC dialog_func, LPARAM init_param);
-	FUNCTION ICECORE_API BOOL			EndDialog(HWND dlg, int result);
+	FUNCTION ICECORE_API BOOL			EndDialog(HWND dlg, INT_PTR result);
 	FUNCTION ICECORE_API BOOL			CheckDlgButton(HWND dlg, int button, UINT check);
 	FUNCTION ICECORE_API BOOL			CheckRadioButton(HWND dlg, int first_button, int last_button, int check_button);
 	FUNCTION ICECORE_API UINT			IsDlgButtonChecked(HWND dlg, int button);
@@ -176,25 +176,25 @@
 	FUNCTION ICECORE_API int			MessageBox(HWND hwnd, LPCSTR text, LPCSTR caption, UINT type);
 
 	// AVI player
-	FUNCTION ICECORE_API HRESULT		AVIStreamOpenFromFile(PAVISTREAM FAR* avi, LPCSTR file, DWORD type, LONG param, UINT mode, CLSID FAR* handler);
-	FUNCTION ICECORE_API PGETFRAME		AVIStreamGetFrameOpen(PAVISTREAM avi, LPBITMAPINFOHEADER wanted);
-	FUNCTION ICECORE_API HRESULT		AVIStreamGetFrameClose(PGETFRAME pg);
-	FUNCTION ICECORE_API LPVOID			AVIStreamGetFrame(PGETFRAME pg, LONG pos);
-	FUNCTION ICECORE_API LONG			AVIStreamLength(PAVISTREAM avi);
-	FUNCTION ICECORE_API LONG			AVIStreamSampleToTime(PAVISTREAM avi, LONG sample);
-	FUNCTION ICECORE_API ULONG			AVIStreamRelease(PAVISTREAM avi);
-	FUNCTION ICECORE_API HRESULT		AVIStreamInfo(PAVISTREAM avi, LPAVISTREAMINFOA psi, LONG size);
-	FUNCTION ICECORE_API void			AVIFileInit();
-	FUNCTION ICECORE_API void			AVIFileExit();
+	// FUNCTION ICECORE_API HRESULT		AVIStreamOpenFromFile(PAVISTREAM FAR* avi, LPCSTR file, DWORD type, LONG param, UINT mode, CLSID FAR* handler);
+	// FUNCTION ICECORE_API PGETFRAME		AVIStreamGetFrameOpen(PAVISTREAM avi, LPBITMAPINFOHEADER wanted);
+	// FUNCTION ICECORE_API HRESULT		AVIStreamGetFrameClose(PGETFRAME pg);
+	// FUNCTION ICECORE_API LPVOID			AVIStreamGetFrame(PGETFRAME pg, LONG pos);
+	// FUNCTION ICECORE_API LONG			AVIStreamLength(PAVISTREAM avi);
+	// FUNCTION ICECORE_API LONG			AVIStreamSampleToTime(PAVISTREAM avi, LONG sample);
+	// FUNCTION ICECORE_API ULONG			AVIStreamRelease(PAVISTREAM avi);
+	// FUNCTION ICECORE_API HRESULT		AVIStreamInfo(PAVISTREAM avi, LPAVISTREAMINFOA psi, LONG size);
+	// FUNCTION ICECORE_API void			AVIFileInit();
+	// FUNCTION ICECORE_API void			AVIFileExit();
 
 	// DIB
-	FUNCTION ICECORE_API HDRAWDIB		DrawDibOpen();
-	FUNCTION ICECORE_API BOOL			DrawDibDraw(HDRAWDIB hdd, HDC hdc, int xDst, int yDst, int dxDst, int dyDst, LPBITMAPINFOHEADER lpbi, LPVOID lpBits, int xSrc, int ySrc, int dxSrc, int dySrc, UINT wFlags);
-	FUNCTION ICECORE_API BOOL			DrawDibClose(HDRAWDIB hdd);
+	// FUNCTION ICECORE_API HDRAWDIB		DrawDibOpen();
+	// FUNCTION ICECORE_API BOOL			DrawDibDraw(HDRAWDIB hdd, HDC hdc, int xDst, int yDst, int dxDst, int dyDst, LPBITMAPINFOHEADER lpbi, LPVOID lpBits, int xSrc, int ySrc, int dxSrc, int dySrc, UINT wFlags);
+	// FUNCTION ICECORE_API BOOL			DrawDibClose(HDRAWDIB hdd);
 
 	// Common controls
 	FUNCTION ICECORE_API void			InitCommonControls();
-	FUNCTION ICECORE_API BOOL			InitCommonControlsEx(LPINITCOMMONCONTROLSEX init_ctrls);
+	// FUNCTION ICECORE_API BOOL			InitCommonControlsEx(LPINITCOMMONCONTROLSEX init_ctrls);
 	FUNCTION ICECORE_API BOOL			GetSaveFileName(LPOPENFILENAMEA params);
 	FUNCTION ICECORE_API BOOL			GetOpenFileName(LPOPENFILENAMEA params);
 	FUNCTION ICECORE_API BOOL			ChooseColor(LPCHOOSECOLORA params);
@@ -223,4 +223,3 @@
 	#define CHECKPOINT(text)	IceCore::MessageBox(null, text, "CheckPoint", MB_OK);
 
 #endif // ICEFUNCTIONBINDING_H
-

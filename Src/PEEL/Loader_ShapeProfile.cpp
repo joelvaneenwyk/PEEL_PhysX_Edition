@@ -30,4 +30,3 @@ ShapeProfile::~ShapeProfile()
 	DELETEARRAY(mSegments);
 	DELETEARRAY(mPts);
 }
-

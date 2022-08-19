@@ -19,10 +19,12 @@
 #	error ICE needs C++ compilation...
 #endif
 
+#include <IceCore/IcePreprocessor.h>
+
 #if defined(ICECORE_EXPORTS)
-	#pragma message("----Compiling ICE Core")
+ICE_DIAG_MESSAGE("----Compiling ICE Core")
 #elif !defined(ICECORE_EXPORTS)
-	#pragma message("----Using ICE Core")
+ICE_DIAG_MESSAGE("----Using ICE Core")
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Automatic linking
 #	ifndef BAN_ICECORE_AUTOLINK
@@ -60,6 +62,7 @@
 #ifdef _DEBUG
 #	include <crtdbg.h>  // C runtime debug functions
 #endif
+
 #include <stdio.h>  // Standard Input/Output functions
 #include <stdlib.h>
 #include <float.h>
@@ -208,4 +211,3 @@ namespace IceCore
 }
 
 #endif  // ICECORE_H
-

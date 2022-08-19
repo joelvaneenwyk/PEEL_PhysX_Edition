@@ -161,4 +161,3 @@ udword GetSystemTexturesTimestamp()
 {
 	return gST_Timestamp;
 }
-

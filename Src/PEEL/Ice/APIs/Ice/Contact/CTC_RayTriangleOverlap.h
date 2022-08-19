@@ -2,7 +2,7 @@
 /**
  *	Contains code for ray-triangle intersection
  *	\file		CTC_RayTriangleOverlap.h
- *	\author		Pierre Terdiman - original code by Tomas Möller
+ *	\author		Pierre Terdiman - original code by Tomas MÃ¶ller
  *	\date		January, 13, 2000
  */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,4 +33,3 @@
 						float& t, float& u, float& v, bool cull);
 
 #endif // CTCRAYTRIANGLEOVERLAP_H
-

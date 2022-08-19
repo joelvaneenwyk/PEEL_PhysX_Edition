@@ -292,4 +292,3 @@ CONTACT_API float EdgeEdgeTest_(udword nb, const Point& pa, const Point& pb, con
 
 
 #endif // CTCCONTINUOUS_H
-

@@ -16,4 +16,3 @@
 	CONTACT_API bool SweptSphereIntersect(const Sphere& sphere0, const Sphere& sphere1, const Point& motion, float& d, Point& nrm);
 
 #endif // CTCSWEPTSPHERE_H
-

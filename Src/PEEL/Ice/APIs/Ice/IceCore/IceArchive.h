@@ -38,15 +38,15 @@
 		inline_					bool		IsValid()	const	{ return mBuffer!=null || mFile!=null;	}
 		inline_					udword		GetSize()	const	{ return mSize;							}
 
-		override(ReadStream)	bool		Seek(udword offset)							const;
+		ICE_OVERRIDE(ReadStream)	bool		Seek(udword offset)							const;
 
 		// Loading API
-		override(ReadStream)	ubyte		ReadByte()									const;
-		override(ReadStream)	uword		ReadWord()									const;
-		override(ReadStream)	udword		ReadDword()									const;
-		override(ReadStream)	float		ReadFloat()									const;
-		override(ReadStream)	double		ReadDouble()								const;
-		override(ReadStream)	bool		ReadBuffer(void* buffer, udword size)		const;
+		ICE_OVERRIDE(ReadStream)	ubyte		ReadByte()									const;
+		ICE_OVERRIDE(ReadStream)	uword		ReadWord()									const;
+		ICE_OVERRIDE(ReadStream)	udword		ReadDword()									const;
+		ICE_OVERRIDE(ReadStream)	float		ReadFloat()									const;
+		ICE_OVERRIDE(ReadStream)	double		ReadDouble()								const;
+		ICE_OVERRIDE(ReadStream)	bool		ReadBuffer(void* buffer, udword size)		const;
 
 								const char*	ReadString()								const;
 		//

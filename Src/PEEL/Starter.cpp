@@ -83,4 +83,3 @@ int main(int argc, char** argv)
 	PEEL_GlobalInit();
 	return PEEL_main(argc, argv);
 }
-

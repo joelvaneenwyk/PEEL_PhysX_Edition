@@ -12,6 +12,8 @@
 #ifndef ICEUTILS_H
 #define ICEUTILS_H
 
+#include <IceCore/IceAssert.h>
+
 	#define START_RUNONCE	{ static bool __RunOnce__ = false;	if(!__RunOnce__){
 	#define END_RUNONCE		__RunOnce__ = true;}}
 
@@ -283,7 +285,7 @@
 	#define OFFSET_OF(Class, Member)    __builtin_offsetof(Class, Member)
 #endif // __SNC__
 #else
-#ifdef LINUX
+#if defined(LINUX) || defined(__clang__)
 	#define OFFSET_OF(Class, Member)    __builtin_offsetof(Class, Member)
 #else // LINUX
 	#define OFFSET_OF(Class, Member)    (size_t)&(((Class*)0)->Member)

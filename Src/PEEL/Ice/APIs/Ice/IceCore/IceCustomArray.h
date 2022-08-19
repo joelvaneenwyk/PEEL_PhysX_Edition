@@ -62,13 +62,13 @@
 			// Store a char (different from "signed char" AND "unsigned char")
 				CustomArray&	Store(char b);
 			// Store a ubyte
-		inline_	CustomArray&	Store(ubyte b)
+				CustomArray&	Store(ubyte b)
 								{
 									ASSERT(sizeof(ubyte)==sizeof(char));
 									return Store(char(b));
 								}
 			// Store a sbyte
-		inline_	CustomArray&	Store(sbyte b)
+				CustomArray&	Store(sbyte b)
 								{
 									ASSERT(sizeof(sbyte)==sizeof(char));
 									return Store(char(b));
@@ -77,7 +77,7 @@
 			// Store a short / sword
 				CustomArray&	Store(short w);
 			// Store a uword
-		inline_	CustomArray&	Store(uword w)
+				CustomArray&	Store(uword w)
 								{
 									ASSERT(sizeof(uword)==sizeof(short));
 									return Store(short(w));
@@ -87,13 +87,13 @@
 				CustomArray&	Store(udword d);
 				CustomArray&	Store(uqword d);
 			// Store a long
-		inline_	CustomArray&	Store(long d)
+				CustomArray&	Store(long d)
 								{
 									ASSERT(sizeof(long)==sizeof(udword));
 									return Store(udword(d));
 								}
 			// Store a unsigned long
-		inline_	CustomArray&	Store(unsigned long d)
+				CustomArray&	Store(unsigned long d)
 								{
 									ASSERT(sizeof(unsigned long)==sizeof(udword));
 									return Store(udword(d));

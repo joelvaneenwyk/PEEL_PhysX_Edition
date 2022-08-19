@@ -15,4 +15,3 @@
 	CONTACT_API bool ComputeIntersection(const Plane& p1, const Plane& p2, const Plane& p3, Point& v);
 
 #endif // CTCPLANEPLANEPLANE_H
-

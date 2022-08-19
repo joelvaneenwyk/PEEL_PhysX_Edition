@@ -17,4 +17,3 @@
 	CONTACT_API bool	RayPlane(const Ray& line, const Plane& plane, float& distance_along_line, Point& point_on_plane);
 
 #endif // CTCRAYPLANEOVERLAP_H
-

@@ -1003,8 +1003,8 @@
 		PR				mLocalPivot0;
 		PR				mLocalPivot1;
 		float			mGearRatio;
-//		float			mRadius0;
-//		float			mRadius1;
+		float			mRadius0;
+		float			mRadius1;
 	};
 
 	struct PINT_RACK_AND_PINION_JOINT_CREATE : PINT_JOINT_CREATE

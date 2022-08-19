@@ -65,4 +65,3 @@
 	};
 
 #endif // ICESTATS_H
-

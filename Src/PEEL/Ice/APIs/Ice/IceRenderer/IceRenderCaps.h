@@ -40,7 +40,7 @@
 		// DX8
 		bool		mNPatches;						//!< Device supports N patches.
 		bool		mPureDevice;					//!< Device can support rasterization, transform, lighting, and shading in hardware.
-		bool		mQuinticRTPatches;				//!< Device supports quintic béziers and B-splines.
+		bool		mQuinticRTPatches;				//!< Device supports quintic bÃ©ziers and B-splines.
 		bool		mRTPatches;						//!< Device supports rectangular and triangular patches.
 		bool		mRTPatchHandleZero;				//!< When this device capability is set, the hardware architecture does not require caching of
 													//!< any information, and uncached patches (handle zero) will be drawn as efficiently as cached
@@ -671,7 +671,7 @@
 		float				mMaxVertexW;							// Maximum W-based depth value that the device supports.
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		// Maximum width and height of the supported stipple (up to 32×32). 
+		// Maximum width and height of the supported stipple (up to 32ï¿½32).
 		udword				mStippleWidth;
 		udword				mStippleHeight;
 

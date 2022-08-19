@@ -7,4 +7,3 @@
 	CONTACT_API	bool SweepCapsuleBox(const LSS& lss, const OBB& box, const Point& dir, float length, float& min_dist, Point& normal);
 
 #endif // CTCSWEEPBOXSPHERE_H
-

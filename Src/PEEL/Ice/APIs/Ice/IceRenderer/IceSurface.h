@@ -144,7 +144,7 @@
 	DDSCAPS_MIPMAP			This surface is one level of a mipmap. This surface is attached to other DDSCAPS_MIPMAP surfaces to form the mipmap.
 							This can be done explicitly by creating a number of surfaces and attaching them by using the IDirectDrawSurface7::AddAttachedSurface
 							method, or implicitly by the CreateSurface method. If this capability is set, DDSCAPS_TEXTURE must also be set.
-	DDSCAPS_MODEX			This surface is a 320×200 or 320×240 Mode X surface.
+	DDSCAPS_MODEX			This surface is a 320x200 or 320x240 Mode X surface.
 	DDSCAPS_NONLOCALVIDMEM	This surface exists in nonlocal video memory, rather than true, local video memory. If this flag is specified,
 							DDSCAPS_VIDEOMEMORY flag must be specified, as well. This cannot be used with the DDSCAPS_LOCALVIDMEM flag.
 	DDSCAPS_OFFSCREENPLAIN	This surface is any off-screen surface that is not an overlay, texture, z-buffer, front-buffer, back-buffer, or alpha surface.

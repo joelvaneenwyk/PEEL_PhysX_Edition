@@ -67,5 +67,3 @@
 	};
 
 #endif // ICEXLIST_H
-
-

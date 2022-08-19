@@ -142,4 +142,3 @@ void SetupAtmosphereShaderParams(GLuint shader_program)
 	const float fIns = gAtmosphere.GetParam(eAtmInscatteringMultiplier);
 	GLShader::SetUniform3f(shader_program, "CV_TERM_MULTIPLIERS", fExt, fIns, 0.0f);
 }
-

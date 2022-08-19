@@ -537,4 +537,3 @@ void FromQuatL2(const Quat &q, float l2);
 	FUNCTION ICEMATHS_API void MatToEuler(const Matrix3x3& mat, float* ang);
 
 #endif // ICEMATRIX3X3_H
-

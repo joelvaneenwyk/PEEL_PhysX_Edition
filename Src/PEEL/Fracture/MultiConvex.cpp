@@ -351,4 +351,3 @@ bool MultiConvex::patternFracture(Pint& pint, const int convexNr, const Ray& ray
 
 	return true;
 }
-

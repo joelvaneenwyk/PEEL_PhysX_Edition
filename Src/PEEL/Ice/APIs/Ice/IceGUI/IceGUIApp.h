@@ -64,4 +64,3 @@
 	FUNCTION ICEGUI_API	void	CloseGUI();
 
 #endif // ICEGUIAPP_H
-

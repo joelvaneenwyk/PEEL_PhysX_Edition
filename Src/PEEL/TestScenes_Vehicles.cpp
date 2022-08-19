@@ -139,7 +139,8 @@ static const float gDefaultSmoothingData[] = {	//				Rise		Fall
 					StreamInterface&	mStreamer;
 				};
 
-				mStreamer->Iterate(RegionRemoval(*mStreamInterface));
+				RegionRemoval removal(*mStreamInterface);
+				mStreamer->Iterate(removal);
 			}
 			DELETESINGLE(mStreamer);
 			DELETESINGLE(mStreamInterface);
@@ -3565,4 +3566,3 @@ static const char* gDesc_Lego_Buggy = "Lego - Buggy";
 DRIVABLE_LEGO_CAR(Lego_Buggy, "Buggy_Vehicle.zb2", "Buggy.pvf", SCENE_RACE_TRACK)
 
 ///////////////////////////////////////////////////////////////////////////////
-

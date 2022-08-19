@@ -29,7 +29,7 @@
 								CompoundCreateWindow(const WindowDesc& desc);
 		virtual					~CompoundCreateWindow();
 
-		virtual int				handleEvent(IceGUIEvent* event);
+		virtual int				handleEvent(IceGUIEvent* event) override;
 
 		// GUI_RenderInterface
 		virtual	void			PreRenderCallback()	override;

@@ -461,4 +461,3 @@ void PintConvexInstanceRenderer::_Render(const PR& pose) const
 	if(mCurrentNbInstances==mMaxNbInstances)
 		DrawBatch();
 }
-

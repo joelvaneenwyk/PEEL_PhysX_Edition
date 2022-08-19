@@ -95,10 +95,10 @@ set(PEEL_SRC_FILES
 		${PEEL_APPLICATION_ROOT}/TerrainStreamingUI.cpp
 		${PEEL_APPLICATION_ROOT}/Scattering.cpp
 		${PEEL_APPLICATION_ROOT}/TerrainManager.cpp
-		${PEEL_APPLICATION_ROOT}/LZ4/lz4.c
-		${PEEL_APPLICATION_ROOT}/LZ4/lz4frame.c
-		${PEEL_APPLICATION_ROOT}/LZ4/lz4hc.c
-		${PEEL_APPLICATION_ROOT}/LZ4/xxhash.c
+		${PEEL_APPLICATION_ROOT}/LZ4/lz4.cpp
+		${PEEL_APPLICATION_ROOT}/LZ4/lz4frame.cpp
+		${PEEL_APPLICATION_ROOT}/LZ4/lz4hc.cpp
+		${PEEL_APPLICATION_ROOT}/LZ4/xxhash.cpp
 		${PEEL_APPLICATION_ROOT}/TestScenes.cpp
 		${PEEL_APPLICATION_ROOT}/TestScenes_API.cpp
 		${PEEL_APPLICATION_ROOT}/TestScenes_Behavior.cpp
@@ -500,42 +500,6 @@ set(PEEL_SRC_FILES
 		)
 
 set(APP_ICON_RESOURCE_WINDOWS "${PEEL_APPLICATION_ROOT}/PEEL.rc")
-
-set_source_files_properties(
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/windows/PsWindowsFPU.cpp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/windows/PsWindowsMutex.cpp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/windows/PsWindowsPrintString.cpp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/windows/PsWindowsSocket.cpp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/windows/PsWindowsSList.cpp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/windows/PsWindowsThread.cpp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/windows/PsWindowsSync.cpp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/windows/PsWindowsTime.cpp"
-		"${PEEL_APPLICATION_ROOT}/HACD/hacdGraph.cpp"
-		"${PEEL_APPLICATION_ROOT}/HACD/hacdICHull.cpp"
-		"${PEEL_APPLICATION_ROOT}/HACD/hacdHACD.cpp"
-		"${PEEL_APPLICATION_ROOT}/HACD/hacdManifoldMesh.cpp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/PsFoundation.cpp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/PsAllocator.cpp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/PsAssert.cp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/PsString.cpp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/PsMathUtils.cpp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/PsUtilities.cp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/windows/PsWindowsAtomic.cp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/windows/PsWindowsCpu.cp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/PsTempAllocator.cpp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/PsAssert.cpp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/PsUtilities.cpp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/windows/PsWindowsAtomic.cpp"
-		"${PEEL_APPLICATION_ROOT}/PxFoundation/src/windows/PsWindowsCpu.cpp"
-		PROPERTIES SKIP_PRECOMPILE_HEADERS ON)
-
-set_source_files_properties(
-		"${PEEL_APPLICATION_ROOT}/LZ4/lz4.c"
-		"${PEEL_APPLICATION_ROOT}/LZ4/lz4frame.c"
-		"${PEEL_APPLICATION_ROOT}/LZ4/lz4hc.c"
-		"${PEEL_APPLICATION_ROOT}/LZ4/xxhash.c"
-		PROPERTIES LANGUAGE CXX
-		SKIP_PRECOMPILE_HEADERS ON)
 
 # Group source files
 source_group(TREE ${PEEL_REPO_ROOT} FILES ${PEEL_SRC_FILES})

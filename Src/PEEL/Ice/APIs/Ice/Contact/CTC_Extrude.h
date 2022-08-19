@@ -9,4 +9,3 @@
 	CONTACT_API	udword	ExtrudeBox2(const AABB& local_box, const Matrix4x4* world, const Point& extrusion_dir, Triangle* tris, const Point& dir);
 
 #endif // CTCEXTRUDE_H
-

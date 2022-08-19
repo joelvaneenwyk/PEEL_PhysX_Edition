@@ -113,5 +113,3 @@ void ToolShootObject::CreateUI(PintGUIHelper& helper, IceWidget* parent, Widgets
 	helper.CreateEditBox(parent, 2, x+OffsetX, y, EditBoxWidth, 20, helper.Convert(gObjectVelocity), &owner, EDITBOX_FLOAT_POSITIVE, Local::gEBCallback, gTooltip_ObjectVelocity);
 	y += YStep;
 }
-
-

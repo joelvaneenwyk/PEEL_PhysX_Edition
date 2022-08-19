@@ -26,7 +26,7 @@
 		//! Identity constructor
 		inline_				Quat(IDENTITY)								{ p.x = p.y = p.z = 0.0f;	w = 1.0f;	}
 		//! Copy constructor
-		inline_				Quat(const Quat& q) : w(q.w), p(q.p)		{}
+		inline_				Quat(const Quat& q) : p(q.p), w(q.w) 		{}
 		//! Constructor from floats
 		inline_				Quat(float _w, float x, float y, float z)	{ p.x = x; p.y = y; p.z = z; w = _w;	}
 		//! Constructor from an angle and a vector.

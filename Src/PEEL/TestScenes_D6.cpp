@@ -1545,4 +1545,3 @@ const float D6Joint_AsymmetricSwingYZCone::APIRotY = (DesiredMaxSwingY + Desired
 const float D6Joint_AsymmetricSwingYZCone::APIRotZ = (DesiredMaxSwingZ + DesiredMinSwingZ)*0.5f;
 
 ///////////////////////////////////////////////////////////////////////////////
-

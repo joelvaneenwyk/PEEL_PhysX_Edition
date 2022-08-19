@@ -518,4 +518,3 @@ udword RaytracingTestMT(Picture& pic, Pint& pint, udword& total_time, udword scr
 total_time = Time;
 	return Nb;
 }
-

@@ -38,4 +38,3 @@
 	CONTACT_API bool SphereTriangleOverlap_Christer(const Triangle& tri, const Sphere& sphere);
 
 #endif // CTCTRIANGLESPHEREOVERLAP_H
-

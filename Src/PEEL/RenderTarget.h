@@ -1,3 +1,4 @@
+
 #ifndef RENDER_TARGET
 #define RENDER_TARGET
 

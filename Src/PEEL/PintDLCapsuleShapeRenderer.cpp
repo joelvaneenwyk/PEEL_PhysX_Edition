@@ -118,4 +118,3 @@ PintDLCapsuleShapeRenderer::PintDLCapsuleShapeRenderer(float r, float h, bool us
 	}
 	glEndList();
 }
-

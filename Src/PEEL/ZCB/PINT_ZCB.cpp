@@ -36,7 +36,7 @@ ZCBFactory::~ZCBFactory()
 
 static void _Log(const char* text)
 {
-	printf(text);
+	printf("%s", text);
 }
 
 bool ZCBFactory::NewScene(const ZCBSceneInfo& scene)
@@ -47,31 +47,31 @@ bool ZCBFactory::NewScene(const ZCBSceneInfo& scene)
 
 bool ZCBFactory::NewCamera(const ZCBCameraInfo& camera)
 {
-	_Log(_F("NewCamera (%s)\n", camera.mName));
+	_Log(_F("NewCamera (%s)\n", camera.mName.GetBuffer()));
 	return true;
 }
 
 bool ZCBFactory::NewLight(const ZCBLightInfo& light)
 {
-	_Log(_F("NewLight (%s)\n", light.mName));
+	_Log(_F("NewLight (%s)\n", light.mName.GetBuffer()));
 	return true;
 }
 
 bool ZCBFactory::NewMaterial(const ZCBMaterialInfo& material)
 {
-	_Log(_F("NewMaterial (%s)\n", material.mName));
+	_Log(_F("NewMaterial (%s)\n", material.mName.GetBuffer()));
 	return true;
 }
 
 bool ZCBFactory::NewTexture(const ZCBTextureInfo& texture)
 {
-	_Log(_F("NewTexture (%s)\n", texture.mName));
+	_Log(_F("NewTexture (%s)\n", texture.mName.GetBuffer()));
 	return true;
 }
 
 bool ZCBFactory::NewMesh(const ZCBMeshInfo& mesh)
 {
-	_Log(_F("NewMesh (%s)\n", mesh.mName));
+	_Log(_F("NewMesh (%s)\n", mesh.mName.GetBuffer()));
 
 	IndexedSurface* IS = ICE_NEW(TrackedIndexedSurface);
 	IS->Init(mesh.mNbFaces, mesh.mNbVerts, mesh.mVerts, reinterpret_cast<const IndexedTriangle*>(mesh.mFaces));
@@ -90,13 +90,13 @@ bool ZCBFactory::NewMesh(const ZCBMeshInfo& mesh)
 
 bool ZCBFactory::NewShape(const ZCBShapeInfo& shape)
 {
-	_Log(_F("NewShape (%s)\n", shape.mName));
+	_Log(_F("NewShape (%s)\n", shape.mName.GetBuffer()));
 	return true;
 }
 
 bool ZCBFactory::NewHelper(const ZCBHelperInfo& helper)
 {
-	_Log(_F("NewHelper (%s)\n", helper.mName));
+	_Log(_F("NewHelper (%s)\n", helper.mName.GetBuffer()));
 	return true;
 }
 
@@ -150,5 +150,3 @@ bool CreateZCBScene(Pint& pint, const PintCaps& caps, ZCBFactory& factory)
 
 	return true;
 }
-
-

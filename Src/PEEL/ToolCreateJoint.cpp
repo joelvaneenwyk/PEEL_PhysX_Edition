@@ -2370,11 +2370,11 @@ void ToolCreateChain::RenderCallback(PintRender& render, Pint& pint, udword pint
 		const udword NbLinkActors = mLinkActors.GetNbLinkActors();
 		if(NbLinkActors)
 		{
-			const Quat Idt(Idt);
+			const Quat Identity(Idt);
 			const LinkActor* Actors = mLinkActors.GetLinkActors();
 			for(udword i=0;i<NbLinkActors;i++)
 			{
-				RenderActorData(*mPint, Actors[i].mActor, null, Idt);
+				RenderActorData(*mPint, Actors[i].mActor, null, Identity);
 			}
 
 			if(!mActiveButton)
@@ -2695,4 +2695,3 @@ void ToolCreateChain::CreateUI(PintGUIHelper& helper, IceWidget* parent, Widgets
 
 	OnComboBoxChange();
 }
-

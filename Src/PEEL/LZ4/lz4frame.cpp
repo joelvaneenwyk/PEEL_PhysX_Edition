@@ -1,3 +1,4 @@
+
 /*
  * LZ4 auto-framing library
  * Copyright (C) 2011-2016, Yann Collet.
@@ -31,6 +32,8 @@
  * - LZ4 homepage : http://www.lz4.org
  * - LZ4 source repository : https://github.com/lz4/lz4
  */
+
+#include "stdafx.h"
 
 /* LZ4F is a stand-alone API to create LZ4-compressed Frames
  * in full conformance with specification v1.6.1 .
@@ -289,7 +292,6 @@ size_t LZ4F_getBlockSize(unsigned blockSizeID)
 /*-************************************
 *  Private functions
 **************************************/
-#define MIN(a,b)   ( (a) < (b) ? (a) : (b) )
 
 static BYTE LZ4F_headerChecksum (const void* header, size_t length)
 {

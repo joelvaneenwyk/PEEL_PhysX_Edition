@@ -426,7 +426,7 @@ void EditorSceneAPI::Cull(udword nb_planes, const Plane* planes, Reporter& repor
 //		PREVENT_COPY(LocalReport)
 		public:
 
-			LocalReport(Reporter& reporter, const EditorPlugin& editor) : mReporter(reporter), mEditor(editor)	{}
+			LocalReport(Reporter& _reporter, const EditorPlugin& _editor) : mReporter(_reporter), mEditor(_editor)	{}
 
 		virtual	bool	ReportObject(PintActorHandle engine_handle)
 		{
@@ -448,7 +448,8 @@ void EditorSceneAPI::Cull(udword nb_planes, const Plane* planes, Reporter& repor
 		const EditorPlugin&	mEditor;
 	};
 
-	API->Cull(nb_planes, planes, LocalReport(reporter, editor));
+	LocalReport report(reporter, editor);
+	API->Cull(nb_planes, planes, report);
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -5428,8 +5429,9 @@ void Editor_ResetPoses(udword nb, PintActorHandle* handles)
 
 PintActorHandle Editor_CreateCompound(udword nb, PintActorHandle* handles, const MergeParams& params)
 {
+	DefaultMerge merger = DefaultMerge();
 	if(gEditor)
-		return gEditor->MergeActors(nb, handles, DefaultMerge(), params);
+		return gEditor->MergeActors(nb, handles, merger, params);
 	return null;
 }
 
@@ -5456,16 +5458,18 @@ void Editor_GetAllActors(PtrContainer& actors)
 PintActorHandle Editor_MakeStatic(PintActorHandle h)
 {
 	//### joints?
+	DefaultMerge merger = DefaultMerge();
 	if(gEditor)
-		return gEditor->MergeActors(1, &h, DefaultMerge(), MergeParams(null, 0.0f));
+		return gEditor->MergeActors(1, &h, merger, MergeParams(null, 0.0f));
 	return null;
 }
 
 PintActorHandle Editor_MakeDynamic(PintActorHandle h)
 {
 	//### joints?
+	DefaultMerge merger = DefaultMerge();
 	if(gEditor)
-		return gEditor->MergeActors(1, &h, DefaultMerge(), MergeParams(null, 1.0f));
+		return gEditor->MergeActors(1, &h, merger, MergeParams(null, 1.0f));
 	return null;
 }
 
@@ -5479,29 +5483,33 @@ PintActorHandle Editor_MakeDynamic(PintActorHandle h)
 
 PintActorHandle Editor_MakeSphere(PintActorHandle h)
 {
+	MakeSphere maker = MakeSphere();
 	if(gEditor)
-		return gEditor->MergeActors(1, &h, MakeSphere(), MergeParams());
+		return gEditor->MergeActors(1, &h, maker, MergeParams());
 	return null;
 }
 
 PintActorHandle Editor_MakeBox(PintActorHandle h)
 {
+	MakeBox maker = MakeBox();
 	if(gEditor)
-		return gEditor->MergeActors(1, &h, MakeBox(), MergeParams());
+		return gEditor->MergeActors(1, &h, maker, MergeParams());
 	return null;
 }
 
 PintActorHandle Editor_MakeConvex(PintActorHandle h)
 {
+	MakeConvex maker = MakeConvex();
 	if(gEditor)
-		return gEditor->MergeActors(1, &h, MakeConvex(), MergeParams());
+		return gEditor->MergeActors(1, &h, maker, MergeParams());
 	return null;
 }
 
 PintActorHandle Editor_MakeMesh(PintActorHandle h)
 {
+	MakeMesh maker = MakeMesh();
 	if(gEditor)
-		return gEditor->MergeActors(1, &h, MakeMesh(), MergeParams());
+		return gEditor->MergeActors(1, &h, maker, MergeParams());
 	return null;
 }
 

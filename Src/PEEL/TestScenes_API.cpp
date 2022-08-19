@@ -722,6 +722,5 @@ class Heightfield : public HeightfieldTest
 
 		return true;
 	}
-
-END_TEST(Heightfield)
-
+};
+// END_TEST(Heightfield)

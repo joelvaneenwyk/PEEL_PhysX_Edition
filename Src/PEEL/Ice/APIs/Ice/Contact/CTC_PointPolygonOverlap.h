@@ -16,4 +16,3 @@
 	CONTACT_API	BOOL	PointInConvexPolygon2D	(const Point* vertices2D, int nb_verts, const float x, const float y);
 
 #endif // CTCPOINTPOLYGONOVERLAP_H
-

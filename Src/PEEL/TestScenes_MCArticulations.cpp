@@ -1619,7 +1619,7 @@ START_TEST(ArticulationDriveTest, CATEGORY_MCARTICULATIONS, gDesc_ArticulationDr
 //			ArticulatedDesc.mMotor.mTargetVelocity = Point(TargetVelocity, TargetVelocity, TargetVelocity);
 
 			const AngleAxis AA(TargetPosition*DEGTORAD, 1.0f, 0.0f, 0.0f);
-			Quat Rot = AA;
+			Quat Rot(AA);
 			Rot.Normalize();
 
 			ArticulatedDesc.mMotor.mTargetOrientation = Rot;
@@ -1767,7 +1767,7 @@ START_TEST(ArticulationDriveVsStaticObstacle, CATEGORY_MCARTICULATIONS, gDesc_Ar
 //			ArticulatedDesc.mMotor.mTargetVelocity = Point(TargetVelocity, TargetVelocity, TargetVelocity);
 
 			const AngleAxis AA(TargetPosition*DEGTORAD, 1.0f, 0.0f, 0.0f);
-			Quat Rot = AA;
+			Quat Rot(AA);
 			Rot.Normalize();
 
 			ArticulatedDesc.mMotor.mTargetOrientation = Rot;

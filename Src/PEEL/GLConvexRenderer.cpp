@@ -471,4 +471,3 @@ void ConvexRenderer::render()
 		shader->deactivate();
 	}
 #endif
-

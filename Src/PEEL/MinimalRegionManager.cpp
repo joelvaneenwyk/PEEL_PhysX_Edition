@@ -45,4 +45,3 @@ void MinimalRegionManager::RemoveRegion(const StreamRegion& region)
 //	mPint.ReleaseObject(PintActorHandle(region.mUserData));
 	ReleasePintObject(mPint, PintActorHandle(region.mUserData), true);
 }
-

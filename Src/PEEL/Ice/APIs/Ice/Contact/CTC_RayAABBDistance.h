@@ -17,7 +17,7 @@
 	// Optimized Ray-AABB intersection
 	CONTACT_API bool	RayAABB2(const Point& min, const Point& max, const Point& origin, const Point& dir, Point& coord);
 
-	// Ray-AABB intersection by Tim Schröder / Volition
+	// Ray-AABB intersection by Tim SchrÃ¶der / Volition
 	CONTACT_API bool	RayAABB3(const Point& min, const Point& max, const Point& p1, const Point& p2, Point& intercept);
 
 	// My new version
@@ -75,4 +75,3 @@
 	CONTACT_API	udword	RayAABBIntersectAdam(const Point& min, const Point& max, const Point& origin, const Point& dir, Point& coord, float& t);
 
 #endif // CTCRAYAABBDISTANCE_H
-

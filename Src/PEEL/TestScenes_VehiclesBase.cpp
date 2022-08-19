@@ -15,7 +15,7 @@
 	#include "PxTransform.h"
 	#include "PxMat33.h"
 	using namespace physx;
-	#include "ICE_To_Px.h"
+	#include "ICE_To_PX.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 

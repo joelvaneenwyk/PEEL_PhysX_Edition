@@ -12,30 +12,70 @@
 #ifndef ICEPREPROCESSOR_H
 #define ICEPREPROCESSOR_H
 
+#if defined(__clang__)
+#	define ICE_DIAG_CLANG_DO_PRAGMA(x) _Pragma(#   x)
+#	define ICE_DIAG_CLANG_PRAGMA(x)    ICE_DIAG_CLANG_DO_PRAGMA(clang diagnostic x)
+#	define ICE_DIAG_CLANG_PUSH()       ICE_DIAG_CLANG_PRAGMA(push)
+#	define ICE_DIAG_CLANG_POP()        ICE_DIAG_CLANG_PRAGMA(pop)
+#	define ICE_DIAG_CLANG_OFF(x)       ICE_DIAG_CLANG_PRAGMA(ignored "-W" x)
+#	define ICE_DIAG_CLANG_ON(x)        ICE_DIAG_CLANG_PRAGMA(warning "-W" x)
+#else
+#	define ICE_DIAG_CLANG_DO_PRAGMA(x)
+#	define ICE_DIAG_CLANG_PRAGMA(x)
+#	define ICE_DIAG_CLANG_PUSH()
+#	define ICE_DIAG_CLANG_POP()
+#	define ICE_DIAG_CLANG_OFF(x)
+#	define ICE_DIAG_CLANG_ON(x)
+#endif
+
+#if defined(__clang__)
+#	define ICE_DIAG_MESSAGE(x)
+#elif defined(_DEBUG)
+#	define ICE_DIAG_MESSAGE(x) __pragma(message(x))
+#else
+#	define ICE_DIAG_MESSAGE(x)
+#endif
+
 // July 31, 2013:
 // - removed pragma messages, spawns console when not using PCH
 // - removed old "for" define, see ICE_ANSI_FOR
 
 // Check platform
 #if defined(_WIN32) || defined(WIN32)
-//		#pragma message("----Compiling on Windows...")
+ICE_DIAG_MESSAGE("----Compiling on Windows...")
 #	define PLATFORM_WINDOWS
 #elif defined(_XBOX)
-//		#pragma message("----Compiling on XBOX...")
+ICE_DIAG_MESSAGE("----Compiling on XBOX...")
 #else
-//		#pragma message("----Compiling on unknown platform...")
-	#endif
+ICE_DIAG_MESSAGE("----Compiling on unknown platform...")
+#endif
+
+ICE_DIAG_CLANG_OFF("unused-variable")
+ICE_DIAG_CLANG_OFF("writable-strings")
+ICE_DIAG_CLANG_OFF("deprecated-declarations")
+ICE_DIAG_CLANG_OFF("format-security")
+ICE_DIAG_CLANG_OFF("inconsistent-missing-override")
+ICE_DIAG_CLANG_OFF("return-type-c-linkage")
+ICE_DIAG_CLANG_OFF("class-conversion")
+ICE_DIAG_CLANG_OFF("switch")
+ICE_DIAG_CLANG_OFF("unused-but-set-variable")
+ICE_DIAG_CLANG_OFF("unused-function")
+ICE_DIAG_CLANG_OFF("sometimes-uninitialized")
+ICE_DIAG_CLANG_OFF("format")
+ICE_DIAG_CLANG_OFF("invalid-noreturn")
+ICE_DIAG_CLANG_OFF("ignored-pragma-optimize")
+ICE_DIAG_CLANG_OFF("reorder-ctor")
 
 // Check compiler
 #if defined(_MSC_VER)
-//		#pragma message("----Compiling with VC++...")
+ICE_DIAG_MESSAGE("----Compiling with VC++")
 #	define COMPILER_VISUAL_CPP
 
 #	if _MSC_VER > 1300
-//			#pragma message("----Compiling with VC7")
+ICE_DIAG_MESSAGE("----Compiling with VC7")
 #		define COMPILER_VC7
 #	else
-//			#pragma message("----Compiling with VC6")
+ICE_DIAG_MESSAGE("----Compiling with VC6")
 #		define COMPILER_VC6
 #	endif
 
@@ -54,14 +94,15 @@
 #	pragma warning(default : 4287)  // 'operator' : unsigned/negative constant mismatch.
 #	pragma warning(default : 4296)  // 'operator' : expression is always false.
 #	pragma warning(default : 4302)  // 'conversion' : truncation from 'type 1' to 'type 2'.
-		#pragma warning( default : 4529 ) // 'member_name' : forming a pointer-to-member requires explicit use of the address-of operator ('&') and a qualified name.
+#	pragma warning(default : 4529)  // 'member_name' : forming a pointer-to-member requires explicit use of the address-of
+												// operator ('&') and a qualified name.
 #	pragma warning(default : 4555)  // expression has no effect; expected expression with side-effect.
 
 #	pragma warning(disable : 4996)  // BS deprecated warnings from VC8
 #	pragma warning(disable : 4530)  // disable warnings when including 3rd party code using exceptions
 
 #else
-//		#pragma message("----Compiling with unknown compiler...")
+ICE_DIAG_MESSAGE("----Compiling with unknown compiler...")
 #endif
 
 // Check compiler options. If this file is included in user-apps, this
@@ -113,7 +154,7 @@
 #define FUNCTION extern "C"
 
 // Cosmetic stuff [mainly useful with multiple inheritance]
-	#define	override(base_class)	virtual
+#define ICE_OVERRIDE(base_class) virtual
 
 // Our own inline keyword, so that:
 // - we can switch to __forceinline to check it's really better or not
@@ -137,10 +178,12 @@
 
 #define restrict_ __restrict
 
+#ifdef COMPILER_VISUAL_CPP
 // Down the hatch
+#	if !defined(__clang__)
 #		pragma inline_depth(255)
+#	endif
 
-	#ifdef COMPILER_VISUAL_CPP
 #	pragma intrinsic(memcmp)
 #	pragma intrinsic(memcpy)
 #	pragma intrinsic(memset)
@@ -156,10 +199,21 @@
 #ifdef ICE_ANSI_FOR
 #	ifdef _DEBUG
 // Remove painful warning in debug
-			inline_ bool ReturnsFalse(){ return false; }
-			#define for if(ReturnsFalse()){}	else for
+inline_ bool ReturnsFalse()
+{
+	return false;
+}
+#		define for \
+			if (ReturnsFalse()) \
+			{ \
+			} \
+			else for
 #	else
-			#define for if(0){}	else for
+#		define for \
+			if (0) \
+			{ \
+			} \
+			else for
 #	endif
 #endif
 
@@ -175,17 +229,8 @@
 #	define GUARD(x) \
 		{ \
 			static const char                                          guard_text[] = x; \
-			_asm	push	eax					\
-			_asm	nop							\
-			_asm	nop							\
-			_asm	nop							\
-			_asm	nop							\
-			_asm	lea		eax, guard_text		\
-			_asm	nop							\
-			_asm	nop							\
-			_asm	nop							\
-			_asm	nop							\
-			_asm	pop		eax					\
+			_asm push eax _asm nop _asm nop _asm nop _asm nop _asm lea eax, \
+				guard_text _asm nop _asm nop _asm nop _asm nop _asm pop eax \
 		}
 #else
 #	define GUARD(x)

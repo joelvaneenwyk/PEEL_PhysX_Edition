@@ -355,8 +355,8 @@ class GearJoint : public TestBase
 			Desc.mLocalPivot1.mPos	= Point(0.0f, 0.0f, 0.0f);
 			Desc.mLocalPivot1.mRot	= Rot;
 			Desc.mGearRatio			= mGearRatio;
-			//Desc.mRadius0			= mGearRadius0;
-			//Desc.mRadius1			= mGearRadius1;
+			Desc.mRadius0			= mGearRadius0;
+			Desc.mRadius1			= mGearRadius1;
 			mGearJoint				= pint.CreateJoint(Desc);
 		}
 
@@ -834,8 +834,8 @@ Desc.mLocalPivot0.mPos = pose0.mPos;
 				const float Radius0 = float(NbTeeth0)*0.05f;
 				const float Radius1 = float(NbTeeth1)*0.05f;
 				Desc.mGearRatio			= Radius0/Radius1;
-				//Desc.mRadius0			= Radius0;
-				//Desc.mRadius1			= Radius1;
+				Desc.mRadius0			= Radius0;
+				Desc.mRadius1			= Radius1;
 	//				Desc.mLocalPivot0.mPos	= Point(Radius0, 0.0f, 0.0f);
 	//				Desc.mLocalPivot1.mPos	= Point(-Radius1, 0.0f, 0.0f);
 				PintJointHandle mGearJoint				= pint.CreateJoint(Desc);
@@ -948,12 +948,21 @@ START_TEST(ThreeLegoGears, CATEGORY_JOINTS, gDesc_ThreeLegoGears)
 		Box2.mRenderer	= Shape2->mRenderer;
 		ASSERT(!Shape2->_GetNext());
 
+		if (!caps.mSupportCollisionGroups) return false;
+
+		const PintDisabledGroups DG(1, 1);
+		pint.SetDisabledGroups(1, &DG);
+
 		Copy0.SetShape(&Box0);
 		Copy1.SetShape(&Box1);
 		Copy2.SetShape(&Box2);
 		Copy0.mMass           = 1.0f;
+		Copy0.mCollisionGroup = 1;
 		Copy1.mMass           = 1.0f;
+		Copy1.mCollisionGroup = 1;
 		Copy2.mMass           = 1.0f;
+		Copy2.mCollisionGroup = 1;
+
 		/*
 Matrix3x3 Rot;
 Rot.RotY(HALFPI);
@@ -1021,8 +1030,8 @@ Box1.mLocalRot = Rot;
 			const float Radius0 = 0.5f;
 			const float Radius1 = 0.5f;
 			Desc.mGearRatio			= Radius0/Radius1;
-			//Desc.mRadius0			= Radius0;
-			//Desc.mRadius1			= Radius1;
+			Desc.mRadius0			= Radius0;
+			Desc.mRadius1			= Radius1;
 			PintJointHandle mGearJoint				= pint.CreateJoint(Desc);
 			(void)mGearJoint;
 		}
@@ -1044,8 +1053,8 @@ Box1.mLocalRot = Rot;
 			const float Radius0 = 0.5f;
 			const float Radius1 = 0.5f;
 			Desc.mGearRatio			= Radius0/Radius1;
-			//Desc.mRadius0			= Radius0;
-			//Desc.mRadius1			= Radius1;
+			Desc.mRadius0			= Radius0;
+			Desc.mRadius1			= Radius1;
 			PintJointHandle mGearJoint				= pint.CreateJoint(Desc);
 			(void)mGearJoint;
 		}
@@ -1080,7 +1089,7 @@ static void PreprocessMesh(Point& center, Point& extents, const PINT_OBJECT_CREA
 
 		MeshShapeMut->RecomputeCRC32_Verts();
 
-		MeshShapeMut->mRenderer = CreateMeshRenderer(MeshShapeMut->GetSurface(), gUseActiveEdges);
+		MeshShapeMut->mRenderer = CreateMeshRenderer(MeshShapeMut->GetSurface(), nullptr, gUseActiveEdges, true);
 	}
 }
 
@@ -1351,7 +1360,7 @@ START_TEST(RackAndPinion, CATEGORY_JOINTS, gDesc_RackAndPinion)
 				//###PRISMATIC2
 				Desc.mLocalPivot0.mPos	= Copy0.mPosition;
 				Desc.mLocalPivot1.mPos	= Point(0.0f, 0.0f, 0.0f);
-				Desc.mLocalAxis0		= Point(0.0f, 0.0f, 1.0f);//*SceneRot;
+				Desc.mLocalAxis0		= Point(0.0f, 0.0f, 1.0f);//SceneRot;
 				Desc.mLocalAxis1		= Point(0.0f, 0.0f, 1.0f);
 				PrismaticJoint			= pint.CreateJoint(Desc);*/
 

@@ -1,3 +1,4 @@
+
 /*
    xxHash - Extremely Fast Hash algorithm
    Header File

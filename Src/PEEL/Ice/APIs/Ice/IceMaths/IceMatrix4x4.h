@@ -544,4 +544,3 @@
 	ICEMATHS_API void ComputePassageMatrices(Matrix4x4* mat0to1=null, Matrix4x4* mat1to0=null, const Matrix4x4* mat0=null, const Matrix4x4* mat1=null);
 
 #endif // ICEMATRIX4X4_H
-

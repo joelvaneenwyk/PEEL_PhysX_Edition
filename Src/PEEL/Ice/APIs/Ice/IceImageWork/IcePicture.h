@@ -167,4 +167,3 @@
 	};
 
 #endif // ICEPICTURE_H
-

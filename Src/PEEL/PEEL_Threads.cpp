@@ -191,5 +191,3 @@ void PEEL_EndThreadWork(udword nb_threads)
 	}
 
 */
-
-

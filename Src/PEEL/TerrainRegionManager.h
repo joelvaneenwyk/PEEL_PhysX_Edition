@@ -24,7 +24,11 @@
 	class TerrainRegionManager : public StreamInterface
 	{
 		Pint&					mPint;
+
+		#ifndef USE_TERRAIN_TILE_RENDERER
 		const ManagedTexture*	mMT;
+		#endif
+
 		GLIndexBufferCollection	mIndexBuffers;
 		FractalBrownianMotion	mFBM;
 

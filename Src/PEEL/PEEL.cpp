@@ -1097,22 +1097,25 @@ static void PrintTimings()
 //	const float TextScale = 0.02f * float(INITIAL_SCREEN_HEIGHT) / float(gScreenHeight);
 	const float TextScale = 0.0175f * float(INITIAL_SCREEN_HEIGHT) / float(gScreenHeight);
 	float y = 1.0f - TextScale;
-	gTexter.setColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-	if(gRunningTest && gShowInfos)
-	{
-		gTexter.print(0.0f, y, TextScale, _F("Test: %s (%d camera views available)\n", gRunningTest->GetName(), gCamera.mNbSceneCameras+1));
-		y -= TextScale;
-	}
+	// Add a little buffer from the top of the screen
+	y -= TextScale / 2.f;
 
 	if (gShowInfos)
 	{
+		size_t maxEngineNameLength = 0;
 		FOR_EACH_ENGINE(i)
 		{
 			ASSERT(gEngines[i].mEngine);
 			Pint* Engine        = gEngines[i].mEngine;
-			if(!(Engine->GetFlags() & PINT_IS_ACTIVE))
-				continue;
+			maxEngineNameLength = MAX(strlen(Engine->GetName()), maxEngineNameLength);
+		}
+
+		FOR_EACH_ENGINE(i)
+		{
+			ASSERT(gEngines[i].mEngine);
+			Pint* Engine = gEngines[i].mEngine;
+			if (!(Engine->GetFlags() & PINT_IS_ACTIVE)) continue;
 #ifdef TEST_COLOR
 			const Point MainColor = gTestColor;
 #else
@@ -1126,13 +1129,20 @@ static void PrintTimings()
 					const PintTiming& Timing = gEngines[i].mTiming;
 					if (Timing.mCurrentTestResult == INVALID_ID)
 					{
-						gTexter.print(0.0f, y, TextScale, _F("%s: %d (Avg: %d)(Worst: %d)(%d Kb)\n",
-							Engine->GetName(), Timing.mCurrentTime, Timing.GetAvgTime(), Timing.mWorstTime, Timing.mCurrentMemory/1024));
+						gTexter.print(
+							0.0f, y, TextScale,
+							_F("%*s: %-7d | Avg: %-7d | Worst: %-7d | %5d Kb\n", maxEngineNameLength, Engine->GetName(),
+								Timing.mCurrentTime, Timing.GetAvgTime(), Timing.mWorstTime, Timing.mCurrentMemory / 1024),
+							true);
 					}
 					else
 					{
-						gTexter.print(0.0f, y, TextScale, _F("%s: %d (Avg: %d)(Worst: %d)(%d Kb)(Val: %d)\n",
-							Engine->GetName(), Timing.mCurrentTime, Timing.GetAvgTime(), Timing.mWorstTime, Timing.mCurrentMemory/1024, Timing.mCurrentTestResult));
+						gTexter.print(
+							0.0f, y, TextScale,
+							_F("%*s: %-7d | Avg: %-7d | Worst: %-7d | %5d Kb | Val: %-3d\n", maxEngineNameLength, Engine->GetName(),
+								Timing.mCurrentTime, Timing.GetAvgTime(), Timing.mWorstTime, Timing.mCurrentMemory / 1024,
+								Timing.mCurrentTestResult),
+							true);
 					}
 				}
 				else
@@ -1144,14 +1154,25 @@ static void PrintTimings()
 				gTexter.print(0.0f, y, TextScale, _F("%s: (disabled)\n", Engine->GetName()));
 			y -= TextScale;
 		}
+
+		y -= TextScale;
 	}
 
 	gTexter.setColor(1.0f, 1.0f, 1.0f, 1.0f);
+
 	if(gShowInfos)
 	{
 		if(gPaused)
 			gTexter.print(0.0f, y, TextScale, "(Paused)");
 		y -= TextScale;
+
+		if (gRunningTest)
+		{
+			gTexter.print(
+				0.0f, y, TextScale,
+				_F("Test: %s (%d camera views available)\n", gRunningTest->GetName(), gCamera.mNbSceneCameras + 1));
+			y -= TextScale;
+		}
 
 		if(gShowFPS)
 			gTexter.print(0.0f, y, TextScale, _F("Frame: %d", gFrameNb));
@@ -2184,6 +2205,16 @@ static char gBuildFolder[MAX_PATH];
 static char gCurrentFile[MAX_PATH];
 
 static char*  gFolders[] = {
+	"../../../Demo/PEEL/Media/%s",
+	"../../../Demo/PEEL/Media/#Private/Customers/%s",
+	"../../../Demo/PEEL/Media/#Private/Debug/%s",
+	"../../../Demo/PEEL/Media/#Scripts/%s",
+	"../../../Demo/PEEL/Media/#Shaders/%s",
+	"../../../Demo/PEEL/Media/#Sounds/%s",
+	"../../../Demo/PEEL/Media/#VehicleData/%s",
+	"../../../Demo/PEEL/Media/#Vehicles/%s",
+	"../../../Demo/PEEL/Media/NutsAndBolts/%s",
+	"../../../Demo/PEEL/Media/Zcb/%s",
 	"../../../Media/%s",
 	"../../../Media/#Private/Customers/%s",
 	"../../../Media/#Private/Debug/%s",

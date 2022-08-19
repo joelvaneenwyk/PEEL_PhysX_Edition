@@ -1,3 +1,4 @@
+
 /* (c) 2002 Nathaniel Hoffman, Kenneth J. Mitchell and Arcot J. Preetham */
 
 #ifndef ICEATMOSPHERE_H

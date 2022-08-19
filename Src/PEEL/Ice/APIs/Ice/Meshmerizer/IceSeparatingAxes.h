@@ -28,4 +28,3 @@
 	};
 
 #endif	// ICESEPARATINGAXES_H
-

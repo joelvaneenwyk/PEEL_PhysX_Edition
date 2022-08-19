@@ -1178,7 +1178,7 @@ void WalkCycle::Update(float elapsed_time, bool is_moving, float current_directi
 	}
 
 	const float TotalLength = gUpperLength + gLowerLength;
-	const Point UpperPos = mPos + Point(0.0f, TotalLength /*- 1.0f/*- gCycleStride*0.5f*/, mZ);
+	const Point UpperPos = mPos + Point(0.0f, TotalLength /*- 1.0f - gCycleStride*0.5f*/, mZ);
 
 	Point LowerPos = mPos + Point(x, y, mZ);
 
@@ -1287,14 +1287,14 @@ START_TEST(Walker, CATEGORY_KINEMATICS, gDesc_Walker)
 		return CreateOverrideTabControl("Walker", 20);
 	}
 
-	virtual	void Walker::GetSceneParams(PINT_WORLD_CREATE& desc)
+	virtual	void GetSceneParams(PINT_WORLD_CREATE& desc)
 	{
 		TestBase::GetSceneParams(desc);
 		desc.mCamera[0] = PintCameraPose(Point(10.44f, 6.34f, 11.60f), Point(-0.64f, -0.00f, -0.77f));
 		SetDefEnv(desc, true);
 	}
 
-	virtual	bool Walker::CommonSetup()
+	virtual	bool CommonSetup()
 	{
 		mPos.Zero();
 		mPos.y = 0.25f;
@@ -1305,7 +1305,7 @@ START_TEST(Walker, CATEGORY_KINEMATICS, gDesc_Walker)
 		return TestBase::CommonSetup();
 	}
 
-	virtual	void Walker::CommonRelease()
+	virtual	void CommonRelease()
 	{
 		for(udword i=0;i<2;i++)
 			DELETESINGLE(mWalkCycle[i]);
@@ -1313,7 +1313,7 @@ START_TEST(Walker, CATEGORY_KINEMATICS, gDesc_Walker)
 		return TestBase::CommonRelease();
 	}
 
-	virtual	void Walker::CommonUpdate(float dt)
+	virtual	void CommonUpdate(float dt)
 	{
 		const bool is_moving = true;
 		const float mCurrentDirection = 1.0f;
@@ -1325,7 +1325,7 @@ START_TEST(Walker, CATEGORY_KINEMATICS, gDesc_Walker)
 		return TestBase::CommonUpdate(dt);
 	}
 
-	virtual	void Walker::CommonDebugRender(PintRender& render)
+	virtual	void CommonDebugRender(PintRender& render)
 	{
 		if(0)
 		{
@@ -1344,14 +1344,14 @@ START_TEST(Walker, CATEGORY_KINEMATICS, gDesc_Walker)
 		PintActorHandle	mLowerLeg[2];
 	};
 
-	virtual	void Walker::Close(Pint& pint)
+	virtual	void Close(Pint& pint)
 	{
 		PintData* PD = (PintData*)pint.mUserData;
 		DELETESINGLE(PD);
 		TestBase::Close(pint);
 	}
 
-	virtual bool Walker::Setup(Pint& pint, const PintCaps& caps)
+	virtual bool Setup(Pint& pint, const PintCaps& caps)
 	{
 		if(!caps.mSupportKinematics)
 			return false;
@@ -1423,7 +1423,7 @@ START_TEST(Walker, CATEGORY_KINEMATICS, gDesc_Walker)
 		return true;
 	}
 
-	udword Walker::Update(Pint& pint, float dt)
+	udword Update(Pint& pint, float dt)
 	{
 		const PintData* PD = (const PintData*)pint.mUserData;
 		for(udword i=0;i<2;i++)
@@ -1445,4 +1445,3 @@ START_TEST(Walker, CATEGORY_KINEMATICS, gDesc_Walker)
 END_TEST(Walker)
 
 ///////////////////////////////////////////////////////////////////////////////
-

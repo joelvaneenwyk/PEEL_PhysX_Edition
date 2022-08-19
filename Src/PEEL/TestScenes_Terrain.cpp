@@ -456,7 +456,7 @@ class DeformableTerrain : public ContactNotifyTest, public PintContactModifyCall
 			//mVertexIndices.Reset();
 
 			ShapeAPI->Refit(TerrainShape, TerrainActor);
-			(PintGLMeshShapeRenderer*)(mData.mRenderer)->UpdateVerts(verts, null);
+			((PintGLMeshShapeRenderer*)(mData.mRenderer))->UpdateVerts(verts, null);
 		}
 	}
 
@@ -473,4 +473,3 @@ class DeformableTerrain : public ContactNotifyTest, public PintContactModifyCall
 END_TEST(DeformableTerrain)
 
 ///////////////////////////////////////////////////////////////////////////////
-

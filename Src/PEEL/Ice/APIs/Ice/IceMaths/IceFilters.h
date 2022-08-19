@@ -101,11 +101,13 @@
 				case FUNC_INVERSESAWTOOTH:	return mBase + mAmplitude * FuncInverseSawTooth(mPhase + t * mFrequency);
 
 				// case FUNC_TRIANGLE:			return mBase + TriangleFunc(mPhase + t * mFrequency);
-
+				case FUNC_TRIANGLE:
+				case FUNC_NOISE:
+				case FUNC_FORCE_DWORD:
+					return 0.0f;
 			}
 			return 0.0f;
 		}
 	};
 
 #endif	// ICEFILTERS_H
-

@@ -16,6 +16,8 @@
 extern bool       gWireframePass;
 extern udword     gBatchSize;
 
+extern void       SetGlobalPoseRenderModel(const float*);
+
 static Container* gBatchIndices = null;
 static Vertices* gBatchVertices = null;
 static Vertices* gBatchNormals = null;
@@ -47,7 +49,6 @@ void EndBatchConvexRender()
 	{
 		Matrix4x4 Idt;
 		Idt.Identity();
-		void SetGlobalPoseRenderModel(const float*);
 		SetGlobalPoseRenderModel(&Idt.m[0][0]);
 
 		glEnableClientState(GL_VERTEX_ARRAY);

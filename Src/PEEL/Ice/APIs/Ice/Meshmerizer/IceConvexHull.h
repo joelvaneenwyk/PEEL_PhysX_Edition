@@ -221,4 +221,3 @@
 	FUNCTION MESHMERIZER_API bool ExtractHullPolygons(udword& nb_polygons, Container& polygon_data, const ConvexHull& hull);
 
 #endif	// ICECONVEXHULL_H
-

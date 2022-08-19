@@ -233,9 +233,9 @@
 		inline_	BOOL			IsNotEmpty()					const	{ return mCurNbEntries;					}	//!< Checks the container is empty
 
 		//! Read-access as an array
-		inline_	udword			operator[](udword i)			const	{ ASSERT(i<mCurNbEntries); return mEntries[i];	}
+				udword			operator[](udword i)			const	{ ASSERT(i<mCurNbEntries); return mEntries[i];	}
 		//! Write-access as an array
-		inline_	udword&			operator[](udword i)					{ ASSERT(i<mCurNbEntries); return mEntries[i];	}
+				udword&			operator[](udword i)					{ ASSERT(i<mCurNbEntries); return mEntries[i];	}
 
 		// Stats
 				udword			GetUsedRam()					const;
@@ -617,9 +617,9 @@
 		inline_	void**			GetEntries()					const	{ return mEntries;						}	//!< Returns the list of entries.
 
 		//! Read-access as an array
-		inline_	void*			operator[](udword i)			const	{ ASSERT(i<mCurNbEntries); return mEntries[i];	}
+		void*			operator[](udword i)			const	{ ASSERT(i<mCurNbEntries); return mEntries[i];	}
 		//! Write-access as an array
-		inline_	void*&			operator[](udword i)					{ ASSERT(i<mCurNbEntries); return mEntries[i];	}
+		void*&			operator[](udword i)					{ ASSERT(i<mCurNbEntries); return mEntries[i];	}
 
 				void			operator = (const PtrContainer& object);
 

@@ -247,11 +247,11 @@
 		virtual	float			GetAngularDamping(PintActorHandle handle)		const		override;
 		virtual	bool			SetAngularDamping(PintActorHandle handle, float damping)	override;
 
-		virtual	bool			GetLinearVelocity(PintActorHandle handle, Point& linear_velocity, bool world_space)	const;
-		virtual	bool			SetLinearVelocity(PintActorHandle handle, const Point& linear_velocity, bool world_space);
+		virtual	bool			GetLinearVelocity(PintActorHandle handle, Point& linear_velocity, bool world_space)	const override;
+		virtual	bool			SetLinearVelocity(PintActorHandle handle, const Point& linear_velocity, bool world_space) override;
 
-		virtual	bool			GetAngularVelocity(PintActorHandle handle, Point& angular_velocity, bool world_space)	const;
-		virtual	bool			SetAngularVelocity(PintActorHandle handle, const Point& angular_velocity, bool world_space);
+		virtual	bool			GetAngularVelocity(PintActorHandle handle, Point& angular_velocity, bool world_space)	const override;
+		virtual	bool			SetAngularVelocity(PintActorHandle handle, const Point& angular_velocity, bool world_space) override;
 
 		virtual	float			GetMass(PintActorHandle handle)		const	override;
 		virtual	bool			SetMass(PintActorHandle handle, float mass)	override;

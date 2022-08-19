@@ -475,7 +475,7 @@ struct LegoCarData
 
 static LegoCarData gCarData[] = {
 	{ "/Lego/#Sunset Track Racer/SunsetTrackRacer.dae", PintCameraPose(Point(8.60f, 8.34f, 10.20f), Point(-0.57f, -0.53f, -0.63f)) },
-	{ "/Lego/#Lumenairo�_728_Tempesta/Lumenairo�_728_Tempesta.dae", PintCameraPose(Point(19.58f, 6.45f, -0.37f), Point(-0.55f, -0.52f, -0.66f)) },
+	{ "/Lego/#Lumenairo_728_Tempesta/Lumenairo_728_Tempesta.dae", PintCameraPose(Point(19.58f, 6.45f, -0.37f), Point(-0.55f, -0.52f, -0.66f)) },
 	{ "/Lego/#458 Italia GT2/458_Italia_GT2.dae", PintCameraPose(Point(8.87f, 7.31f, 11.71f), Point(-0.51f, -0.52f, -0.69f)) },
 	{ "/Lego/#1968 Ford Mustang Fastback/1968_Ford_Mustang_Fastback.dae", PintCameraPose(Point(9.26f, 7.59f, 12.31f), Point(-0.68f, -0.39f, -0.61f)) },
 	{ "/Lego/#1974 Porsche 911 Turbo 3.0/1974_Porsche_911_Turbo_3_0.dae", PintCameraPose(Point(9.50f, 8.03f, 12.35f), Point(-0.53f, -0.58f, -0.62f)) },
@@ -543,7 +543,7 @@ class LegoStaticMesh : public ImportSceneFromFile
 			{
 				IceComboBox* CB = CreateComboBox<IceComboBox>(UI, 0, 4+OffsetX, y, 350, 300, "Filename", null, null);
 				CB->Add("Sunset Track Racer (Creator)");
-				CB->Add("Lumenairo� 728 Tempesta (MOC)");
+				CB->Add("Lumenairo© 728 Tempesta (MOC)");
 				CB->Add("458 Italia GT2 (Speed Champions)");
 				CB->Add("1968 Ford Mustang Fastback (Speed Champions)");
 				CB->Add("1974 Porsche 911 Turbo 3.0 (Speed Champions)");

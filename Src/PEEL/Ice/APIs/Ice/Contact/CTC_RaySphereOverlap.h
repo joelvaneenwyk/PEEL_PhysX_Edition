@@ -37,4 +37,3 @@
 	CONTACT_API	bool RobustSegmentSphere(const Point& origin, const Point& dir, float length, const Point& center, float radius, float& dist, Point& hit_pos);
 
 #endif // CTCRAYSPHEREOVERLAP_H
-

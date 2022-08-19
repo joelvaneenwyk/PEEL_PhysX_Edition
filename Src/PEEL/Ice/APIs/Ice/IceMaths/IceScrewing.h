@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /**
- *	This file contains code to compute "screwings" (in Stéphane Redon-parlance).
+ *	This file contains code to compute "screwings" (in StÃ©phane Redon-parlance).
  *	\file		IceScrewing.h
  *	\author		Pierre Terdiman
  *	\date		September, 17, 2003
@@ -76,9 +76,9 @@
 
 		inline_	float				ComputeSquaredLength(const Point& world_pt)	const
 									{
-										// taille du chemin hélicoïdal dl = sqrt(s^2 + w^2(x^2 + y^2) * dt
+										// taille du chemin hï¿½licoï¿½dal dl = sqrt(s^2 + w^2(x^2 + y^2) * dt
 										// s,w = screwing params
-										// x,y = coordonnées de p dans le repère local du screwing
+										// x,y = coordonnï¿½es de p dans le repï¿½re local du screwing
 
 										// Transform to screw space
 										Point s;
@@ -124,4 +124,3 @@
 	};
 
 #endif	// ICESCREWING_H
-

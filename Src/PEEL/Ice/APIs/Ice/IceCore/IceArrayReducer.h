@@ -41,4 +41,3 @@
 	};
 
 #endif // ICEARRAYREDUCER_H
-

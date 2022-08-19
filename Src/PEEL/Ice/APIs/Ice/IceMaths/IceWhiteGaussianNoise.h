@@ -29,4 +29,3 @@
 	};
 
 #endif	// ICEWHITEGAUSSIANNOISE_H
-

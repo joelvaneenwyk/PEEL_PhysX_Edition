@@ -63,4 +63,3 @@ void FlatShader::__UpdateCamera(const float* modelView, const float* proj)
 		mCamProj[i] = proj[i];
 	}
 }
-

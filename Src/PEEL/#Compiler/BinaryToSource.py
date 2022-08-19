@@ -8,19 +8,25 @@ be loaded at runtime.
 
 import binascii  # Converts bytes to hex e.g., '1f'
 import inspect
+import io
 import logging
 import os
-import io
 import sys
+import warnings
 from itertools import islice
 
-import PIL.Image  # Pillow library used to read, scale, and write out images
 import six
 
+import PIL.Image  # Pillow library used to read, scale, and write out images
+
 SCRIPT_DIR = os.path.abspath(os.path.dirname(inspect.getfile(inspect.currentframe())))
-PEEL_ROOT = os.path.normpath(os.path.join(SCRIPT_DIR, os.pardir, os.pardir))
+PEEL_ROOT = os.path.normpath(os.path.join(SCRIPT_DIR, os.pardir, os.pardir, os.pardir))
 
 LOGGER = logging.getLogger("peel")
+
+
+def _convert_path_to_relative(input_path):
+    return input_path.replace(PEEL_ROOT, "").replace("\\", "/").strip("/")
 
 
 def _header():
@@ -42,9 +48,7 @@ def _get_header(src, dest, base_name=None):
     """
     base_name = base_name or os.path.splitext(os.path.basename(dest))[0]
     out_text = _header()
-    out_text += "// Source filename: %s\n" % src.replace(PEEL_ROOT, "").replace(
-        "\\", "/"
-    ).strip("/")
+    out_text += "// Source filename: %s\n" % _convert_path_to_relative(src)
     out_text += "extern const unsigned int %s_Size;\n" % base_name
     out_text += "extern udword %s_Data[];" % base_name
     return out_text
@@ -105,6 +109,9 @@ def _get_source(src, dest, header, base_name=None, extra_space=""):
 
     if os.path.exists(src):
         with PIL.Image.open(src) as sourceImage:
+            with warnings.catch_warnings():
+                # LANCZOS is deprecated and will be removed in Pillow 10
+                warnings.simplefilter("ignore", category=DeprecationWarning)
                 output_image = sourceImage.resize(
                     (400, 195), resample=PIL.Image.LANCZOS
                 ).convert("RGBA")
@@ -146,8 +153,13 @@ def _add_file(filename, data):
     else:
         src_data = None
 
-    if data is not None and data != src_data:
+    if data is not None:
+        if data != src_data:
             output_files[filename] = data
+        else:
+            LOGGER.info(
+                "File already up-to-date: '%s'",
+                filename.replace(PEEL_ROOT, "").replace("\\", "/").lstrip("/"))
 
     return output_files
 
@@ -163,9 +175,12 @@ def _save_files(output_files):
         directory = os.path.dirname(dest)
         if not os.path.exists(directory):
             os.makedirs(directory)
+        try:
             with io.open(dest, "w", encoding="utf-8") as output_data:
-            output_data.write(value)
-        LOGGER.info("Updated %s", dest.replace(PEEL_ROOT, ""))
+                output_data.write(six.ensure_text(value))
+            LOGGER.info("Updated file: '%s'", _convert_path_to_relative(dest))
+        except IOError:
+            LOGGER.warning("Failed to update file: '%s'", _convert_path_to_relative(dest))
 
     return output_files
 
@@ -182,11 +197,11 @@ def _convert_graphics_resources():
 
     for src, dest in six.iteritems(mapping):
         src = os.path.join(PEEL_ROOT, "Media", src)
-        dest = os.path.join(PEEL_ROOT, "Src", dest)
+        dest = os.path.join(PEEL_ROOT, "Src", "PEEL", dest)
 
         LOGGER.info(
             "Converting '%s' to source file.",
-            src.replace(PEEL_ROOT, "").replace("\\", "/").lstrip("/"),
+            _convert_path_to_relative(src),
         )
         output_file_mapping.update(
             _add_file(
@@ -199,7 +214,7 @@ def _convert_graphics_resources():
     includes = includes.rstrip() + "\n"  # Normalize trailing whitespace
 
     output_file_mapping.update(
-        _add_file(os.path.join(PEEL_ROOT, "Src", "Resources.h"), includes)
+        _add_file(os.path.join(PEEL_ROOT, "Src", "PEEL", "Resources.h"), includes)
     )
 
     _save_files(output_file_mapping)
@@ -218,7 +233,7 @@ def main():
 
     LOGGER.info(
         "'%s' Done. Processed '%d' files.",
-        sys.argv[0].replace(PEEL_ROOT, "").replace("\\", "/").lstrip("/"),
+        _convert_path_to_relative(sys.argv[0]),
         processed_files,
     )
 

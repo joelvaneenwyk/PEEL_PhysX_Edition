@@ -123,4 +123,3 @@
 	};
 
 #endif	// ICEDELAUNAY3D_H
-

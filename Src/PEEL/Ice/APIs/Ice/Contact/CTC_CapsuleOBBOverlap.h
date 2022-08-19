@@ -18,4 +18,3 @@
 	CONTACT_API bool CapsuleAABBOverlap(const Segment& segment, float radius, const Point& center, const Point& extents);
 
 #endif // CTCCAPSULEOBBOVERLAP_H
-

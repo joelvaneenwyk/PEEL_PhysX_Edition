@@ -84,4 +84,3 @@
 	CONTACT_API bool slopeint_mul(const PrecompRay& r, const aabox& b, float* t);
 
 #endif // CTCRAYAABBOVERLAP_H
-

@@ -256,7 +256,7 @@
 		//! Destructor
 		virtual								~LazyPRNode()							{ ReleaseMatrixHistory();				}
 
-		override(PRNode)	inline_	void	InvalidatePR(udword flags)				{ mValidAddress|=1;	mPRSTimeStamp++;	}
+		ICE_OVERRIDE(PRNode)	inline_	void	InvalidatePR(udword flags)				{ mValidAddress|=1;	mPRSTimeStamp++;	}
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**

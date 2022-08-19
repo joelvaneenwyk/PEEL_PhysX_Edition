@@ -24,4 +24,3 @@
 	FUNCTION ICEMATHS_API	float ComputeConeDensity(float r, float l, float mass);
 
 #endif	// ICEMASS_H
-

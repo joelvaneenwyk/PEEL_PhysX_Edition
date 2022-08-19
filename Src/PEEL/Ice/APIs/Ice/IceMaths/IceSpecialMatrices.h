@@ -32,4 +32,3 @@
 	ICEMATHS_API void ComputeReflectionMatrix(Matrix4x4& mat, const Plane& plane);
 
 #endif // ICESPECIALMATRICES_H
-

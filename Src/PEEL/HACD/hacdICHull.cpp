@@ -1,3 +1,4 @@
+
 /* Copyright (c) 2011 Khaled Mamou (kmamou at gmail dot com)
  All rights reserved.
 
@@ -13,19 +14,18 @@
  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include "stdafx.h"
+
 #pragma warning(disable : 4530) // C++ exception handler used, but unwind semantics are not enabled. Specify /EHsc
 #pragma warning(disable : 4706) // assignment within conditional expression
 #include <hacdICHull.h>
 #include <limits>
 
-template<class T>	__forceinline const T&	TMax(const T& a, const T& b)
-{
-	return a < b ? b : a;
-}
 
 namespace HACD
 {
 	const long ICHull::sc_dummyIndex = std::numeric_limits<long>::max();
+
 	ICHull::ICHull(void)
     {
 		m_distPoints = 0;
@@ -1017,4 +1017,3 @@ namespace HACD
 		}
 	}
 }
-

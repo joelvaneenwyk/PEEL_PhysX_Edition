@@ -63,4 +63,3 @@
 	}
 
 #endif	// ICEZCURVE_H
-

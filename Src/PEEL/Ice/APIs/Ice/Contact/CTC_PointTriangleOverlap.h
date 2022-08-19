@@ -62,4 +62,3 @@
 	}
 
 #endif // CTCPOINTTRIANGLEOVERLAP_H
-

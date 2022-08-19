@@ -42,4 +42,3 @@ void RenderScaledCylinder(const PR& pose, const Point& trans, const Point& scale
 	}
 	glPopMatrix();
 }
-

@@ -55,13 +55,13 @@
 	//ICECORE_API	bool		FileSelect(const char* type, const char* destname, const char* alias, bool mode, char* filename);
 
 	FUNCTION ICECORE_API	bool		IsFile(const char* string);
-	FUNCTION ICECORE_API	udword		GetFileSize(const char* name);
 	FUNCTION ICECORE_API	bool		FileExists(const char* filename);
 	FUNCTION ICECORE_API	const char*	ChangeExtension(const char* filename, const char* new_ext);
 	FUNCTION ICECORE_API	bool		RemoveExtension(String& filename);
 	FUNCTION ICECORE_API	const char*	GetExtension(const char* filename, String* extension=null);
 
 #ifdef ICE_OBSOLETE
+	FUNCTION ICECORE_API	udword		GetFileSize(const char* name);
 	FUNCTION ICECORE_API	udword		CreateFile(String& filepathname, udword fileaccess, FILE_CREATEATTRB fileattrib);
 	FUNCTION ICECORE_API	bool		CloseFile(udword handle);
 	FUNCTION ICECORE_API	udword		SeekFilePtr(udword handle, udword length, FILE_SEEK seek);
@@ -93,7 +93,7 @@
 		inline_	bool				IsValid()			const	{ return mFp || mBuffer;	}
 		inline_ const String&		GetName()			const	{ return mName;				}
 		inline_ const ubyte*		GetBuffer()			const	{ return mBuffer;			}
-		inline_ const udword		GetBufferLength()	const	{ return mBufferLength;		}
+		inline_ udword				GetBufferLength()	const	{ return mBufferLength;		}
 
 		// Loading
 				ubyte				LoadByte();
@@ -213,5 +213,3 @@
 	FUNCTION ICECORE_API bool IsFileAccessAllowed();
 
 #endif // ICEFILE_H
-
-

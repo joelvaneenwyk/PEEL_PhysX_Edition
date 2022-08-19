@@ -40,7 +40,7 @@
 		/**
 		 *	Adds a cell to the container.
 		 *	- This is a O(1) method
-		 *	- The cell is validated before beeing added (and only added if validation succeeds)
+		 *	- The cell is validated before being added (and only added if validation succeeds)
 		 *	- The container is automatically resized if needed.
 		 *	- A new reference to the cell is created. (owner is the container)
 		 *	\param		cell	[in] the cell to store in the container
@@ -177,7 +177,7 @@
 		 *	\warning	Only called if CF_KERNEL_INVALIDREF is enabled
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(Cell)	bool		OnInvalidReference(const Cell* invalid_ref);
+		ICE_OVERRIDE(Cell)	bool		OnInvalidReference(const Cell* invalid_ref);
 
 		private:
 		// Internal methods

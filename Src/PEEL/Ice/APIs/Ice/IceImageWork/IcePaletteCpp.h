@@ -1,3 +1,4 @@
+
 void T::Reset()
 {
 	DELETEARRAY(mColors);

@@ -1,4 +1,3 @@
-//
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 // are met:
@@ -32,6 +31,8 @@
 
 // no includes here! this file should be included from PxcVecMath.h only!!!
 
+#include <cinttypes>
+
 #if !COMPILE_VECTOR_INTRINSICS
 #error Vector intrinsics should not be included when using scalar implementation.
 #endif
@@ -43,6 +44,49 @@ namespace shdfnd
 namespace aos
 {
 
+#	if defined(__clang__)
+
+	union QuadUnionM128
+	{
+		QuadUnionM128() : m128_vecf() { }
+		QuadUnionM128(__m128 v) : m128_vecf(v) { }
+		QuadUnionM128(__m128i v) : m128_veci(v) { }
+		QuadUnionM128(__m128d v) : m128_vecd(v) { }
+		__m128   m128_vecf;
+		__m128i  m128_veci;
+		__m128d  m128_vecd;
+		float    m128_f32[4];
+		double   m128d_f64[2];
+		int8_t   m128_i8[16];
+		int16_t  m128_i16[8];
+		int32_t  m128_i32[4];
+		int64_t  m128_i64[2];
+		uint8_t  m128_u8[16];
+		uint16_t m128_u16[8];
+		uint32_t m128_u32[4];
+		uint64_t m128_u64[2];
+		int8_t   m128i_i8[16];
+		int16_t  m128i_i16[8];
+		int32_t  m128i_i32[4];
+		int64_t  m128i_i64[2];
+		uint8_t  m128i_u8[16];
+		uint16_t m128i_u16[8];
+		uint32_t m128i_u32[4];
+		uint64_t m128i_u64[2];
+
+		operator __m128() const { return m128_vecf; }
+	};
+
+	typedef QuadUnionM128 FloatV;
+	typedef QuadUnionM128 Vec3V;
+	typedef QuadUnionM128 Vec4V;
+	typedef QuadUnionM128 BoolV;
+	typedef QuadUnionM128 VecU32V;
+	typedef QuadUnionM128 VecI32V;
+	typedef QuadUnionM128 VecU16V;
+	typedef QuadUnionM128 VecI16V;
+	typedef QuadUnionM128 QuatV;
+#else
 	typedef __m128 FloatV;
 typedef __m128 Vec3V;
 typedef __m128 Vec4V;
@@ -52,6 +96,7 @@ typedef __m128 VecI32V;
 typedef __m128 VecU16V;
 typedef __m128 VecI16V;
 typedef __m128 QuatV;
+#endif
 
 #define FloatVArg FloatV &
 #define Vec3VArg Vec3V &

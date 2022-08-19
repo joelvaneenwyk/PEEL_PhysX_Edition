@@ -16,4 +16,3 @@
 	FUNCTION ICEMATHS_API bool EigenVectors(const Matrix3x3& M, Matrix3x3& V, Point& d);
 
 #endif	// ICEEIGEN_H
-

@@ -20,7 +20,7 @@
 #ifndef SUPPORT_NEW_MOTIONDATA_DESIGN
 		inline_					MotionData() : mCSID(CSID_INVALID), mNbFrames(0), mPRData(null)	{}
 #else
-		inline_					MotionData() : mCSID(CSID_INVALID), mNbFrames(0), mData(null), mFlags(0)	{}
+		inline_					MotionData() : mCSID(CSID_INVALID), mNbFrames(0), mFlags(0), mData(null)	{}
 #endif
 		inline_					~MotionData()													{ Release();	}
 
@@ -241,6 +241,3 @@
 	};
 
 #endif // ICECHARACTERMOTION_H
-
-
-

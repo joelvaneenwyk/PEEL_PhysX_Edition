@@ -58,7 +58,7 @@ bool GLShader::GetCompileError(GLuint shader, bool print_error)
 }
 
 /*
-/*GLuint shader, GLenum pname, GLint* param
+// GLuint shader, GLenum pname, GLint* param
 bool GLShder::CheckCompileStatus(GLuint shader)
 {
 	GLint* Success;

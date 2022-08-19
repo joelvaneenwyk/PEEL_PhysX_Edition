@@ -1,3 +1,4 @@
+
 #pragma once
 #ifndef HACD_CIRCULAR_LIST_INL
 #define HACD_CIRCULAR_LIST_INL

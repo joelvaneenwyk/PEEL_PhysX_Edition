@@ -89,7 +89,7 @@
 			// Releases everything
 				IndexedSurface&			Clean();
 			// Resets the surface
-		override(VertexCloud)	bool	Reset();
+		ICE_OVERRIDE(VertexCloud)	bool	Reset();
 			// Releases the adjacency graph
 				bool					DeleteAdjacencies();
 			// Releases the edge list
@@ -123,11 +123,11 @@
 		// Surface operations
 
 			// Translates the surface
-		override(VertexCloud)	bool	Translate(const Point& translation);
+		ICE_OVERRIDE(VertexCloud)	bool	Translate(const Point& translation);
 			// Scales the surface
-		override(VertexCloud)	bool	Scale(const Point& scale);
+		ICE_OVERRIDE(VertexCloud)	bool	Scale(const Point& scale);
 			// Transforms vertex cloud
-		override(VertexCloud)	bool	Transform(const Matrix4x4& mat);
+		ICE_OVERRIDE(VertexCloud)	bool	Transform(const Matrix4x4& mat);
 
 			// Spherifies the surface
 		virtual	bool					Spherify(float radius=0.0f);

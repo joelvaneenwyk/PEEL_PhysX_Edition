@@ -81,18 +81,20 @@ static void FreeString(const char* str)
 
 							void		reset();
 
-		override(Allocator)	void*		malloc(size_t size, MemoryType type);
-		override(Allocator)	void*		mallocDebug(size_t size, const char* filename, udword line, const char* class_name, MemoryType type, bool from_new);
-		override(Allocator)	void*		realloc(void* memory, size_t size);
-		override(Allocator)	void*		shrink(void* memory, size_t size);
-		override(Allocator)	void		free(void* memory, bool from_new);
+		ICE_OVERRIDE(Allocator)	void*		malloc(size_t size, MemoryType type);
+		ICE_OVERRIDE(Allocator)	void*		mallocDebug(size_t size, const char* filename, udword line, const char* class_name, MemoryType type, bool from_new);
+		ICE_OVERRIDE(Allocator)	void*		realloc(void* memory, size_t size);
+		ICE_OVERRIDE(Allocator)	void*		shrink(void* memory, size_t size);
+		ICE_OVERRIDE(Allocator)	void		free(void* memory, bool from_new);
 
-		override(Allocator)	void		FrameAnalysis();
+		ICE_OVERRIDE(Allocator)	void		FrameAnalysis();
 
 							void		DumpCurrentMemoryState() const;
 							void		Release();
 		private:
 							void**		mMemBlockList;
+
+							#ifdef _DEBUG
 							udword		mMemBlockListSize;
 #ifdef NEW_CODE
 							udword		mFirstFree;
@@ -100,6 +102,7 @@ static void FreeString(const char* str)
 							udword		mMemBlockFirstFree;
 #	endif
 							udword		mMemBlockUsed;
+							#endif
 
 							size_t		mNbAllocatedBytes;
 							size_t		mHighWaterMark;
@@ -558,7 +561,7 @@ void* DefaultAllocator::shrink(void* memory, size_t size)
 	mNbAllocatedBytes -= SystemPointer[1];
 	mNbAllocatedBytes += size;
 	// Setup new size
-	SystemPointer[1] = size;
+	SystemPointer[1] = (udword)size;
 
 	return memory;	// The pointer should not have changed!
 #endif
@@ -570,19 +573,12 @@ void* DefaultAllocator::realloc(void* memory, size_t size)
 {
 	GUARD("DefaultAllocator::realloc")
 
-//	return ::realloc(memory, size);
-
-	ASSERT(0);
-	return null;
-
-/*
-
 	if(!memory)
 	{
 #ifdef _DEBUG
 		_IceTrace("Warning: trying to realloc null pointer\n");
 #endif
-		return null;
+		return nullptr;
 	}
 
 	if(!size)
@@ -591,6 +587,15 @@ void* DefaultAllocator::realloc(void* memory, size_t size)
 		_IceTrace("Warning: trying to realloc 0 bytes\n");
 #endif
 	}
+
+	mNbReallocs++;
+
+	//	return ::realloc(memory, size);
+
+	ASSERT(0);
+	return nullptr;
+
+	/*
 
 #ifdef _DEBUG
 
@@ -605,7 +610,6 @@ void* DefaultAllocator::realloc(void* memory, size_t size)
 	if(mNbAllocatedBytes>mHighWaterMark)	mHighWaterMark = mNbAllocatedBytes;
 
 	void* ptr2 = ::realloc(ptr, size+24);
-	mNbReallocs++;
 	*(((udword*)ptr2)+1) = size;
 	if(ptr==ptr2)
 	{
@@ -946,7 +950,7 @@ void DefaultAllocator::DumpCurrentMemoryState() const
 		udword* Ranks0 = (udword*)LOCAL_MALLOC(sizeof(udword)*NbClasses);
 		udword* Ranks1 = (udword*)LOCAL_MALLOC(sizeof(udword)*NbClasses);
 
-		StackRadixSort(RS, Ranks0, Ranks1);
+		IceStackRadixSort(RS, Ranks0, Ranks1);
 		const udword* Sorted = RS.Sort(Sizes, NbClasses).GetRanks();
 		for(udword i=0;i<NbClasses;i++)
 		{
@@ -988,7 +992,7 @@ void DefaultAllocator::DumpCurrentMemoryState() const
 			else Keys[i] = 0;
 		}
 
-		StackRadixSort(RS, Ranks0, Ranks1);
+		IceStackRadixSort(RS, Ranks0, Ranks1);
 		const udword* Sorted = RS.Sort(Keys, mMemBlockListSize).GetRanks();
 
 		const DebugBlock* DB0 = (const DebugBlock*)mMemBlockList[Sorted[0]];
@@ -1041,7 +1045,7 @@ void DefaultAllocator::DumpCurrentMemoryState() const
 			else CurrentSize += DB ? DB->mSize : 0;
 		}
 
-		StackRadixSort(RS2, Ranks0, Ranks1);
+		IceStackRadixSort(RS2, Ranks0, Ranks1);
 		Sorted = RS2.Sort(Sizes, NbClasses).GetRanks();
 		for(udword i=0;i<NbClasses;i++)
 		{

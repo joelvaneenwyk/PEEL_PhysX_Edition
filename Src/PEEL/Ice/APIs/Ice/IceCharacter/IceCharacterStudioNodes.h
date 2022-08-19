@@ -55,7 +55,7 @@
 	"Bip01\n"							// 0		// Root node
 	"Bip01 Footsteps\n"					// 1		// Pas
 	"Bip01 Pelvis\n"					// 2		// Bassin
-	"Bip01 Spine\n"						// 3		// Colonne vertébrale
+	"Bip01 Spine\n"						// 3		// Colonne vertÃ©brale
 	"Bip01 Spine1\n"					// 4
 	"Bip01 Spine2\n"					// 5
 	"Bip01 Spine3\n"					// 6
@@ -65,7 +65,7 @@
 	"Bip01 Neck2\n"						// 10
 	"Bip01 Neck3\n"						// 11
 	"Bip01 Neck4\n"						// 12
-	"Bip01 Head\n"						// 13		// Tête
+	"Bip01 Head\n"						// 13		// Tï¿½te
 	"Bip01 Ponytail1\n"					// 14		// Queue de cheval
 	"Bip01 Ponytail11\n"				// 15
 	"Bip01 Ponytail12\n"				// 16
@@ -78,7 +78,7 @@
 	"Bip01 Ponytail24\n"				// 23
 	// Partie gauche
 	"Bip01 L Clavicle\n"				// 24		// Clavicule
-	"Bip01 L UpperArm\n"				// 25		// Bras supérieur
+	"Bip01 L UpperArm\n"				// 25		// Bras supï¿½rieur
 	"Bip01 L Forearm\n"					// 26		// Avant-bras
 	"Bip01 L Hand\n"					// 27		// Main
 	"Bip01 L Finger0\n"					// 28		// Doigts
@@ -175,4 +175,3 @@
 	};
 
 #endif // ICECHARACTERSTUDIONODES_H
-

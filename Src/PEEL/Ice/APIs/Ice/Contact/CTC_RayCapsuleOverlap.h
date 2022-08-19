@@ -15,4 +15,3 @@
 	CONTACT_API	udword	RayCapsuleOverlap(const Point& origin, const Point& dir, const LSS& capsule, float s[2]);
 
 #endif // CTCRAYCAPSULEOVERLAP_H
-

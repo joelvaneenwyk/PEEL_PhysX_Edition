@@ -12,12 +12,14 @@
 #ifndef ICEGUI_H
 #define ICEGUI_H
 
+#include <IceCore/IcePreprocessor.h>
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Compilation messages
 #if defined(ICEGUI_EXPORTS)
-	#pragma message("----Compiling ICE GUI")
+ICE_DIAG_MESSAGE("----Compiling ICE GUI")
 #elif !defined(ICEGUI_EXPORTS)
-	#pragma message("----Using ICE GUI")
+ICE_DIAG_MESSAGE("----Using ICE GUI")
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Automatic linking
 	#ifndef BAN_ICEGUI_AUTOLINK
@@ -64,7 +66,7 @@
 		#include "IceWindow.h"
 		#include "IceListView.h"
 		#include "IceButton.h"
-		#include "IceCheckBox.h"
+		#include "IceCheckbox.h"
 		#include "IceComboBox.h"
 		#include "IceGroupBox.h"
 		#include "IceGUIApp.h"
@@ -77,7 +79,7 @@
 		#include "IceProgressBar.h"
 		#include "IceRadioButton.h"
 		#include "IceSlider.h"
-		#include "IceScrollbar.h"
+		#include "IceScrollBar.h"
 		#include "IceSpinBox.h"
 		#include "IceTabControl.h"
 		#include "IceToggleButton.h"
@@ -94,4 +96,3 @@
 	}
 
 #endif // ICEGUI_H
-

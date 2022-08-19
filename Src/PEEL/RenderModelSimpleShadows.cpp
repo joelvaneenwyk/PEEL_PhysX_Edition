@@ -887,4 +887,3 @@ IceWindow* RenderModel_SimpleShadows::InitGUI(IceWidget* parent, Widgets* owner,
 
 	return null;
 }
-

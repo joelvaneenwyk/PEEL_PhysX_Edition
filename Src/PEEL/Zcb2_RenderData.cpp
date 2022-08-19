@@ -724,4 +724,3 @@ void ZCB2FactoryEx::ReleasePintIndependentData()
 	mImportHelper_Renderers.Empty();
 	ZCB2Factory::ReleasePintIndependentData();
 }
-

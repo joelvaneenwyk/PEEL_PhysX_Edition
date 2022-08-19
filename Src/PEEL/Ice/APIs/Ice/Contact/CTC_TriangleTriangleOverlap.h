@@ -2,7 +2,7 @@
 /**
  *	Contains code for triangle-triangle intersection
  *	\file		CTC_TriangleTriangleOverlap.h
- *	\author		Tomas Möller
+ *	\author		Tomas MÃ¶ller
  *	\date		January, 13, 2000
  */
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -30,4 +30,3 @@ CONTACT_API int tri_tri_intersection_test_3d(float p1[3], float q1[3], float r1[
 
 
 #endif // CTCTRIANGLETRIANGLEOVERLAP_H
-

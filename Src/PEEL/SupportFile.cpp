@@ -184,7 +184,7 @@ const char* IceFile2::LoadString()
 			if(!Length)
 			{
 				// ############ really hardcoded for KP..........!
-				strcpy(Buf+Offset, "§SKIP§");
+				strcpy(Buf+Offset, "Â§SKIPÂ§");
 				Offset += 6;
 			}
 			else

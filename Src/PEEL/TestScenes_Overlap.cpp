@@ -1425,4 +1425,3 @@ class OverlapAny_ConvexesVsHeightfield : public SceneOverlapAnyVsStaticHeightfie
 	virtual	const char*			GetDescription()	const	{ return gDesc_OverlapAny_ConvexesVsHeightfield;	}
 
 END_TEST(OverlapAny_ConvexesVsHeightfield)
-

@@ -124,4 +124,3 @@ GeoSphereMesh::~GeoSphereMesh()
 	mTris = null;
 	DELETEARRAY(mVerts);
 }
-

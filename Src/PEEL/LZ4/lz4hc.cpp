@@ -1,3 +1,4 @@
+
 /*
     LZ4 HC - High Compression Mode of LZ4
     Copyright (C) 2011-2020, Yann Collet.
@@ -33,6 +34,7 @@
 */
 /* note : lz4hc is not an independent module, it requires lz4.h/lz4.c for proper compilation */
 
+#include "stdafx.h"
 
 /* *************************************
 *  Tuning Parameter
@@ -63,7 +65,7 @@
 
 #define LZ4_COMMONDEFS_ONLY
 #ifndef LZ4_SRC_INCLUDED
-#include "lz4.c"   /* LZ4_count, constants, mem */
+#include "lz4.cpp"   /* LZ4_count, constants, mem */
 #endif
 
 
@@ -77,8 +79,6 @@ typedef enum { noDictCtx, usingDictCtxHc } dictCtx_directive;
 
 
 /*===   Macros   ===*/
-#define MIN(a,b)   ( (a) < (b) ? (a) : (b) )
-#define MAX(a,b)   ( (a) > (b) ? (a) : (b) )
 #define HASH_FUNCTION(i)         (((i) * 2654435761U) >> ((MINMATCH*8)-LZ4HC_HASH_LOG))
 #define DELTANEXTMAXD(p)         chainTable[(p) & LZ4HC_MAXD_MASK]    /* flexible, LZ4HC_MAXD dependent */
 #define DELTANEXTU16(table, pos) table[(U16)(pos)]   /* faster */

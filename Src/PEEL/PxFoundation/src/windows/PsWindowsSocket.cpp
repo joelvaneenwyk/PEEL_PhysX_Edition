@@ -1,4 +1,3 @@
-//
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 // are met:
@@ -27,9 +26,10 @@
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
 // Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
+#include "stdafx.h"
+
 #include "PxFoundation/PxIntrinsics.h"
 
-#include "windows/PsWindowsInclude.h"
 #include "PsSocket.h"
 #include "PsThread.h"
 #include "PsArray.h"
@@ -95,8 +95,8 @@ class SocketImpl
 SocketImpl::SocketImpl(bool isBlocking)
 : mSocket(INVALID_SOCKET)
 , mListenSocket(INVALID_SOCKET)
-, mPort(0)
 , mHost(NULL)
+, mPort(0)
 , mIsConnected(false)
 , mIsBlocking(isBlocking)
 , mListenMode(false)

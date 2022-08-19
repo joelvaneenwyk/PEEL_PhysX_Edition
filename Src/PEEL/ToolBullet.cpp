@@ -357,5 +357,3 @@ void ToolBullet::RenderCallback(PintRender& render, Pint& pint, udword pint_inde
 void ToolBullet::CreateUI(PintGUIHelper& helper, IceWidget* parent, Widgets& owner)
 {
 }
-
-

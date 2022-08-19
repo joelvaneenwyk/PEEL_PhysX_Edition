@@ -13,7 +13,7 @@
 #include "PintObjectsManager.h"
 #include "MyConvex.h"
 #include "GUI_Helpers.h"
-#include "Loader_OBJ.h"
+#include "Loader_Obj.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -1269,4 +1269,3 @@ START_TEST(InternalFaces, CATEGORY_CONTACT_GENERATION, gDesc_InternalFaces)
 END_TEST(InternalFaces)
 
 ///////////////////////////////////////////////////////////////////////////////
-

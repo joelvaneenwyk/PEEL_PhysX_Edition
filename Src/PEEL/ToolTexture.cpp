@@ -304,5 +304,3 @@ void ToolTexture::CreateUI(PintGUIHelper& helper, IceWidget* parent, Widgets& ow
 	mEditBox_Scale = helper.CreateEditBox(parent, 1, x+OffsetX, y, EditBoxWidth, 20, "1.0", &owner, EDITBOX_FLOAT_POSITIVE, null, null);
 	y += YStep;
 }
-
-

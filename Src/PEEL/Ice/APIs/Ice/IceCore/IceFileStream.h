@@ -20,15 +20,15 @@
 
 		inline_					bool			IsValid()								const	{ return mFp!=null;	}
 
-		override(ReadStream)	bool			Seek(udword offset)						const;
+		ICE_OVERRIDE(ReadStream)	bool			Seek(udword offset)						const;
 
 		// Loading API
-		override(ReadStream)	ubyte			ReadByte()								const;
-		override(ReadStream)	uword			ReadWord()								const;
-		override(ReadStream)	udword			ReadDword()								const;
-		override(ReadStream)	float			ReadFloat()								const;
-		override(ReadStream)	double			ReadDouble()							const;
-		override(ReadStream)	bool			ReadBuffer(void* buffer, udword size)	const;
+		ICE_OVERRIDE(ReadStream)	ubyte			ReadByte()								const;
+		ICE_OVERRIDE(ReadStream)	uword			ReadWord()								const;
+		ICE_OVERRIDE(ReadStream)	udword			ReadDword()								const;
+		ICE_OVERRIDE(ReadStream)	float			ReadFloat()								const;
+		ICE_OVERRIDE(ReadStream)	double			ReadDouble()							const;
+		ICE_OVERRIDE(ReadStream)	bool			ReadBuffer(void* buffer, udword size)	const;
 
 		private:
 								FILE*			mFp;
@@ -43,12 +43,12 @@
 		inline_					bool			IsValid()								const	{ return mFp!=null;	}
 
 		// Saving API
-		override(WriteStream)	WriteStream&	StoreByte(ubyte b);
-		override(WriteStream)	WriteStream&	StoreWord(uword w);
-		override(WriteStream)	WriteStream&	StoreDword(udword d);
-		override(WriteStream)	WriteStream&	StoreFloat(float f);
-		override(WriteStream)	WriteStream&	StoreDouble(double f);
-		override(WriteStream)	WriteStream&	StoreBuffer(const void* buffer, udword size);
+		ICE_OVERRIDE(WriteStream)	WriteStream&	StoreByte(ubyte b);
+		ICE_OVERRIDE(WriteStream)	WriteStream&	StoreWord(uword w);
+		ICE_OVERRIDE(WriteStream)	WriteStream&	StoreDword(udword d);
+		ICE_OVERRIDE(WriteStream)	WriteStream&	StoreFloat(float f);
+		ICE_OVERRIDE(WriteStream)	WriteStream&	StoreDouble(double f);
+		ICE_OVERRIDE(WriteStream)	WriteStream&	StoreBuffer(const void* buffer, udword size);
 
 		private:
 								FILE*			mFp;

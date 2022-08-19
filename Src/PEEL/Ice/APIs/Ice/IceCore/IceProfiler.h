@@ -17,7 +17,7 @@
 
 	FUNCTION ICECORE_API void		SetBaseTime(udword time);
 	FUNCTION ICECORE_API udword		GetBaseTime();
-	FUNCTION ICECORE_API Profiler&	GetProfiler();
+			 ICECORE_API Profiler&	GetProfiler();
 
 	#define PROFILE_APP		// It's been tested with various scenes that profiling the app doesn't slow it down at all
 

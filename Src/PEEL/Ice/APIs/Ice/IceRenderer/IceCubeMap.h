@@ -22,7 +22,7 @@
 	class ICERENDERER_API CubeMap
 	{
 		public:
-										CubeMap() : mUserdata(0), mRenderer(null), mWidth(0), mHeight(0)	{ mViewPoint.Zero(); }
+										CubeMap() : mUserdata(0), mWidth(0), mHeight(0), mRenderer(null)	{ mViewPoint.Zero(); }
 		virtual							~CubeMap()	{}
 
 		// Initialization

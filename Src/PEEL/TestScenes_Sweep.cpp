@@ -369,7 +369,9 @@ START_SQ_TEST(SweepAccuracy, CATEGORY_SWEEP, gDesc_SweepAccuracy)
 	virtual bool	Setup(Pint& pint, const PintCaps& caps)
 	{
 		if(!caps.mSupportCapsuleSweeps)
+		{
 			return false;
+		}
 
 		const float Radius = 0.5f;
 		const float HalfHeight_ = 1.0f;
@@ -2720,4 +2722,3 @@ class SceneConvexSweepVsStaticHeightfield : public SceneSweepVsStaticHeightfield
 	virtual	const char*			GetDescription()			const	{ return gDesc_SceneConvexSweepVsStaticHeightfield;	}
 
 END_TEST(SceneConvexSweepVsStaticHeightfield)
-

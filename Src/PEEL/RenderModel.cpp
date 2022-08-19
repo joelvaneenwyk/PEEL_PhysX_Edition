@@ -29,4 +29,3 @@ void CreateRenderModels(RenderModel** render_models)
 	render_models[RENDER_MODEL_MATCAP]			= ICE_NEW(RenderModel_Matcap);
 	render_models[RENDER_MODEL_SIMPLE_SHADOWS]	= ICE_NEW(RenderModel_SimpleShadows);
 }
-

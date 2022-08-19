@@ -279,4 +279,3 @@ class CapsuleOverlapTriangles_TestZone : public MidphaseTestzoneTest
 END_TEST(CapsuleOverlapTriangles_TestZone)
 
 ///////////////////////////////////////////////////////////////////////////////
-

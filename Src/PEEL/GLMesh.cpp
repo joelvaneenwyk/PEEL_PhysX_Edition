@@ -464,7 +464,9 @@ GLMeshEx* OpenGLMesh::Create(const MultiSurface& multi_surface, udword /*flags*/
 			DELETEARRAY(UVs);
 		}
 		else
+		{
 			M->mTexCoordsVBO = 0;
+		}
 
 		/*if(Normals)
 		{
@@ -1003,4 +1005,3 @@ void ModernTest()
 	glBindVertexArray(0);
 
 }
-

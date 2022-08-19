@@ -107,7 +107,7 @@
 		// Creation
 				bool					CreateVertexBuffer();
 				bool					CreateIndexBuffer();
-		override(ConsolidatedSurface)	bool		Consolidate(const RENDERABLESURFACECREATE& create);
+		ICE_OVERRIDE(ConsolidatedSurface)	bool		Consolidate(const RENDERABLESURFACECREATE& create);
 	};
 
 #endif // ICERENDERABLESURFACE_H

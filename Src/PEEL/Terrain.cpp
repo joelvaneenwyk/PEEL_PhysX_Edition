@@ -966,4 +966,3 @@ N[Offset] = n;
 	}
 #endif
 }
-

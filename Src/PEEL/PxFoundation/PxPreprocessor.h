@@ -1,4 +1,3 @@
-//
 // Redistribution and use in source and binary forms, with or without
 // modification, are permitted provided that the following conditions
 // are met:
@@ -52,6 +51,7 @@ All definitions have a value of 1 or 0, use '#if' instead of '#ifdef'.
 /**
 Compiler defines, see http://sourceforge.net/p/predef/wiki/Compilers/
 */
+
 #if defined(_MSC_VER)
 #	if _MSC_VER >= 1930
 #		define PX_VC 17
@@ -71,6 +71,9 @@ Compiler defines, see http://sourceforge.net/p/predef/wiki/Compilers/
 #		define PX_VC 9
 #	else
 #		error "Unknown VC version"
+#	endif
+#	if defined(__clang__)
+#		define PX_CLANG 1
 #	endif
 #elif defined(__clang__)
 #	define PX_CLANG 1
@@ -326,7 +329,7 @@ Pack macros - disabled on SPU because they are not supported
 Inline macro
 */
 #define PX_INLINE inline
-#if PX_MICROSOFT_FAMILY
+#if PX_MICROSOFT_FAMILY && !defined(__clang__)
 #pragma inline_depth(255)
 #endif
 
@@ -384,7 +387,7 @@ This declaration style is parsed correctly by Visual Assist.
 
 */
 #ifndef PX_ALIGN
-#if PX_MICROSOFT_FAMILY
+#if PX_MICROSOFT_FAMILY && !defined(__clang__)
 #define PX_ALIGN(alignment, decl) __declspec(align(alignment)) decl
 #define PX_ALIGN_PREFIX(alignment) __declspec(align(alignment))
 #define PX_ALIGN_SUFFIX(alignment)
@@ -420,8 +423,12 @@ General defines
 */
 
 // static assert
-#if(defined(__GNUC__) && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 7))) || (PX_PS4) || (PX_APPLE_FAMILY) || (PX_SWITCH) || (PX_CLANG && PX_ARM)
-#define PX_COMPILE_TIME_ASSERT(exp) typedef char PX_CONCAT(PxCompileTimeAssert_Dummy, __COUNTER__)[(exp) ? 1 : -1] __attribute__((unused))
+#if defined(__clang__)
+#	define PX_COMPILE_TIME_ASSERT(exp) static_assert(exp, #exp)
+#elif (defined(__GNUC__) && (__GNUC__ > 4 || (__GNUC__ == 4 && __GNUC_MINOR__ >= 7))) \
+	|| (PX_PS4) || (PX_APPLE_FAMILY) || (PX_SWITCH) || (PX_CLANG && PX_ARM)
+#	define PX_COMPILE_TIME_ASSERT(exp) \
+		typedef char PX_CONCAT(PxCompileTimeAssert_Dummy, __COUNTER__)[(exp) ? 1 : -1] __attribute__((unused))
 #else
 #	define PX_COMPILE_TIME_ASSERT(exp) typedef char PxCompileTimeAssert_Dummy[(exp) ? 1 : -1]
 #endif
@@ -464,7 +471,7 @@ PX_CUDA_CALLABLE PX_INLINE void PX_UNUSED(T const&)
 // This assert works on win32/win64, but may need further specialization on other platforms.
 // Some GCC compilers need the compiler flag -malign-double to be set.
 // Apparently the apple-clang-llvm compiler doesn't support malign-double.
-#if PX_PS4 || PX_APPLE_FAMILY || (PX_CLANG && !PX_ARM)
+#if PX_PS4 || PX_APPLE_FAMILY || (PX_CLANG && !PX_ARM && !PX_MICROSOFT_FAMILY)
 struct PxPackValidation
 {
 	char _;

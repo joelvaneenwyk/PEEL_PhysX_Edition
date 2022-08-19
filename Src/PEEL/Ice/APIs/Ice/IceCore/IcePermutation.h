@@ -32,7 +32,7 @@
 		inline_	const udword*	GetList()				const	{ return mList; }
 
 		//! Access as an array
-		inline_	udword&			operator[](udword i)	const	{ ASSERT(i<mSize); return mList[i];	}
+				udword&			operator[](udword i)	const	{ ASSERT(i<mSize); return mList[i];	}
 
 		private:
 				udword			mSize;	//!< Number of elements

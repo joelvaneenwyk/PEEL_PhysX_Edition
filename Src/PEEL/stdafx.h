@@ -41,3 +41,6 @@
 #else
 	#define SPY_ZONE(Label)
 #endif
+
+#undef min
+#undef max

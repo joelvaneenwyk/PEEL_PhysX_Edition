@@ -39,16 +39,18 @@ TerrainRegionManager::RegionData::~RegionData()
 	DELETEARRAY(mVertices);
 }
 
-TerrainRegionManager::TerrainRegionManager(Pint& pint, const ManagedTexture* mt, const Params& params) :
-	mPint					(pint),
-	mMT						(mt),
-//	mFBM					(0.8f, 0.9f, 12.0f),
-	mFBM					(1.5f, 1.2f, 32.0f),
-//	mFBM					(1.5f, 1.2f, 16.0f),
-//	mFBM					(1.5f, 1.2f, 64.0f),
-	mFocus					(Point(0.0f, 0.0f, 0.0f)),
-	mParams					(params),
-	mDebugDrawVertexNormals	(false)
+TerrainRegionManager::TerrainRegionManager(Pint& pint, const ManagedTexture* mt, const Params& params)
+	: mPint(pint)
+#ifndef USE_TERRAIN_TILE_RENDERER
+	, mMT						(mt)
+#endif
+	 //	, mFBM						(0.8f, 0.9f, 12.0f)
+	 , mFBM(1.5f, 1.2f, 32.0f)
+	 //	, mFBM						(1.5f, 1.2f, 16.0f)
+	 //	, mFBM						(1.5f, 1.2f, 64.0f)
+	, mFocus					(Point(0.0f, 0.0f, 0.0f))
+	, mParams					(params)
+	, mDebugDrawVertexNormals	(false)
 {
 #ifdef USE_TERRAIN_TILE_RENDERER
 	IndexedSurface IS;

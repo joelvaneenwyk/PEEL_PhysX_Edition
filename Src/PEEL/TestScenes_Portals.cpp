@@ -405,7 +405,7 @@ class PortalJointFinal : public PortalJointBase, public PintContactModifyCallbac
 {
 							PREVENT_COPY(PortalJointFinal)
 	public:
-	PortalJointFinal::PortalJointFinal() :
+	PortalJointFinal() :
 //		mExtents				(Point(1.0f, 0.5f, 0.25f)),
 		mExtents				(Point(1.0f, 1.0f, 1.0f)),
 		mOffset					(Point(0.0f, 0.0f, -4.0f)),
@@ -1009,7 +1009,7 @@ class PortalScene1 : public PortalJointFinal
 {
 							PREVENT_COPY(PortalScene1)
 	public:
-	PortalScene1::PortalScene1()
+	PortalScene1()
 	{
 		const Point Pos0(0.0f, gPortalSize.y, 0.0f);
 		const Point Pos1(0.0f, gPortalSize.y+10.0f, 0.0f);
@@ -1056,7 +1056,7 @@ class PortalScene2 : public PortalJointFinal
 {
 							PREVENT_COPY(PortalScene2)
 	public:
-	PortalScene2::PortalScene2()
+	PortalScene2()
 	{
 		const Point Pos0(0.0f, gPortalSize.y, 0.0f);
 		const Point Pos1(0.0f, gPortalSize.y, 10.0f);
@@ -1102,7 +1102,7 @@ class PortalScene3 : public PortalJointFinal
 {
 							PREVENT_COPY(PortalScene3)
 	public:
-	PortalScene3::PortalScene3()
+	PortalScene3()
 	{
 		const Point Pos0(0.0f, gPortalSize.y, 0.0f);
 		const Point Pos1(0.0f, gPortalSize.y, 10.0f);

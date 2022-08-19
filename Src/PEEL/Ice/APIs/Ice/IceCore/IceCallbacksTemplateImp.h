@@ -1,4 +1,3 @@
-
 // Cheap templates inspired from MESA
 
 #ifdef TEMPLATED_CALLBACK

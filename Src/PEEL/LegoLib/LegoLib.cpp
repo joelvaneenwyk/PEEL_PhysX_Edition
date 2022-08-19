@@ -775,7 +775,7 @@ static void gCollada_ParseEffects(const char* command, udword nb_params, const P
 							}
 							else
 							{
-								OutputConsoleError(_F("File not found: %s\n", Current->mFileName));
+								OutputConsoleError(_F("File not found: %s\n", Current->mFileName.GetBuffer()));
 							}
 						}
 						break;

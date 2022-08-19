@@ -36,4 +36,3 @@
 	};
 
 #endif	// ICEGAUSSMAP_H
-

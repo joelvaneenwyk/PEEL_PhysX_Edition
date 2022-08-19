@@ -1,3 +1,4 @@
+
 /*
    LZ4 - Fast LZ compression algorithm
    Copyright (C) 2011-2020, Yann Collet.
@@ -31,6 +32,8 @@
     - LZ4 homepage : http://www.lz4.org
     - LZ4 source repository : https://github.com/lz4/lz4
 */
+
+#include "stdafx.h"
 
 /*-************************************
 *  Tuning parameters

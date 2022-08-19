@@ -63,4 +63,3 @@
 	FUNCTION ICEMATHS_API	void	ComputeInstantInertia(Matrix3x3& inertia, const Matrix3x3& rotation, const Point& local_inertia);
 
 #endif	// ICEINERTIATENSOR_H
-

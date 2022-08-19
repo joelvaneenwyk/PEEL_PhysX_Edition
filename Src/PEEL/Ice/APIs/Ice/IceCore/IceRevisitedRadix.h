@@ -59,7 +59,7 @@
 				bool			Resize(udword nb);
 	};
 
-	#define StackRadixSort(name, ranks0, ranks1)	\
+#	define IceStackRadixSort(name, ranks0, ranks1) \
 		RadixSort name; \
 		name.SetRankBuffers(ranks0, ranks1);
 

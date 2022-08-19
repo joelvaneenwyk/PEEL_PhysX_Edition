@@ -1038,4 +1038,3 @@ class VoronoiFracture5 : public VoronoiFracture2, public VoronoiCallback
 END_TEST(VoronoiFracture5)
 
 ///////////////////////////////////////////////////////////////////////////////
-

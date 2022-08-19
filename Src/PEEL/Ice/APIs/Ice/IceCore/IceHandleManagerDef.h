@@ -1,4 +1,3 @@
-
 // Will be included by relevant files
 
 	#define TEMPLATED_MANAGER		HandleManager

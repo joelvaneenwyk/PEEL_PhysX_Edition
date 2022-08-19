@@ -25,4 +25,3 @@ void PintPointSpriteSphereShapeRenderer::_Render(const PR& pose) const
 	GLPointRenderer2::BatchPoint(pose.mPos, mRadius);
 //	glPopMatrix();
 }
-

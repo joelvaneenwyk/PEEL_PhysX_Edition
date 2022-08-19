@@ -16,7 +16,7 @@
 namespace ps = physx::shdfnd;
 
 #ifdef PEEL_USE_ICE_FRACTURE
-	#include <meshmerizer/IceFractureConvex.h>
+	#include <Meshmerizer/IceFractureConvex.h>
 	typedef FractureConvex Convex;
 #endif
 

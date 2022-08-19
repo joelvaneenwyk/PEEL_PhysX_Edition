@@ -11,6 +11,8 @@
 #include "Include/GlutX.h"
 #include "GL/glut.h"
 
+#ifdef PEEL_USE_GLUTX_STUBS
+
 ///////////////////////////////////////////////////////////////////////////////
 
 void glutxInit(int* argcp, char** argv)								{ glutInit(argcp, argv);												}
@@ -62,3 +64,5 @@ void glutxSpecialKeyFunc(GlutX_SpecialKeyCallback cb)
 	glutSpecialFunc(::_SpecialKeyDownCallback);
 	glutSpecialUpFunc(::_SpecialKeyUpCallback);
 }
+
+#endif  // PEEL_USE_GLUTX_STUBS

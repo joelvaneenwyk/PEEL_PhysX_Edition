@@ -304,4 +304,3 @@ CharacterData::CharacterData()
 VehicleData::VehicleData()
 {
 }
-

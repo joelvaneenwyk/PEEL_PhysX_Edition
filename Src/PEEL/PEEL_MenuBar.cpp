@@ -321,4 +321,3 @@ void ProcessMenuEvent(udword menu_item_id)
 		OutputConsoleInfo(_F("NbManagedTextures: %d\n", NbManagedTextures));
 	}
 }
-

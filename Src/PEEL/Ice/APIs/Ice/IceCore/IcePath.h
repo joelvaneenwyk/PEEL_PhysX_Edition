@@ -20,9 +20,7 @@
 
 	FUNCTION ICECORE_API	bool		RemovePath(String& filename);
 //	FUNCTION ICECORE_API	bool		GetPath(const String& filename, String& path);
-	FUNCTION ICECORE_API	bool		GetPath(const char* filename, String& path);
+//	FUNCTION ICECORE_API	int			GetPath(const char* filename, String& path);
 	FUNCTION ICECORE_API	bool		GetPath2(const char* filename, String& path);
 
 #endif // ICEPATH_H
-
-

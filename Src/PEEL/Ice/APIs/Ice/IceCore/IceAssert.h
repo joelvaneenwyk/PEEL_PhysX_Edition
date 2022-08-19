@@ -30,7 +30,8 @@ FUNCTION ICECORE_API bool CustomAssertFunction(size_t, char*, int, char*, bool&)
 //! ASSERT(!"Not implemented")
 //! ASSERT(condition && "error text")
 #		define ASSERT(exp) \
-		do {																									\
+			do \
+			{ \
 				static bool IgnoreAlways = false; \
 				if (!IgnoreAlways) \
 				{ \
@@ -40,8 +41,13 @@ FUNCTION ICECORE_API bool CustomAssertFunction(size_t, char*, int, char*, bool&)
 					} \
 				} \
 			} while (0)
+#		define ON_ASSERT(...) __VA_ARGS__
 #	else
-		#define ASSERT(exp)	do {} while (0)
+#		define ASSERT(exp) \
+			do \
+			{ \
+			} while (0)
+#		define ON_ASSERT(...)
 #	endif
 #endif
 

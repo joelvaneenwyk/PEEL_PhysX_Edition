@@ -13,7 +13,7 @@
 
 #ifdef PEEL_USE_ICE_FRACTURE
 
-	#include <meshmerizer/IceFracturePattern.h>
+	#include <Meshmerizer/IceFracturePattern.h>
 	//typedef FractureConvex Convex;
 
 #endif

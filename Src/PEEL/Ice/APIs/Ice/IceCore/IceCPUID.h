@@ -55,7 +55,7 @@
 	10-11	Reserved (see note)1
 	12		MTRR	Memory Type Range Registers The Processor supports the Memory Type Range
 					Registers specifically the MTRR_CAP register.
-	13		PGE		Page Global Enable The global bit in the PDE’s and PTE’s and the CR4.PGE 
+	13		PGE		Page Global Enable The global bit in the PDE's and PTE's and the CR4.PGE
 					enable bit are supported.
 	14		MCA		Machine Check Architecture The Machine Check Architecture is supported,
 					specifically the MCG_CAP register.

@@ -41,8 +41,8 @@
 		 *	\return		true if success
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(SubdivScheme)	bool			Init(IndexedSurface& surface);
-		override(SubdivScheme)	bool			ComputeNewVertex(udword face_id, udword vref0, udword vref1, Point& p, SubdivHistory* history);
+		ICE_OVERRIDE(SubdivScheme)	bool			Init(IndexedSurface& surface);
+		ICE_OVERRIDE(SubdivScheme)	bool			ComputeNewVertex(udword face_id, udword vref0, udword vref1, Point& p, SubdivHistory* history);
 	};
 
 #endif // ICEBUTTERFLY_H

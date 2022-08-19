@@ -1,3 +1,4 @@
+
 #include "stdafx.h"
 #include "RenderTarget.h"
 #include "TextureManager.h"
@@ -95,6 +96,3 @@ void PEEL::RenderTarget::EndCapture()
     mFBO->AttachTexture(gTexTarget, 0, GL_DEPTH_ATTACHMENT_EXT);
     mFBO->Disable();
 }
-
-
-

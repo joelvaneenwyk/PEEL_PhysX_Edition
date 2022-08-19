@@ -147,7 +147,7 @@
 	enum TEXTUREMINFILTER
 	{
 		TFN_POINT								= 1,			//!< Point filtering. The texel with coordinates nearest to the desired pixel value is used.
-		TFN_LINEAR								= 2,			//!< Bilinear interpolation filtering. A weighted average of a 2×2 area of texels surrounding the desired pixel is used.
+		TFN_LINEAR								= 2,			//!< Bilinear interpolation filtering. A weighted average of a 2x2 area of texels surrounding the desired pixel is used.
 		TFN_ANISOTROPIC							= 3,			//!< Anisotropic texture filtering. Compensates for distortion caused by the difference in angle between the texture polygon and the plane of the screen.
 
 		TFN_FORCE_DWORD							= 0x7FFFFFFF
@@ -157,7 +157,7 @@
 	enum TEXTUREMAGFILTER
 	{
 		TFG_POINT								= 1,			//!< Point filtering. The texel with coordinates nearest to the desired pixel value is used.
-		TFG_LINEAR								= 2,			//!< Bilinear interpolation filtering. A weighted average of a 2×2 area of texels surrounding the desired pixel is used.
+		TFG_LINEAR								= 2,			//!< Bilinear interpolation filtering. A weighted average of a 2x2 area of texels surrounding the desired pixel is used.
 		TFG_FLATCUBIC							= 3,			//!< Not currently supported; do not use.
 		TFG_GAUSSIANCUBIC						= 4,			//!< Not currently supported; do not use.
 		TFG_ANISOTROPIC							= 5,			//!< Anisotropic texture filtering. Compensates for distortion caused by the difference in angle between the texture polygon and the plane of the screen.

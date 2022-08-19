@@ -65,4 +65,3 @@ bool isFoundationInitialized()
 {
 	return gFoundation!=null;
 }
-

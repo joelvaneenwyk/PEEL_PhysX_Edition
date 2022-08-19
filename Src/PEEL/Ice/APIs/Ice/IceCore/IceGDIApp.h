@@ -27,9 +27,9 @@
 										GDIApplication();
 		virtual							~GDIApplication();
 
-		override(IceApp)	bool		Init(const ICEAPPCREATE* create);
-		override(IceApp)	bool		Run(const ICEAPPCREATE* create);
-		override(IceApp)	bool		Close();
+		ICE_OVERRIDE(IceApp)	bool		Init(const ICEAPPCREATE* create);
+		ICE_OVERRIDE(IceApp)	bool		Run(const ICEAPPCREATE* create);
+		ICE_OVERRIDE(IceApp)	bool		Close();
 
 		inline_				ubyte*		GetLogicScreen()					{ return mLogic;				}
 		inline_				void		ClearScreen()						{ ZeroMemory(mLogic, mNbBytes);	}

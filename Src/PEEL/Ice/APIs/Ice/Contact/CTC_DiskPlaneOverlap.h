@@ -16,4 +16,3 @@
 	CONTACT_API bool DiskPlaneOverlap(float& penetration, Point& point_on_disk, const Circle& disk, const Plane& plane);
 
 #endif // CTCDISKPLANEOVERLAP_H
-

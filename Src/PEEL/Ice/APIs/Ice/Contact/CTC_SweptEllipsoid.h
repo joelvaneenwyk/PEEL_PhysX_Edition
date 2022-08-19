@@ -19,4 +19,3 @@
 #endif
 
 #endif // CTCSWEPTELLIPSOID_H
-

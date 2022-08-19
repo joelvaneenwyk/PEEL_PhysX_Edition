@@ -9,7 +9,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Precompiled Header
-#include "Stdafx.h"
+#include "StdAfx.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Include Guard
@@ -41,165 +41,165 @@
 												VoidRenderState();
 												~VoidRenderState();
 
-		override(RenderStateManager)	bool	ValidateDevice(udword& nbpasses)						{ return true;	}
+		ICE_OVERRIDE(RenderStateManager)	bool	ValidateDevice(udword& nbpasses)						{ return true;	}
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Transformations
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(RenderStateManager)	BOOL	SetWorldMatrix(const Matrix4x4& world)					{ return TRUE;	}
-		override(RenderStateManager)	void	GetWorldMatrix(Matrix4x4& world)						{}
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetWorldMatrix(const Matrix4x4& world)					{ return TRUE;	}
+		ICE_OVERRIDE(RenderStateManager)	void	GetWorldMatrix(Matrix4x4& world)						{}
 
-		override(RenderStateManager)	BOOL	SetBoneMatrix(udword i, const Matrix4x4& world)			{ return TRUE;	}
-		override(RenderStateManager)	void	GetBoneMatrix(udword i, Matrix4x4& world)				{}
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetBoneMatrix(udword i, const Matrix4x4& world)			{ return TRUE;	}
+		ICE_OVERRIDE(RenderStateManager)	void	GetBoneMatrix(udword i, Matrix4x4& world)				{}
 
-		override(RenderStateManager)	BOOL	SetViewMatrix(const Matrix4x4& view)					{ return TRUE;	}
-		override(RenderStateManager)	void	GetViewMatrix(Matrix4x4& view)							{}
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetViewMatrix(const Matrix4x4& view)					{ return TRUE;	}
+		ICE_OVERRIDE(RenderStateManager)	void	GetViewMatrix(Matrix4x4& view)							{}
 
-		override(RenderStateManager)	BOOL	SetProjMatrix(const Matrix4x4& proj)					{ return TRUE;	}
-		override(RenderStateManager)	void	GetProjMatrix(Matrix4x4& proj)							{}
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetProjMatrix(const Matrix4x4& proj)					{ return TRUE;	}
+		ICE_OVERRIDE(RenderStateManager)	void	GetProjMatrix(Matrix4x4& proj)							{}
 
-		override(RenderStateManager)	BOOL	SetTextureMatrix(udword i, const Matrix4x4& texture)	{ return TRUE;	}
-		override(RenderStateManager)	void	GetTextureMatrix(udword i, Matrix4x4& texture)			{}
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureMatrix(udword i, const Matrix4x4& texture)	{ return TRUE;	}
+		ICE_OVERRIDE(RenderStateManager)	void	GetTextureMatrix(udword i, Matrix4x4& texture)			{}
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Helper methods
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(RenderStateManager)	void	SetDepthRange				(float zmin, float zmax)	{}
-		override(RenderStateManager)	void	SetColorUpdate				(BOOL flag)					{}
+		ICE_OVERRIDE(RenderStateManager)	void	SetDepthRange				(float zmin, float zmax)	{}
+		ICE_OVERRIDE(RenderStateManager)	void	SetColorUpdate				(BOOL flag)					{}
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// User-defined clipping planes
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(RenderStateManager)	udword	MaxUserClippingPlanes()									{ return 0;		}
-		override(RenderStateManager)	udword	MaxHardwareUserClippingPlanes()							{ return 0;		}
-		override(RenderStateManager)	void	EnableClipPlane(udword mask)							{}
-		override(RenderStateManager)	void	SetClipPlane(udword i, float* equation)					{}
-		override(RenderStateManager)	void	GetClipPlane(udword i, float* equation)					{}
-		override(RenderStateManager)	udword	AddClipPlane(const Plane& clipplane)					{ return 0;		}
-		override(RenderStateManager)	bool	RemoveClipPlane(udword planeid)							{ return true;	}
+		ICE_OVERRIDE(RenderStateManager)	udword	MaxUserClippingPlanes()									{ return 0;		}
+		ICE_OVERRIDE(RenderStateManager)	udword	MaxHardwareUserClippingPlanes()							{ return 0;		}
+		ICE_OVERRIDE(RenderStateManager)	void	EnableClipPlane(udword mask)							{}
+		ICE_OVERRIDE(RenderStateManager)	void	SetClipPlane(udword i, float* equation)					{}
+		ICE_OVERRIDE(RenderStateManager)	void	GetClipPlane(udword i, float* equation)					{}
+		ICE_OVERRIDE(RenderStateManager)	udword	AddClipPlane(const Plane& clipplane)					{ return 0;		}
+		ICE_OVERRIDE(RenderStateManager)	bool	RemoveClipPlane(udword planeid)							{ return true;	}
 		protected:
-		override(RenderStateManager)	void	ValidateClipPlanes()									{}
+		ICE_OVERRIDE(RenderStateManager)	void	ValidateClipPlanes()									{}
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// State block manager
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		private:
 
-		override(RenderStateManager)	bool	BeginStateBlock()										{ return true; }
-		override(RenderStateManager)	bool	EndStateBlock(udword& id)								{ return true; }
-		override(RenderStateManager)	bool	ApplyStateBlock(udword blockid)							{ return true; }
-		override(RenderStateManager)	bool	DeleteStateBlock(udword blockid)						{ return true; }
+		ICE_OVERRIDE(RenderStateManager)	bool	BeginStateBlock()										{ return true; }
+		ICE_OVERRIDE(RenderStateManager)	bool	EndStateBlock(udword& id)								{ return true; }
+		ICE_OVERRIDE(RenderStateManager)	bool	ApplyStateBlock(udword blockid)							{ return true; }
+		ICE_OVERRIDE(RenderStateManager)	bool	DeleteStateBlock(udword blockid)						{ return true; }
 
 		public:
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Flag-controlled render states
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(RenderStateManager)	BOOL	SetTexturePerspective		(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetZWrite					(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetAlphaTest				(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetDithering				(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetAlphaBlending			(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetFog						(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetSpecular					(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetStencilTest				(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetLighting					(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetLastPixel				(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetStippledAlpha			(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetEdgeAntialias			(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetColorKeyMode				(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetColorKeyBlendMode		(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetRangeBasedFog			(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetClipping					(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetScreenExtents			(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetColorVertex				(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetPerspSpecHigh			(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetNormalize				(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTexturePerspective		(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetZWrite					(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetAlphaTest				(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetDithering				(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetAlphaBlending			(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetFog						(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetSpecular					(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetStencilTest				(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetLighting					(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetLastPixel				(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetStippledAlpha			(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetEdgeAntialias			(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetColorKeyMode				(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetColorKeyBlendMode		(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetRangeBasedFog			(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetClipping					(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetScreenExtents			(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetColorVertex				(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetPerspSpecHigh			(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetNormalize				(BOOL flag)					{ return TRUE; }
 
-		override(RenderStateManager)	BOOL	SetSoftwareVertexProcessing	(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetPointSprite				(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetPointScale				(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetMultiSampleAntialias		(BOOL flag)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetIndexedVertexBlend		(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetSoftwareVertexProcessing	(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetPointSprite				(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetPointScale				(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetMultiSampleAntialias		(BOOL flag)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetIndexedVertexBlend		(BOOL flag)					{ return TRUE; }
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Dword-controlled render states
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(RenderStateManager)	BOOL	SetAmbientColor				(udword ambcolor)			{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetAntialiasMode			(ANTIALIASMODE am)			{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetZBufferMode				(ZBUFFERMODE zm)			{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetZBufferCmpMode			(CMPFUNC cf)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetZBias					(udword value)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetLinePattern				(udword value)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetAlphaRef					(udword ref)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetAlphaFunc				(CMPFUNC af)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetSrcBlend					(ALPHABLEND mode)			{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetDstBlend					(ALPHABLEND mode)			{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetDiffuseMaterialSource	(MCS type)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetSpecularMaterialSource	(MCS type)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetAmbientMaterialSource	(MCS type)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetEmissiveMaterialSource	(MCS type)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetVertexBlend				(VBLEND mode)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetTextureFactor			(udword value)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetFillMode					(FILLMODE fm)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetShadeMode				(SHADEMODE sm)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetCullMode					(CULLMODE cm)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetStencilRef				(udword val)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetStencilCmpMode			(CMPFUNC cf)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetStencilCmpMask			(udword mask)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetStencilWriteMask			(udword mask)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetStencilFailOp			(STENCILOP sop)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetStencilZFailOp			(STENCILOP sop)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetStencilPassOp			(STENCILOP sop)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetFogVertexMode			(FOGMODE mode)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetFogMode					(FOGMODE fm)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetFogDensity				(float density)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetFogColor					(udword fogcolor)			{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetFogStart					(float fogstart)			{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetFogEnd					(float fogend)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetMaterialProps			(const MaterialProps* props){ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetAmbientColor				(udword ambcolor)			{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetAntialiasMode			(ANTIALIASMODE am)			{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetZBufferMode				(ZBUFFERMODE zm)			{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetZBufferCmpMode			(CMPFUNC cf)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetZBias					(udword value)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetLinePattern				(udword value)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetAlphaRef					(udword ref)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetAlphaFunc				(CMPFUNC af)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetSrcBlend					(ALPHABLEND mode)			{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetDstBlend					(ALPHABLEND mode)			{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetDiffuseMaterialSource	(MCS type)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetSpecularMaterialSource	(MCS type)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetAmbientMaterialSource	(MCS type)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetEmissiveMaterialSource	(MCS type)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetVertexBlend				(VBLEND mode)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureFactor			(udword value)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetFillMode					(FILLMODE fm)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetShadeMode				(SHADEMODE sm)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetCullMode					(CULLMODE cm)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetStencilRef				(udword val)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetStencilCmpMode			(CMPFUNC cf)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetStencilCmpMask			(udword mask)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetStencilWriteMask			(udword mask)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetStencilFailOp			(STENCILOP sop)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetStencilZFailOp			(STENCILOP sop)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetStencilPassOp			(STENCILOP sop)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetFogVertexMode			(FOGMODE mode)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetFogMode					(FOGMODE fm)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetFogDensity				(float density)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetFogColor					(udword fogcolor)			{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetFogStart					(float fogstart)			{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetFogEnd					(float fogend)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetMaterialProps			(const MaterialProps* props){ return TRUE; }
 
-		override(RenderStateManager)	BOOL	SetPointSize				(float size)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetPointSizeMin				(float minsize)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetPointScaleA				(float scalea)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetPointScaleB				(float scaleb)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetPointScaleC				(float scalec)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetMultiSampleMask			(udword mask)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetPatchEdgeStyle			(PATCHEDGESTYLE pes)		{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetPatchSegments			(float nb)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetPointSizeMax				(float maxsize)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetColorWriteEnable			(udword mask)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetTweenFactor				(float factor)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetBlendOp					(BLENDOP op)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetPointSize				(float size)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetPointSizeMin				(float minsize)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetPointScaleA				(float scalea)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetPointScaleB				(float scaleb)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetPointScaleC				(float scalec)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetMultiSampleMask			(udword mask)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetPatchEdgeStyle			(PATCHEDGESTYLE pes)		{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetPatchSegments			(float nb)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetPointSizeMax				(float maxsize)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetColorWriteEnable			(udword mask)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTweenFactor				(float factor)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetBlendOp					(BLENDOP op)				{ return TRUE; }
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Texture Render States
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(RenderStateManager)	BOOL	SetTextureBitmap			(udword i, void* bitmap)			{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureBitmap			(udword i, void* bitmap)			{ return TRUE; }
 
-		override(RenderStateManager)	BOOL	SetTextureColorOp			(udword i, STAGEOP op)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetTextureColorArg1			(udword i, STAGEARG sa)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetTextureColorArg2			(udword i, STAGEARG sa)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureColorOp			(udword i, STAGEOP op)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureColorArg1			(udword i, STAGEARG sa)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureColorArg2			(udword i, STAGEARG sa)				{ return TRUE; }
 
-		override(RenderStateManager)	BOOL	SetTextureAlphaOp			(udword i, STAGEOP op)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetTextureAlphaArg1			(udword i, STAGEARG sa)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetTextureAlphaArg2			(udword i, STAGEARG sa)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureAlphaOp			(udword i, STAGEOP op)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureAlphaArg1			(udword i, STAGEARG sa)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureAlphaArg2			(udword i, STAGEARG sa)				{ return TRUE; }
 
-		override(RenderStateManager)	BOOL	SetTextureMinFilter			(udword i, TEXTUREMINFILTER tmf)	{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetTextureMagFilter			(udword i, TEXTUREMAGFILTER tmf)	{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetTextureMipFilter			(udword i, TEXTUREMIPFILTER tmf)	{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureMinFilter			(udword i, TEXTUREMINFILTER tmf)	{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureMagFilter			(udword i, TEXTUREMAGFILTER tmf)	{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureMipFilter			(udword i, TEXTUREMIPFILTER tmf)	{ return TRUE; }
 
-		override(RenderStateManager)	BOOL	SetTextureCoordIndex		(udword i, STAGETEXCOORDINDEX ci)	{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetTextureTransFlags		(udword i, TEXTURETRANSFLAGS ttff)	{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetTextureMipMapLODBias		(udword i, float bias)				{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetTextureMaxMipMapLevel	(udword i, udword maxlevel)			{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetTextureMaxAnisotropy		(udword i, udword maxanis)			{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureCoordIndex		(udword i, STAGETEXCOORDINDEX ci)	{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureTransFlags		(udword i, TEXTURETRANSFLAGS ttff)	{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureMipMapLODBias		(udword i, float bias)				{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureMaxMipMapLevel	(udword i, udword maxlevel)			{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureMaxAnisotropy		(udword i, udword maxanis)			{ return TRUE; }
 
-		override(RenderStateManager)	BOOL	SetTextureAddress			(udword i, TEXTUREADDRESS ta)		{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetTextureAddressU			(udword i, TEXTUREADDRESS ta)		{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetTextureAddressV			(udword i, TEXTUREADDRESS ta)		{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetTextureBorder			(udword i, udword color)			{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetTextureWrapU				(udword i, BOOL b)					{ return TRUE; }
-		override(RenderStateManager)	BOOL	SetTextureWrapV				(udword i, BOOL b)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureAddress			(udword i, TEXTUREADDRESS ta)		{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureAddressU			(udword i, TEXTUREADDRESS ta)		{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureAddressV			(udword i, TEXTUREADDRESS ta)		{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureBorder			(udword i, udword color)			{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureWrapU				(udword i, BOOL b)					{ return TRUE; }
+		ICE_OVERRIDE(RenderStateManager)	BOOL	SetTextureWrapV				(udword i, BOOL b)					{ return TRUE; }
 	};
 
 	class ICERENDERER_API VoidRenderer : public Renderer
@@ -216,7 +216,7 @@
 		 *	\return		true if success
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(Renderer)	bool			Initialize(const RENDERERCREATE& create);
+		ICE_OVERRIDE(Renderer)	bool			Initialize(const RENDERERCREATE& create);
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -224,7 +224,7 @@
 		 *	\return		true if success
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(Renderer)	bool			ShowFrame();
+		ICE_OVERRIDE(Renderer)	bool			ShowFrame();
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -233,7 +233,7 @@
 		 *	\param		y	[in] y position on screen
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(Renderer)	void			OnMove(udword x, udword y);
+		ICE_OVERRIDE(Renderer)	void			OnMove(udword x, udword y);
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -241,7 +241,7 @@
 		 *	\return		true if the renderer is ready
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(Renderer)	bool			IsReady();
+		ICE_OVERRIDE(Renderer)	bool			IsReady();
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -250,7 +250,7 @@
 		 *	\return		true if success
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(Renderer)	bool			SetViewport(const Viewport& vp);
+		ICE_OVERRIDE(Renderer)	bool			SetViewport(const Viewport& vp);
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -259,7 +259,7 @@
 		 *	\return		true if success
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(Renderer)	bool			ClearViewport(const Viewport& vp);
+		ICE_OVERRIDE(Renderer)	bool			ClearViewport(const Viewport& vp);
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -268,7 +268,7 @@
 		 *	\return		true if success
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(Renderer)	bool			BeginScene();
+		ICE_OVERRIDE(Renderer)	bool			BeginScene();
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -277,7 +277,7 @@
 		 *	\return		true if success
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(Renderer)	bool			EndScene();
+		ICE_OVERRIDE(Renderer)	bool			EndScene();
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -285,7 +285,7 @@
 		 *	\return		true if success
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(Renderer)	bool			Resize();
+		ICE_OVERRIDE(Renderer)	bool			Resize();
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -293,16 +293,16 @@
 		 *	\return		the scanline number or -1 if failed
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(Renderer)	udword			GetScanline();
+		ICE_OVERRIDE(Renderer)	udword			GetScanline();
 
 		// Primitive rendering
-		override(Renderer)	bool			DrawPrimitive			(PrimType type, VertexFormat fvf, const void* verts, udword nbvertices, udword flags=0);
-		override(Renderer)	bool			DrawIndexedPrimitive	(PrimType type, VertexFormat fvf, const void* verts, udword nbvertices, const uword* indices, udword nbindices, udword flags=0);
+		ICE_OVERRIDE(Renderer)	bool			DrawPrimitive			(PrimType type, VertexFormat fvf, const void* verts, udword nbvertices, udword flags=0);
+		ICE_OVERRIDE(Renderer)	bool			DrawIndexedPrimitive	(PrimType type, VertexFormat fvf, const void* verts, udword nbvertices, const uword* indices, udword nbindices, udword flags=0);
 		// Vertex buffer rendering
-		override(Renderer)	bool			DrawPrimitiveVB			(PrimType type, VertexBuffer* vb, udword startvertex, udword nbvertices, udword flags=0);
-		override(Renderer)	bool			DrawIndexedPrimitiveVB	(PrimType type, VertexBuffer* vb, udword startvertex, udword nbvertices, const uword* indices, udword nbindices, udword flags=0);
+		ICE_OVERRIDE(Renderer)	bool			DrawPrimitiveVB			(PrimType type, VertexBuffer* vb, udword startvertex, udword nbvertices, udword flags=0);
+		ICE_OVERRIDE(Renderer)	bool			DrawIndexedPrimitiveVB	(PrimType type, VertexBuffer* vb, udword startvertex, udword nbvertices, const uword* indices, udword nbindices, udword flags=0);
 		// ...
-		override(Renderer)	bool			DrawIndexedPrimitive	(VertexBuffer* vb, const VBDesc& desc, IndexBuffer* ib, udword subset);
+		ICE_OVERRIDE(Renderer)	bool			DrawIndexedPrimitive	(VertexBuffer* vb, const VBDesc& desc, IndexBuffer* ib, udword subset);
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -310,7 +310,7 @@
 		 *	\return		true if success
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(Renderer)	bool			GetCaps();
+		ICE_OVERRIDE(Renderer)	bool			GetCaps();
 
 		// Vertex buffers
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -320,7 +320,7 @@
 		 *	\return		the newly created vertex buffer, or null if failed
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(Renderer)	VertexBuffer*	CreateVertexBuffer(const VERTEXBUFFERCREATE& create);
+		ICE_OVERRIDE(Renderer)	VertexBuffer*	CreateVertexBuffer(const VERTEXBUFFERCREATE& create);
 
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		/**
@@ -329,7 +329,7 @@
 		 *	\return		Self-Reference
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(Renderer)	Renderer&		OptimizeVertexBuffer(VertexBuffer* vb);
+		ICE_OVERRIDE(Renderer)	Renderer&		OptimizeVertexBuffer(VertexBuffer* vb);
 
 		// Textures
 
@@ -340,16 +340,16 @@
 		 *	\return		the newly created texture, or null if failed
 		 */
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		override(Renderer)	Texture*		CreateTexture(const TEXTURECREATE& create);
+		ICE_OVERRIDE(Renderer)	Texture*		CreateTexture(const TEXTURECREATE& create);
 
 		// Lighting
-		override(Renderer)	bool			SetupLightProps(Light* light);
-		override(Renderer)	bool			SwitchLight(Light* light, bool enable);
+		ICE_OVERRIDE(Renderer)	bool			SetupLightProps(Light* light);
+		ICE_OVERRIDE(Renderer)	bool			SwitchLight(Light* light, bool enable);
 
-		override(Renderer)	bool			Print(udword x, udword y, const char* text);
+		ICE_OVERRIDE(Renderer)	bool			Print(udword x, udword y, const char* text);
 
 		// Render targets
-		override(Renderer)	bool			SetRenderTarget(RenderTarget* target);
+		ICE_OVERRIDE(Renderer)	bool			SetRenderTarget(RenderTarget* target);
 
 		private:
 

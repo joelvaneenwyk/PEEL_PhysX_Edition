@@ -1,3 +1,4 @@
+
 #ifndef FRAME_BUFFER_OBJECT_H
 #define FRAME_BUFFER_OBJECT_H
 
@@ -161,4 +162,3 @@ private:
 };
 
 #endif
-

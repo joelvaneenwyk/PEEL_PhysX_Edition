@@ -1,3 +1,4 @@
+
 /*
    LZ4 auto-framing library
    Header File for static linking only
