@@ -77,7 +77,7 @@
 			sub		eax, cyc
 			mov		Base, eax
 		}
-#elif defined(LINUX)
+#elif defined(__linux__)
       //__asm__("cpuid\n\t"
 			   //     "rdtsc\n\t"
 			   //     "mov      %0,   eax\n\t"
@@ -125,7 +125,7 @@
 			mov		ebx, val
 			mov		[ebx], eax
 		}
-#elif defined(LINUX)
+#elif defined(__linux__)
   //asm("cpuid\n\t"
 		//  "rdtsc\n\t"
 		//	"mov    ebx,    val\n\t"
@@ -151,7 +151,7 @@
 			sub		eax, [ebx]
 			mov		[ebx], eax
 		}
-#elif defined(LINUX)
+#elif defined(__linux__)
 		//asm("cpuid\n\t"
 		//    "rdtsc\n\t"
 		//	  "mov    ebx,    val\n\t"
