@@ -39,6 +39,10 @@
     "prettier.proseWrap": "never",
     "cmake.buildDirectory": "${workspaceFolder}/Build/vscode",
     "files.associations": {
+        "build-lua": "shellscript",
+        "build-python": "shellscript",
+        "config.h.win": "cpp",
+        "*.rc": "rc-script",
         "*.cmake": "cmake",
         ".clang-tidy": "yaml"
     },
