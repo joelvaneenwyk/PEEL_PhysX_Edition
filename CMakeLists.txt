@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.21 FATAL_ERROR)
 
 project(PEEL LANGUAGES CXX)
 
+# Allow calling EXEC_PROGRAM
+cmake_policy(SET CMP0153 NEW)
+
 # Set repository root
 set(PEEL_SOURCE_ROOT ${PROJECT_SOURCE_DIR}/Src)
 set(PEEL_APPLICATION_ROOT ${PROJECT_SOURCE_DIR}/Src/PEEL)
