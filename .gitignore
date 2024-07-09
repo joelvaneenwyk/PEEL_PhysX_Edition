@@ -2,6 +2,10 @@
 # PEEL Ignore List
 #
 
+.git/
+.build/
+out/
+
 *.build
 
 /Build/
@@ -32,8 +36,8 @@
 # Intermediate or temporary files
 #
 
+.vs/
 UpgradeLog.htm
 .suo
 *.user
-**/.vs/*
 .DS_Store
