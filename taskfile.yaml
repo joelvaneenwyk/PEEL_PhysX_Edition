@@ -1,0 +1,14 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  default:
+    cmds:
+      - task: build
+
+  build:
+    cmds:
+      - cmd: git submodule update --init --recursive --checkout
+      - cmd: cmake -B .build -S .
+      - cmd: cmake --build .build
