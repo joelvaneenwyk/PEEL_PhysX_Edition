@@ -26,7 +26,7 @@
 // Copyright (c) 2004-2008 AGEIA Technologies, Inc. All rights reserved.
 // Copyright (c) 2001-2004 NovodeX AG. All rights reserved.
 
-#ifndef PSFOUNDATION_PSWINDOWSINCLUDE_H
+#if !defined(PSFOUNDATION_PSWINDOWSINCLUDE_H) && defined(_WIN32)
 #define PSFOUNDATION_PSWINDOWSINCLUDE_H
 
 #include "Ps.h"
