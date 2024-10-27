@@ -8,6 +8,10 @@ out/
 
 *.build
 
+.out/
+.vs/
+.task/
+
 /Build/
 
 /Docs/*Internal*

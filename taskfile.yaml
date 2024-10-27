@@ -1,18 +1,38 @@
 # https://taskfile.dev
 
-version: '3'
+version: "3"
 
 tasks:
   default:
     cmds:
       - task: build
 
-  build:
+  rebuild:
+    cmds:
+      - task: clean
+      - task: build
+
+  clean:
+    cmds:
+      - git add .
+      - git clean -xfd
+
+  configure:
+    sources:
+      - CMakeLists.txt
+    generates:
+      - .out/tmp/PEEL.sln
+      - .out/tmp/PEEL.vcxproj
     cmds:
       - cmd: git submodule update --init --recursive --checkout
-      - cmd: >-
-          cmake
-          -B .build -S .
-          -DTARGET_BUILD_PLATFORM=linux
-      - cmd: >-
-          cmake --build .build
+      - cmd: cmake -B .out/tmp -S . -G "Visual Studio 17 2022"
+
+  build:
+    deps: [configure]
+    sources:
+      - Src/**/*.cpp
+      - Src/**/*.h
+    generates:
+      - .out/tmp/Release/PEEL.exe
+    cmds:
+      - cmd: cmake --build .out/tmp --config Release
